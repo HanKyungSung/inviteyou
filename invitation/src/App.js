@@ -15,7 +15,7 @@ function App() {
       bride="Anna" groom="Daniel" connection="&"
       />
       <Intro bride="Anna" groom="Daniel" connection="&"/>
-      <Calendar />
+      <Calendar year="2022" month="October" dayOfWeek="Fri" time="1:30PM"/>
       <Rsvp menu01="Menu 01" menu02="Menu 02" menu03="Menu 03"/>
       <Gallery />
       <Contact 

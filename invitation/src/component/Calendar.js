@@ -1,17 +1,17 @@
 import React from 'react'
 
-const Calendar = () => {
+const Calendar = (props) => {
   return (
     <section className="calendar">
         <div className="calendar-wrap">
             <div className="calendar-top">
                 <strong className="wedding-month">
-                    October, 
-                    <span className="wedding-year"> 2022</span>
+                    {props.month}, 
+                    <span className="wedding-year"> {props.year}</span>
                 </strong>
                 <span className="wedding-schedule">
-                    <span className="day-of-week">fri</span>
-                    <span className="wedding-time">1:30PM</span>
+                    <span className="day-of-week">{props.dayOfWeek}</span>
+                    <span className="wedding-time">{props.time}</span>
                 </span>
             </div>
             <table className="calendar-table">
