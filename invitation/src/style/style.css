@@ -536,19 +536,7 @@ section .wedding-date {
     padding-top: 15vw;
   }
   .visual.visualType02 .wedding-main-date {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 0;
-    width: 16vw;
     min-width: 250px;
-    height: 16vw;
     min-height: 250px;
-    background-color: #9D9E91;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    color: #fff;
   }
 }/*# sourceMappingURL=style.css.map */
