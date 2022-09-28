@@ -1,4 +1,4 @@
-import "./style/style.css";
+import React from 'react'
 import Visual from "./component/Visual";
 import Visual2 from "./component/Visual2";
 import Intro from "./component/Intro";
@@ -7,16 +7,16 @@ import Rsvp from "./component/Rsvp";
 import Gallery from "./component/Gallery";
 import Contact from "./component/Contact";
 
-function App() {
+const Type01 = (props) => {
   return (
     <main className="invitation-wrap type01">
-      {/* <Visual 
+      <Visual 
       year="2023" day="23" month="Aug" time="1:30 PM" 
       location="0000 Vancouver St. Vancouver, BC, Canada" 
       bride="Anna" groom="Daniel" connection="&"
-      /> */}
+      />
       <Visual2 
-      year="2023" day="23" month="Aug" monthNum="08" time="1:30 PM" 
+      year="2023" day="23" month="Aug" time="1:30 PM" 
       location="0000 Vancouver St. Vancouver, BC, Canada" 
       bride="Anna" groom="Daniel" connection="and"
       />
@@ -29,8 +29,7 @@ function App() {
       brideTel="778.000.0000" brideEmail="sample@gmail.com"
       />
     </main>
-
-  );
+  )
 }
 
-export default App;
+export default Type01

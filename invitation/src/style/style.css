@@ -128,10 +128,26 @@ section .wedding-date {
   text-transform: uppercase;
 }
 
-.invitation-wrap.type01 .visual {
+.visual {
+  position: relative;
+}
+.visual img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.visual .visual-content .wedding-date span {
+  display: block;
+}
+.visual .visual-content .wedding-date span + span {
+  margin-top: 5px;
+}
+.visual .visual-content .connect-sign {
+  text-transform: lowercase;
+}
+.visual.visualType01 {
   padding-bottom: 100vh;
 }
-.invitation-wrap.type01 .visual .visual-img {
+.visual.visualType01 .visual-img {
   position: absolute;
   left: 50%;
   top: 0;
@@ -139,13 +155,11 @@ section .wedding-date {
   height: 100vh;
   transform: translateX(-50%);
 }
-.invitation-wrap.type01 .visual .visual-img img {
+.visual.visualType01 .visual-img img {
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
 }
-.invitation-wrap.type01 .visual .visual-content {
+.visual.visualType01 .visual-content {
   width: 100%;
   position: absolute;
   left: 50%;
@@ -153,32 +167,87 @@ section .wedding-date {
   transform: translateX(-50%);
   z-index: 5;
 }
-.invitation-wrap.type01 .visual .visual-content .wedding-tit {
+.visual.visualType01 .visual-content .wedding-tit {
   color: #fff;
 }
-.invitation-wrap.type01 .visual .visual-content .wedding-character {
+.visual.visualType01 .visual-content .wedding-character {
   font-weight: 400;
   padding: 1em 0;
   font-size: 2.5rem;
 }
-.invitation-wrap.type01 .visual .visual-content .wedding-character strong {
+.visual.visualType01 .visual-content .wedding-character strong {
   display: block;
   color: #7C7D71;
   font-weight: 400;
 }
-.invitation-wrap.type01 .visual .visual-content .wedding-character .connect-sign {
+.visual.visualType01 .visual-content .wedding-character .connect-sign {
   font-size: 1.8rem;
   display: block;
   color: #7C7D71;
 }
-.invitation-wrap.type01 .visual .visual-content .wedding-date {
+.visual.visualType01 .visual-content .wedding-date {
   text-align: center;
   font-size: 0.9rem;
   color: #fff;
 }
-.invitation-wrap.type01 .visual .visual-content .wedding-date span {
+.visual.visualType01 .visual-content .wedding-date span {
   display: block;
   margin-bottom: 0.5em;
+}
+.visual.visualType02 .visual-img {
+  padding-top: 5vw;
+  height: 100vh;
+}
+.visual.visualType02 .visual-img img {
+  width: 100%;
+  height: 100%;
+}
+.visual.visualType02 .visual-content {
+  position: absolute;
+  left: 20px;
+  bottom: 120px;
+  z-index: 5;
+  text-align: left;
+  color: #fff;
+}
+.visual.visualType02 .visual-content .wedding-character {
+  font-size: 2rem;
+}
+.visual.visualType02 .visual-content .wedding-character .connect-sign {
+  margin: 0 5px;
+}
+.visual.visualType02 .wedding-main-date {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 16vw;
+  min-width: 285px;
+  height: 16vw;
+  min-height: 285px;
+  background-color: #9D9E91;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+}
+.visual.visualType02 .wedding-main-date::after {
+  content: "";
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #fff;
+}
+.visual.visualType02 .wedding-main-date small {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+.visual.visualType02 .wedding-main-date strong {
+  font-size: 3.5rem;
 }
 
 .intro {
@@ -462,5 +531,24 @@ section .wedding-date {
   }
   section:not(.visual) {
     width: calc(100% - 40px);
+  }
+  .visual.visualType02 .visual-img {
+    padding-top: 15vw;
+  }
+  .visual.visualType02 .wedding-main-date {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+    width: 16vw;
+    min-width: 250px;
+    height: 16vw;
+    min-height: 250px;
+    background-color: #9D9E91;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
   }
 }/*# sourceMappingURL=style.css.map */
