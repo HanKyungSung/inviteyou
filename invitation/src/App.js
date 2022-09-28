@@ -1,4 +1,4 @@
-import "./App.css";
+import "./style/style.css";
 import Visual from "./component/Visual";
 import Intro from "./component/Intro";
 import Calendar from "./component/Calendar";
@@ -8,7 +8,7 @@ import Contact from "./component/Contact";
 
 function App() {
   return (
-    <main className="invitation-wrap">
+    <main className="invitation-wrap type01">
       <Visual 
       year="2023" day="23" month="Aug" time="1:30 PM" 
       location="0000 Vancouver St. Vancouver, BC, Canada" 

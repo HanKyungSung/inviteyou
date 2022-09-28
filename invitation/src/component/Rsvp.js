@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 export const Rsvp = (props) => {
   return (
@@ -10,29 +10,34 @@ export const Rsvp = (props) => {
             <input type="text" placeholder="Please enter your full name" />
           </span>
           <span className="input-wrap">
-            <label htmlFor="participate">participate</label>
+            <label htmlFor="">participate</label>
             <span className="radio-wrap">
-              <input type="radio" />
-              <label htmlFor="yes">yes</label>
+              <label htmlFor="yes" >yes</label>
+              <input type="radio" name="participate" id="yes" value="yes"/>
+              <span class="checkmark"></span>
             </span>
             <span className="radio-wrap">
-              <input type="radio" />
               <label htmlFor="no">no</label>
+              <input type="radio" name="participate" id="no" value="no"/>
+              <span class="checkmark"></span>
             </span>
           </span>
           <span className="input-wrap">
             <label htmlFor="menu">menu</label>
             <span className="radio-wrap">
-              <input type="radio" />
               <label htmlFor="menu01">{props.menu01}</label>
+              <input type="radio" name="menu" id="menu01" value="menu01"/>
+              <span class="checkmark"></span>
             </span>
             <span className="radio-wrap">
-              <input type="radio" />
-              <label htmlFor="menu02">{props.menu02}</label>
+              <label htmlFor="menu02" >{props.menu02}</label>
+              <input type="radio" name="menu" id="menu02" value="menu02"/>
+              <span class="checkmark"></span>
             </span>
             <span className="radio-wrap">
-              <input type="radio" />
-              <label htmlFor="menu03">{props.menu03}</label>
+              <label htmlFor="menu03" >{props.menu03}</label>
+              <input type="radio" name="menu" id="menu03" value="menu03"/>
+              <span class="checkmark"></span>
             </span>
           </span>
           <span className="input-wrap">

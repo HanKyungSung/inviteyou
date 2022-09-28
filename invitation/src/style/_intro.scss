@@ -1,0 +1,32 @@
+.intro{
+    text-align: center;
+    p{
+        font-size: 1rem;
+        text-align: center;
+        margin: 0 auto;
+        line-height: 1.5;
+        color: $color-l-grey;
+    }
+    .wedding-character{
+        text-align: center;
+        display: inline-block;
+        margin-top: 3em;
+        text-transform: uppercase;
+        color: $color-l-grey;
+        font-size: 1.2rem;
+        font-weight: 500;
+        &::after{
+            content:"";
+            width: 100%;
+            height: 1px;
+            background-color: $color-l-grey;
+            display: block;
+        }
+        strong{
+            font-weight: inherit;
+        }
+        .connect-sign{
+            margin: 0 0.2em;
+        }
+    }
+}
