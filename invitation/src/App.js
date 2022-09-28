@@ -9,12 +9,19 @@ import Contact from "./component/Contact";
 function App() {
   return (
     <main className="invitation-wrap">
-      <Visual />
-      <Intro />
+      <Visual 
+      year="2023" day="23" month="Aug" time="1:30 PM" 
+      location="0000 Vancouver St. Vancouver, BC, Canada" 
+      bride="Anna" groom="Daniel" connection="&"
+      />
+      <Intro bride="Anna" groom="Daniel" connection="&"/>
       <Calendar />
-      <Rsvp />
+      <Rsvp menu01="Menu 01" menu02="Menu 02" menu03="Menu 03"/>
       <Gallery />
-      <Contact />
+      <Contact 
+      groomTel="778.000.0000" groomEmail="sample@gmail.com" 
+      brideTel="778.000.0000" brideEmail="sample@gmail.com"
+      />
     </main>
 
   );

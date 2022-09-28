@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Rsvp = () => {
+export const Rsvp = (props) => {
   return (
     <section className="rsvp">
         <h2 className="section-tit">Apply to <br/>join our wedding</h2>
@@ -24,15 +24,15 @@ export const Rsvp = () => {
             <label htmlFor="menu">menu</label>
             <span className="radio-wrap">
               <input type="radio" />
-              <label htmlFor="menu01">menu 01</label>
+              <label htmlFor="menu01">{props.menu01}</label>
             </span>
             <span className="radio-wrap">
               <input type="radio" />
-              <label htmlFor="menu02">menu 02</label>
+              <label htmlFor="menu02">{props.menu02}</label>
             </span>
             <span className="radio-wrap">
               <input type="radio" />
-              <label htmlFor="menu03">menu 03</label>
+              <label htmlFor="menu03">{props.menu03}</label>
             </span>
           </span>
           <span className="input-wrap">
