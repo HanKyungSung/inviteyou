@@ -1,0 +1,14 @@
+.gallery{
+    .swiperType01{
+        margin-bottom: 10px;
+        img{
+            max-height: 350px!important;
+            width: 100%;
+        }
+        .swiperType01-thumb{
+            img{
+                filter: grayscale(100%);
+            }
+        }
+    }
+}

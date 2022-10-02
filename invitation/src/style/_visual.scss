@@ -1,0 +1,124 @@
+
+.visual{
+    position: relative;
+    img{
+        object-fit: cover;
+    }
+    .visual-content{
+        .wedding-date{
+            span{
+                display: block;
+                & + span{
+                    margin-top: 5px;
+                }
+            }
+        }
+        .connect-sign{
+            text-transform: lowercase;
+        }
+    }
+    &.visualType01{
+        padding-bottom: 100vh;
+        .visual-img{
+            position: absolute;
+            left: 50%; top: 0;
+            width: 95%;
+            height: 100vh;
+            transform: translateX(-50%);
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .visual-content{
+            width: 100%;
+            position: absolute;
+            left: 50%; top: 36px;
+            transform: translateX(-50%);
+            z-index: 5;
+            .wedding-tit{
+                color: $color-white;
+            }
+            .wedding-character{
+                font-weight: 400;
+                padding: 1em 0;
+                font-size: 2.5rem;
+                strong{
+                    display: block;
+                    color: #7C7D71;
+                    font-weight: 400;
+                }
+                .connect-sign{
+                    font-size: 1.8rem;
+                    display: block;
+                    color: #7C7D71;
+                }
+            }
+            .wedding-date{
+                text-align: center;
+                font-size: 0.9rem;
+                color: $color-white;
+                span{
+                    display: block;
+                    margin-bottom: 0.5em;
+                }
+            }
+        }
+    }
+    &.visualType02{
+        .visual-img{
+            padding-top: 5vw;
+            height: 100vh;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .visual-content{
+            position: absolute;
+            left: 20px;
+            bottom: 120px;
+            z-index: 5;
+            text-align: left;
+            color: $color-white;
+            .wedding-character{
+                font-size: 2rem;
+                .connect-sign{
+                    margin: 0 5px;
+                }
+            }
+        }
+        .wedding-main-date{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            width: 16vw;
+            min-width: 285px;
+            height: 16vw;
+            min-height: 285px;
+            background-color: $color-primary;
+            display: flex;
+            justify-content: center; align-items: center;
+            flex-direction: column;
+            color: $color-white;
+            &::after{
+                content:"";
+                width: 90%;
+                height: 90%;
+                position: absolute;
+                left: 50%; top: 50%;
+                transform: translate(-50%, -50%);
+                border: 1px solid $color-white;
+                
+            }
+            small{
+                font-size: 1.5rem;
+                margin-bottom: 5px;
+            }
+            strong{
+                font-size: 3.5rem;
+            }
+        }
+    }
+}

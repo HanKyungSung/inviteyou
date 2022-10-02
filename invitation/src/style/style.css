@@ -1,0 +1,542 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import "//cdn.jsdelivr.net/npm/font-kopub@1.0";
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  color: inherit;
+  vertical-align: baseline;
+  text-decoration: none;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+a:hover {
+  color: inherit;
+}
+
+ol, ul, li {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+  transition: all 0.3s;
+}
+
+html {
+  font-size: 20px;
+}
+
+section {
+  font-size: 1rem;
+  line-height: 1.2;
+}
+section:not(.visual) {
+  width: 55%;
+  margin: 0 auto;
+}
+
+body, a {
+  font-family: "Noto Sans KR", sans-serif;
+  color: #222;
+  word-break: keep-all;
+}
+
+section {
+  padding: 3em 0;
+}
+section h2 {
+  font-size: 1.4rem;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1.5em;
+  color: #9D9E91;
+  font-weight: 500;
+}
+section .wedding-date {
+  margin-top: 1.5rem;
+  display: block;
+}
+
+.invitation-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.visual {
+  position: relative;
+  text-align: center;
+}
+.visual .wedding-tit {
+  display: block;
+  text-align: center;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+.visual .wedding-character {
+  text-transform: uppercase;
+}
+
+.visual {
+  position: relative;
+}
+.visual img {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.visual .visual-content .wedding-date span {
+  display: block;
+}
+.visual .visual-content .wedding-date span + span {
+  margin-top: 5px;
+}
+.visual .visual-content .connect-sign {
+  text-transform: lowercase;
+}
+.visual.visualType01 {
+  padding-bottom: 100vh;
+}
+.visual.visualType01 .visual-img {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 95%;
+  height: 100vh;
+  transform: translateX(-50%);
+}
+.visual.visualType01 .visual-img img {
+  width: 100%;
+  height: 100%;
+}
+.visual.visualType01 .visual-content {
+  width: 100%;
+  position: absolute;
+  left: 50%;
+  top: 36px;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+.visual.visualType01 .visual-content .wedding-tit {
+  color: #fff;
+}
+.visual.visualType01 .visual-content .wedding-character {
+  font-weight: 400;
+  padding: 1em 0;
+  font-size: 2.5rem;
+}
+.visual.visualType01 .visual-content .wedding-character strong {
+  display: block;
+  color: #7C7D71;
+  font-weight: 400;
+}
+.visual.visualType01 .visual-content .wedding-character .connect-sign {
+  font-size: 1.8rem;
+  display: block;
+  color: #7C7D71;
+}
+.visual.visualType01 .visual-content .wedding-date {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #fff;
+}
+.visual.visualType01 .visual-content .wedding-date span {
+  display: block;
+  margin-bottom: 0.5em;
+}
+.visual.visualType02 .visual-img {
+  padding-top: 5vw;
+  height: 100vh;
+}
+.visual.visualType02 .visual-img img {
+  width: 100%;
+  height: 100%;
+}
+.visual.visualType02 .visual-content {
+  position: absolute;
+  left: 20px;
+  bottom: 120px;
+  z-index: 5;
+  text-align: left;
+  color: #fff;
+}
+.visual.visualType02 .visual-content .wedding-character {
+  font-size: 2rem;
+}
+.visual.visualType02 .visual-content .wedding-character .connect-sign {
+  margin: 0 5px;
+}
+.visual.visualType02 .wedding-main-date {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 0;
+  width: 16vw;
+  min-width: 285px;
+  height: 16vw;
+  min-height: 285px;
+  background-color: #9D9E91;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+}
+.visual.visualType02 .wedding-main-date::after {
+  content: "";
+  width: 90%;
+  height: 90%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #fff;
+}
+.visual.visualType02 .wedding-main-date small {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+}
+.visual.visualType02 .wedding-main-date strong {
+  font-size: 3.5rem;
+}
+
+.intro {
+  text-align: center;
+}
+.intro p {
+  font-size: 1rem;
+  text-align: center;
+  margin: 0 auto;
+  line-height: 1.5;
+  color: #666;
+}
+.intro .wedding-character {
+  text-align: center;
+  display: inline-block;
+  margin-top: 3em;
+  text-transform: uppercase;
+  color: #666;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+.intro .wedding-character::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background-color: #666;
+  display: block;
+}
+.intro .wedding-character strong {
+  font-weight: inherit;
+}
+.intro .wedding-character .connect-sign {
+  margin: 0 0.2em;
+}
+
+.calendar .calendar-wrap {
+  text-align: center;
+  margin: 0 auto;
+  padding: 2em;
+  box-shadow: 8px 13px 8px rgba(0, 0, 0, 0.03);
+}
+.calendar .calendar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2em;
+  font-size: 1rem;
+}
+.calendar .calendar-top .wedding-month {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.calendar .calendar-top .wedding-year {
+  font-size: 0.9rem;
+}
+.calendar .calendar-top .day-of-week {
+  text-transform: uppercase;
+  display: inline-block;
+  margin-right: 5px;
+}
+.calendar table {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+}
+.calendar table td, .calendar table th {
+  text-align: center;
+  vertical-align: middle;
+}
+.calendar table td {
+  height: 0;
+}
+.calendar table td:after, .calendar table td:before {
+  content: "";
+  display: block;
+  padding-bottom: calc(50% - 0.6em);
+}
+.calendar table th {
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #666;
+  padding: 0.5em 0;
+}
+.calendar table th:first-of-type {
+  color: #8B5454;
+}
+.calendar table th:last-of-type {
+  color: #8B5454;
+}
+.calendar table .current {
+  background-color: #9D9E91;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 50%;
+}
+
+.rsvp form .input-wrap {
+  display: block;
+  font-size: 1rem;
+  margin-bottom: 2em;
+}
+.rsvp form .input-wrap label {
+  display: block;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-bottom: 1em;
+}
+.rsvp form .input-wrap input[type=text] {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #eee;
+  font-size: 1rem;
+  padding: 1em 0;
+  outline: none;
+}
+.rsvp form .input-wrap input[type=text]::-moz-placeholder {
+  color: #aaa;
+}
+.rsvp form .input-wrap input[type=text]:-ms-input-placeholder {
+  color: #aaa;
+}
+.rsvp form .input-wrap input[type=text]::placeholder {
+  color: #aaa;
+}
+.rsvp form .input-wrap textarea {
+  border-color: #eee;
+  width: 100%;
+  padding: 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  height: 200px;
+  color: #444;
+  outline: none;
+}
+.rsvp form .radio-wrap {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  margin-right: 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.rsvp form .radio-wrap label {
+  display: inline-block;
+  margin-bottom: 0;
+  line-height: 20px;
+}
+.rsvp form .radio-wrap .checkmark {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: 20px;
+  width: 20px;
+  border: 1px solid #666;
+  border-radius: 50%;
+  display: block;
+}
+.rsvp form .radio-wrap .checkmark::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #666;
+  transition: 0.3s all;
+  opacity: 0;
+}
+.rsvp form .radio-wrap input[type=radio] {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  left: 0;
+  top: 0;
+  margin: 0;
+  z-index: 5;
+}
+.rsvp form .radio-wrap input[type=radio]:checked ~ .checkmark::after {
+  opacity: 1;
+}
+.rsvp form button {
+  border: none;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  background-color: #9D9E91;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.6em;
+  width: 100%;
+  outline: none;
+  border: 1px solid #9D9E91;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.rsvp form button:hover {
+  background-color: #fff;
+  color: #9D9E91;
+}
+
+.gallery .swiperType01 {
+  margin-bottom: 10px;
+}
+.gallery .swiperType01 img {
+  max-height: 350px !important;
+  width: 100%;
+}
+.gallery .swiperType01 .swiperType01-thumb img {
+  filter: grayscale(100%);
+}
+
+.contact .contact-list {
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-bottom: 20px;
+}
+.contact .contact-list .character-img img {
+  max-height: 70px;
+  border-radius: 50%;
+}
+.contact .contact-list .contact-infos {
+  margin: 0 50px 0 20px;
+}
+.contact .contact-list .contact-infos .tel {
+  font-size: 1.4rem;
+  color: #666;
+}
+.contact .contact-list .contact-infos .tel:hover {
+  color: #9D9E91;
+}
+.contact .contact-list .contact-infos .email {
+  font-size: 0.8rem;
+  color: #aaa;
+  text-decoration: underline;
+}
+.contact .contact-list .contact-infos .email:hover {
+  color: #666;
+}
+.contact .contact-list .contact-infos a {
+  color: inherit;
+}
+.contact .contact-list .tel-img {
+  width: 45px;
+  height: 45px;
+  background-color: #9D9E91;
+  border-radius: 50%;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+.contact .contact-list .tel-img:hover {
+  transform: translateY(-55%);
+}
+
+@media (max-width: 650px) {
+  html {
+    font-size: 16px;
+  }
+  section:not(.visual) {
+    width: 60%;
+    max-width: 350px;
+  }
+}
+@media (max-width: 500px) {
+  html {
+    font-size: 14px;
+  }
+  section:not(.visual) {
+    width: calc(100% - 40px);
+  }
+  .visual.visualType02 .visual-img {
+    padding-top: 15vw;
+  }
+  .visual.visualType02 .wedding-main-date {
+    min-width: 250px;
+    min-height: 250px;
+  }
+}/*# sourceMappingURL=style.css.map */

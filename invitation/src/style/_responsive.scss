@@ -1,0 +1,32 @@
+@media (max-width: 650px){
+    html{
+        font-size: 16px;
+    }
+    section{
+        &:not(.visual){
+            width: 60%;
+            max-width: 350px;
+        }
+    }
+}
+@media (max-width: 500px){
+    html{
+        font-size: 14px;
+    }
+    section{
+        &:not(.visual){
+            width: calc(100% - 40px);
+        }
+    }
+    .visual{
+        &.visualType02{
+            .visual-img{
+                padding-top: 15vw;
+            }
+            .wedding-main-date{
+                min-width: 250px;
+                min-height: 250px;
+            }
+        }
+    }
+}
