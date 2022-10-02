@@ -1,119 +1,111 @@
 .rsvp {
-    form {
-        .input-wrap {
-            display: block;
-            font-size: 1rem;
-            margin-bottom: 2em;
+	form {
+		.input-wrap {
+			display: block;
+			font-size: 1rem;
+			margin-bottom: 2em;
+			label {
+				display: block;
+				text-transform: uppercase;
+				font-size: 1rem;
+				margin-bottom: 1em;
+			}
+			input[type=text] {
+				width: 100%;
+				border: none;
+				border-bottom: 1px solid $color-border;
+				font-size: 1rem;
+				padding: 1em 0;
+				outline: none;
 
-            label {
-                display: block;
-                text-transform: uppercase;
-                font-size: 1rem;
-                margin-bottom: 1em;
-            }
-
-            input[type=text] {
-                width: 100%;
-                border: none;
-                border-bottom: 1px solid $color-border;
-                font-size: 1rem;
-                padding: 1em 0;
-                outline: none;
-
-                &::placeholder {
-                    color: $color-placeholder;
-                }
-            }
-
-            textarea {
-                border-color: $color-border;
-                width: 100%;
-                padding: 1em;
-                font-size: 1rem;
-                font-family: inherit;
-                height: 200px;
-                color: $color-d-grey;
-                outline: none;
-            }
-        }
-
-        .radio-wrap {
-            display: inline-block;
-            position: relative;
-            padding-left: 30px;
-            margin-right: 20px;
-            cursor: pointer;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-
-            label {
-                display: inline-block;
-                margin-bottom: 0;
-                line-height: 20px;
-            }
-       
-            .checkmark {
-                position: absolute;
-                top: 50%;
-                left: 0;
-                transform: translateY(-50%);
-                height: 20px;
-                width: 20px;
-                border: 1px solid $color-l-grey;
-                border-radius: 50%;
-                display: block;
-                &::after {
-                    content: "";
-                    position: absolute;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%,-50%);
-                    width: 12px;
-                    height: 12px;
-                    border-radius: 50%;
-                    background: $color-l-grey;
-                    transition: 0.3s all;
-                    opacity: 0;
-
-                }
-            }
-            input[type="radio"] {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                opacity: 0;
-                cursor: pointer;
-                left: 0;top: 0;
-                margin: 0;
-                z-index: 5;
-                &:checked ~ .checkmark {
-                   &::after{
-                    opacity: 1;
-                   }
-                }
-            }
-           
-        }
-
-        button {
-            border: none;
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            background-color: $color-primary;
-            color: $color-white;
-            font-weight: 700;
-            padding: 0.6em;
-            width: 100%;
-            outline: none;
-            border: 1px solid $color-primary;
-            transition: all 0.3s;
-            cursor: pointer;
-            &:hover{
-                background-color: $color-white;
-                color: $color-primary;
-            }
-        }
-    }
+				&::placeholder {
+					color: $color-placeholder;
+				}
+			}
+			textarea {
+				border-color: $color-border;
+				width: 100%;
+				padding: 1em;
+				font-size: 1rem;
+				font-family: inherit;
+				height: 200px;
+				color: $color-d-grey;
+				outline: none;
+			}
+		}
+		.radio-wrap {
+			display: inline-block;
+			position: relative;
+			padding-left: 30px;
+			margin-right: 20px;
+			cursor: pointer;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			label {
+				display: inline-block;
+				margin-bottom: 0;
+				line-height: 20px;
+			}
+			.checkmark {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				transform: translateY(-50%);
+				height: 20px;
+				width: 20px;
+				border: 1px solid $color-l-grey;
+				border-radius: 50%;
+				display: block;
+				&::after {
+					content: "";
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%,-50%);
+					width: 12px;
+					height: 12px;
+					border-radius: 50%;
+					background: $color-l-grey;
+					transition: 0.3s all;
+					opacity: 0;
+				}
+			}
+			input[type="radio"] {
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				opacity: 0;
+				cursor: pointer;
+				left: 0;top: 0;
+				margin: 0;
+				z-index: 5;
+				&:checked ~ .checkmark {
+				   &::after{
+					opacity: 1;
+				   }
+				}
+			}
+		   
+		}
+		button {
+			border: none;
+			font-size: 1.2rem;
+			text-transform: uppercase;
+			background-color: $color-primary;
+			color: $color-white;
+			font-weight: 700;
+			padding: 0.6em;
+			width: 100%;
+			outline: none;
+			border: 1px solid $color-primary;
+			transition: all 0.3s;
+			cursor: pointer;
+			&:hover{
+				background-color: $color-white;
+				color: $color-primary;
+			}
+		}
+	}
 }

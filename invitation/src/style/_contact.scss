@@ -1,50 +1,50 @@
 .contact{
-    .contact-list{
-        display: flex;
-        align-items: center;
-        position: relative;
-        margin-bottom: 20px;
-        .character-img{
-            img{
-                max-height: 70px;
-                border-radius: 50%;
-            }
-        }
-        .contact-infos{
-            margin: 0 50px 0 20px;
-            .tel{
-                font-size: 1.4rem;
-                color: $color-l-grey;
-                &:hover{
-                    color: $color-primary;
-               }
-            }
-            .email{
-                font-size: 0.8rem;
-                color: $color-placeholder;
-               text-decoration: underline;
-               &:hover{
-                    color: $color-l-grey;
-               }
-            }
-            a{
-                color: inherit;
-            }
-        }
-        .tel-img{
-            width: 45px;
-            height: 45px;
-            background-color: $color-primary;
-            border-radius: 50%;
-            position: absolute;
-            right: 0; top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            justify-content: center; align-items: center;
-            transition: all 0.3s;
-            &:hover{
-                transform: translateY(-55%);
-            }
-        }
-    }
+	.contact-list{
+		display: flex;
+		align-items: center;
+		position: relative;
+		margin-bottom: 20px;
+		.character-img{
+			img{
+				max-height: 70px;
+				border-radius: 50%;
+			}
+		}
+		.contact-infos{
+			margin: 0 50px 0 20px;
+			.tel{
+				font-size: 1.4rem;
+				color: $color-l-grey;
+				&:hover{
+					color: $color-primary;
+				}
+			}
+			.email{
+				font-size: 0.8rem;
+				color: $color-placeholder;
+			   text-decoration: underline;
+			   &:hover{
+					color: $color-l-grey;
+				}
+			}
+			a{
+				color: inherit;
+			}
+		}
+		.tel-img{
+			width: 45px;
+			height: 45px;
+			background-color: $color-primary;
+			border-radius: 50%;
+			position: absolute;
+			right: 0; top: 50%;
+			transform: translateY(-50%);
+			display: flex;
+			justify-content: center; align-items: center;
+			transition: all 0.3s;
+			&:hover{
+				transform: translateY(-55%);
+			}
+		}
+	}
 }
