@@ -78,4 +78,11 @@ const Calendar = props => {
 	)
 }
 
+Calendar.defaultProps = {
+	year : "YYYY",
+	dayOfWeek : "Monday",
+	time : '01:30 PM',
+	month : "MM"
+}
+
 export default Calendar;

@@ -38,4 +38,11 @@ const Contact = props => {
 	)
 }
 
+Contact.defaultProps = {
+	brideEmail : "bride@gmail.com",
+	groomEmail : "groom@gmail.com",
+	brideTel : "778.000.0000",
+	groomTel : "604.000.0000"
+}
+
 export default Contact;

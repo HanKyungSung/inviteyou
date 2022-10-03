@@ -15,4 +15,10 @@ const Intro = props => {
 	)
 }
 
+Intro.defaultProps = {
+	bride : "Daniel",
+	connection : "&",
+	groom : "Anna"
+}
+
 export default Intro;

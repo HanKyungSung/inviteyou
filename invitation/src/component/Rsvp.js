@@ -51,4 +51,11 @@ export const Rsvp = props => {
 		</section>
 	)
 }
+
+Rsvp.defaultProps = {
+	menu01 : "MENU01",
+	menu02 : "MENU02",
+	menu03 : "MENU03"
+}
+
 export default Rsvp;

@@ -26,4 +26,16 @@ const Visual2 = props => {
 	)
 }
 
+Visual2.defaultProps = {
+	year : "YYYY",
+	monthNum : "01",
+	day : "DD",
+	bride : "Daniel",
+	connection : "&",
+	groom : "Anna",
+	month : "MM",
+	location : "Vancouver St. Vancouver, BC, Canada",
+	time : '01:30 PM'
+}
+
 export default Visual2;

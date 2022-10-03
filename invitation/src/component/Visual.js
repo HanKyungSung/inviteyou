@@ -22,4 +22,15 @@ const {year, day, bride, connection, groom, month, location, time} = props;
 	)
 }
 
+Visual.defaultProps = {
+	year : "YYYY",
+	day : "DD",
+	bride : "Daniel",
+	connection : "&",
+	groom : "Anna",
+	month : "MM",
+	location : "Vancouver St. Vancouver, BC, Canada",
+	time : '01:30 PM'
+}
+
 export default Visual;
