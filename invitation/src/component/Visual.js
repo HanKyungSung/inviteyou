@@ -24,12 +24,12 @@ const {year, day, bride, connection, groom, month, location, time} = props;
 }
 
 Visual.defaultProps = {
-	year : 2022,
-	day : 01,
+	year : "2022",
+	day : "01",
 	bride : "Daniel",
 	connection : "&",
 	groom : "Anna",
-	month : January,
+	month : "January",
 	location : "Vancouver St. Vancouver, BC, Canada",
 	time : '01:30 PM'
 }

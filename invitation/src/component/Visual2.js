@@ -28,13 +28,13 @@ const Visual2 = props => {
 }
 
 Visual2.defaultProps = {
-	year : 2022,
-	monthNum : 01,
-	day : 01,
+	year : "2022",
+	monthNum : "01",
+	day : "01",
 	bride : "Daniel",
 	connection : "&",
 	groom : "Anna",
-	month : January,
+	month : "January",
 	location : "Vancouver St. Vancouver, BC, Canada",
 	time : '01:30 PM'
 }

@@ -12,7 +12,7 @@ const Calendar = props => {
 						<span className="wedding-year">{year}</span>
 					</strong>
 					<span className="wedding-schedule">
-						<span className="day-of-week">{dayOfWeek}</span>
+						<span className="day-of-week">{dayOfWeek},</span>
 						<span className="wedding-time">{time}</span>
 					</span>
 				</div>
@@ -80,8 +80,8 @@ const Calendar = props => {
 }
 
 Calendar.defaultProps = {
-	year : 2022,
-	dayOfWeek : "Monday",
+	year : "2022",
+	dayOfWeek : "Mon",
 	time : '01:30 PM',
 	month : "January"
 }
