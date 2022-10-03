@@ -20,58 +20,56 @@ $color-white: #fff;
 $color-red: #8B5454;
 $color-blue: #8B5454;
 
-
 *{
-    box-sizing: border-box;
-    transition: all 0.3s;
+	box-sizing: border-box;
+	transition: all 0.3s;
 }
 html{
-    font-size: 20px;
+	font-size: 20px;
 }
 section{
-    font-size: 1rem;
-    line-height: 1.2;
-    &:not(.visual){
-        width: 55%;
-        margin: 0 auto;
-    }
+	font-size: 1rem;
+	line-height: 1.2;
+	&:not(.visual){
+		width: 55%;
+		margin: 0 auto;
+	}
 }
 body, a{
-    font-family: $font-primary;
-    color: $color-black;
-    word-break: keep-all;
-    
+	font-family: $font-primary;
+	color: $color-black;
+	word-break: keep-all;
 }
 section{
-    padding: 3em 0;
-    h2{
-        font-size: 1.4rem;
-        text-align: center;
-        text-transform: uppercase;
-        margin-bottom: 1.5em;
-        color: $color-primary;
-        font-weight: 500;
-    }
-    .wedding-date{
-        margin-top: 1.5rem;
-        display: block;
-    }
+	padding: 3em 0;
+	h2{
+		font-size: 1.4rem;
+		text-align: center;
+		text-transform: uppercase;
+		margin-bottom: 1.5em;
+		color: $color-primary;
+		font-weight: 500;
+	}
+	.wedding-date{
+		margin-top: 1.5rem;
+		display: block;
+	}
 }
 .invitation-wrap{
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 0;
 }
 .visual{
-    position: relative;
-    text-align: center;
-    .wedding-tit{
-        display: block;
-        text-align: center;
-        font-size : 1rem;
-        text-transform: uppercase;
-    }
-    .wedding-character{
-        text-transform: uppercase;
-    }
+	position: relative;
+	text-align: center;
+	.wedding-tit{
+		display: block;
+		text-align: center;
+		font-size : 1rem;
+		text-transform: uppercase;
+	}
+	.wedding-character{
+		text-transform: uppercase;
+	}
 }

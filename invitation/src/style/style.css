@@ -132,8 +132,7 @@ section .wedding-date {
   position: relative;
 }
 .visual img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .visual .visual-content .wedding-date span {
   display: block;
@@ -364,12 +363,6 @@ section .wedding-date {
   padding: 1em 0;
   outline: none;
 }
-.rsvp form .input-wrap input[type=text]::-moz-placeholder {
-  color: #aaa;
-}
-.rsvp form .input-wrap input[type=text]:-ms-input-placeholder {
-  color: #aaa;
-}
 .rsvp form .input-wrap input[type=text]::placeholder {
   color: #aaa;
 }
@@ -539,4 +532,6 @@ section .wedding-date {
     min-width: 250px;
     min-height: 250px;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
