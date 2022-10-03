@@ -1,5 +1,6 @@
 import React from "react";
 import visualImg from "../assets/img/visual-01.jpg";
+import PropTypes from "prop-types";
 
 const Visual = props => {
 const {year, day, bride, connection, groom, month, location, time} = props;
@@ -23,14 +24,25 @@ const {year, day, bride, connection, groom, month, location, time} = props;
 }
 
 Visual.defaultProps = {
-	year : "YYYY",
-	day : "DD",
+	year : 2022,
+	day : 01,
 	bride : "Daniel",
 	connection : "&",
 	groom : "Anna",
-	month : "MM",
+	month : January,
 	location : "Vancouver St. Vancouver, BC, Canada",
 	time : '01:30 PM'
 }
+
+Visual.propTypes = {
+	year : PropTypes.number,
+	day : PropTypes.number,
+	bride : PropTypes.string,
+	connection : PropTypes.string,
+	groom : PropTypes.string,
+	month : PropTypes.string,
+	location : PropTypes.string,
+	time : PropTypes.string
+};
 
 export default Visual;

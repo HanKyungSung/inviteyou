@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Calendar = props => {
 	const {year, dayOfWeek, time, month} = props;
@@ -79,10 +80,17 @@ const Calendar = props => {
 }
 
 Calendar.defaultProps = {
-	year : "YYYY",
+	year : 2022,
 	dayOfWeek : "Monday",
 	time : '01:30 PM',
-	month : "MM"
+	month : "January"
+}
+
+Calendar.propTypes = {
+	year : PropTypes.number,
+	dayOfWeek : PropTypes.string,
+	time : PropTypes.string,
+	month : PropTypes.string,
 }
 
 export default Calendar;

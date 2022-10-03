@@ -1,6 +1,7 @@
 import React from "react";
+import PropTypes from "prop-types";
 
-export const Rsvp = props => {
+const Rsvp = props => {
 	const {menu01, menu02, menu03} = props;
 	return (
 		<section className="rsvp">
@@ -57,5 +58,11 @@ Rsvp.defaultProps = {
 	menu02 : "MENU02",
 	menu03 : "MENU03"
 }
+
+Rsvp.propTypes = {
+	menu01 : PropTypes.string,
+	menu02 : PropTypes.string,
+	menu03 : PropTypes.string,
+};
 
 export default Rsvp;

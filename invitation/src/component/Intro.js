@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Intro = props => {
 	const {bride, connection, groom} = props;
@@ -20,5 +21,11 @@ Intro.defaultProps = {
 	connection : "&",
 	groom : "Anna"
 }
+
+Intro.propTypes = {
+	bride : PropTypes.string,
+	connection : PropTypes.string,
+	groom : PropTypes.string,
+};
 
 export default Intro;

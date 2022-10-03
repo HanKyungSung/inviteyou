@@ -10,7 +10,6 @@ import { FreeMode, Thumbs } from "swiper";
 
 const Gallery = () => {
 	const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
 	const slides = [];
 	for (let i = 0; i < 10; i ++){
 		const img = require(`../assets/img/img-gallery${i + 1}.jpg`)
