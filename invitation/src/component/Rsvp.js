@@ -1,6 +1,7 @@
 import React from "react";
 
-export const Rsvp = (props) => {
+export const Rsvp = props => {
+	const {menu01, menu02, menu03} = props;
 	return (
 		<section className="rsvp">
 			<h2 className="section-tit">Apply to <br />join our wedding</h2>
@@ -25,17 +26,17 @@ export const Rsvp = (props) => {
 				<span className="input-wrap">
 					<label htmlFor="menu">menu</label>
 					<span className="radio-wrap">
-						<label htmlFor="menu01">{props.menu01}</label>
+						<label htmlFor="menu01">{menu01}</label>
 						<input type="radio" name="menu" id="menu01" value="menu01" />
 						<span className="checkmark"></span>
 					</span>
 					<span className="radio-wrap">
-						<label htmlFor="menu02">{props.menu02}</label>
+						<label htmlFor="menu02">{menu02}</label>
 						<input type="radio" name="menu" id="menu02" value="menu02" />
 						<span className="checkmark"></span>
 					</span>
 					<span className="radio-wrap">
-						<label htmlFor="menu03">{props.menu03}</label>
+						<label htmlFor="menu03">{menu03}</label>
 						<input type="radio" name="menu" id="menu03" value="menu03" />
 						<span className="checkmark"></span>
 					</span>
