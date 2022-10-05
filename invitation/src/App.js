@@ -1,4 +1,5 @@
 import "./style/style.css";
+import CardBuilder from "./CardBuilder";
 import Visual from "./component/Visual";
 import Visual2 from "./component/Visual2";
 import Intro from "./component/Intro";
@@ -29,15 +30,16 @@ function App() {
 		// 	brideTel="778.000.0000" brideEmail="sample@gmail.com"
 		// 	/>
 		// </main>
-		<main className="invitation-wrap type01">
-			<Visual2 />
-			<Intro />
-			<Calendar />
-			<Rsvp />
-			<Gallery />
-			<Contact />
-		</main>
-
+		<CardBuilder>
+			<main className="invitation-wrap type01">
+				<Visual2 />
+				<Intro />
+				<Calendar />
+				<Rsvp />
+				<Gallery />
+				<Contact />
+			</main>
+		</CardBuilder>
 	);
 }
 
