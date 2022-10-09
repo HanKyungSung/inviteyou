@@ -1,7 +1,10 @@
-import React from "react";
-import PropTypes from "prop-types";
+interface IntroProps {
+	bride: string,
+	connection: string,
+	groom: string
+};
 
-const Intro = props => {
+const Intro = (props: IntroProps) => {
 	const {bride, connection, groom} = props;
 	return (
 		<section className="intro">
@@ -21,11 +24,5 @@ Intro.defaultProps = {
 	connection : "&",
 	groom : "Anna"
 }
-
-Intro.propTypes = {
-	bride : PropTypes.string,
-	connection : PropTypes.string,
-	groom : PropTypes.string,
-};
 
 export default Intro;
