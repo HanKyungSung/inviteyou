@@ -1,7 +1,11 @@
-import React from "react";
-import PropTypes from "prop-types";
+interface RsvpProps {
+	menu01: string,
+	menu02: string,
+	menu03: string,
+	mainColor: string
+};
 
-const Rsvp = props => {
+const Rsvp = (props: RsvpProps) => {
 	const {menu01, menu02, menu03} = props;
 	return (
 		<section className="rsvp">
@@ -44,7 +48,7 @@ const Rsvp = props => {
 				</span>
 				<span className="input-wrap">
 					<label htmlFor="note">allegetic note</label>
-					<textarea name="note" id="" cols="30" rows="10"
+					<textarea name="note" id="" cols={30} rows={10}
 						defaultValue="Please provide us any food restriction you have "></textarea>
 				</span>
 				<button type="submit">submit</button>
@@ -58,11 +62,5 @@ Rsvp.defaultProps = {
 	menu02 : "MENU02",
 	menu03 : "MENU03"
 }
-
-Rsvp.propTypes = {
-	menu01 : PropTypes.string,
-	menu02 : PropTypes.string,
-	menu03 : PropTypes.string,
-};
 
 export default Rsvp;

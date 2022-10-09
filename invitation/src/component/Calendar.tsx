@@ -1,7 +1,12 @@
-import React from "react";
-import PropTypes from "prop-types";
+interface CalendarProps {
+	year: number,
+	dayOfWeek: string,
+	time: string,
+	month: string,
+	mainColor: string
+};
 
-const Calendar = props => {
+const Calendar = (props: CalendarProps) => {
 	const {year, dayOfWeek, time, month} = props;
 	return (
 		<section className="calendar">
@@ -84,13 +89,6 @@ Calendar.defaultProps = {
 	dayOfWeek : "Mon",
 	time : '01:30 PM',
 	month : "January"
-}
-
-Calendar.propTypes = {
-	year : PropTypes.number,
-	dayOfWeek : PropTypes.string,
-	time : PropTypes.string,
-	month : PropTypes.string,
 }
 
 export default Calendar;

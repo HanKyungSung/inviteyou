@@ -1,10 +1,16 @@
-import React from "react";
 import brideImg from "../assets/img/img-bride.png";
 import groomImg from "../assets/img/img-bride.png";
 import iconTel from "../assets/img/icon-tel.svg";
-import PropTypes from "prop-types";
 
-const Contact = props => {
+interface ContactProps {
+	brideEmail: string,
+	groomEmail: string,
+	brideTel: string,
+	groomTel: string,
+	mainColor: string
+};
+
+const Contact = (props: ContactProps) => {
 	const {brideEmail, groomEmail, brideTel, groomTel} = props;
   	return (
 		<section className="contact">
@@ -45,12 +51,5 @@ Contact.defaultProps = {
 	brideTel : "778.000.0000",
 	groomTel : "604.000.0000"
 }
-
-Contact.propTypes = {
-	brideEmail : PropTypes.string,
-	groomEmail : PropTypes.string,
-	brideTel : PropTypes.string,
-	groomTel : PropTypes.string,
-};
 
 export default Contact;

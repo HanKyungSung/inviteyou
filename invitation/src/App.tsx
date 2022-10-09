@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "./style/style.css";
 import CardBuilder from "./CardBuilder";
 import Visual from "./component/Visual";
@@ -9,6 +10,8 @@ import Gallery from "./component/Gallery";
 import Contact from "./component/Contact";
 
 function App() {
+	const [mainColor, setMainColor] = useState('#273894');
+	
 	return (
 		// <main className="invitation-wrap type01">
 		// 	{/* <Visual 
@@ -32,12 +35,12 @@ function App() {
 		// </main>
 		<CardBuilder>
 			<main className="invitation-wrap type01">
-				<Visual2 />
+				<Visual2 mainColor={mainColor} />
 				<Intro />
-				<Calendar />
-				<Rsvp />
+				<Calendar mainColor={mainColor} />
+				<Rsvp mainColor={mainColor} />
 				<Gallery />
-				<Contact />
+				<Contact mainColor={mainColor} />
 			</main>
 		</CardBuilder>
 	);
