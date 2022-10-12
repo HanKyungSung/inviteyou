@@ -19,4 +19,5 @@ class Color extends React.Component {
     );
   }
 }
+
 export default Color;
