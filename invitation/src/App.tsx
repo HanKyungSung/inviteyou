@@ -11,13 +11,14 @@ import Contact from "./component/Contact";
 
 function App() {
 	const [ mainColor, setMainColor ] = useState<string>('#ccc');
+	const [ secondColor, setSecondColor ] = useState<string>('#ccc');
 	
 	return (
-		<CardBuilder mainColor={mainColor} setMainColor={setMainColor}>
+		<CardBuilder mainColor={mainColor}  setMainColor={setMainColor} secondColor={secondColor} setSecondColor={setSecondColor}>
 			<main className="invitation-wrap type01">
 				<Visual2 mainColor={mainColor} />
 				<Intro mainColor={mainColor}/>
-				<Calendar mainColor={mainColor} />
+				<Calendar mainColor={mainColor} secondColor={secondColor}/>
 				<Rsvp mainColor={mainColor} />
 				<Gallery mainColor={mainColor}/>
 				<Contact mainColor={mainColor} />

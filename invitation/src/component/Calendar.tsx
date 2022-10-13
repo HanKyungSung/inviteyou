@@ -3,15 +3,16 @@ interface CalendarProps {
 	dayOfWeek: string,
 	time: string,
 	month: string,
-	mainColor: string
+	mainColor: string,
+	secondColor: string,
 };
 
 const Calendar = (props: CalendarProps) => {
-	const { year, dayOfWeek, time, month, mainColor } = props;
+	const { year, dayOfWeek, time, month, mainColor, secondColor } = props;
 
 	return (
 		<section className="calendar">
-			<div className="calendar-wrap">
+			<div className="calendar-wrap" style={{ backgroundColor: secondColor }}>
 				<div className="calendar-top">
 					<strong className="wedding-month">
 						{month}, 
