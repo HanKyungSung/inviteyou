@@ -1,10 +1,14 @@
+import { useState } from "react";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
+import { ChromePicker } from "react-color";
 interface CardBuilderProps {
-    children: JSX.Element
+    children: JSX.Element,
+    mainColor : string,
+    setMainColor : (color: string) => void,
 };
 
-const CardBuilder = ({ children }: CardBuilderProps) => {
+const CardBuilder = ({ children, mainColor, setMainColor }: CardBuilderProps) => {
     return (
         <Grid container>
             <Grid lg={3}>left</Grid>
@@ -13,7 +17,10 @@ const CardBuilder = ({ children }: CardBuilderProps) => {
             </Grid>
             <Grid lg={3}>
                 <Container style={{position: 'fixed', top: 20}}>
-                    right
+                   <ChromePicker 
+                        color={mainColor}
+                        onChangeComplete={(color) => setMainColor(color.hex)}
+                   />
                 </Container>
             </Grid>
         </Grid>
