@@ -14,8 +14,9 @@ interface VisualProps {
 };
 
 const Visual = (props: VisualProps) => {
-const {year, day, bride, connection, groom, month, location, time} = props;
-  return (
+	const { year, day, bride, connection, groom, month, location, time } = props;
+
+  	return (
 		<section className="visual visualType01">
 			<div className="visual-content">
 				<small className="wedding-tit">{year} Wedding Invitation</small>

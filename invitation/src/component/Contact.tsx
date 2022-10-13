@@ -11,10 +11,11 @@ interface ContactProps {
 };
 
 const Contact = (props: ContactProps) => {
-	const {brideEmail, groomEmail, brideTel, groomTel} = props;
+	const { brideEmail, groomEmail, brideTel, groomTel, mainColor } = props;
+
   	return (
 		<section className="contact">
-			<h2 className="section-tit">contact info</h2>
+			<h2 className="section-tit" style={{ color: mainColor }}>contact info</h2>
 			<ul className="contact-lists">
 				<li className="contact-list">
 					<figure className="character-img"><img src={brideImg} alt="bride image" /></figure>
@@ -22,7 +23,7 @@ const Contact = (props: ContactProps) => {
 						<li className="contact-info tel"><a href={`tel:${groomTel}`}>{groomTel}</a></li>
 						<li className="contact-info email"><a href={`mailto:${groomEmail}`}>{groomEmail}</a></li>
 					</ul>
-					<figure className="tel-img">
+					<figure className="tel-img" style={{ backgroundColor: mainColor }}>
 						<a href={`tel:${groomTel}`}>
 							<img src={iconTel} alt="phone image" />
 						</a>
@@ -34,7 +35,7 @@ const Contact = (props: ContactProps) => {
 						<li className="contact-info tel"><a href={`tel:${brideTel}`}>{brideTel}</a></li>
 						<li className="contact-info email"><a href={`mailto:${brideEmail}`}>{brideEmail}</a></li>
 					</ul>
-					<figure className="tel-img">
+					<figure className="tel-img" style={{ backgroundColor: mainColor }}>
 						<a href={`tel:${brideTel}`}>
 							<img src={iconTel} alt="phone image" />
 						</a>

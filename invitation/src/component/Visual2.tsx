@@ -14,11 +14,12 @@ interface Visual2Props {
 }
 
 const Visual2 = (props: Visual2Props) => {
-	const {year, monthNum, day, bride, connection, groom, month, location, time, mainColor} = props;
+	const { year, monthNum, day, bride, connection, groom, month, location, time, mainColor } = props;
+	
   	return (
 		<section className="visual visualType02">
-			<div className="wedding-main-date">
-				<small style={{ color: mainColor }}>{year}</small>
+			<div className="wedding-main-date" style={{ backgroundColor: mainColor }}>
+				<small>{year}</small>
 				<strong>{monthNum}/{day}</strong>
 			</div>
 			<div className="visual-content">

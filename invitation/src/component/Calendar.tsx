@@ -7,7 +7,8 @@ interface CalendarProps {
 };
 
 const Calendar = (props: CalendarProps) => {
-	const {year, dayOfWeek, time, month} = props;
+	const { year, dayOfWeek, time, month, mainColor } = props;
+
 	return (
 		<section className="calendar">
 			<div className="calendar-wrap">
@@ -54,7 +55,7 @@ const Calendar = (props: CalendarProps) => {
 						</tr>
 						<tr>
 							<td>12</td>
-							<td className="current">13</td>
+							<td className="current" style={{ backgroundColor: mainColor }}>13</td>
 							<td>14</td>
 							<td>15</td>
 							<td>16</td>

@@ -10,16 +10,16 @@ import Gallery from "./component/Gallery";
 import Contact from "./component/Contact";
 
 function App() {
-	const [mainColor, setMainColor] = useState<string>('#ccc');
+	const [ mainColor, setMainColor ] = useState<string>('#ccc');
 	
 	return (
 		<CardBuilder mainColor={mainColor} setMainColor={setMainColor}>
 			<main className="invitation-wrap type01">
 				<Visual2 mainColor={mainColor} />
-				<Intro />
+				<Intro mainColor={mainColor}/>
 				<Calendar mainColor={mainColor} />
 				<Rsvp mainColor={mainColor} />
-				<Gallery />
+				<Gallery mainColor={mainColor}/>
 				<Contact mainColor={mainColor} />
 			</main>
 		</CardBuilder>

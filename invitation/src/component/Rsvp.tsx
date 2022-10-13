@@ -2,14 +2,24 @@ interface RsvpProps {
 	menu01: string,
 	menu02: string,
 	menu03: string,
-	mainColor: string
+	mainColor: string,
 };
 
 const Rsvp = (props: RsvpProps) => {
-	const {menu01, menu02, menu03} = props;
+	const { menu01, menu02, menu03, mainColor } = props;
+
+	function HoverBtnStyle(e: any) {
+		e.target.style.color = mainColor;
+		e.target.style.backgroundColor = "#fff";
+	}
+	function DefaultBtnStyle(e: any) {
+		e.target.style.color = "#fff";
+		e.target.style.backgroundColor = mainColor;
+	}
+
 	return (
 		<section className="rsvp">
-			<h2 className="section-tit">Apply to <br />join our wedding</h2>
+			<h2 className="section-tit" style={{ color: mainColor }}>Apply to <br />join our wedding</h2>
 			<form action="">
 				<span className="input-wrap">
 					<label htmlFor="name">name</label>
@@ -51,9 +61,15 @@ const Rsvp = (props: RsvpProps) => {
 					<textarea name="note" id="" cols={30} rows={10}
 						defaultValue="Please provide us any food restriction you have "></textarea>
 				</span>
-				<button type="submit">submit</button>
+				<button type="submit" 
+				style={{ backgroundColor: mainColor, borderColor: mainColor }}
+				onMouseOver={HoverBtnStyle}
+				onMouseLeave={DefaultBtnStyle}
+				>
+				submit</button>
 			</form>
 		</section>
+		
 	)
 }
 
