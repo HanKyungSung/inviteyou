@@ -13,22 +13,22 @@ interface CardBuilderProps {
 
 const CardBuilder = ({ children, mainColor, setMainColor, secondColor, setSecondColor }: CardBuilderProps) => {
     return (
-        <Grid container>
-            <Grid lg={3}>left</Grid>
-            <Grid lg={6}>
+        <Grid container className="cardbuilder">
+            <Grid lg={3} className="cardbuilder-left">left</Grid>
+            <Grid lg={6} className="cardbuilder-container">
                 {children}
             </Grid>
             <Grid lg={3}>
-                <Stack style={{position: 'fixed', top: 20}}>
+                <Stack className="cardbuilder-right" style={{position: 'fixed', top: 20}}>
                     <h1>Custom Builder</h1>
-                    <Item>
+                    <Item className="cardbuilder-right-item">
                         <h2>Primary Color</h2>
                         <ChromePicker 
                             color={mainColor}
                             onChangeComplete={(color) => setMainColor(color.hex)}
                             />
                     </Item>
-                    <Item>
+                    <Item className="cardbuilder-right-item">
                         <h2>Second Color</h2>
                         <ChromePicker 
                             color={secondColor}
