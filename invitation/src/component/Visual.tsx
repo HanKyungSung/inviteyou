@@ -2,7 +2,6 @@ import visualImg from "../assets/img/visual-01.jpg";
 
 interface VisualProps {
 	year: number,
-	monthNum: number,
 	day: number,
 	bride: string,
 	connection: string,
@@ -14,7 +13,7 @@ interface VisualProps {
 };
 
 const Visual = (props: VisualProps) => {
-	const { year, day, bride, connection, groom, month, location, time } = props;
+	const { year, day, bride, connection, groom, month, location, time, mainColor } = props;
 
   	return (
 		<section className="visual visualType01">
