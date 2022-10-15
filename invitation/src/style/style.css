@@ -509,6 +509,19 @@ section .wedding-date {
   transform: translateY(-55%);
 }
 
+.cardbuilder .cardbuilder-right h1 {
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+}
+.cardbuilder .cardbuilder-right h2 {
+  margin-bottom: 1em;
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+.cardbuilder .cardbuilder-right .cardbuilder-right-item {
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 650px) {
   html {
     font-size: 16px;

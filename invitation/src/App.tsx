@@ -10,36 +10,17 @@ import Gallery from "./component/Gallery";
 import Contact from "./component/Contact";
 
 function App() {
-	const [mainColor, setMainColor] = useState('#273894');
+	const [ mainColor, setMainColor ] = useState<string>('#ccc');
+	const [ secondColor, setSecondColor ] = useState<string>('#ccc');
 	
 	return (
-		// <main className="invitation-wrap type01">
-		// 	{/* <Visual 
-		// 	year="2023" day="23" month="Aug" time="1:30 PM" 
-		// 	location="0000 Vancouver St. Vancouver, BC, Canada" 
-		// 	bride="Anna" groom="Daniel" connection="&"
-		// 	/> */}
-		// 	<Visual2 
-		// 	year="2023" day="23" month="Aug" monthNum="08" time="1:30 PM" 
-		// 	location="0000 Vancouver St. Vancouver, BC, Canada" 
-		// 	bride="Anna" groom="Daniel" connection="and"
-		// 	/>
-		// 	<Intro bride="Anna" groom="Daniel" connection="&" />
-		// 	<Calendar year="2022" month="October" dayOfWeek="Fri" time="1:30PM" />
-		// 	<Rsvp menu01="Menu 01" menu02="Menu 02" menu03="Menu 03" />
-		// 	<Gallery />
-		// 	<Contact 
-		// 	groomTel="778.000.0000" groomEmail="sample@gmail.com" 
-		// 	brideTel="778.000.0000" brideEmail="sample@gmail.com"
-		// 	/>
-		// </main>
-		<CardBuilder>
+		<CardBuilder mainColor={mainColor}  setMainColor={setMainColor} secondColor={secondColor} setSecondColor={setSecondColor}>
 			<main className="invitation-wrap type01">
 				<Visual2 mainColor={mainColor} />
-				<Intro />
-				<Calendar mainColor={mainColor} />
+				<Intro mainColor={mainColor}/>
+				<Calendar mainColor={mainColor} secondColor={secondColor}/>
 				<Rsvp mainColor={mainColor} />
-				<Gallery />
+				<Gallery mainColor={mainColor}/>
 				<Contact mainColor={mainColor} />
 			</main>
 		</CardBuilder>

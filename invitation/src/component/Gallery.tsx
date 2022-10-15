@@ -7,9 +7,13 @@ import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
 
-const Gallery = () => {
-	const [thumbsSwiper, setThumbsSwiper] = useState(null);
-	console.log(thumbsSwiper);
+interface GalleryProps {
+	mainColor: string
+}
+
+const Gallery = (props: GalleryProps) => {
+	const [ thumbsSwiper, setThumbsSwiper ] = useState(null);
+	const { mainColor } = props;
 	const slides = [];
 
 	for (let i = 0; i < 10; i ++){
@@ -29,7 +33,7 @@ const Gallery = () => {
 
 	return (
 		<section className="gallery">
-			<h2 className="section-tit">our gallery</h2>
+			<h2 className="section-tit" style={{ color: mainColor }}>our gallery</h2>
 			<div className="swiperType01">
 				<Swiper
 					wrapperTag="ul"

@@ -1,19 +1,43 @@
+import { useState } from "react";
+import Grid from "@mui/material/Grid";
+import Stack from '@mui/material/Stack';
+import Item from '@mui/material/Stack';
+import { ChromePicker } from "react-color";
 interface CardBuilderProps {
-    children: JSX.Element
+    children: JSX.Element,
+    mainColor : string,
+    setMainColor : (color: string) => void,
+    secondColor : string,
+    setSecondColor : (color: string) => void,
 };
 
-const CardBuilder = ({ children }: CardBuilderProps) => {
+const CardBuilder = ({ children, mainColor, setMainColor, secondColor, setSecondColor }: CardBuilderProps) => {
     return (
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-            <div style={{ position: 'fixed', left: 0, backgroundColor: 'whitesmoke', width: '300px', height: '100%' }}>
-                Left Column
-            </div>
-            <div>{children}</div>
-            <div style={{ position: 'fixed', right: 0, backgroundColor: 'whitesmoke', width: '300px', height: '100%' }}>
-                <div>Right Column</div>
-                <div style={{ backgroundColor: 'red', width: '100%', height: '500px' }}>Color Picker</div>
-            </div>
-        </div>
+        <Grid container className="cardbuilder">
+            <Grid lg={3} className="cardbuilder-left">left</Grid>
+            <Grid lg={6} className="cardbuilder-container">
+                {children}
+            </Grid>
+            <Grid lg={3}>
+                <Stack className="cardbuilder-right" style={{position: 'fixed', top: 20}}>
+                    <h1>Custom Builder</h1>
+                    <Item className="cardbuilder-right-item">
+                        <h2>Primary Color</h2>
+                        <ChromePicker 
+                            color={mainColor}
+                            onChangeComplete={(color) => setMainColor(color.hex)}
+                            />
+                    </Item>
+                    <Item className="cardbuilder-right-item">
+                        <h2>Second Color</h2>
+                        <ChromePicker 
+                            color={secondColor}
+                            onChangeComplete={(color) => setSecondColor(color.hex)}
+                        />
+                    </Item>
+                </Stack>
+            </Grid>
+        </Grid>
     );
 };
 
