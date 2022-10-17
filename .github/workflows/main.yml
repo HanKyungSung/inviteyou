@@ -38,16 +38,31 @@ jobs:
       - name: Build frontend
         working-directory: ./invitation
         run: npm run build
+        
+      # Share artifact inside workflow
+      - name: Share artifact inside workflow
+        uses: actions/upload-artifact@v3
+        with:
+          name: frontend-build-artifact
+          path: ./invitaion/build
   
-  # This workflow called "build"
+  # This workflow called "release"
   release:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    # Release workflow only runs after build workflow success.
+    needs: build
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      #- uses: actions/checkout@v3
+      
+      # Download previously shared build
+      - name: Get artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: frontend-build-artifact
 
       - name: ssh deploy
       # You may pin to the exact commit or the version.
@@ -61,6 +76,6 @@ jobs:
           # Remote user
           REMOTE_USER: ${{ secrets.SSH_USER }}
           # Source directory
-          SOURCE: /
+          SOURCE: frontend-build-artifact
           # Target directory
           TARGET: ${{ secrets.TARGET_PATH }}
