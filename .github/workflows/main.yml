@@ -82,6 +82,6 @@ jobs:
           # Remote user
           REMOTE_USER: ${{ secrets.SSH_USER }}
           # Source directory
-          SOURCE: "frontend-build-artifact"
+          SOURCE: /
           # Target directory
           TARGET: ${{ secrets.TARGET_PATH }}
