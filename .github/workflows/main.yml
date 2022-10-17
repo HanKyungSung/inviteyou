@@ -63,7 +63,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: frontend-build-artifact
-          working-directory: ./invitation/build
 
       - name: ssh deploy
       # You may pin to the exact commit or the version.
