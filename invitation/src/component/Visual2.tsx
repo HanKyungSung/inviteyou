@@ -10,7 +10,7 @@ interface Visual2Props {
 	month: string,
 	location: string,
 	time: string,
-	mainColor: string
+	mainColor: any
 }
 
 const Visual2 = (props: Visual2Props) => {
@@ -18,7 +18,7 @@ const Visual2 = (props: Visual2Props) => {
 	
   	return (
 		<section className="visual visualType02">
-			<div className="wedding-main-date" style={{ backgroundColor: mainColor }}>
+			<div className="wedding-main-date" style={{ backgroundColor: `rgb(${mainColor.r}, ${mainColor.g}, ${mainColor.b}, ${mainColor.a})` }}>
 				<small>{year}</small>
 				<strong>{monthNum}/{day}</strong>
 			</div>

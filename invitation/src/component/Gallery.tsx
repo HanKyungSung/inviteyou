@@ -1,7 +1,6 @@
-import React, { Fragment } from "react";
 import { FreeMode, Thumbs } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-import  { useRef, useState } from "react";
+import  { useState } from "react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
