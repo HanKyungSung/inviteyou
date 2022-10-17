@@ -64,6 +64,9 @@ jobs:
         with:
           name: frontend-build-artifact
           
+      - name: pwd
+        run: pwd
+
       - name: testing
         run: ls -al
 
