@@ -65,7 +65,6 @@ jobs:
           name: frontend-build-artifact
           
       - name: testing
-        working-directory: ./invitaion
         run: ls -al
 
       - name: ssh deploy
