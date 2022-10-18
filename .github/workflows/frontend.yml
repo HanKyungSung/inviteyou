@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI & CD
+name: Frontend CI & CD
 
 # Controls when the workflow will run
 on:
@@ -31,12 +31,12 @@ jobs:
           
       # Install frontend dependencies
       - name: Install frontend dependencies
-        working-directory: ./invitation
+        working-directory: ./invitation-frontend
         run: npm install
         
       # Build frontend
       - name: Build frontend
-        working-directory: ./invitation
+        working-directory: ./invitation-frontend
         run: npm run build
         
       # Share artifact inside workflow
