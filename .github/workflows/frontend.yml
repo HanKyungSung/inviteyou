@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: frontend-build-artifact
-          path: ./invitation-frontend/build/
+          path: ./invitation-frontend/
   
   # This workflow called "release"
   release:
