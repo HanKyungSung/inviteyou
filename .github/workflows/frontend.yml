@@ -44,7 +44,9 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: frontend-build-artifact
-          path: ./invitation-frontend/build/
+          path: |
+            ./invitation-frontend/
+            !./invitation-frontend/node_modules/*
   
   # This workflow called "release"
   release:
@@ -83,3 +85,7 @@ jobs:
           REMOTE_USER: ${{ secrets.SSH_USER }}
           # Target directory
           TARGET: ${{ secrets.TARGET_PATH }}
+          # Source
+          SOURCE: /
+          # Excludes
+          EXCLUDE: "/node_modules/"

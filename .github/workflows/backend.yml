@@ -44,7 +44,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: backend-build-artifact
-          path: ./invitation-backend/build
+          path: ./invitation-backend/dist
   
   # This workflow called "release"
   release:
