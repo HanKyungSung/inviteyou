@@ -38,15 +38,26 @@ jobs:
       - name: Build frontend
         working-directory: ./invitation-frontend
         run: npm run build
+
+      # Install backend dependencies
+      - name: Install backend dependencies
+        working-directory: ./invitation-backend
+        run: npm install
+        
+      # Build backend
+      - name: Build backend
+        working-directory: ./invitation-backend
+        run: npm run build
         
       # Share artifact inside workflow
       - name: Share artifact inside workflow
         uses: actions/upload-artifact@v3
         with:
-          name: frontend-build-artifact
+          name: invitation-artifacts
           path: |
-            ./invitation-frontend/
+            ./
             !./invitation-frontend/node_modules/*
+            !./invitation-backend/node_modules/*
   
   # This workflow called "release"
   release:
@@ -64,7 +75,7 @@ jobs:
       - name: Get artifact
         uses: actions/download-artifact@v3
         with:
-          name: frontend-build-artifact
+          name: invitation-artifacts
           
       - name: pwd
         run: pwd
