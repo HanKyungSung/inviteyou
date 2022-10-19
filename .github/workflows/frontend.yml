@@ -85,3 +85,5 @@ jobs:
           TARGET: ${{ secrets.TARGET_PATH }}
           # Source
           SOURCE: /
+          # Excludes
+          EXCLUDE: "/node_modules/"
