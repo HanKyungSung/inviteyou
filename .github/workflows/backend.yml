@@ -61,7 +61,7 @@ jobs:
           hosts: ${{ secrets.SSH_HOST }}
           privateKey: ${{ secrets.SERVER_SSH_KEY }}
           command: |
-            cd /mobile-invitation/invitation-backend
+            cd ./mobile-invitation/invitation-backend
             npm install --production
   
   # This workflow called "release"
