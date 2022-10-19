@@ -55,15 +55,12 @@ jobs:
       - name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.SSH_HOST }}  >> ~/.ssh/known_hosts
         
-      - name: Restart Node Server
-        uses: appleboy/ssh-action@master
+      - name: Execute SSH commmands on remote server
+        uses: JimCronqvist/action-ssh@master
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SERVER_SSH_KEY }}
-          script: |
-            whoami
-            ls
+          hosts: ${{ secrets.SSH_HOST }}
+          privateKey: ${{ secrets.SERVER_SSH_KEY }}
+          command: ls -lah
   
   # This workflow called "release"
 #   release:
