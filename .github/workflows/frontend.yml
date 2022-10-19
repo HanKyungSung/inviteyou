@@ -83,3 +83,5 @@ jobs:
           REMOTE_USER: ${{ secrets.SSH_USER }}
           # Target directory
           TARGET: ${{ secrets.TARGET_PATH }}
+          # Source
+          SOURCE: /
