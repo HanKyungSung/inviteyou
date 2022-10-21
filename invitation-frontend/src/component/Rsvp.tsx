@@ -15,9 +15,10 @@ const Rsvp = (props: RsvpProps) => {
 	const handleMouseEnter = () => setsubmitBtn(true);
 	const handleMouseLeave = () => setsubmitBtn(false);
 
-	const btnHoverStyle = {
+	const hoverStyle = {
+		color: submitBtn ? mainColor : "white",
 		backgroundColor: submitBtn ? "white" : mainColor,
-		color: submitBtn ? mainColor: "white",
+		borderColor: mainColor
 	};
 
 
@@ -69,7 +70,7 @@ const Rsvp = (props: RsvpProps) => {
 				// style={hoverState}
 				// onMouseEnter={()=> setsubmitBtn(true)}
 				// onMouseLeave={()=> setsubmitBtn(false)}
-				style={btnHoverStyle}
+				style={hoverStyle}
 				onMouseEnter={handleMouseEnter}
 				onMouseLeave={handleMouseLeave}
 				>
