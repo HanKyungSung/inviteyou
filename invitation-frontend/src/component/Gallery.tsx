@@ -13,22 +13,35 @@ interface GalleryProps {
 const Gallery = (props: GalleryProps) => {
 	const [ thumbsSwiper, setThumbsSwiper ] = useState(null);
 	const { mainColor } = props;
-	const slides = [];
 
-	for (let i = 0; i < 10; i ++){
-		const img = require(`../assets/img/img-gallery${i + 1}.jpg`)
-		slides.push(
-			<SwiperSlide key={`slide-${i}`} tag="li">
+	const slides: string[] = [
+		'img-gallery1.jpg', 
+		'img-gallery2.jpg', 
+		'img-gallery3.jpg', 
+		'img-gallery4.jpg', 
+		'img-gallery5.jpg', 
+		'img-gallery6.jpg', 
+		'img-gallery7.jpg', 
+		'img-gallery8.jpg', 
+		'img-gallery9.jpg', 
+		'img-gallery10.jpg'
+	]; 
+
+	const slide = slides.map(item => {
+		const img = require(`../assets/img/${item}`);
+
+		return (
+			<SwiperSlide key={`slide-${item}`} tag="li">
 				<figure>
 					<img 
 					src={img}
-					alt={`Slide ${i}`}
+					alt={`Slide ${item}`}
 					className="swiper-lazy"
 					/>
 				</figure>
 			</SwiperSlide>
 		)
-	}
+	})
 
 	return (
 		<section className="gallery">
@@ -42,7 +55,7 @@ const Gallery = (props: GalleryProps) => {
 					modules={[FreeMode, Thumbs]}
 					className="swiperType01-main"
 				>
-					{slides}	
+					{slide}	
 				</Swiper>
 				<Swiper
 					wrapperTag="ul"
@@ -54,7 +67,7 @@ const Gallery = (props: GalleryProps) => {
 					modules={[FreeMode, Thumbs]}
 					className="swiperType01-thumb"
 				>
-					{slides}
+					{slide}
 				</Swiper>
 			</div>
 		</section>
