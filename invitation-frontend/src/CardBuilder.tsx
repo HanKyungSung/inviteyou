@@ -24,7 +24,7 @@ const CardBuilder = ({ children, mainColor, setMainColor, secondColor, setSecond
                         <h2>Primary Color</h2>
                         <ChromePicker 
                             color={mainColor}
-                            onChangeComplete={(color) => setMainColor(color.rgb)}
+                            onChangeComplete={(color) => setMainColor(color.hex)}
                             />
                     </Item>
                     <Item className="cardbuilder-right-item">

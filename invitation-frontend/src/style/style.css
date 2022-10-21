@@ -434,8 +434,6 @@ section .wedding-date {
   border: none;
   font-size: 1.2rem;
   text-transform: uppercase;
-  background-color: #9D9E91;
-  color: #fff;
   font-weight: 700;
   padding: 0.6em;
   width: 100%;
@@ -443,10 +441,6 @@ section .wedding-date {
   border: 1px solid #9D9E91;
   transition: all 0.3s;
   cursor: pointer;
-}
-.rsvp form button:hover {
-  background-color: #fff;
-  color: #9D9E91;
 }
 
 .gallery .swiperType01 {

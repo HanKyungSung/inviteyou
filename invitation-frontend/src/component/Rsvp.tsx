@@ -1,21 +1,25 @@
+import { useState } from "react";
 interface RsvpProps {
 	menu01: string,
 	menu02: string,
 	menu03: string,
 	mainColor: string,
+	submitBtn: any,
+	setsubmitBtn: () => boolean;
 };
 
 const Rsvp = (props: RsvpProps) => {
 	const { menu01, menu02, menu03, mainColor } = props;
 
-	function HoverBtnStyle(e: any) {
-		e.target.style.color = mainColor;
-		e.target.style.backgroundColor = "#fff";
-	}
-	function DefaultBtnStyle(e: any) {
-		e.target.style.color = "#fff";
-		e.target.style.backgroundColor = mainColor;
-	}
+	const [ submitBtn, setsubmitBtn ] = useState<boolean>(false);
+	const handleMouseEnter = () => setsubmitBtn(true);
+	const handleMouseLeave = () => setsubmitBtn(false);
+
+	const btnHoverStyle = {
+		backgroundColor: submitBtn ? "white" : mainColor,
+		color: submitBtn ? mainColor: "white",
+	};
+
 
 	return (
 		<section className="rsvp">
@@ -62,9 +66,12 @@ const Rsvp = (props: RsvpProps) => {
 						defaultValue="Please provide us any food restriction you have "></textarea>
 				</span>
 				<button type="submit" 
-				style={{ backgroundColor: mainColor, borderColor: mainColor }}
-				onMouseOver={HoverBtnStyle}
-				onMouseLeave={DefaultBtnStyle}
+				// style={hoverState}
+				// onMouseEnter={()=> setsubmitBtn(true)}
+				// onMouseLeave={()=> setsubmitBtn(false)}
+				style={btnHoverStyle}
+				onMouseEnter={handleMouseEnter}
+				onMouseLeave={handleMouseLeave}
 				>
 				submit</button>
 			</form>
@@ -76,7 +83,10 @@ const Rsvp = (props: RsvpProps) => {
 Rsvp.defaultProps = {
 	menu01 : "MENU01",
 	menu02 : "MENU02",
-	menu03 : "MENU03"
+	menu03 : "MENU03",
+	mainColor: "#ccc",
+	submitBtn: "#fff",
+	setsubmitBtn: true
 }
 
 export default Rsvp;

@@ -10,7 +10,7 @@ import Gallery from "./component/Gallery";
 import Contact from "./component/Contact";
 
 function App() {
-	const [ mainColor, setMainColor ] = useState<any>({});
+	const [ mainColor, setMainColor ] = useState<string>('#ccc');
 	const [ secondColor, setSecondColor ] = useState<string>('#ccc');
 	
 	return (
