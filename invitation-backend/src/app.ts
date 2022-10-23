@@ -11,8 +11,6 @@ app.get('/testing', (req, res) => {
 });
 
 // start the Express server
-app.listen( port, () => {
-    console.log( `server started at http://localhost:${ port }` );
-} );
+app.listen(port, '127.0.0.1');
 
 export default app;
