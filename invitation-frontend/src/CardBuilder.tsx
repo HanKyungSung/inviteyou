@@ -13,7 +13,7 @@ interface CardBuilderProps {
 const CardBuilder = ({ children, mainColor, setMainColor, secondColor, setSecondColor }: CardBuilderProps) => {
     return (
         <Grid container className="cardbuilder">
-            <Grid lg={3} className="cardbuilder-left">This is left column 22</Grid>
+            <Grid lg={3} className="cardbuilder-left">Second testing</Grid>
             <Grid lg={6} className="cardbuilder-container">
                 {children}
             </Grid>
