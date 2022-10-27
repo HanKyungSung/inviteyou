@@ -8,22 +8,24 @@ import Calendar from "./component/Calendar";
 import Rsvp from "./component/Rsvp";
 import Gallery from "./component/Gallery";
 import Contact from "./component/Contact";
+import Landing from "./component/Landing";
 
 function App() {
 	const [ mainColor, setMainColor ] = useState<any>({});
 	const [ secondColor, setSecondColor ] = useState<string>('#ccc');
 	
 	return (
-		<CardBuilder mainColor={mainColor}  setMainColor={setMainColor} secondColor={secondColor} setSecondColor={setSecondColor}>
-			<main className="invitation-wrap type01">
-				<Visual2 mainColor={mainColor} />
-				<Intro mainColor={mainColor}/>
-				<Calendar mainColor={mainColor} secondColor={secondColor}/>
-				<Rsvp mainColor={mainColor} />
-				<Gallery mainColor={mainColor}/>
-				<Contact mainColor={mainColor} />
-			</main>
-		</CardBuilder>
+		<Landing />
+		// <CardBuilder mainColor={mainColor}  setMainColor={setMainColor} secondColor={secondColor} setSecondColor={setSecondColor}>
+		// 	<main className="invitation-wrap type01">
+		// 		<Visual2 mainColor={mainColor} />
+		// 		<Intro mainColor={mainColor}/>
+		// 		<Calendar mainColor={mainColor} secondColor={secondColor}/>
+		// 		<Rsvp mainColor={mainColor} />
+		// 		<Gallery mainColor={mainColor}/>
+		// 		<Contact mainColor={mainColor} />
+		// 	</main>
+		// </CardBuilder>
 	);
 }
 
