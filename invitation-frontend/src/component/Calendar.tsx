@@ -1,18 +1,21 @@
+import { ColorResult } from "react-color";
 interface CalendarProps {
 	year: number,
 	dayOfWeek: string,
 	time: string,
 	month: string,
-	mainColor: string,
-	secondColor: string,
+	mainColor: ColorResult,
+	secondColor: ColorResult,
 };
 
 const Calendar = (props: CalendarProps) => {
 	const { year, dayOfWeek, time, month, mainColor, secondColor } = props;
+	const mainColorRgb = `rgb(${mainColor.rgb.r}, ${mainColor.rgb.g}, ${mainColor.rgb.b}, ${mainColor.rgb.a})`
+	const secondColorRgb = `rgb(${secondColor.rgb.r}, ${secondColor.rgb.g}, ${secondColor.rgb.b}, ${secondColor.rgb.a})`
 
 	return (
 		<section className="calendar">
-			<div className="calendar-wrap" style={{ backgroundColor: secondColor }}>
+			<div className="calendar-wrap" style={{ backgroundColor: secondColorRgb }}>
 				<div className="calendar-top">
 					<strong className="wedding-month">
 						{month}, 
@@ -56,7 +59,7 @@ const Calendar = (props: CalendarProps) => {
 						</tr>
 						<tr>
 							<td>12</td>
-							<td className="current" style={{ backgroundColor: mainColor }}>13</td>
+							<td className="current" style={{ backgroundColor: mainColorRgb }}>13</td>
 							<td>14</td>
 							<td>15</td>
 							<td>16</td>

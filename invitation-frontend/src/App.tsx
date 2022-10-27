@@ -9,11 +9,29 @@ import Rsvp from "./component/Rsvp";
 import Gallery from "./component/Gallery";
 import Contact from "./component/Contact";
 import Landing from "./component/Landing";
+import { ColorResult } from "react-color";
 
 function App() {
-	const [ mainColor, setMainColor ] = useState<any>({});
-	const [ secondColor, setSecondColor ] = useState<string>('#ccc');
 	
+	const defaultColor: ColorResult = {
+		hex: "#ccccc",
+		hsl: {
+			h: 0,
+			s: 0,
+			l: 0,
+			a: 1
+		},
+		rgb: {
+			r: 0,
+			g: 0,
+			b: 0,
+			a: 1
+		}
+	}
+
+	const [ mainColor, setMainColor ] = useState<ColorResult>(defaultColor);
+	const [ secondColor, setSecondColor ] = useState<ColorResult>(defaultColor);
+
 	return (
 		<Landing />
 		// <CardBuilder mainColor={mainColor}  setMainColor={setMainColor} secondColor={secondColor} setSecondColor={setSecondColor}>
