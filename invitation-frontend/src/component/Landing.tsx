@@ -41,7 +41,7 @@ const Landing = () => {
 									<Link href="#" underline="hover">CONTACT US</Link>
 								</ListItem>
 								<ListItem>
-									<Button variant="contained" href="#text-buttons" className="btn-primary">get start</Button>
+									<Button variant="contained" href="builder" className="btn-primary">get start</Button>
 								</ListItem>
 								{/* <Link to="/faq"> FAQ </Link> */}
 							</List>
