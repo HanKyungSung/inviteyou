@@ -332,10 +332,10 @@ section .wedding-date {
   padding: 0.5em 0;
 }
 .calendar table th:first-of-type {
-  color: #8B5454;
+  color: #ae1e1e;
 }
 .calendar table th:last-of-type {
-  color: #8B5454;
+  color: #351ec7;
 }
 .calendar table .current {
   background-color: #9D9E91;
@@ -520,6 +520,73 @@ section .wedding-date {
 }
 .cardbuilder .cardbuilder-right .cardbuilder-right-item {
   margin-bottom: 1rem;
+}
+
+#header {
+  background-color: #fff;
+  box-shadow: none;
+  position: sticky;
+  left: 0;
+  top: 0;
+}
+#header .header-content {
+  align-items: center;
+  justify-content: space-between;
+  height: 90px;
+}
+#header .logo {
+  color: #222;
+  display: flex;
+  align-items: center;
+}
+#header a {
+  white-space: nowrap;
+  color: #222;
+  font-size: 16px;
+  font-weight: 400;
+}
+#header .gnb-right,
+#header .gnb-left,
+#header .header-left {
+  display: flex;
+  align-items: center;
+}
+#header li {
+  padding: 0;
+  margin-left: 15px;
+}
+#header a[class*=btn-] {
+  box-shadow: none;
+  color: #fff;
+}
+#header a[class*=btn-].btn-primary {
+  background-color: #FF8689;
+  border: 1px solid #FF8689;
+}
+#header a[class*=btn-].btn-primary:hover {
+  background-color: #fff;
+  color: #FF8689;
+}
+#header a[class*=btn-].btn-secondary {
+  background-color: #666;
+  border: 1px solid #666;
+}
+#header a[class*=btn-].btn-secondary:hover {
+  background-color: #fff;
+  color: #666;
+}
+
+#Landing #visual {
+  width: 100%;
+  height: 700px;
+  background-color: #ccc;
+}
+#Landing #visual li {
+  width: 100%;
+  height: 700px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 650px) {

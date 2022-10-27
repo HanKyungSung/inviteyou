@@ -1,0 +1,66 @@
+#header{
+    background-color: #fff;
+    box-shadow: none;
+    position: sticky;
+    left: 0; top: 0;
+    .header-content{
+        align-items: center;
+        justify-content: space-between;
+        height: 90px;
+    }
+    .logo{
+        color: $color-black;
+        display: flex;
+        align-items: center;
+    }
+    a{
+        white-space: nowrap;
+        color: $color-black;
+        font-size: 16px;
+        font-weight: 400;
+    }
+    .gnb-right,
+    .gnb-left,
+    .header-left{
+        display: flex;
+        align-items: center;
+    }
+    li{
+        padding: 0;
+        margin-left: 15px;
+    }
+    a[class*="btn-"]{
+        box-shadow: none;
+        color: $color-white;
+        &.btn-primary{
+            background-color: $color-theme-primary;
+            border: 1px solid $color-theme-primary;
+            &:hover{
+                background-color: $color-white;
+                color: $color-theme-primary;
+            }
+        }
+        &.btn-secondary{
+            background-color: $color-l-grey;
+            border: 1px solid $color-l-grey;
+            &:hover{
+                background-color: $color-white;
+                color: $color-l-grey;
+            }
+        }
+    }
+    
+    
+}
+#Landing{
+    #visual{
+        width: 100%;
+        height: 700px;
+        background-color: #ccc;
+        li{
+            width: 100%;height: 700px;
+            display: flex;
+            justify-content: center; align-items: center;
+        }
+    }
+}
