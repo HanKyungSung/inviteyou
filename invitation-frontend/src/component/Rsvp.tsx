@@ -1,30 +1,30 @@
 import { useState } from "react";
+import { ColorResult } from "react-color";
 interface RsvpProps {
 	menu01: string,
 	menu02: string,
 	menu03: string,
-	mainColor: string,
-	submitBtn: any,
-	setsubmitBtn: () => boolean;
+	mainColor: ColorResult,
 };
 
 const Rsvp = (props: RsvpProps) => {
 	const { menu01, menu02, menu03, mainColor } = props;
+	const mainColorRgb = `rgb(${mainColor.rgb.r}, ${mainColor.rgb.g}, ${mainColor.rgb.b}, ${mainColor.rgb.a})`
 
 	const [ submitBtn, setsubmitBtn ] = useState<boolean>(false);
 	const handleMouseEnter = () => setsubmitBtn(true);
 	const handleMouseLeave = () => setsubmitBtn(false);
 
 	const hoverStyle = {
-		color: submitBtn ? mainColor : "white",
-		backgroundColor: submitBtn ? "white" : mainColor,
-		borderColor: mainColor
+		color: submitBtn ? mainColorRgb : "white",
+		backgroundColor: submitBtn ? "white" : mainColorRgb,
+		borderColor: mainColorRgb
 	};
 
 
 	return (
 		<section className="rsvp">
-			<h2 className="section-tit" style={{ color: mainColor }}>Apply to <br />join our wedding</h2>
+			<h2 className="section-tit" style={{ color: mainColorRgb }}>Apply to <br />join our wedding</h2>
 			<form action="">
 				<span className="input-wrap">
 					<label htmlFor="name">name</label>
