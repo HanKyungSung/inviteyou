@@ -8,20 +8,38 @@ import Calendar from "./component/Calendar";
 import Rsvp from "./component/Rsvp";
 import Gallery from "./component/Gallery";
 import Contact from "./component/Contact";
+import { ColorResult } from "react-color";
 
 function App() {
-	const [ mainColor, setMainColor ] = useState<any>({});
-	const [ secondColor, setSecondColor ] = useState<string>('#ccc');
 	
+	const defaultColor: ColorResult = {
+		hex: "#ccccc",
+		hsl: {
+			h: 0,
+			s: 0,
+			l: 0,
+			a: 1
+		},
+		rgb: {
+			r: 0,
+			g: 0,
+			b: 0,
+			a: 1
+		}
+	}
+
+	const [ mainColor, setMainColor ] = useState<ColorResult>(defaultColor);
+	const [ secondColor, setSecondColor ] = useState<ColorResult>(defaultColor);
+
 	return (
 		<CardBuilder mainColor={mainColor}  setMainColor={setMainColor} secondColor={secondColor} setSecondColor={setSecondColor}>
 			<main className="invitation-wrap type01">
 				<Visual2 mainColor={mainColor} />
 				<Intro mainColor={mainColor}/>
-				<Calendar mainColor={mainColor} secondColor={secondColor}/>
+				<Calendar mainColor={mainColor} secondColor={secondColor}/> 
 				<Rsvp mainColor={mainColor} />
 				<Gallery mainColor={mainColor}/>
-				<Contact mainColor={mainColor} />
+				<Contact mainColor={mainColor} /> 
 			</main>
 		</CardBuilder>
 	);
