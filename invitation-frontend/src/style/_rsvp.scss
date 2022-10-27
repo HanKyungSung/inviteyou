@@ -93,8 +93,8 @@
 			border: none;
 			font-size: 1.2rem;
 			text-transform: uppercase;
-			background-color: $color-primary;
-			color: $color-white;
+			// background-color: $color-primary;
+			// color: $color-white;
 			font-weight: 700;
 			padding: 0.6em;
 			width: 100%;
@@ -102,10 +102,10 @@
 			border: 1px solid $color-primary;
 			transition: all 0.3s;
 			cursor: pointer;
-			&:hover{
-				background-color: $color-white;
-				color: $color-primary;
-			}
+			// &:hover{
+			// 	background-color: $color-white;
+			// 	color: $color-primary;
+			// }
 		}
 	}
 }
