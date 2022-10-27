@@ -1,5 +1,5 @@
 import visualImg02 from "../assets/img/visual-02.jpg";
-
+import { ColorResult } from "react-color";
 interface Visual2Props {
 	year: number,
 	monthNum: number,
@@ -10,15 +10,16 @@ interface Visual2Props {
 	month: string,
 	location: string,
 	time: string,
-	mainColor: any
+	mainColor: ColorResult
 }
 
 const Visual2 = (props: Visual2Props) => {
 	const { year, monthNum, day, bride, connection, groom, month, location, time, mainColor } = props;
+	const mainColorRgb = `rgb(${mainColor.rgb.r}, ${mainColor.rgb.g}, ${mainColor.rgb.b}, ${mainColor.rgb.a})`
 	
   	return (
 		<section className="visual visualType02">
-			<div className="wedding-main-date" style={{ backgroundColor: `rgb(${mainColor.r}, ${mainColor.g}, ${mainColor.b}, ${mainColor.a})` }}>
+			<div className="wedding-main-date" style={{ backgroundColor: mainColorRgb }}>
 				<small>{year}</small>
 				<strong>{monthNum}/{day}</strong>
 			</div>

@@ -1,13 +1,13 @@
 import Grid from "@mui/material/Grid";
 import Stack from '@mui/material/Stack';
 import Item from '@mui/material/Stack';
-import { ChromePicker } from "react-color";
+import { ChromePicker, ColorResult } from "react-color";
 interface CardBuilderProps {
     children: JSX.Element,
-    mainColor : string,
-    setMainColor : (color: any) => void,
-    secondColor : string,
-    setSecondColor : (color: string) => void,
+    mainColor : ColorResult,
+    setMainColor : (color: ColorResult) => void,
+    secondColor : ColorResult,
+    setSecondColor : (color: ColorResult) => void,
 };
 
 const CardBuilder = ({ children, mainColor, setMainColor, secondColor, setSecondColor }: CardBuilderProps) => {
@@ -23,15 +23,15 @@ const CardBuilder = ({ children, mainColor, setMainColor, secondColor, setSecond
                     <Item className="cardbuilder-right-item">
                         <h2>Primary Color</h2>
                         <ChromePicker 
-                            color={mainColor}
-                            onChangeComplete={(color) => setMainColor(color.rgb)}
+                            color={mainColor.rgb}
+                            onChangeComplete={(color) => setMainColor(color)}
                             />
                     </Item>
                     <Item className="cardbuilder-right-item">
                         <h2>Second Color</h2>
                         <ChromePicker 
-                            color={secondColor}
-                            onChangeComplete={(color) => setSecondColor(color.hex)}
+                            color={secondColor.rgb}
+                            onChangeComplete={(color) => setSecondColor(color)}
                         />
                     </Item>
                 </Stack>
