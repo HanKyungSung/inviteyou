@@ -1,15 +1,15 @@
-import { Routes, Route } from "react-router-dom";
-import "./style/style.css";
-import CardBuilder from "./CardBuilder";
-import Landing from "./component/Landing";
+import { Routes, Route } from 'react-router-dom';
+import './style/style.css';
+import CardBuilder from './CardBuilder';
+import Landing from './component/Landing';
 
 function App() {
-    return (
-        <Routes>
-            <Route path="/" element={<Landing />}/>
-            <Route path="/builder" element={<CardBuilder />} />
-        </Routes>
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/builder" element={<CardBuilder />} />
+    </Routes>
+  );
 }
 
 export default App;
