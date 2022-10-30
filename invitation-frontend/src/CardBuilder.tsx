@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import Grid from '@mui/material/Grid';
-import Stack from '@mui/material/Stack';
-import Item from '@mui/material/Stack';
+import { Grid, Stack, Box, Container, Text } from '@mantine/core';
 import { ChromePicker, ColorResult } from 'react-color';
 // import Visual from "./component/Visual";
 import Visual2 from './component/Visual2';
@@ -32,42 +30,48 @@ const CardBuilder = () => {
   const [secondColor, setSecondColor] = useState<ColorResult>(defaultColor);
 
   return (
-    <Grid container className="cardbuilder">
-      <Grid lg={3} className="cardbuilder-left">
+    <Grid className="cardbuilder">
+      <Grid.Col lg={3} className="cardbuilder-left">
         Second testing
-      </Grid>
-      <Grid lg={6} className="cardbuilder-container">
-        <main className="invitation-wrap type01">
+      </Grid.Col>
+      <Grid.Col lg={6} className="cardbuilder-container">
+        <Container className="invitation-wrap type01">
           <Visual2 mainColor={mainColor} />
           <Intro mainColor={mainColor} />
           <Calendar mainColor={mainColor} secondColor={secondColor} />
           <Rsvp mainColor={mainColor} />
           <Gallery mainColor={mainColor} />
           <Contact mainColor={mainColor} />
-        </main>
-      </Grid>
-      <Grid lg={3}>
+        </Container>
+      </Grid.Col>
+      <Grid.Col lg={3}>
         <Stack
           className="cardbuilder-right"
           style={{ position: 'fixed', top: 20 }}
         >
-          <h1>Custom Builder</h1>
-          <Item className="cardbuilder-right-item">
-            <h2>Primary Color</h2>
+          <Text component="h1" size={25} mb={10}>
+            Custom Builder
+          </Text>
+          <Box className="cardbuilder-right-item">
+            <Text component="h2" size={16} weight={400} mb={10}>
+              Primary Color
+            </Text>
             <ChromePicker
               color={mainColor.rgb}
               onChangeComplete={(color) => setMainColor(color)}
             />
-          </Item>
-          <Item className="cardbuilder-right-item">
-            <h2>Second Color</h2>
+          </Box>
+          <Box className="cardbuilder-right-item">
+            <Text component="h2" size={16} weight={400} mb={10}>
+              Second Color
+            </Text>
             <ChromePicker
               color={secondColor.rgb}
               onChangeComplete={(color) => setSecondColor(color)}
             />
-          </Item>
+          </Box>
         </Stack>
-      </Grid>
+      </Grid.Col>
     </Grid>
   );
 };
