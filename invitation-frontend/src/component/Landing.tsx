@@ -1,122 +1,231 @@
-import React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import Link from '@mui/material/Link';
-import Grid from '@mui/material/Grid';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
+import {
+  Header,
+  Grid,
+  Text,
+  Container,
+  createStyles,
+  Button,
+  Group
+} from '@mantine/core';
 
-import { Navigation } from 'swiper';
+import {
+  IconSearch,
+  IconMenu2,
+  IconArrowLeft,
+  IconArrowRight
+} from '@tabler/icons';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useRef } from 'react';
+import { Swiper as SwiperType, Navigation, Pagination, Autoplay } from 'swiper';
+
 import 'swiper/css';
 import 'swiper/css/navigation';
-// import { Link } from "react-router-dom";
+import 'swiper/css/pagination';
 
-// import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
-// import MenuIcon from '@mui/icons-material/Menu';
+const useStyles = createStyles((theme, _params, getRef) => ({
+  header: {
+    paddingTop: 25,
+    paddingBottom: 25
+  },
+  headerLeft: {
+    display: 'flex'
+  },
+  headerRight: {
+    display: 'flex'
+  },
+  logo: {
+    margin: 0,
+    fontSize: 30,
+    fontWeight: 400,
+    color: '#222'
+  },
+  gnbLists: {
+    display: 'flex',
+    alignItem: 'center',
+    fontSize: 16,
+    whiteSpace: 'nowrap',
+    gap: 10
+  },
+  gnbList: {
+    paddingLeft: 5,
+    paddingRight: 5,
+    fontSize: 16,
+    fontWeight: 400
+  },
+  visual: {
+    position: 'relative'
+  },
+  swiperLists: {
+    position: 'relative'
+  },
+  swiperList: {
+    minHeight: 700,
+    background: '#ccc'
+  },
+  swiperNavs: {
+    position: 'relative',
+    zIndex: 10
+  },
+  swiperNav: {
+    position: 'relative'
+  },
+  swiperNavs2: {
+    position: 'absolute',
+    width: '100%',
+    top: '50%',
+    left: '50%',
+    zIndex: 10,
+    transform: `translate(-50%, -50%)`,
+    display: 'flex',
+    justifyContent: 'space-between',
+    paddingLeft: 50,
+    paddingRight: 50
+  },
+  swiperNav2: {
+    width: 50,
+    height: 50,
+    padding: 0
+  }
+}));
 
 const Landing = () => {
+  const { classes } = useStyles();
+  const swiperRef = useRef<SwiperType>();
+  const pagination = {
+    clickable: true,
+    renderBullet: function (bulletIndex: any, bulletClass: string) {
+      return `<span className=${bulletClass}>${bulletIndex + 1}</span>`;
+    }
+  };
+
   return (
-    <Container id="Landing" maxWidth={false} disableGutters={true}>
-      <AppBar id="header">
-        <Container className="landing-inr">
-          <Grid container className="header-content">
-            <Grid className="header-left">
-              <Typography
-                className="logo"
-                variant="h1"
-                component="h2"
-                sx={{ fontSize: 30 }}
-                mr={5}
-              >
-                <Box sx={{ fontWeight: 700 }}>Invite</Box>
-                You
-              </Typography>
-              <List className="gnb-left">
-                <ListItem>
-                  <Link href="#" underline="hover">
-                    ABOUT US
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link href="#" underline="hover">
-                    TEMPLATE
-                  </Link>
-                </ListItem>
-                <ListItem>
-                  <Link href="#" underline="hover">
-                    CONTACT US
-                  </Link>
-                </ListItem>
-                <ListItem>
+    <>
+      <Header height={90} className={classes.header}>
+        <Container size={1400}>
+          <Grid>
+            <Grid.Col lg={6}>
+              <Container className={classes.headerLeft}>
+                <Button variant="white" component="h2" className={classes.logo}>
+                  <Text weight={700} component="span">
+                    Invite
+                  </Text>
+                  You
+                </Button>
+                <Group className={classes.gnbLists}>
                   <Button
-                    variant="contained"
-                    href="builder"
-                    className="btn-primary"
+                    variant="white"
+                    color="dark"
+                    className={classes.gnbList}
+                    uppercase
                   >
-                    get start
+                    ABOUT US
                   </Button>
-                </ListItem>
-                {/* <Link to="/faq"> FAQ </Link> */}
-              </List>
-            </Grid>
-            <Grid className="header-right">
-              <List className="gnb-right">
-                <ListItem>
                   <Button
-                    variant="contained"
-                    href="#text-buttons"
-                    className="btn-primary"
+                    variant="white"
+                    color="dark"
+                    className={classes.gnbList}
+                    uppercase
+                  >
+                    TEMPLATE
+                  </Button>
+                  <Button
+                    variant="white"
+                    color="dark"
+                    className={classes.gnbList}
+                    uppercase
+                  >
+                    CONTACT US
+                  </Button>
+                  <Button
+                    variant="gradient"
+                    color="white"
+                    gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
+                    className={classes.gnbList}
+                    size="md"
+                    p={12}
+                    uppercase
+                  >
+                    CONTACT US
+                  </Button>
+                </Group>
+              </Container>
+            </Grid.Col>
+            <Grid.Col lg="auto" offset={3}>
+              <Container className={classes.headerRight}>
+                <Group className={classes.gnbLists}>
+                  <Button
+                    variant="gradient"
+                    color="white"
+                    gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
+                    className={classes.gnbList}
+                    size="md"
+                    p={12}
+                    uppercase
                   >
                     Log in
                   </Button>
-                </ListItem>
-                <ListItem>
                   <Button
-                    variant="contained"
-                    href="#text-buttons"
-                    className="btn-secondary"
+                    color="dark"
+                    className={classes.gnbList}
+                    size="md"
+                    p={12}
+                    uppercase
                   >
                     Sign up
                   </Button>
-                </ListItem>
-                <ListItem>
-                  <Link>{/* <SearchOutlinedIcon /> */}</Link>
-                </ListItem>
-                <ListItem>
-                  <Link>{/* <MenuIcon /> */}</Link>
-                </ListItem>
-              </List>
-            </Grid>
+                </Group>
+                <Group className={classes.gnbLists} ml={20}>
+                  <IconSearch className={classes.gnbList} size={30} />
+                  <IconMenu2 className={classes.gnbList} size={30} />
+                </Group>
+              </Container>
+            </Grid.Col>
           </Grid>
         </Container>
-      </AppBar>
-      <Container id="visual" maxWidth={false}>
+      </Header>
+      <Container fluid className={classes.visual}>
         <Swiper
-          wrapperTag="ul"
           spaceBetween={50}
           slidesPerView={1}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
-          modules={[Navigation]}
-          navigation
+          loop={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false
+          }}
+          modules={[Autoplay, Navigation, Pagination]}
+          onBeforeInit={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+          pagination={pagination}
+          className={classes.swiperLists}
         >
-          <SwiperSlide tag="li">Slide 1</SwiperSlide>
-          <SwiperSlide tag="li">Slide 2</SwiperSlide>
-          <SwiperSlide tag="li">Slide 3</SwiperSlide>
-          <SwiperSlide tag="li">Slide 4</SwiperSlide>
+          <SwiperSlide className={classes.swiperList}>Slide 1</SwiperSlide>
+          <SwiperSlide className={classes.swiperList}>Slide 2</SwiperSlide>
+          <SwiperSlide className={classes.swiperList}>Slide 3</SwiperSlide>
+          <Group className={classes.swiperNavs2}>
+            <Button
+              className={classes.swiperNav2}
+              variant="gradient"
+              color="white"
+              gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <IconArrowLeft size={20} />
+            </Button>
+            <Button
+              className={classes.swiperNav2}
+              variant="gradient"
+              color="white"
+              gradient={{ from: '#ed6ea0', to: '#ec8c69', deg: 35 }}
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <IconArrowRight size={20} />
+            </Button>
+          </Group>
         </Swiper>
       </Container>
-      <Container
-        style={{ height: 1000, backgroundColor: '#eee' }}
-        maxWidth={false}
-      >
-        sdf
-      </Container>
-    </Container>
+    </>
   );
 };
 
