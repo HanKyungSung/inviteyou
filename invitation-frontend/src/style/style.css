@@ -1,22 +1,25 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-@import "//cdn.jsdelivr.net/npm/font-kopub@1.0";
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+.invitation-wrap {
+  /* http://meyerweb.com/eric/tools/css/reset/ 
+     v2.0 | 20110126
+     License: none (public domain)
+  */
+  /* HTML5 display-role reset for older browsers */
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+  @import "//cdn.jsdelivr.net/npm/font-kopub@1.0";
+}
+.invitation-wrap html, .invitation-wrap body, .invitation-wrap div, .invitation-wrap span, .invitation-wrap applet, .invitation-wrap object, .invitation-wrap iframe,
+.invitation-wrap h1, .invitation-wrap h2, .invitation-wrap h3, .invitation-wrap h4, .invitation-wrap h5, .invitation-wrap h6, .invitation-wrap p, .invitation-wrap blockquote, .invitation-wrap pre,
+.invitation-wrap a, .invitation-wrap abbr, .invitation-wrap acronym, .invitation-wrap address, .invitation-wrap big, .invitation-wrap cite, .invitation-wrap code,
+.invitation-wrap del, .invitation-wrap dfn, .invitation-wrap em, .invitation-wrap img, .invitation-wrap ins, .invitation-wrap kbd, .invitation-wrap q, .invitation-wrap s, .invitation-wrap samp,
+.invitation-wrap small, .invitation-wrap strike, .invitation-wrap strong, .invitation-wrap sub, .invitation-wrap sup, .invitation-wrap tt, .invitation-wrap var,
+.invitation-wrap b, .invitation-wrap u, .invitation-wrap i, .invitation-wrap center,
+.invitation-wrap dl, .invitation-wrap dt, .invitation-wrap dd, .invitation-wrap ol, .invitation-wrap ul, .invitation-wrap li,
+.invitation-wrap fieldset, .invitation-wrap form, .invitation-wrap label, .invitation-wrap legend,
+.invitation-wrap table, .invitation-wrap caption, .invitation-wrap tbody, .invitation-wrap tfoot, .invitation-wrap thead, .invitation-wrap tr, .invitation-wrap th, .invitation-wrap td,
+.invitation-wrap article, .invitation-wrap aside, .invitation-wrap canvas, .invitation-wrap details, .invitation-wrap embed,
+.invitation-wrap figure, .invitation-wrap figcaption, .invitation-wrap footer, .invitation-wrap header, .invitation-wrap hgroup,
+.invitation-wrap menu, .invitation-wrap nav, .invitation-wrap output, .invitation-wrap ruby, .invitation-wrap section, .invitation-wrap summary,
+.invitation-wrap time, .invitation-wrap mark, .invitation-wrap audio, .invitation-wrap video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -25,77 +28,62 @@ time, mark, audio, video {
   vertical-align: baseline;
   text-decoration: none;
 }
-
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
+.invitation-wrap article, .invitation-wrap aside, .invitation-wrap details, .invitation-wrap figcaption, .invitation-wrap figure,
+.invitation-wrap footer, .invitation-wrap header, .invitation-wrap hgroup, .invitation-wrap menu, .invitation-wrap nav, .invitation-wrap section {
   display: block;
 }
-
-body {
+.invitation-wrap body {
   line-height: 1;
 }
-
-a:hover {
+.invitation-wrap a:hover {
   color: inherit;
 }
-
-ol, ul, li {
+.invitation-wrap ol, .invitation-wrap ul, .invitation-wrap li {
   list-style: none;
 }
-
-blockquote, q {
+.invitation-wrap blockquote, .invitation-wrap q {
   quotes: none;
 }
-
-blockquote:before, blockquote:after,
-q:before, q:after {
+.invitation-wrap blockquote:before, .invitation-wrap blockquote:after,
+.invitation-wrap q:before, .invitation-wrap q:after {
   content: "";
   content: none;
 }
-
-table {
+.invitation-wrap table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
-a:hover {
+.invitation-wrap a:hover {
   text-decoration: none;
 }
-
-* {
+.invitation-wrap * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
 }
-
-* {
+.invitation-wrap * {
   box-sizing: border-box;
   transition: all 0.3s;
 }
-
-html {
+.invitation-wrap html {
   font-size: 20px;
 }
-
-section {
+.invitation-wrap section {
   font-size: 1rem;
   line-height: 1.2;
 }
-section:not(.visual) {
+.invitation-wrap section:not(.visual) {
   width: 55%;
   margin: 0 auto;
 }
-
-body, a {
+.invitation-wrap body, .invitation-wrap a {
   font-family: "Noto Sans KR", sans-serif;
   color: #222;
   word-break: keep-all;
 }
-
-section {
+.invitation-wrap section {
   padding: 3em 0;
 }
-section h2 {
+.invitation-wrap section h2 {
   font-size: 1.4rem;
   text-align: center;
   text-transform: uppercase;
@@ -103,50 +91,47 @@ section h2 {
   color: #9D9E91;
   font-weight: 500;
 }
-section .wedding-date {
+.invitation-wrap section .wedding-date {
   margin-top: 1.5rem;
   display: block;
 }
-
-.invitation-wrap {
+.invitation-wrap .invitation-wrap {
   max-width: 800px;
   margin: 0 auto;
   padding: 0;
 }
-
-.visual {
+.invitation-wrap .visual {
   position: relative;
   text-align: center;
 }
-.visual .wedding-tit {
+.invitation-wrap .visual .wedding-tit {
   display: block;
   text-align: center;
   font-size: 1rem;
   text-transform: uppercase;
 }
-.visual .wedding-character {
+.invitation-wrap .visual .wedding-character {
   text-transform: uppercase;
 }
-
-.visual {
+.invitation-wrap .visual {
   position: relative;
 }
-.visual img {
+.invitation-wrap .visual img {
   object-fit: cover;
 }
-.visual .visual-content .wedding-date span {
+.invitation-wrap .visual .visual-content .wedding-date span {
   display: block;
 }
-.visual .visual-content .wedding-date span + span {
+.invitation-wrap .visual .visual-content .wedding-date span + span {
   margin-top: 5px;
 }
-.visual .visual-content .connect-sign {
+.invitation-wrap .visual .visual-content .connect-sign {
   text-transform: lowercase;
 }
-.visual.visualType01 {
+.invitation-wrap .visual.visualType01 {
   padding-bottom: 100vh;
 }
-.visual.visualType01 .visual-img {
+.invitation-wrap .visual.visualType01 .visual-img {
   position: absolute;
   left: 50%;
   top: 0;
@@ -154,11 +139,11 @@ section .wedding-date {
   height: 100vh;
   transform: translateX(-50%);
 }
-.visual.visualType01 .visual-img img {
+.invitation-wrap .visual.visualType01 .visual-img img {
   width: 100%;
   height: 100%;
 }
-.visual.visualType01 .visual-content {
+.invitation-wrap .visual.visualType01 .visual-content {
   width: 100%;
   position: absolute;
   left: 50%;
@@ -166,42 +151,42 @@ section .wedding-date {
   transform: translateX(-50%);
   z-index: 5;
 }
-.visual.visualType01 .visual-content .wedding-tit {
+.invitation-wrap .visual.visualType01 .visual-content .wedding-tit {
   color: #fff;
 }
-.visual.visualType01 .visual-content .wedding-character {
+.invitation-wrap .visual.visualType01 .visual-content .wedding-character {
   font-weight: 400;
   padding: 1em 0;
   font-size: 2.5rem;
 }
-.visual.visualType01 .visual-content .wedding-character strong {
+.invitation-wrap .visual.visualType01 .visual-content .wedding-character strong {
   display: block;
   color: #7C7D71;
   font-weight: 400;
 }
-.visual.visualType01 .visual-content .wedding-character .connect-sign {
+.invitation-wrap .visual.visualType01 .visual-content .wedding-character .connect-sign {
   font-size: 1.8rem;
   display: block;
   color: #7C7D71;
 }
-.visual.visualType01 .visual-content .wedding-date {
+.invitation-wrap .visual.visualType01 .visual-content .wedding-date {
   text-align: center;
   font-size: 0.9rem;
   color: #fff;
 }
-.visual.visualType01 .visual-content .wedding-date span {
+.invitation-wrap .visual.visualType01 .visual-content .wedding-date span {
   display: block;
   margin-bottom: 0.5em;
 }
-.visual.visualType02 .visual-img {
+.invitation-wrap .visual.visualType02 .visual-img {
   padding-top: 5vw;
   height: 100vh;
 }
-.visual.visualType02 .visual-img img {
+.invitation-wrap .visual.visualType02 .visual-img img {
   width: 100%;
   height: 100%;
 }
-.visual.visualType02 .visual-content {
+.invitation-wrap .visual.visualType02 .visual-content {
   position: absolute;
   left: 20px;
   bottom: 120px;
@@ -209,13 +194,13 @@ section .wedding-date {
   text-align: left;
   color: #fff;
 }
-.visual.visualType02 .visual-content .wedding-character {
+.invitation-wrap .visual.visualType02 .visual-content .wedding-character {
   font-size: 2rem;
 }
-.visual.visualType02 .visual-content .wedding-character .connect-sign {
+.invitation-wrap .visual.visualType02 .visual-content .wedding-character .connect-sign {
   margin: 0 5px;
 }
-.visual.visualType02 .wedding-main-date {
+.invitation-wrap .visual.visualType02 .wedding-main-date {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -231,7 +216,7 @@ section .wedding-date {
   flex-direction: column;
   color: #fff;
 }
-.visual.visualType02 .wedding-main-date::after {
+.invitation-wrap .visual.visualType02 .wedding-main-date::after {
   content: "";
   width: 90%;
   height: 90%;
@@ -241,25 +226,24 @@ section .wedding-date {
   transform: translate(-50%, -50%);
   border: 1px solid #fff;
 }
-.visual.visualType02 .wedding-main-date small {
+.invitation-wrap .visual.visualType02 .wedding-main-date small {
   font-size: 1.5rem;
   margin-bottom: 5px;
 }
-.visual.visualType02 .wedding-main-date strong {
+.invitation-wrap .visual.visualType02 .wedding-main-date strong {
   font-size: 3.5rem;
 }
-
-.intro {
+.invitation-wrap .intro {
   text-align: center;
 }
-.intro p {
+.invitation-wrap .intro p {
   font-size: 1rem;
   text-align: center;
   margin: 0 auto;
   line-height: 1.5;
   color: #666;
 }
-.intro .wedding-character {
+.invitation-wrap .intro .wedding-character {
   text-align: center;
   display: inline-block;
   margin-top: 3em;
@@ -268,94 +252,92 @@ section .wedding-date {
   font-size: 1.2rem;
   font-weight: 500;
 }
-.intro .wedding-character::after {
+.invitation-wrap .intro .wedding-character::after {
   content: "";
   width: 100%;
   height: 1px;
   background-color: #666;
   display: block;
 }
-.intro .wedding-character strong {
+.invitation-wrap .intro .wedding-character strong {
   font-weight: inherit;
 }
-.intro .wedding-character .connect-sign {
+.invitation-wrap .intro .wedding-character .connect-sign {
   margin: 0 0.2em;
 }
-
-.calendar .calendar-wrap {
+.invitation-wrap .calendar .calendar-wrap {
   text-align: center;
   margin: 0 auto;
   padding: 2em;
   box-shadow: 8px 13px 8px rgba(0, 0, 0, 0.03);
 }
-.calendar .calendar-top {
+.invitation-wrap .calendar .calendar-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1.2em;
   font-size: 1rem;
 }
-.calendar .calendar-top .wedding-month {
+.invitation-wrap .calendar .calendar-top .wedding-month {
   font-size: 1.2rem;
   font-weight: 400;
 }
-.calendar .calendar-top .wedding-year {
+.invitation-wrap .calendar .calendar-top .wedding-year {
   font-size: 0.9rem;
 }
-.calendar .calendar-top .day-of-week {
+.invitation-wrap .calendar .calendar-top .day-of-week {
   text-transform: uppercase;
   display: inline-block;
   margin-right: 5px;
 }
-.calendar table {
+.invitation-wrap .calendar table {
   width: 100%;
   text-align: center;
   margin: 0 auto;
 }
-.calendar table td, .calendar table th {
+.invitation-wrap .calendar table td, .invitation-wrap .calendar table th {
   text-align: center;
   vertical-align: middle;
 }
-.calendar table td {
+.invitation-wrap .calendar table td {
   height: 0;
 }
-.calendar table td:after, .calendar table td:before {
+.invitation-wrap .calendar table td:after, .invitation-wrap .calendar table td:before {
   content: "";
   display: block;
   padding-bottom: calc(50% - 0.6em);
 }
-.calendar table th {
+.invitation-wrap .calendar table th {
   font-weight: 500;
   text-transform: uppercase;
   font-size: 0.8rem;
   color: #666;
   padding: 0.5em 0;
 }
-.calendar table th:first-of-type {
+.invitation-wrap .calendar table th:first-of-type {
   color: #ae1e1e;
 }
-.calendar table th:last-of-type {
+.invitation-wrap .calendar table th:last-of-type {
   color: #351ec7;
 }
-.calendar table .current {
+.invitation-wrap .calendar table .current {
   background-color: #9D9E91;
   color: #fff;
   font-weight: 700;
   border-radius: 50%;
 }
-
-.rsvp form .input-wrap {
+.invitation-wrap .rsvp form .input-wrap {
   display: block;
   font-size: 1rem;
   margin-bottom: 2em;
 }
-.rsvp form .input-wrap label {
+.invitation-wrap .rsvp form .input-wrap label {
   display: block;
   text-transform: uppercase;
   font-size: 1rem;
   margin-bottom: 1em;
 }
-.rsvp form .input-wrap input[type=text] {
+.invitation-wrap .rsvp form .input-wrap input[type=text] {
   width: 100%;
   border: none;
   border-bottom: 1px solid #eee;
@@ -363,10 +345,10 @@ section .wedding-date {
   padding: 1em 0;
   outline: none;
 }
-.rsvp form .input-wrap input[type=text]::placeholder {
+.invitation-wrap .rsvp form .input-wrap input[type=text]::placeholder {
   color: #aaa;
 }
-.rsvp form .input-wrap textarea {
+.invitation-wrap .rsvp form .input-wrap textarea {
   border-color: #eee;
   width: 100%;
   padding: 1em;
@@ -376,7 +358,7 @@ section .wedding-date {
   color: #444;
   outline: none;
 }
-.rsvp form .radio-wrap {
+.invitation-wrap .rsvp form .radio-wrap {
   display: inline-block;
   position: relative;
   padding-left: 30px;
@@ -387,12 +369,12 @@ section .wedding-date {
   -ms-user-select: none;
   user-select: none;
 }
-.rsvp form .radio-wrap label {
+.invitation-wrap .rsvp form .radio-wrap label {
   display: inline-block;
   margin-bottom: 0;
   line-height: 20px;
 }
-.rsvp form .radio-wrap .checkmark {
+.invitation-wrap .rsvp form .radio-wrap .checkmark {
   position: absolute;
   top: 50%;
   left: 0;
@@ -403,7 +385,7 @@ section .wedding-date {
   border-radius: 50%;
   display: block;
 }
-.rsvp form .radio-wrap .checkmark::after {
+.invitation-wrap .rsvp form .radio-wrap .checkmark::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -416,7 +398,7 @@ section .wedding-date {
   transition: 0.3s all;
   opacity: 0;
 }
-.rsvp form .radio-wrap input[type=radio] {
+.invitation-wrap .rsvp form .radio-wrap input[type=radio] {
   width: 100%;
   height: 100%;
   position: absolute;
@@ -427,10 +409,10 @@ section .wedding-date {
   margin: 0;
   z-index: 5;
 }
-.rsvp form .radio-wrap input[type=radio]:checked ~ .checkmark::after {
+.invitation-wrap .rsvp form .radio-wrap input[type=radio]:checked ~ .checkmark::after {
   opacity: 1;
 }
-.rsvp form button {
+.invitation-wrap .rsvp form button {
   border: none;
   font-size: 1.2rem;
   text-transform: uppercase;
@@ -442,50 +424,48 @@ section .wedding-date {
   transition: all 0.3s;
   cursor: pointer;
 }
-
-.gallery .swiperType01 {
+.invitation-wrap .gallery .swiperType01 {
   margin-bottom: 10px;
 }
-.gallery .swiperType01 img {
+.invitation-wrap .gallery .swiperType01 img {
   max-height: 350px !important;
   width: 100%;
 }
-.gallery .swiperType01 .swiperType01-thumb img {
+.invitation-wrap .gallery .swiperType01 .swiperType01-thumb img {
   filter: grayscale(100%);
 }
-
-.contact .contact-list {
+.invitation-wrap .contact .contact-list {
   display: flex;
   align-items: center;
   position: relative;
   margin-bottom: 20px;
 }
-.contact .contact-list .character-img img {
+.invitation-wrap .contact .contact-list .character-img img {
   max-height: 70px;
   border-radius: 50%;
 }
-.contact .contact-list .contact-infos {
+.invitation-wrap .contact .contact-list .contact-infos {
   margin: 0 50px 0 20px;
 }
-.contact .contact-list .contact-infos .tel {
+.invitation-wrap .contact .contact-list .contact-infos .tel {
   font-size: 1.4rem;
   color: #666;
 }
-.contact .contact-list .contact-infos .tel:hover {
+.invitation-wrap .contact .contact-list .contact-infos .tel:hover {
   color: #9D9E91;
 }
-.contact .contact-list .contact-infos .email {
+.invitation-wrap .contact .contact-list .contact-infos .email {
   font-size: 0.8rem;
   color: #aaa;
   text-decoration: underline;
 }
-.contact .contact-list .contact-infos .email:hover {
+.invitation-wrap .contact .contact-list .contact-infos .email:hover {
   color: #666;
 }
-.contact .contact-list .contact-infos a {
+.invitation-wrap .contact .contact-list .contact-infos a {
   color: inherit;
 }
-.contact .contact-list .tel-img {
+.invitation-wrap .contact .contact-list .tel-img {
   width: 45px;
   height: 45px;
   background-color: #9D9E91;
@@ -499,97 +479,94 @@ section .wedding-date {
   align-items: center;
   transition: all 0.3s;
 }
-.contact .contact-list .tel-img:hover {
+.invitation-wrap .contact .contact-list .tel-img:hover {
   transform: translateY(-55%);
 }
-
-#header {
+.invitation-wrap #header {
   background-color: #fff;
   box-shadow: none;
   position: sticky;
   left: 0;
   top: 0;
 }
-#header .header-content {
+.invitation-wrap #header .header-content {
   align-items: center;
   justify-content: space-between;
   height: 90px;
 }
-#header .logo {
+.invitation-wrap #header .logo {
   color: #222;
   display: flex;
   align-items: center;
 }
-#header a {
+.invitation-wrap #header a {
   white-space: nowrap;
   color: #222;
   font-size: 16px;
   font-weight: 400;
 }
-#header .gnb-right,
-#header .gnb-left,
-#header .header-left {
+.invitation-wrap #header .gnb-right,
+.invitation-wrap #header .gnb-left,
+.invitation-wrap #header .header-left {
   display: flex;
   align-items: center;
 }
-#header li {
+.invitation-wrap #header li {
   padding: 0;
   margin-left: 15px;
 }
-#header a[class*=btn-] {
+.invitation-wrap #header a[class*=btn-] {
   box-shadow: none;
   color: #fff;
 }
-#header a[class*=btn-].btn-primary {
+.invitation-wrap #header a[class*=btn-].btn-primary {
   background-color: #FF8689;
   border: 1px solid #FF8689;
 }
-#header a[class*=btn-].btn-primary:hover {
+.invitation-wrap #header a[class*=btn-].btn-primary:hover {
   background-color: #fff;
   color: #FF8689;
 }
-#header a[class*=btn-].btn-secondary {
+.invitation-wrap #header a[class*=btn-].btn-secondary {
   background-color: #666;
   border: 1px solid #666;
 }
-#header a[class*=btn-].btn-secondary:hover {
+.invitation-wrap #header a[class*=btn-].btn-secondary:hover {
   background-color: #fff;
   color: #666;
 }
-
-#Landing #visual {
+.invitation-wrap #Landing #visual {
   width: 100%;
   height: 700px;
   background-color: #ccc;
 }
-#Landing #visual li {
+.invitation-wrap #Landing #visual li {
   width: 100%;
   height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 @media (max-width: 650px) {
-  html {
+  .invitation-wrap html {
     font-size: 16px;
   }
-  section:not(.visual) {
+  .invitation-wrap section:not(.visual) {
     width: 60%;
     max-width: 350px;
   }
 }
 @media (max-width: 500px) {
-  html {
+  .invitation-wrap html {
     font-size: 14px;
   }
-  section:not(.visual) {
+  .invitation-wrap section:not(.visual) {
     width: calc(100% - 40px);
   }
-  .visual.visualType02 .visual-img {
+  .invitation-wrap .visual.visualType02 .visual-img {
     padding-top: 15vw;
   }
-  .visual.visualType02 .wedding-main-date {
+  .invitation-wrap .visual.visualType02 .wedding-main-date {
     min-width: 250px;
     min-height: 250px;
   }
