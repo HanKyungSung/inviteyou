@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Grid, Stack, Box, Container, Text } from '@mantine/core';
 import { ChromePicker, ColorResult } from 'react-color';
-// import Visual from "./component/Visual";
+import Visual from './component/Visual';
 import Visual2 from './component/Visual2';
 import Intro from './component/Intro';
 import Calendar from './component/Calendar';
@@ -36,7 +36,7 @@ const CardBuilder = () => {
       </Grid.Col>
       <Grid.Col lg={6} className="cardbuilder-container">
         <Container className="invitation-wrap type01">
-          <Visual2 mainColor={mainColor} />
+          <Visual2 mainColor={mainColor}/>
           <Intro mainColor={mainColor} />
           <Calendar mainColor={mainColor} secondColor={secondColor} />
           <Rsvp mainColor={mainColor} />
