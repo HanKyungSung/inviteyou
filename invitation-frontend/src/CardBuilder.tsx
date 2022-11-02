@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Grid, Stack, Box, Container, Text } from '@mantine/core';
+import { Grid, Stack, Box, Container, Text, Select } from '@mantine/core';
 import { ChromePicker, ColorResult } from 'react-color';
 // import Visual from "./component/Visual";
 import Visual2 from './component/Visual2';
@@ -32,7 +32,23 @@ const CardBuilder = () => {
   return (
     <Grid className="cardbuilder">
       <Grid.Col lg={3} className="cardbuilder-left">
-        Second testing
+        <Stack
+          className="cardbuilder-right"
+          style={{ position: 'fixed', top: 20 }}
+        >
+          <Text component="h1" size={25} mb={10}>
+            Choose the Visual Type
+          </Text>
+          <Select
+            label="Your favorite framework/library"
+            placeholder="Choose the Visual Type"
+            data={[
+              { value: 'visual01', label: 'Visual Type 01' },
+              { value: 'visual02', label: 'Visual Type 02' },
+              { value: 'visual03', label: 'Visual Type 03' }
+            ]}
+          />
+        </Stack>
       </Grid.Col>
       <Grid.Col lg={6} className="cardbuilder-container">
         <Container className="invitation-wrap type01">
