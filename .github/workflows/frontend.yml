@@ -31,13 +31,15 @@ jobs:
       - name: Install frontend dependencies
         working-directory: ./invitation-frontend
         run: npm install
+
+      # Run eslint on frontend
+      - name: Run eslint
+        working-directory: ./invitation-frontend
+        run: npm run lint
         
       # Build frontend
       - name: Build frontend
         working-directory: ./invitation-frontend
         run: npm run build
 
-      # Run eslint on frontend
-      - name: Run eslint
-        working-directory: ./invitation-frontend
-        run: npm run lint
+      
