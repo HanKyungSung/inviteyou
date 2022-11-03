@@ -24,7 +24,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const useStyles = createStyles((theme, _params, getRef) => ({
+// If we don't use theme, params, and getRef parameters
+const useStyles = createStyles((_theme, _params, _getRef) => ({
   header: {
     paddingTop: 25,
     paddingBottom: 25
@@ -95,7 +96,7 @@ const Landing = () => {
   const swiperRef = useRef<SwiperType>();
   const pagination = {
     clickable: true,
-    renderBullet: function (bulletIndex: any, bulletClass: string) {
+    renderBullet: function (bulletIndex: number, bulletClass: string) {
       return `<span className=${bulletClass}>${bulletIndex + 1}</span>`;
     }
   };
