@@ -5,9 +5,10 @@ import {
   Container,
   createStyles,
   Button,
-  Group
+  Group,
+  Anchor
 } from '@mantine/core';
-
+import { Link } from 'react-router-dom';
 import {
   IconSearch,
   IconMenu2,
@@ -146,7 +147,14 @@ const Landing = () => {
                     p={12}
                     uppercase
                   >
-                    CONTACT US
+                    <Anchor
+                      component={Link}
+                      underline={false}
+                      style={{ color: 'white' }}
+                      to="/builder"
+                    >
+                      GET START
+                    </Anchor>
                   </Button>
                 </Group>
               </Container>
