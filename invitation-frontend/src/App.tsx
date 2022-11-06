@@ -8,6 +8,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/builder" element={<CardBuilder />} />
+      <Route path="/Visual3" element={<CardBuilder />} />
     </Routes>
   );
 }

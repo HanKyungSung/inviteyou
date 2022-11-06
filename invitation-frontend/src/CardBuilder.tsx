@@ -3,6 +3,7 @@ import { Grid, Stack, Box, Container, Text } from '@mantine/core';
 import { ChromePicker, ColorResult } from 'react-color';
 // import Visual from "./component/Visual";
 import Visual2 from './component/Visual2';
+import Visual3 from './component/Visual3';
 import Intro from './component/Intro';
 import Calendar from './component/Calendar';
 import Rsvp from './component/Rsvp';
@@ -37,6 +38,7 @@ const CardBuilder = () => {
       <Grid.Col lg={6} className="cardbuilder-container">
         <Container className="invitation-wrap type01">
           <Visual2 mainColor={mainColor} />
+          <Visual3 />
           <Intro mainColor={mainColor} />
           <Calendar mainColor={mainColor} secondColor={secondColor} />
           <Rsvp mainColor={mainColor} />
