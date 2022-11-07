@@ -1,0 +1,121 @@
+$color_1: #2C4032;
+$color_2: #000000;
+$color_3: #E9AA0C;
+$font-family_1: 'Noto Sans KR', sans-serif;
+$font-family_2: 'S-Core Dream', sans-serif;
+$font-family_3: 'Noto Sans KR';
+$background-color_1: hsl(0, 100%, 100%);
+$border-color_1: transparent;
+
+@import "https://fonts.googleapis.com/css?family=Noto+Sans+KR";
+@import "https://www.myfonts.com/foundry/S-Core/";
+
+body {
+	font-family: $font-family_1;
+	font-size: 12px;
+	border: 0;
+	background-color: $background-color_1;
+	border-color: $border-color_1;
+}
+
+.message {
+	border: 0;
+	background: transparent;
+	border-color: $border-color_1;
+	position: absolute;
+	top: 37px;
+	left: 95px;
+	max-width: 204px;
+	min-height: 36px;
+	text-align: center;
+	font-family: $font-family_1;
+	font-style: normal;
+	font-weight: 300;
+	font-size: 12px;
+	line-height: 18.17px;
+	filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+	color: $color_1;
+}
+
+.visualImg03-1 {
+	position: absolute;
+	width: 312.4px;
+	height: 379.74px;
+	left: 33.6px;
+	top: 101.78px;
+}
+
+.visualImg03-2 {
+	position: absolute;
+	left: 50.13%;
+	right: 10.95%;
+	top: 2.72%;
+	bottom: 94.62%;
+}
+
+#dday {
+	position: absolute;
+	width: 34px;
+	height: 17px;
+	font-family: $font-family_2;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 17px;
+	display: flex;
+	align-items: center;
+	text-align: center;
+	color: $color_2;
+}
+
+.names {
+	flex-direction: row;
+	text-align: center;
+	align-items: center;
+	padding: 0px;
+	position: absolute;
+	width: 164px;
+	height: 72px;
+	left: 106px;
+	top: 404px;
+	font-family: $font-family_2;
+	font-style: normal;
+	font-weight: 500;
+	font-size: 30px;
+	line-height: 36px;
+	display: flex;
+	color: $color_3;
+	border-color: $border-color_1;
+}
+
+.datetime {
+	position: absolute;
+	left: 24.8%;
+	right: 24.53%;
+	top: 12.3%;
+	bottom: 87.27%;
+	font-family: $font-family_3;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 17px;
+	text-align: center;
+	color: $color_1;
+}
+
+.address {
+	position: absolute;
+	left: 26.4%;
+	right: 25.87%;
+	top: 12.95%;
+	bottom: 86.19%;
+	font-family: $font-family_3;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 17px;
+	text-align: center;
+	letter-spacing: -0.02em;
+	text-transform: capitalize;
+	color: $color_1;
+}

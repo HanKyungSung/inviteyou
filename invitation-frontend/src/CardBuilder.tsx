@@ -38,7 +38,7 @@ const CardBuilder = () => {
       <Grid.Col lg={6} className="cardbuilder-container">
         <Container className="invitation-wrap type01">
           <Visual2 mainColor={mainColor} />
-          <Visual3 />
+		  <Visual3 mainColor={mainColor} />
           <Intro mainColor={mainColor} />
           <Calendar mainColor={mainColor} secondColor={secondColor} />
           <Rsvp mainColor={mainColor} />
