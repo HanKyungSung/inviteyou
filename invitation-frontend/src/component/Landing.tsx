@@ -6,9 +6,9 @@ import {
   createStyles,
   Button,
   Group,
-  Box
+  Anchor
 } from '@mantine/core';
-
+import { Link } from 'react-router-dom';
 import {
   IconSearch,
   IconMenu2,
@@ -24,7 +24,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-const useStyles = createStyles((theme, _params, getRef) => ({
+// If we don't use theme, params, and getRef parameters
+const useStyles = createStyles((_theme, _params, _getRef) => ({
   header: {
     paddingTop: 25,
     paddingBottom: 25
@@ -105,11 +106,8 @@ const Landing = () => {
   const swiperRef = useRef<SwiperType>();
   const pagination = {
     clickable: true,
-    el: '.swiper-custom-pagination',
-    renderBullet: function (bulletIndex: any, bulletClass: string) {
-      return `<span class="${bulletClass} ${classes.swiperBullet}">${
-        bulletIndex + 1
-      }</span>`;
+    renderBullet: function (bulletIndex: number, bulletClass: string) {
+      return `<span className=${bulletClass}>${bulletIndex + 1}</span>`;
     }
   };
 
@@ -160,7 +158,14 @@ const Landing = () => {
                     p={12}
                     uppercase
                   >
-                    CONTACT US
+                    <Anchor
+                      component={Link}
+                      underline={false}
+                      style={{ color: 'white' }}
+                      to="/builder"
+                    >
+                      GET START
+                    </Anchor>
                   </Button>
                 </Group>
               </Container>
