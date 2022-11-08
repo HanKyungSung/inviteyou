@@ -105,6 +105,7 @@ const Landing = () => {
   const { classes } = useStyles();
   const swiperRef = useRef<SwiperType>();
   const pagination = {
+    el: '.swiper-custom-pagination',
     clickable: true,
     renderBullet: function (bulletIndex: number, bulletClass: string) {
       return `<span className=${bulletClass}>${bulletIndex + 1}</span>`;
@@ -249,7 +250,7 @@ const Landing = () => {
             >
               <IconArrowLeft size={20} color="black" />
             </Button>
-            <Box className="swiper-custom-pagination"></Box>
+            <div className="swiper-custom-pagination"></div>
             <Button
               className={classes.swiperNav}
               onClick={() => swiperRef.current?.slideNext()}
