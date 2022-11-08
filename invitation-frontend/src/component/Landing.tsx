@@ -66,11 +66,18 @@ const useStyles = createStyles((_theme, _params, _getRef) => ({
     background: '#ccc'
   },
   swiperNavs: {
-    position: 'relative',
-    zIndex: 10
+    position: 'absolute',
+    left: 50,
+    bottom: 20,
+    zIndex: 10,
+    display: 'flex',
+    flexWrap: 'nowrap',
+    maxWidth: 200
   },
   swiperNav: {
-    position: 'relative'
+    position: 'static',
+    background: 'none!important',
+    textAlign: 'center'
   },
   swiperNavs2: {
     position: 'absolute',
@@ -88,6 +95,9 @@ const useStyles = createStyles((_theme, _params, _getRef) => ({
     width: 50,
     height: 50,
     padding: 0
+  },
+  swiperBullet: {
+    background: 'none!important'
   }
 }));
 
@@ -230,6 +240,21 @@ const Landing = () => {
               onClick={() => swiperRef.current?.slideNext()}
             >
               <IconArrowRight size={20} />
+            </Button>
+          </Group>
+          <Group className={classes.swiperNavs}>
+            <Button
+              className={classes.swiperNav}
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <IconArrowLeft size={20} color="black" />
+            </Button>
+            <Box className="swiper-custom-pagination"></Box>
+            <Button
+              className={classes.swiperNav}
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <IconArrowRight size={20} color="black" />
             </Button>
           </Group>
         </Swiper>
