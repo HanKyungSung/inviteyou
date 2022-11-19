@@ -4,7 +4,7 @@ import cors from 'cors';
 import path from 'path';
 import * as dotenv from 'dotenv';
 import connectDB from './utils/connectDB';
-import userModel from './models/user';
+import userRoute from './routes/user.route';
 
 dotenv.config();
 
@@ -21,18 +21,8 @@ app.use(
   )
 );
 
-app.post('/testing/create', async (req, res) => {
-  console.log(req.body);
-  let createdUser = await userModel.create({
-    email: req.body.email,
-    password: req.body.password
-  });
-
-  console.log(createdUser);
-
-  res.send(JSON.stringify(createdUser));
-  // res.send(req.body);
-});
+// Routes
+app.use('/registration', userRoute);
 
 app.post('/rsvp', (req, res) => {
   console.log(req.body);
