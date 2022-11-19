@@ -1,5 +1,4 @@
 import visualImg from '../assets/img/visual-01.jpg';
-
 interface VisualProps {
   year: number;
   day: number;
