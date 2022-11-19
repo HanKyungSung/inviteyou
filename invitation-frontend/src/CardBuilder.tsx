@@ -29,10 +29,39 @@ const CardBuilder = () => {
 
   const [mainColor, setMainColor] = useState<ColorResult>(defaultColor);
   const [secondColor, setSecondColor] = useState<ColorResult>(defaultColor);
-  const [selectVisual, setSelectVisual] = useState<any | string>();
+  const [selectVisual, setSelectVisual] = useState<HTMLDivElement | string>();
+
+  const visuals: JSX.Element[] = [
+    <Visual />,
+    <Visual2 mainColor={mainColor} />,
+    <Visual3 />
+  ];
+
+  const visual = visuals.map((item) => {
+    const mainColor = `mainColor={mainColor}`;
+    if (selectVisual === null) {
+      return 'Please select visual component';
+    }
+    return { item };
+  });
+
+  // const VisualComponent: React.FC<HTMLDivElement> = function (){
+  //   if (selectVisual === 'visual01') return <Visual />;
+  //   else if (selectVisual === 'visual02')
+  //     return <Visual2 mainColor={mainColor} />;
+  //   else if (selectVisual === 'visual03') return <Visual3 />;
+  //   else return <Visual />;
+  // }
 
   return (
-    <Grid className="cardbuilder">
+    <Grid
+      className="cardbuilder"
+      // style={{
+      //   maxWidth: 1400,
+      //   marginLeft: 'auto',
+      //   marginRight: 'auto'
+      // }}
+    >
       <Grid.Col lg={3} className="cardbuilder-left">
         <Stack
           className="cardbuilder-right"
@@ -44,7 +73,7 @@ const CardBuilder = () => {
           <Select
             label="Your favorite framework/library"
             placeholder="Choose the Visual Type"
-            onChange={setSelectVisual}
+            // onChange={setSelectVisual}
             data={[
               { value: 'visual01', label: 'Visual Type 01' },
               { value: 'visual02', label: 'Visual Type 02' },
@@ -55,13 +84,7 @@ const CardBuilder = () => {
       </Grid.Col>
       <Grid.Col lg={6} className="cardbuilder-container">
         <Container className="invitation-wrap type01">
-          {(() => {
-            if (selectVisual === 'visual01') return <Visual />;
-            else if (selectVisual === 'visual02')
-              return <Visual2 mainColor={mainColor} />;
-            else if (selectVisual === 'visual03') return <Visual3 />;
-            else return 'Please select visual';
-          })()}
+          <div></div>
           <Intro mainColor={mainColor} />
           <Calendar mainColor={mainColor} secondColor={secondColor} />
           <Rsvp mainColor={mainColor} />
