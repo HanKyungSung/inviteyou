@@ -2,7 +2,6 @@ import visualImg from '../assets/img/visual-01.jpg';
 
 interface VisualProps {
   year: number;
-  monthNum: number;
   day: number;
   bride: string;
   connection: string;
@@ -10,7 +9,6 @@ interface VisualProps {
   month: string;
   location: string;
   time: string;
-  mainColor: string;
 }
 
 const Visual = (props: VisualProps) => {
