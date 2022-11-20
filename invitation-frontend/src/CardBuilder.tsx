@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Grid, Stack, Box, Container, Text } from '@mantine/core';
 import { ChromePicker, ColorResult } from 'react-color';
+import Visual2 from './component/Visual2';
 import Intro from './component/Intro';
 import Calendar from './component/Calendar';
 import Rsvp from './component/Rsvp';
