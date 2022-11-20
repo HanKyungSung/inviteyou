@@ -66,11 +66,18 @@ const useStyles = createStyles((_theme, _params, _getRef) => ({
     background: '#ccc'
   },
   swiperNavs: {
-    position: 'relative',
-    zIndex: 10
+    position: 'absolute',
+    left: 50,
+    bottom: 20,
+    zIndex: 10,
+    display: 'flex',
+    flexWrap: 'nowrap',
+    maxWidth: 200
   },
   swiperNav: {
-    position: 'relative'
+    position: 'static',
+    background: 'none!important',
+    textAlign: 'center'
   },
   swiperNavs2: {
     position: 'absolute',
@@ -88,6 +95,9 @@ const useStyles = createStyles((_theme, _params, _getRef) => ({
     width: 50,
     height: 50,
     padding: 0
+  },
+  swiperBullet: {
+    background: 'none!important'
   }
 }));
 
@@ -95,6 +105,7 @@ const Landing = () => {
   const { classes } = useStyles();
   const swiperRef = useRef<SwiperType>();
   const pagination = {
+    el: '.swiper-custom-pagination',
     clickable: true,
     renderBullet: function (bulletIndex: number, bulletClass: string) {
       return `<span className=${bulletClass}>${bulletIndex + 1}</span>`;
@@ -230,6 +241,21 @@ const Landing = () => {
               onClick={() => swiperRef.current?.slideNext()}
             >
               <IconArrowRight size={20} />
+            </Button>
+          </Group>
+          <Group className={classes.swiperNavs}>
+            <Button
+              className={classes.swiperNav}
+              onClick={() => swiperRef.current?.slidePrev()}
+            >
+              <IconArrowLeft size={20} color="black" />
+            </Button>
+            <div className="swiper-custom-pagination"></div>
+            <Button
+              className={classes.swiperNav}
+              onClick={() => swiperRef.current?.slideNext()}
+            >
+              <IconArrowRight size={20} color="black" />
             </Button>
           </Group>
         </Swiper>
