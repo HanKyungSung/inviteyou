@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Grid, Stack, Box, Container, Text } from '@mantine/core';
+import { Grid, Stack, Box, Container, Text, Select } from '@mantine/core';
 import { ChromePicker, ColorResult } from 'react-color';
-// import Visual from "./component/Visual";
+import Visual from './component/Visual';
+import Visual3 from './component/Visual3';
 import Visual2 from './component/Visual2';
 import Intro from './component/Intro';
 import Calendar from './component/Calendar';
@@ -28,15 +29,39 @@ const CardBuilder = () => {
 
   const [mainColor, setMainColor] = useState<ColorResult>(defaultColor);
   const [secondColor, setSecondColor] = useState<ColorResult>(defaultColor);
+  const [selectVisual, setSelectVisual] = useState<any | string>();
 
   return (
     <Grid className="cardbuilder">
       <Grid.Col lg={3} className="cardbuilder-left">
-        Second testing
+        <Stack
+          className="cardbuilder-right"
+          style={{ position: 'fixed', top: 20 }}
+        >
+          <Text component="h1" size={25} mb={10}>
+            Choose the Visual Type
+          </Text>
+          <Select
+            label="Your favorite framework/library"
+            placeholder="Choose the Visual Type"
+            onChange={setSelectVisual}
+            data={[
+              { value: 'visual01', label: 'Visual Type 01' },
+              { value: 'visual02', label: 'Visual Type 02' },
+              { value: 'visual03', label: 'Visual Type 03' }
+            ]}
+          />
+        </Stack>
       </Grid.Col>
       <Grid.Col lg={6} className="cardbuilder-container">
         <Container className="invitation-wrap type01">
-          <Visual2 mainColor={mainColor} />
+          {(() => {
+            if (selectVisual === 'visual01') return <Visual />;
+            else if (selectVisual === 'visual02')
+              return <Visual2 mainColor={mainColor} />;
+            else if (selectVisual === 'visual03') return <Visual3 />;
+            else return 'Please select visual';
+          })()}
           <Intro mainColor={mainColor} />
           <Calendar mainColor={mainColor} secondColor={secondColor} />
           <Rsvp mainColor={mainColor} />
