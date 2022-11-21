@@ -1,5 +1,14 @@
 import { useState } from 'react';
-import { Grid, Stack, Box, Container, Text, Select } from '@mantine/core';
+import {
+  Grid,
+  Stack,
+  Box,
+  Container,
+  Text,
+  Select,
+  createStyles
+} from '@mantine/core';
+
 import { ChromePicker, ColorResult } from 'react-color';
 import Visual from './component/Visual';
 import Visual3 from './component/Visual3';
@@ -10,6 +19,13 @@ import Rsvp from './component/Rsvp';
 import Gallery from './component/Gallery';
 import Contact from './component/Contact';
 
+const useStyles = createStyles((theme, _params, getRef) => ({
+  cardBuilder: {
+    maxWidth: 1400,
+    marginLeft: 'auto',
+    marginRight: 'auto'
+  }
+}));
 const CardBuilder = () => {
   const defaultColor: ColorResult = {
     hex: '#ccccc',
@@ -26,42 +42,26 @@ const CardBuilder = () => {
       a: 1
     }
   };
-
+  const { classes } = useStyles();
   const [mainColor, setMainColor] = useState<ColorResult>(defaultColor);
   const [secondColor, setSecondColor] = useState<ColorResult>(defaultColor);
-  const [selectVisual, setSelectVisual] = useState<HTMLDivElement | string>();
+  const [selectedVisual, setSelectedVisual] = useState<string>('visual01');
 
-  const visuals: JSX.Element[] = [
-    <Visual />,
-    <Visual2 mainColor={mainColor} />,
-    <Visual3 />
-  ];
+  const visuals = {
+    visual01: <Visual />,
+    visual02: <Visual2 mainColor={mainColor} />,
+    visual03: <Visual3 />
+  };
 
-  const visual = visuals.map((item) => {
-    const mainColor = `mainColor={mainColor}`;
-    if (selectVisual === null) {
-      return 'Please select visual component';
-    }
-    return { item };
-  });
-
-  // const VisualComponent: React.FC<HTMLDivElement> = function (){
-  //   if (selectVisual === 'visual01') return <Visual />;
-  //   else if (selectVisual === 'visual02')
-  //     return <Visual2 mainColor={mainColor} />;
-  //   else if (selectVisual === 'visual03') return <Visual3 />;
-  //   else return <Visual />;
+  const visual = visuals[selectedVisual as keyof typeof visuals];
+  // const showVisual = function (){
+  //   for(const selectedVisual in visuals) {
+  //     return selectedVisual[0]
+  //   }
   // }
 
   return (
-    <Grid
-      className="cardbuilder"
-      // style={{
-      //   maxWidth: 1400,
-      //   marginLeft: 'auto',
-      //   marginRight: 'auto'
-      // }}
-    >
+    <Grid className={classes.cardBuilder}>
       <Grid.Col lg={3} className="cardbuilder-left">
         <Stack
           className="cardbuilder-right"
@@ -71,9 +71,10 @@ const CardBuilder = () => {
             Choose the Visual Type
           </Text>
           <Select
+            defaultValue={'visual01'}
             label="Your favorite framework/library"
             placeholder="Choose the Visual Type"
-            // onChange={setSelectVisual}
+            onChange={(option: string) => setSelectedVisual(option)}
             data={[
               { value: 'visual01', label: 'Visual Type 01' },
               { value: 'visual02', label: 'Visual Type 02' },
@@ -84,7 +85,7 @@ const CardBuilder = () => {
       </Grid.Col>
       <Grid.Col lg={6} className="cardbuilder-container">
         <Container className="invitation-wrap type01">
-          <div></div>
+          <div>{visual}</div>
           <Intro mainColor={mainColor} />
           <Calendar mainColor={mainColor} secondColor={secondColor} />
           <Rsvp mainColor={mainColor} />
