@@ -35,7 +35,7 @@ const SECONDARY_COLOR = '#191F28';
 const PRIMARY_COLOR = '#FF8689';
 const STYLE_BTN_COLOR = { from: '#ed6ea0', to: '#ec8c69', deg: 35 };
 
-const useStyles = createStyles((theme, _params, getRef) => ({
+const useStyles = createStyles((_theme, _params, _getRef) => ({
   header: {
     paddingTop: 25,
     paddingBottom: 25,
@@ -172,7 +172,7 @@ const Landing = () => {
     <>
       <MantineProvider
         theme={{
-          globalStyles: (theme) => ({
+          globalStyles: (_theme) => ({
             '*, *::before, *::after': {
               boxSizing: 'border-box'
             },
