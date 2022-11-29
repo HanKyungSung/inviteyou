@@ -161,12 +161,10 @@ const Landing = () => {
   const { classes } = useStyles();
   const swiperRef = useRef<SwiperType>();
   const pagination = {
-    clickable: true,
     el: '.swiper-custom-pagination',
-    renderBullet: function (bulletIndex: any, bulletClass: string) {
-      return `<span class="${bulletClass} ${classes.swiperBullet}">${
-        bulletIndex + 1
-      }</span>`;
+    clickable: true,
+    renderBullet: function (bulletIndex: number, bulletClass: string) {
+      return `<span className=${bulletClass}>${bulletIndex + 1}</span>`;
     }
   };
 
@@ -510,10 +508,10 @@ const Landing = () => {
                     <Anchor
                       component={Link}
                       underline={false}
-                      weight={700}
+                      style={{ color: 'white' }}
                       to="/builder"
                     >
-                      Start Free Trial
+                      GET START
                     </Anchor>
                   </Button>
                 </Stack>
@@ -1028,6 +1026,7 @@ const Landing = () => {
             </Grid.Col>
           </Grid>
         </Container>
+        {/* FOOTER */}
         <Container py={50} fluid>
           <Container size={1400}>
             <Stack>
