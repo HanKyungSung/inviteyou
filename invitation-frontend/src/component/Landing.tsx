@@ -33,6 +33,7 @@ import 'swiper/css/pagination';
 const STYLE_BG_COLOR = '#F6E5E5';
 const SECONDARY_COLOR = '#191F28';
 const PRIMARY_COLOR = '#FF8689';
+const COLOR_BLACK = '#222222';
 const STYLE_BTN_COLOR = { from: '#ed6ea0', to: '#ec8c69', deg: 35 };
 
 const useStyles = createStyles((_theme, _params, _getRef) => ({
@@ -58,7 +59,7 @@ const useStyles = createStyles((_theme, _params, _getRef) => ({
     margin: 0,
     fontSize: 30,
     fontWeight: 400,
-    color: '#222'
+    color: COLOR_BLACK
   },
   gnbLists: {
     display: 'flex',
@@ -177,7 +178,7 @@ const Landing = () => {
               boxSizing: 'border-box'
             },
             body: {
-              color: '#222'
+              color: COLOR_BLACK
             },
             a: {
               color: 'inherit!important'
@@ -283,10 +284,10 @@ const Landing = () => {
             spaceBetween={50}
             slidesPerView={1}
             loop={true}
-            // autoplay={{
-            //   delay: 3000,
-            //   disableOnInteraction: false
-            // }}
+            autoplay={{
+              delay: 3000,
+              disableOnInteraction: false
+            }}
             modules={[Autoplay, Navigation, Pagination]}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
