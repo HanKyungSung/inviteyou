@@ -254,7 +254,7 @@ const Landing = () => {
                       component={Link}
                       underline={false}
                       className={classes.gnbList}
-                      to="/"
+                      to="/Login"
                     >
                       Log in
                     </Anchor>
