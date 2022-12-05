@@ -266,7 +266,9 @@ const Landing = () => {
                       p={12}
                       uppercase
                     >
-                      Sign up
+                      <Anchor component={Link} underline={false} to="/Register">
+                        Sign up
+                      </Anchor>
                     </Button>
                   </Group>
                   <Group className={classes.gnbLists} ml={20}>

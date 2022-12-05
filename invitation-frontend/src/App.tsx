@@ -3,6 +3,7 @@ import './style/style.css';
 import CardBuilder from './CardBuilder';
 import Landing from './component/Landing';
 import Login from './component/Login';
+import Register from './component/Register';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
       <Route path="/" element={<Landing />} />
       <Route path="/builder" element={<CardBuilder />} />
       <Route path="/Login" element={<Login />} />
+      <Route path="/Register" element={<Register />} />
     </Routes>
   );
 }
