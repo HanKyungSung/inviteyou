@@ -10,8 +10,6 @@ import {
   Box,
   Anchor,
   Stack,
-  Image,
-  BackgroundImage,
   MantineProvider,
   Autocomplete,
   Loader,
@@ -24,9 +22,7 @@ import { IconSearch, IconMenu2 } from '@tabler/icons';
 
 import { useState, useRef } from 'react';
 
-const STYLE_BG_COLOR = '#F6E5E5';
 const SECONDARY_COLOR = '#191F28';
-const PRIMARY_COLOR = '#FF8689';
 const COLOR_BLACK = '#222222';
 const STYLE_BTN_COLOR = { from: '#ed6ea0', to: '#ec8c69', deg: 35 };
 
@@ -71,6 +67,14 @@ const useStyles = createStyles((_theme, _params, _getRef) => ({
   loginIcons: {
     display: 'flex',
     justifyContent: 'flex-end'
+  },
+  registerCheckboxWrap: {
+    position: 'relative'
+  },
+  registerCheckboxMore: {
+    position: 'absolute',
+    right: 0,
+    top: 0
   }
 }));
 
@@ -213,101 +217,111 @@ const Login = () => {
             </Grid>
           </Container>
         </Header>
-        {/* LOGIN */}
+        {/* Register */}
         <Container py={250} size={1400}>
           <Title align="center" size={45} weight={700} mb={65} order={1}>
-            SIGN IN
+            SIGN UP
           </Title>
           <Container size={430}>
-            <Input.Wrapper mb={20}>
-              <Autocomplete
-                value={value}
-                data={data}
-                onChange={handleChange}
-                rightSection={loading ? <Loader size={16} /> : null}
-                placeholder="Your email"
-                radius={5}
+            <Stack spacing={20}>
+              <Input.Wrapper>
+                <Autocomplete
+                  value={value}
+                  data={data}
+                  onChange={handleChange}
+                  rightSection={loading ? <Loader size={16} /> : null}
+                  placeholder="Your email"
+                  radius={5}
+                  size="xl"
+                  label={false}
+                />
+              </Input.Wrapper>
+              <Input.Wrapper>
+                <PasswordInput
+                  placeholder="Your password"
+                  id="your-password"
+                  radius={5}
+                  size="xl"
+                  error="Invalid password"
+                />
+              </Input.Wrapper>
+              <Input.Wrapper>
+                <PasswordInput
+                  placeholder="Re-enter Your password"
+                  id="your-password"
+                  radius={5}
+                  size="xl"
+                />
+              </Input.Wrapper>
+              <Input.Wrapper className={classes.loginIcons}>
+                <Input placeholder="Phone Number" radius={5} size="xl" />
+                <Button
+                  variant="gradient"
+                  color="color-white"
+                  gradient={STYLE_BTN_COLOR}
+                  size="xl"
+                  p={12}
+                  radius={5}
+                  ml={10}
+                >
+                  Verification
+                </Button>
+              </Input.Wrapper>
+              <Input.Wrapper>
+                <Input placeholder="Vertification Code" radius={5} size="xl" />
+              </Input.Wrapper>
+              <Stack spacing={10}>
+                <Box className={classes.registerCheckboxWrap}>
+                  <Checkbox label="Privacy Policy" color="pink" size="md" />
+                  <Anchor
+                    component={Link}
+                    size={16}
+                    underline={true}
+                    className={classes.registerCheckboxMore}
+                    to="/"
+                  >
+                    View Details
+                  </Anchor>
+                </Box>
+                <Box className={classes.registerCheckboxWrap}>
+                  <Checkbox label="Agreement" color="pink" size="md" />
+                  <Anchor
+                    component={Link}
+                    size={16}
+                    underline={true}
+                    className={classes.registerCheckboxMore}
+                    to="/"
+                  >
+                    View Details
+                  </Anchor>
+                </Box>
+              </Stack>
+              <Button
+                variant="gradient"
+                color="color-white"
+                gradient={STYLE_BTN_COLOR}
+                fullWidth
                 size="xl"
-                label={false}
-              />
-            </Input.Wrapper>
-            <Input.Wrapper mb={20}>
-              <PasswordInput
-                placeholder="Your password"
-                id="your-password"
+                p={12}
                 radius={5}
-                size="xl"
-                error="Invalid password"
-              />
-            </Input.Wrapper>
-            <Button
-              variant="gradient"
-              color="color-white"
-              gradient={STYLE_BTN_COLOR}
-              fullWidth
-              size="xl"
-              p={12}
-              radius={5}
-              mb={30}
-              uppercase
-            >
-              Sign In
-            </Button>
-            <Grid mb={20}>
-              <Grid.Col span={6}>
-                <Checkbox label="Remember ID" color="pink" size="md" />
-              </Grid.Col>
-              <Grid.Col span={6} className={classes.loginIcons}>
-                <Anchor component={Link} size={16} underline={false} to="/">
-                  Find ID
-                </Anchor>
-                <Text mx={10}>|</Text>
-                <Anchor component={Link} size={16} underline={false} to="/">
-                  Find PW
-                </Anchor>
-              </Grid.Col>
-            </Grid>
-            <Button
-              variant="outline"
-              color="pink"
-              fullWidth
-              size="xl"
-              p={12}
-              radius={5}
-              mb={30}
-              uppercase
-            >
-              <Anchor component={Link} underline={false} to="/Register">
+                uppercase
+              >
                 Sign Up
-              </Anchor>
-            </Button>
-            <Grid>
-              <Grid.Col span={6}>
-                <Text size={20} lineClamp={2}>
-                  Sign in or Create Account with
-                </Text>
-              </Grid.Col>
-              <Grid.Col span={6}>
-                <Group ml={20} className={classes.loginIcons}>
-                  <Anchor component={Link} underline={false} to="/">
-                    <Image
-                      src={require('../assets/img/icon-login-kakao.png')}
-                      alt="con-login-kakao"
-                      width={60}
-                      height={60}
-                    />
-                  </Anchor>
-                  <Anchor component={Link} underline={false} to="/">
-                    <Image
-                      src={require('../assets/img/icon-login-naver.png')}
-                      alt="con-login-naver"
-                      width={60}
-                      height={60}
-                    />
-                  </Anchor>
-                </Group>
-              </Grid.Col>
-            </Grid>
+              </Button>
+              <Button
+                variant="outline"
+                color="pink"
+                fullWidth
+                size="xl"
+                p={12}
+                radius={5}
+                uppercase
+              >
+                <Anchor component={Link} underline={false} to="/Login">
+                  Sign In
+                </Anchor>
+              </Button>
+            </Stack>
           </Container>
         </Container>
         {/* FOOTER */}
