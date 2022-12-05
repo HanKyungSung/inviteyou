@@ -11,7 +11,6 @@ import {
   Anchor,
   Stack,
   Image,
-  BackgroundImage,
   MantineProvider,
   Autocomplete,
   Loader,
@@ -24,9 +23,7 @@ import { IconSearch, IconMenu2 } from '@tabler/icons';
 
 import { useState, useRef } from 'react';
 
-const STYLE_BG_COLOR = '#F6E5E5';
 const SECONDARY_COLOR = '#191F28';
-const PRIMARY_COLOR = '#FF8689';
 const COLOR_BLACK = '#222222';
 const STYLE_BTN_COLOR = { from: '#ed6ea0', to: '#ec8c69', deg: 35 };
 
@@ -219,95 +216,98 @@ const Login = () => {
             SIGN IN
           </Title>
           <Container size={430}>
-            <Input.Wrapper mb={20}>
-              <Autocomplete
-                value={value}
-                data={data}
-                onChange={handleChange}
-                rightSection={loading ? <Loader size={16} /> : null}
-                placeholder="Your email"
-                radius={5}
-                size="xl"
-                label={false}
-              />
-            </Input.Wrapper>
-            <Input.Wrapper mb={20}>
-              <PasswordInput
-                placeholder="Your password"
-                id="your-password"
-                radius={5}
-                size="xl"
-                error="Invalid password"
-              />
-            </Input.Wrapper>
-            <Button
-              variant="gradient"
-              color="color-white"
-              gradient={STYLE_BTN_COLOR}
-              fullWidth
-              size="xl"
-              p={12}
-              radius={5}
-              mb={30}
-              uppercase
-            >
-              Sign In
-            </Button>
-            <Grid mb={20}>
-              <Grid.Col span={6}>
-                <Checkbox label="Remember ID" color="pink" size="md" />
-              </Grid.Col>
-              <Grid.Col span={6} className={classes.loginIcons}>
-                <Anchor component={Link} size={16} underline={false} to="/">
-                  Find ID
-                </Anchor>
-                <Text mx={10}>|</Text>
-                <Anchor component={Link} size={16} underline={false} to="/">
-                  Find PW
-                </Anchor>
-              </Grid.Col>
-            </Grid>
-            <Button
-              variant="outline"
-              color="pink"
-              fullWidth
-              size="xl"
-              p={12}
-              radius={5}
-              mb={30}
-              uppercase
-            >
-              <Anchor component={Link} underline={false} to="/Register">
-                Sign Up
-              </Anchor>
-            </Button>
-            <Grid>
-              <Grid.Col span={6}>
-                <Text size={20} lineClamp={2}>
-                  Sign in or Create Account with
-                </Text>
-              </Grid.Col>
-              <Grid.Col span={6}>
-                <Group ml={20} className={classes.loginIcons}>
-                  <Anchor component={Link} underline={false} to="/">
-                    <Image
-                      src={require('../assets/img/icon-login-kakao.png')}
-                      alt="con-login-kakao"
-                      width={60}
-                      height={60}
-                    />
+            <Stack>
+              <Input.Wrapper>
+                <Autocomplete
+                  value={value}
+                  data={data}
+                  onChange={handleChange}
+                  rightSection={loading ? <Loader size={16} /> : null}
+                  placeholder="Your email"
+                  radius={5}
+                  size="xl"
+                  label={false}
+                />
+              </Input.Wrapper>
+              <Input.Wrapper>
+                <PasswordInput
+                  placeholder="Your password"
+                  id="your-password"
+                  radius={5}
+                  size="xl"
+                  error="Invalid password"
+                />
+              </Input.Wrapper>
+              <Stack spacing={30}>
+                <Button
+                  variant="gradient"
+                  color="color-white"
+                  gradient={STYLE_BTN_COLOR}
+                  fullWidth
+                  size="xl"
+                  p={12}
+                  radius={5}
+                  uppercase
+                >
+                  Sign In
+                </Button>
+                <Grid>
+                  <Grid.Col span={6}>
+                    <Checkbox label="Remember ID" color="pink" size="md" />
+                  </Grid.Col>
+                  <Grid.Col span={6} className={classes.loginIcons}>
+                    <Anchor component={Link} size={16} underline={false} to="/">
+                      Find ID
+                    </Anchor>
+                    <Text mx={10}>|</Text>
+                    <Anchor component={Link} size={16} underline={false} to="/">
+                      Find PW
+                    </Anchor>
+                  </Grid.Col>
+                </Grid>
+                <Button
+                  variant="outline"
+                  color="pink"
+                  fullWidth
+                  size="xl"
+                  p={12}
+                  radius={5}
+                  mb={30}
+                  uppercase
+                >
+                  <Anchor component={Link} underline={false} to="/Register">
+                    Sign Up
                   </Anchor>
-                  <Anchor component={Link} underline={false} to="/">
-                    <Image
-                      src={require('../assets/img/icon-login-naver.png')}
-                      alt="con-login-naver"
-                      width={60}
-                      height={60}
-                    />
-                  </Anchor>
-                </Group>
-              </Grid.Col>
-            </Grid>
+                </Button>
+                <Grid>
+                  <Grid.Col span={6}>
+                    <Text size={20} lineClamp={2}>
+                      Sign in or Create Account with
+                    </Text>
+                  </Grid.Col>
+                  <Grid.Col span={6}>
+                    <Group ml={20} className={classes.loginIcons}>
+                      <Anchor component={Link} underline={false} to="/">
+                        <Image
+                          src={require('../assets/img/icon-login-kakao.png')}
+                          alt="con-login-kakao"
+                          width={60}
+                          height={60}
+                        />
+                      </Anchor>
+                      <Anchor component={Link} underline={false} to="/">
+                        <Image
+                          src={require('../assets/img/icon-login-naver.png')}
+                          alt="con-login-naver"
+                          width={60}
+                          height={60}
+                        />
+                      </Anchor>
+                    </Group>
+                  </Grid.Col>
+                </Grid>
+              </Stack>
+            </Stack>
           </Container>
         </Container>
         {/* FOOTER */}
