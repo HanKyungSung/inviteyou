@@ -11,7 +11,6 @@ import {
   Anchor,
   Stack,
   Image,
-  BackgroundImage,
   MantineProvider,
   Autocomplete,
   Loader,
@@ -24,9 +23,7 @@ import { IconSearch, IconMenu2 } from '@tabler/icons';
 
 import { useState, useRef } from 'react';
 
-const STYLE_BG_COLOR = '#F6E5E5';
 const SECONDARY_COLOR = '#191F28';
-const PRIMARY_COLOR = '#FF8689';
 const COLOR_BLACK = '#222222';
 const STYLE_BTN_COLOR = { from: '#ed6ea0', to: '#ec8c69', deg: 35 };
 
