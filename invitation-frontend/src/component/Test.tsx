@@ -1,25 +1,30 @@
 import { FreeMode, Thumbs } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState } from 'react';
-import visualImg from '../assets/img/visual-01.jpg';
-import brideImg from '../assets/img/img-bride.png';
-import groomImg from '../assets/img/img-bride.png';
-import iconTel2 from '../assets/img/icon-tel.svg';
+import visualImg from '../assets/img/visual-han.jpg';
+import iconTel2 from '../assets/img/icon-tel2.png';
+import IconSlash from '../assets/img/icon-slash.png';
+import titleDeco from '../assets/img/section-tit-deco-han.png';
+import imgHan from '../assets/img/img-han.png';
+import imgLee from '../assets/img/img-lee.png';
+import map from '../assets/img/map-han.png';
+import soundOn from '../assets/img/icon-sound-on.png';
+import soundOff from '../assets/img/icon-sound-on.png';
 
 const Test = () => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
 
   const slides: string[] = [
-    require('../assets/img/img-gallery1.jpg'),
-    require('../assets/img/img-gallery2.jpg'),
-    require('../assets/img/img-gallery3.jpg'),
-    require('../assets/img/img-gallery4.jpg'),
-    require('../assets/img/img-gallery5.jpg'),
-    require('../assets/img/img-gallery6.jpg'),
-    require('../assets/img/img-gallery7.jpg'),
-    require('../assets/img/img-gallery8.jpg'),
-    require('../assets/img/img-gallery9.jpg'),
-    require('../assets/img/img-gallery10.jpg')
+    require('../assets/img/img-gallery-han-1.jpg'),
+    require('../assets/img/img-gallery-han-1.jpg'),
+    require('../assets/img/img-gallery-han-1.jpg'),
+    require('../assets/img/img-gallery-han-1.jpg'),
+    require('../assets/img/img-gallery-han-1.jpg'),
+    require('../assets/img/img-gallery-han-1.jpg'),
+    require('../assets/img/img-gallery-han-1.jpg'),
+    require('../assets/img/img-gallery-han-1.jpg'),
+    require('../assets/img/img-gallery-han-1.jpg'),
+    require('../assets/img/img-gallery-han-1.jpg')
   ];
 
   const slide = slides.map((item) => {
@@ -35,12 +40,14 @@ const Test = () => {
   });
 
   return (
-    <main>
+    <main className="invitation-wrap invitation-test-wrap">
       <section className="visual visualType04">
         <div className="visual-content">
           <div className="wedding-date-tit">
             <span>04</span>
-            <span>/</span>
+            <span className="slash">
+              <img src={IconSlash} alt="IconSlash" />
+            </span>
             <span>29</span>
           </div>
           <p className="wedding-opening">
@@ -74,7 +81,7 @@ const Test = () => {
         <h2 className="section-tit">모시는 글</h2>
         <span className="title-devider">
           <figure>
-            <img src="" alt="" />
+            <img src={titleDeco} alt="titleDeco" />
           </figure>
         </span>
         <p>
@@ -99,7 +106,7 @@ const Test = () => {
         </span>
       </section>
       <section className="calendar calendarType02">
-        <div className="calendar-wrap d-flex">
+        <div className="calendar-wrap">
           <div className="calendar-month">
             사 <br />
             월 <br />
@@ -161,7 +168,7 @@ const Test = () => {
                 <td>27</td>
                 <td>28</td>
                 <td className="current">
-                  29
+                  <span className="circle">29</span>
                   <span className="time">오전 11시</span>
                 </td>
               </tr>
@@ -176,7 +183,7 @@ const Test = () => {
         <h2 className="section-tit">결혼식 설문지</h2>
         <span className="title-devider">
           <figure>
-            <img src="" alt="" />
+            <img src={titleDeco} alt="titleDeco" />
           </figure>
         </span>
         <form action="">
@@ -185,7 +192,7 @@ const Test = () => {
             <input type="text" name="name" placeholder="성함을 입력해주세요" />
           </span>
           <span className="input-wrap">
-            <label htmlFor="">participate</label>
+            <label htmlFor="">참석 여부</label>
             <span className="radio-wrap">
               <label htmlFor="yes">예</label>
               <input type="radio" name="participate" id="yes" value="yes" />
@@ -198,7 +205,7 @@ const Test = () => {
             </span>
           </span>
           <span className="input-wrap">
-            <label htmlFor="menu">menu</label>
+            <label htmlFor="menu">차림표</label>
             <span className="radio-wrap">
               <label htmlFor="menu01">차림표 01</label>
               <input type="radio" name="menu" id="menu01" value="menu01" />
@@ -207,11 +214,6 @@ const Test = () => {
             <span className="radio-wrap">
               <label htmlFor="menu02">차림표 02</label>
               <input type="radio" name="menu" id="menu02" value="menu02" />
-              <span className="checkmark"></span>
-            </span>
-            <span className="radio-wrap">
-              <label htmlFor="menu03">차림표 03</label>
-              <input type="radio" name="menu" id="menu03" value="menu03" />
               <span className="checkmark"></span>
             </span>
           </span>
@@ -232,7 +234,7 @@ const Test = () => {
         <h2 className="section-tit">우리의 기록</h2>
         <span className="title-devider">
           <figure>
-            <img src="" alt="" />
+            <img src={titleDeco} alt="titleDeco" />
           </figure>
         </span>
         <div className="swiperType01">
@@ -240,10 +242,15 @@ const Test = () => {
             wrapperTag="ul"
             spaceBetween={10}
             navigation={false}
+            loop={true}
             thumbs={{
               swiper: thumbsSwiper && !thumbsSwiper ? thumbsSwiper : null
             }}
             modules={[FreeMode, Thumbs]}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: true
+            }}
             className="swiperType01-main"
           >
             {slide}
@@ -256,6 +263,10 @@ const Test = () => {
             freeMode={true}
             watchSlidesProgress={true}
             modules={[FreeMode, Thumbs]}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: true
+            }}
             className="swiperType01-thumb"
           >
             {slide}
@@ -266,13 +277,13 @@ const Test = () => {
         <h2 className="section-tit">인사 전할 곳</h2>
         <span className="title-devider">
           <figure>
-            <img src="" alt="" />
+            <img src={titleDeco} alt="titleDeco" />
           </figure>
         </span>
         <ul className="contact-lists">
           <li className="contact-list">
             <figure className="character-img">
-              <img src={groomImg} alt="groomImg" />
+              <img src={imgHan} alt="groomImg" />
             </figure>
             <ul className="contact-infos">
               <li className="contact-info name">
@@ -282,18 +293,19 @@ const Test = () => {
                 </div>
               </li>
               <li className="contact-info tel">
-                <a href={`tel:236-777-5421`}>236-777-5421</a>
+                <a href={`tel:236-777-5421`}>236.777.5421</a>
               </li>
             </ul>
             <figure className="tel-img">
-              <a href={`tel:236-777-5421`}>
-                <img src={iconTel2} alt="phone-2" />
+              <a href={`tel:604-779-5421`}>
+                <img src={iconTel2} alt="phone-1" />
+                <span className="mobile-hidden">인사 전하기</span>
               </a>
             </figure>
           </li>
           <li className="contact-list">
             <figure className="character-img">
-              <img src={brideImg} alt="bride-1" />
+              <img src={imgLee} alt="bride-1" />
             </figure>
             <ul className="contact-infos">
               <li className="contact-info name">
@@ -303,13 +315,13 @@ const Test = () => {
                 </div>
               </li>
               <li className="contact-info tel">
-                <a href={`tel:604-77-5421`}>604-77-5421</a>
+                <a href={`tel:604-77-5421`}>604.779.5421</a>
               </li>
             </ul>
             <figure className="tel-img">
               <a href={`tel:604-779-5421`}>
                 <img src={iconTel2} alt="phone-1" />
-                인사 전하기
+                <span className="mobile-hidden">인사 전하기</span>
               </a>
             </figure>
           </li>
@@ -319,7 +331,7 @@ const Test = () => {
         <h2 className="section-tit">오시는 길</h2>
         <span className="title-devider">
           <figure>
-            <img src="" alt="" />
+            <img src={titleDeco} alt="titleDeco" />
           </figure>
         </span>
         <div className="location-info">
@@ -328,12 +340,20 @@ const Test = () => {
             <dd>6664 Deer Lake Ave, Burnaby, BC V5E 4H3, Canada</dd>
             <dd>604. 298. 4278</dd>
           </dl>
-          <figure>
-            <img src="" alt="map" />
+          <figure className="map">
+            <img src={map} alt="map" />
           </figure>
-          <button type="submit">지도에서 위치 확인하기</button>
+          <button>
+            <a href="https://goo.gl/maps/i4espr2pBkWbwCjH6">
+              지도에서 위치 확인하기
+            </a>
+          </button>
         </div>
       </section>
+      <div className="sound">
+        <img src={soundOn} alt="sound-on" />
+        <img src={soundOff} alt="sound-off" />
+      </div>
     </main>
   );
 };

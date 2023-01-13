@@ -1,0 +1,485 @@
+
+.invitation-wrap{
+    &.invitation-test-wrap{
+        font-family : "KoPub Batang";
+        max-width: 720px;
+        margin: 0 auto;
+        background: url('../assets/img/bg-han.jpg') no-repeat 100% / cover;
+        line-height: 1.8;
+        section {
+            margin-bottom: 150px;
+            padding-top: 0;
+            padding-bottom: 0;
+            max-width: 100%;
+            &:last-child{
+                margin-bottom: 0;
+                padding-bottom: 150px
+            }
+            .section-tit,
+            .calendar-month{
+                color: #C9736E;
+                font-weight: 700;
+                font-size: 26px;
+            }
+            .title-devider{
+                margin-bottom: 30px;
+                display: block;
+                figure{
+                    text-align: center;
+                }
+                img{
+                    max-height: 25px;
+                }
+            }
+            button{
+                background-color: #C9736E;
+                border: none;
+                padding: 15px 0;
+                color: #fff;
+                font-family : "KoPub Batang";
+                font-size: 20px;
+                width: 100%;
+                cursor: pointer;
+                a{
+                    color: inherit;
+                    font: inherit;
+                }
+            }
+        }
+        .visualType04{
+            padding: 0;
+            .visual-content{
+                position: relative;
+                padding: 0 40px;
+                &::after{
+                    content:"";
+                    width: 135px;
+                    height: 168px;
+                    background: url('../assets/img/visuan-han-deco1.png') no-repeat right / cover;
+                    display: inline-block;
+                    position: absolute;
+                    right: 0; top: 0;
+                }
+            }
+            .wedding-date-tit{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 50px;
+                color: #7B7574;
+                letter-spacing: 0.09px;
+                font-weight: 400;
+                .slash{
+                    display: flex;
+                    margin: 10px 0;
+                    img{
+                        max-height: 16px;
+                    }
+                }
+            }
+            .wedding-opening{
+                font-size: 20px;
+                color: #7B7574;
+                display: flex;
+                align-items: flex-end;
+                line-height: 1.5;
+                padding: 100px 0;
+                span{
+                    & + span{
+                        margin-left: 10px;
+                    }
+                }
+            }
+            .visual-img{
+                position: relative;
+                display: flex;
+                img{
+                    width: 100%;
+                    max-width: 720px;
+                }
+                &::before{
+                    content:"";
+                    width: 162px;
+                    height: 190px;
+                    background: url('../assets/img/visuan-han-deco2.png') no-repeat right / cover;
+                    display: inline-block;
+                    position: absolute;
+                    left: 0; bottom: 5px;
+                }
+            }
+            .wedding-details{
+                margin-top: 60px;
+                p{
+                    margin: 0;
+                    line-height: 1.8;
+                    font-size: 20px;
+                    color: #444;
+                }
+            }
+        }
+        .introType02{
+            width: 100%!important;
+            max-width: 100%;
+            padding: 0 40px;
+            position: relative;
+            &::before{
+                content:"";
+                width: 152px;
+                height: 178px;
+                background: url('../assets/img/visuan-han-deco3.png') no-repeat center / cover;
+                display: inline-block;
+                position: absolute;
+                top: -20px;
+                left: 0;
+            }
+            p{
+                font-size: 20px;
+                line-height: 1.8;
+            }
+            .wedding-character{
+                width: 100%;
+                text-align: center;
+                margin-top: 80px;
+                &::After{
+                    display: none;
+                }
+                .character-wrap{
+                    letter-spacing: 2px;
+                    & + .character-wrap{
+                        margin-top: 20px;
+                    }
+                }
+                .character-wrap,
+                .parent-wrap{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    font-size: 14px;
+                    .parents,
+                    .character{
+                        font-size: 20px
+                    }
+                    .parents{
+                        margin-right: 5px;
+                    }
+                    .character {
+                        margin-left: 30px;
+                    }
+                }
+            }
+        }
+        .calendarType02{
+            position: relative;
+            max-width: 100%;
+            width: 100%;
+            padding: 0 120px;
+            .calendar-wrap{
+                box-shadow: none;
+                display: flex;
+                padding: 0;
+                .calendar-month{
+                    margin-right: 40px;
+                    margin-top: 10px;
+                }
+                th,td{
+                    font-size: 20px;
+                }
+                .current{
+                    .circle{
+                        width: 80%;
+                        height: 80%;
+                        margin: 0 auto;
+                        border: 1px solid #C9736E;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                    }
+                    position: relative;
+                    background-color: transparent;
+                    color: #C9736E;
+
+                    .time{
+                        position: absolute;
+                        left: 50%; bottom: -30px;
+                        transform: translateX(-50%);
+                        font-size: 16px;
+                        white-space: nowrap;
+                    }
+                }
+            }
+            &::after{
+                content:"";
+                width: 200px;
+                height: 236px;
+                background: url('../assets/img/visuan-han-deco4.png') no-repeat center / cover;
+                display: inline-block;
+                position: absolute;
+                top: -100px;
+                right: 0;
+            }
+        }
+        .rsvpType02{
+            width: 65%;
+            .input-wrap{
+                margin-bottom: 50px;
+                input[type=text]{
+                    background-color: transparent;
+                    border-color: #aaa;
+                }
+                textarea{
+                    border-color: #aaa;
+                    background-color: transparent;
+                    border-radius: 5px;
+                    font-size: 14px;
+                    height: 150px;
+                }
+            }
+            .radio-wrap {
+                input[type=radio]:checked ~ .checkmark{
+                    border-color: #C9736E;
+                }
+                .checkmark{
+                    border-color: #aaa;
+                    &::after{
+                        background-color: #C9736E;
+                    }
+                }
+            }
+            
+            
+        }
+        .galleryType02{
+            width: 65%;
+            padding-bottom: 0;
+            .swiperType01 {
+                img{
+                    max-height: 670px!important;
+                }
+            }
+        }
+        .contactType02{
+            width: 65%;
+            .character-img{
+                img{
+                    max-height: 80px;
+                }
+            }
+            .contact-info{
+                .name{
+                    font-size: 22px;
+                    color: #7B7574;
+                    letter-spacing: 2px;
+                    .position{
+                        font-size: 16px;
+                    }
+                }
+                &.tel{
+                    margin-top: 5px;
+                    a{
+                        font-size: 18px;
+                        color: #444;
+                        font-family : "KoPub Batang";
+                        letter-spacing: 2px;
+                    }
+                }
+            }
+            .tel-img{
+                background-color: transparent;
+                border: 1px solid #888;
+                width: auto;
+                height: auto;
+                padding: 10px 15px;
+                border-radius: 40px;
+                a{
+                    display: flex;
+                    align-items: center;
+                    white-space: nowrap;
+                    color: #888;
+                    font-family : "KoPub Batang";
+                }
+                img{
+                    max-height: 24px;
+                    margin-right: 15px;
+                }
+            }
+        }
+        .locationType02{
+            width: 65%;
+            dt{
+                font-size: 20px;
+                font-weight: 500;
+                margin-bottom: 10px;
+            }
+            dd{
+                font-size: 16px;
+                color: #7B7574;
+                margin-bottom: 5px;
+            }
+            .map{
+                padding: 30px 0;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .sound{
+        width: 50px;
+        height: 50px;
+        border: 1px solid #aaa;
+        border-radius: 50%;
+        position: fixed;
+        right: 20px; bottom: 20px;
+        z-index: 5;
+        background-color: #F8F8F7;
+        img{
+            max-height: 30px;
+            position: absolute;
+            left: 50%; top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    }
+}
+@media(max-width: 600px){
+    .invitation-wrap{
+        &.invitation-test-wrap{
+            section{
+                margin-bottom: 100px;
+                &.locationType02{
+                    padding-bottom: 100px;
+                    margin-bottom: 0;
+                }
+                &:not(.visual){
+                    padding-left: 20px!important;
+                    padding-right: 20px!important;
+                }
+                width: 100%!important;
+                .section-tit{
+                    font-size: 22px;
+                }
+                .title-devider{
+                    img{
+                        max-height: 16px;
+                    }
+                }
+                button{
+                    font-size: 16px;
+                }
+            }
+            .visualType04 {
+                .visual-content{
+                    &::after{
+                        width: 128px;
+                        height: 152px;
+                    }
+                }
+                .wedding-date-tit{
+                    font-size: 35px;
+                }
+                .wedding-opening{
+                    padding: 40px 0 60px;
+                    span{
+                        font-size: 16px;
+                        & + span{
+                            margin-left: 6px;
+                        }
+                    }
+                }
+                .visual-img{
+                    &::before{
+                        width: 104px;
+                        height: 122px;
+                    }
+                }
+                .wedding-details{
+                    margin-top: 45px;
+                    p{
+                        font-size: 16px;
+                    }
+                }
+            }
+            .introType02{
+                p{
+                    font-size: 16px;
+                }
+                &::before{
+                    width: 104px;
+                    height: 122px;
+                }
+                .wedding-character{
+                    margin-top: 60px;
+                    .character-wrap,
+                    .parent-wrap{
+                        .parents,
+                        .character{
+                            font-size: 16px
+                        }
+                    }
+                }
+            }
+            .calendarType02{
+                &::after{
+                    width: 130px;
+                    height: 150px;
+                }
+                .calendar-wrap {
+                    .calendar-month{
+                        font-size: 22px;
+                        margin-right: 10px;
+                    }
+                    th,td{
+                        font-size: 16px;
+                    }
+                    .current{
+                        .circle{
+                            width: 100%;
+                            height: 100%;
+                            max-width: 42px;
+                            max-height: 42px;
+                        }
+                        .time{
+                            font-size: 14px;
+                            bottom: -20px;
+                        }
+                    }
+                }
+            }
+            .contactType02 {
+                .tel-img{
+                    width: 45px;
+                    height: 45px;
+                    img{
+                        max-height: 17px;
+                        margin-right: 0;
+                    }
+                    a{
+                        font-size: 14px;
+                    }
+                }
+                .contact-info{
+                    .name{
+                        font-size: 18px;
+                    }
+                    .position{
+                        font-size: 14px;
+                        letter-spacing: 0;
+                    }
+                }
+                .character-img {
+                    img{
+                        max-height: 65px;
+                    }
+                }
+                .mobile-hidden{
+                    display: none;
+                }
+            }
+        }
+    }
+}
