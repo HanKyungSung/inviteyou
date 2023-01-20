@@ -1,5 +1,6 @@
 import { Navigation, EffectCoverflow } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useState } from 'react';
 import visualImg from '../assets/img/visual-han.jpg';
 import iconTel2 from '../assets/img/icon-tel2.png';
 import IconSlash from '../assets/img/icon-slash.png';
@@ -8,9 +9,21 @@ import imgHan from '../assets/img/img-han.png';
 import imgLee from '../assets/img/img-lee.png';
 import map from '../assets/img/map-han.png';
 import soundOn from '../assets/img/icon-sound-on.png';
-import soundOff from '../assets/img/icon-sound-on.png';
+import soundOff from '../assets/img/icon-sound-off.png';
 
 const Test = () => {
+  const audio = new Audio('../assets/music/music_han.mp3');
+  const [isMusicActive, setIsMusicActive] = useState(true);
+
+  const handleMusicPlay = () => {
+    setIsMusicActive(!isMusicActive);
+    if (isMusicActive) {
+      audio.pause();
+    } else {
+      audio.play();
+    }
+  };
+
   const slides: string[] = [
     require('../assets/img/img-gallery-han-1.jpg'),
     require('../assets/img/img-gallery-han-1.jpg'),
@@ -345,9 +358,12 @@ const Test = () => {
           </button>
         </div>
       </section>
-      <div className="sound">
-        <img src={soundOn} alt="sound-on" />
-        <img src={soundOff} alt="sound-off" />
+      <div className="sound" onClick={() => handleMusicPlay()}>
+        {!isMusicActive ? (
+          <img src={soundOff} alt="sound-off" />
+        ) : (
+          <img src={soundOn} alt="sound-on" />
+        )}
       </div>
     </main>
   );
