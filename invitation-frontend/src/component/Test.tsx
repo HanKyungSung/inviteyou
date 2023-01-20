@@ -1,11 +1,4 @@
-// import { FreeMode, Thumbs } from 'swiper';
-import {
-  FreeMode,
-  Navigation,
-  Thumbs,
-  EffectCoverflow,
-  Pagination
-} from 'swiper';
+import { Navigation, EffectCoverflow } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState } from 'react';
 import visualImg from '../assets/img/visual-han.jpg';
