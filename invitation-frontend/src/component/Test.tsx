@@ -1,6 +1,5 @@
 import { Navigation, EffectCoverflow } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { useState } from 'react';
 import visualImg from '../assets/img/visual-han.jpg';
 import iconTel2 from '../assets/img/icon-tel2.png';
 import IconSlash from '../assets/img/icon-slash.png';
