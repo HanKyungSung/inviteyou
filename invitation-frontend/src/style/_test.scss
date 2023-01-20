@@ -255,11 +255,20 @@
             
         }
         .galleryType02{
-            width: 65%;
+            width: 100%;
             padding-bottom: 0;
             .swiperType01 {
                 img{
                     max-height: 670px!important;
+                }
+            }
+            .swiper-button-next,
+            .swiper-button-prev{
+                transform: translateY(-50%);
+                &::after{
+                    font-size: 35px;
+                    white-space: nowrap;
+                    color: #fff;
                 }
             }
         }
@@ -355,7 +364,7 @@
                     padding-bottom: 100px;
                     margin-bottom: 0;
                 }
-                &:not(.visual){
+                &:not(.visual, .galleryType02){
                     padding-left: 20px!important;
                     padding-right: 20px!important;
                 }

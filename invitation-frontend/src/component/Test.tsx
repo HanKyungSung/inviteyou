@@ -1,4 +1,11 @@
-import { FreeMode, Thumbs } from 'swiper';
+// import { FreeMode, Thumbs } from 'swiper';
+import {
+  FreeMode,
+  Navigation,
+  Thumbs,
+  EffectCoverflow,
+  Pagination
+} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { useState } from 'react';
 import visualImg from '../assets/img/visual-han.jpg';
@@ -31,7 +38,7 @@ const Test = () => {
     const img = item;
 
     return (
-      <SwiperSlide key={`slide-${item}`} tag="li">
+      <SwiperSlide key={`slide-${item}`}>
         <figure>
           <img src={img} alt={`Slide ${item}`} className="swiper-lazy" />
         </figure>
@@ -239,35 +246,33 @@ const Test = () => {
         </span>
         <div className="swiperType01">
           <Swiper
-            wrapperTag="ul"
-            spaceBetween={10}
-            navigation={false}
+            effect={'coverflow'}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={1.4}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 100,
+              modifier: 1,
+              slideShadows: true
+            }}
             loop={true}
-            thumbs={{
-              swiper: thumbsSwiper && !thumbsSwiper ? thumbsSwiper : null
-            }}
-            modules={[FreeMode, Thumbs]}
             autoplay={{
               delay: 2500,
-              disableOnInteraction: true
+              disableOnInteraction: false
             }}
-            className="swiperType01-main"
-          >
-            {slide}
-          </Swiper>
-          <Swiper
-            wrapperTag="ul"
-            onSwiper={() => setThumbsSwiper}
-            spaceBetween={10}
-            slidesPerView={4}
-            freeMode={true}
-            watchSlidesProgress={true}
-            modules={[FreeMode, Thumbs]}
-            autoplay={{
-              delay: 2500,
-              disableOnInteraction: true
+            navigation={true}
+            modules={[EffectCoverflow, Navigation]}
+            breakpoints={{
+              300: {
+                slidesPerView: 1.4
+              },
+              600: {
+                slidesPerView: 2
+              }
             }}
-            className="swiperType01-thumb"
+            className="mySwiper"
           >
             {slide}
           </Swiper>
