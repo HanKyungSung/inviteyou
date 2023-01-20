@@ -896,6 +896,8 @@
 }
 .invitation-wrap.invitation-test-wrap .locationType02 {
   width: 65%;
+  margin-bottom: 0;
+  padding-bottom: 150px;
 }
 .invitation-wrap.invitation-test-wrap .locationType02 dt {
   font-size: 20px;
@@ -923,6 +925,7 @@
   bottom: 20px;
   z-index: 5;
   background-color: #F8F8F7;
+  cursor: pointer;
 }
 .invitation-wrap .sound img {
   max-height: 30px;

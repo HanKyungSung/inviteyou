@@ -12,8 +12,6 @@ import soundOn from '../assets/img/icon-sound-on.png';
 import soundOff from '../assets/img/icon-sound-on.png';
 
 const Test = () => {
-  const [thumbsSwiper, setThumbsSwiper] = useState(null);
-
   const slides: string[] = [
     require('../assets/img/img-gallery-han-1.jpg'),
     require('../assets/img/img-gallery-han-1.jpg'),

@@ -320,6 +320,8 @@
         }
         .locationType02{
             width: 65%;
+            margin-bottom: 0;
+            padding-bottom: 150px;
             dt{
                 font-size: 20px;
                 font-weight: 500;
@@ -347,6 +349,7 @@
         right: 20px; bottom: 20px;
         z-index: 5;
         background-color: #F8F8F7;
+        cursor: pointer;
         img{
             max-height: 30px;
             position: absolute;
