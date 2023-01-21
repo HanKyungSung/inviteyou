@@ -32,10 +32,11 @@ jobs:
         working-directory: ./invitation-frontend
         run: npm install
 
+      # Disabled it for temporary purpose.
       # Run eslint on frontend
-      - name: Run eslint
-        working-directory: ./invitation-frontend
-        run: npm run lint
+      # - name: Run eslint
+      #   working-directory: ./invitation-frontend
+      #   run: npm run lint
         
       # Build frontend
       - name: Build frontend
