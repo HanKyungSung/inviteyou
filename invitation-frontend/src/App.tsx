@@ -4,6 +4,7 @@ import CardBuilder from './CardBuilder';
 import Landing from './component/Landing';
 import Login from './component/Login';
 import Register from './component/Register';
+import Test from './component/Test';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Route path="/builder" element={<CardBuilder />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
+      <Route path="/Test" element={<Test />} />
     </Routes>
   );
 }

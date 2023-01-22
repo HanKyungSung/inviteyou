@@ -1,11 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
+@import "//cdn.jsdelivr.net/npm/font-kopub@1.0";
 .invitation-wrap {
   /* http://meyerweb.com/eric/tools/css/reset/ 
      v2.0 | 20110126
      License: none (public domain)
   */
   /* HTML5 display-role reset for older browsers */
-  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap");
-  @import "//cdn.jsdelivr.net/npm/font-kopub@1.0";
 }
 .invitation-wrap html, .invitation-wrap body, .invitation-wrap div, .invitation-wrap span, .invitation-wrap applet, .invitation-wrap object, .invitation-wrap iframe,
 .invitation-wrap h1, .invitation-wrap h2, .invitation-wrap h3, .invitation-wrap h4, .invitation-wrap h5, .invitation-wrap h6, .invitation-wrap p, .invitation-wrap blockquote, .invitation-wrap pre,
@@ -117,7 +117,8 @@
   position: relative;
 }
 .invitation-wrap .visual img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .invitation-wrap .visual .visual-content .wedding-date span {
   display: block;
@@ -345,6 +346,12 @@
   padding: 1em 0;
   outline: none;
 }
+.invitation-wrap .rsvp form .input-wrap input[type=text]::-moz-placeholder {
+  color: #aaa;
+}
+.invitation-wrap .rsvp form .input-wrap input[type=text]:-ms-input-placeholder {
+  color: #aaa;
+}
 .invitation-wrap .rsvp form .input-wrap input[type=text]::placeholder {
   color: #aaa;
 }
@@ -485,6 +492,7 @@
 .invitation-wrap #header {
   background-color: #fff;
   box-shadow: none;
+  position: -webkit-sticky;
   position: sticky;
   left: 0;
   top: 0;
@@ -572,4 +580,468 @@
   }
 }
 
-/*# sourceMappingURL=style.css.map */
+.invitation-wrap.invitation-test-wrap {
+  font-family: "KoPub Batang";
+  max-width: 720px;
+  margin: 0 auto;
+  background: url("../assets/img/bg-han.jpg") no-repeat 100%/cover;
+  line-height: 1.8;
+}
+.invitation-wrap.invitation-test-wrap section {
+  margin-bottom: 150px;
+  padding-top: 0;
+  padding-bottom: 0;
+  max-width: 100%;
+}
+.invitation-wrap.invitation-test-wrap section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 150px;
+}
+.invitation-wrap.invitation-test-wrap section .section-tit,
+.invitation-wrap.invitation-test-wrap section .calendar-month {
+  color: #C9736E;
+  font-weight: 700;
+  font-size: 26px;
+}
+.invitation-wrap.invitation-test-wrap section .title-devider {
+  margin-bottom: 30px;
+  display: block;
+}
+.invitation-wrap.invitation-test-wrap section .title-devider figure {
+  text-align: center;
+}
+.invitation-wrap.invitation-test-wrap section .title-devider img {
+  max-height: 25px;
+}
+.invitation-wrap.invitation-test-wrap section button {
+  background-color: #C9736E;
+  border: none;
+  padding: 15px 0;
+  color: #fff;
+  font-family: "KoPub Batang";
+  font-size: 20px;
+  width: 100%;
+  cursor: pointer;
+}
+.invitation-wrap.invitation-test-wrap section button a {
+  color: inherit;
+  font: inherit;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 {
+  padding: 0;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .visual-content {
+  position: relative;
+  padding: 0 40px;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .visual-content::after {
+  content: "";
+  width: 135px;
+  height: 168px;
+  background: url("../assets/img/visuan-han-deco1.png") no-repeat right/cover;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .wedding-date-tit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 50px;
+  color: #7B7574;
+  letter-spacing: 0.09px;
+  font-weight: 400;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .wedding-date-tit .slash {
+  display: flex;
+  margin: 10px 0;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .wedding-date-tit .slash img {
+  max-height: 16px;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .wedding-opening {
+  font-size: 20px;
+  color: #7B7574;
+  display: flex;
+  align-items: flex-end;
+  line-height: 1.5;
+  padding: 100px 0;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .wedding-opening span + span {
+  margin-left: 10px;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .visual-img {
+  position: relative;
+  display: flex;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .visual-img img {
+  width: 100%;
+  max-width: 720px;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .visual-img::before {
+  content: "";
+  width: 162px;
+  height: 190px;
+  background: url("../assets/img/visuan-han-deco2.png") no-repeat right/cover;
+  display: inline-block;
+  position: absolute;
+  left: 0;
+  bottom: 5px;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .wedding-details {
+  margin-top: 60px;
+}
+.invitation-wrap.invitation-test-wrap .visualType04 .wedding-details p {
+  margin: 0;
+  line-height: 1.8;
+  font-size: 20px;
+  color: #444;
+}
+.invitation-wrap.invitation-test-wrap .introType02 {
+  width: 100% !important;
+  max-width: 100%;
+  padding: 0 40px;
+  position: relative;
+}
+.invitation-wrap.invitation-test-wrap .introType02::before {
+  content: "";
+  width: 152px;
+  height: 178px;
+  background: url("../assets/img/visuan-han-deco3.png") no-repeat center/cover;
+  display: inline-block;
+  position: absolute;
+  top: -20px;
+  left: 0;
+}
+.invitation-wrap.invitation-test-wrap .introType02 p {
+  font-size: 20px;
+  line-height: 1.8;
+}
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character {
+  width: 100%;
+  text-align: center;
+  margin-top: 80px;
+}
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character::After {
+  display: none;
+}
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap {
+  letter-spacing: 2px;
+}
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap + .character-wrap {
+  margin-top: 20px;
+}
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .parents,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .character,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .parents,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .character {
+  font-size: 20px;
+}
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .parents,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .parents {
+  margin-right: 5px;
+}
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .character,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .character {
+  margin-left: 30px;
+}
+.invitation-wrap.invitation-test-wrap .calendarType02 {
+  position: relative;
+  max-width: 100%;
+  width: 100%;
+  padding: 0 120px;
+}
+.invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap {
+  box-shadow: none;
+  display: flex;
+  padding: 0;
+}
+.invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap .calendar-month {
+  margin-right: 40px;
+  margin-top: 10px;
+}
+.invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap th, .invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap td {
+  font-size: 20px;
+}
+.invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap .current {
+  position: relative;
+  background-color: transparent;
+  color: #C9736E;
+}
+.invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap .current .circle {
+  width: 80%;
+  height: 80%;
+  margin: 0 auto;
+  border: 1px solid #C9736E;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap .current .time {
+  position: absolute;
+  left: 50%;
+  bottom: -30px;
+  transform: translateX(-50%);
+  font-size: 16px;
+  white-space: nowrap;
+}
+.invitation-wrap.invitation-test-wrap .calendarType02::after {
+  content: "";
+  width: 200px;
+  height: 236px;
+  background: url("../assets/img/visuan-han-deco4.png") no-repeat center/cover;
+  display: inline-block;
+  position: absolute;
+  top: -100px;
+  right: 0;
+}
+.invitation-wrap.invitation-test-wrap .rsvpType02 {
+  width: 65%;
+}
+.invitation-wrap.invitation-test-wrap .rsvpType02 .input-wrap {
+  margin-bottom: 50px;
+}
+.invitation-wrap.invitation-test-wrap .rsvpType02 .input-wrap input[type=text] {
+  background-color: transparent;
+  border-color: #aaa;
+}
+.invitation-wrap.invitation-test-wrap .rsvpType02 .input-wrap textarea {
+  border-color: #aaa;
+  background-color: transparent;
+  border-radius: 5px;
+  font-size: 14px;
+  height: 150px;
+}
+.invitation-wrap.invitation-test-wrap .rsvpType02 .radio-wrap input[type=radio]:checked ~ .checkmark {
+  border-color: #C9736E;
+}
+.invitation-wrap.invitation-test-wrap .rsvpType02 .radio-wrap .checkmark {
+  border-color: #aaa;
+}
+.invitation-wrap.invitation-test-wrap .rsvpType02 .radio-wrap .checkmark::after {
+  background-color: #C9736E;
+}
+.invitation-wrap.invitation-test-wrap .galleryType02 {
+  width: 100%;
+  padding-bottom: 0;
+}
+.invitation-wrap.invitation-test-wrap .galleryType02 .swiperType01 img {
+  max-height: 670px !important;
+}
+.invitation-wrap.invitation-test-wrap .galleryType02 .swiper-button-next,
+.invitation-wrap.invitation-test-wrap .galleryType02 .swiper-button-prev {
+  transform: translateY(-50%);
+}
+.invitation-wrap.invitation-test-wrap .galleryType02 .swiper-button-next::after,
+.invitation-wrap.invitation-test-wrap .galleryType02 .swiper-button-prev::after {
+  font-size: 35px;
+  white-space: nowrap;
+  color: #fff;
+}
+.invitation-wrap.invitation-test-wrap .contactType02 {
+  width: 65%;
+}
+.invitation-wrap.invitation-test-wrap .contactType02 .character-img img {
+  max-height: 80px;
+}
+.invitation-wrap.invitation-test-wrap .contactType02 .contact-info .name {
+  font-size: 22px;
+  color: #7B7574;
+  letter-spacing: 2px;
+}
+.invitation-wrap.invitation-test-wrap .contactType02 .contact-info .name .position {
+  font-size: 16px;
+}
+.invitation-wrap.invitation-test-wrap .contactType02 .contact-info.tel {
+  margin-top: 5px;
+}
+.invitation-wrap.invitation-test-wrap .contactType02 .contact-info.tel a {
+  font-size: 18px;
+  color: #444;
+  font-family: "KoPub Batang";
+  letter-spacing: 2px;
+}
+.invitation-wrap.invitation-test-wrap .contactType02 .tel-img {
+  background-color: transparent;
+  border: 1px solid #888;
+  width: auto;
+  height: auto;
+  padding: 10px 15px;
+  border-radius: 40px;
+}
+.invitation-wrap.invitation-test-wrap .contactType02 .tel-img a {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  color: #888;
+  font-family: "KoPub Batang";
+}
+.invitation-wrap.invitation-test-wrap .contactType02 .tel-img img {
+  max-height: 24px;
+  margin-right: 15px;
+}
+.invitation-wrap.invitation-test-wrap .locationType02 {
+  width: 65%;
+  margin-bottom: 0;
+  padding-bottom: 150px;
+}
+.invitation-wrap.invitation-test-wrap .locationType02 dt {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.invitation-wrap.invitation-test-wrap .locationType02 dd {
+  font-size: 16px;
+  color: #7B7574;
+  margin-bottom: 5px;
+}
+.invitation-wrap.invitation-test-wrap .locationType02 .map {
+  padding: 30px 0;
+}
+.invitation-wrap.invitation-test-wrap .locationType02 .map img {
+  width: 100%;
+}
+.invitation-wrap .sound {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 5;
+  background-color: #F8F8F7;
+  cursor: pointer;
+}
+.invitation-wrap .sound img {
+  max-height: 30px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (max-width: 600px) {
+  .invitation-wrap.invitation-test-wrap section {
+    margin-bottom: 100px;
+    width: 100% !important;
+  }
+  .invitation-wrap.invitation-test-wrap section.locationType02 {
+    padding-bottom: 100px;
+    margin-bottom: 0;
+  }
+  .invitation-wrap.invitation-test-wrap section:not(.visual, .galleryType02) {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+  .invitation-wrap.invitation-test-wrap section .section-tit {
+    font-size: 22px;
+  }
+  .invitation-wrap.invitation-test-wrap section .title-devider img {
+    max-height: 16px;
+  }
+  .invitation-wrap.invitation-test-wrap section button {
+    font-size: 16px;
+  }
+  .invitation-wrap.invitation-test-wrap .visualType04 .visual-content::after {
+    width: 128px;
+    height: 152px;
+  }
+  .invitation-wrap.invitation-test-wrap .visualType04 .wedding-date-tit {
+    font-size: 35px;
+  }
+  .invitation-wrap.invitation-test-wrap .visualType04 .wedding-opening {
+    padding: 40px 0 60px;
+  }
+  .invitation-wrap.invitation-test-wrap .visualType04 .wedding-opening span {
+    font-size: 16px;
+  }
+  .invitation-wrap.invitation-test-wrap .visualType04 .wedding-opening span + span {
+    margin-left: 6px;
+  }
+  .invitation-wrap.invitation-test-wrap .visualType04 .visual-img::before {
+    width: 104px;
+    height: 122px;
+  }
+  .invitation-wrap.invitation-test-wrap .visualType04 .wedding-details {
+    margin-top: 45px;
+  }
+  .invitation-wrap.invitation-test-wrap .visualType04 .wedding-details p {
+    font-size: 16px;
+  }
+  .invitation-wrap.invitation-test-wrap .introType02 p {
+    font-size: 16px;
+  }
+  .invitation-wrap.invitation-test-wrap .introType02::before {
+    width: 104px;
+    height: 122px;
+  }
+  .invitation-wrap.invitation-test-wrap .introType02 .wedding-character {
+    margin-top: 60px;
+  }
+  .invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .parents,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .character,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .parents,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .character {
+    font-size: 16px;
+  }
+  .invitation-wrap.invitation-test-wrap .calendarType02::after {
+    width: 130px;
+    height: 150px;
+  }
+  .invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap .calendar-month {
+    font-size: 22px;
+    margin-right: 10px;
+  }
+  .invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap th, .invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap td {
+    font-size: 16px;
+  }
+  .invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap .current .circle {
+    width: 100%;
+    height: 100%;
+    max-width: 42px;
+    max-height: 42px;
+  }
+  .invitation-wrap.invitation-test-wrap .calendarType02 .calendar-wrap .current .time {
+    font-size: 14px;
+    bottom: -20px;
+  }
+  .invitation-wrap.invitation-test-wrap .contactType02 .tel-img {
+    width: 45px;
+    height: 45px;
+  }
+  .invitation-wrap.invitation-test-wrap .contactType02 .tel-img img {
+    max-height: 17px;
+    margin-right: 0;
+  }
+  .invitation-wrap.invitation-test-wrap .contactType02 .tel-img a {
+    font-size: 14px;
+  }
+  .invitation-wrap.invitation-test-wrap .contactType02 .contact-info .name {
+    font-size: 18px;
+  }
+  .invitation-wrap.invitation-test-wrap .contactType02 .contact-info .position {
+    font-size: 14px;
+    letter-spacing: 0;
+  }
+  .invitation-wrap.invitation-test-wrap .contactType02 .character-img img {
+    max-height: 65px;
+  }
+  .invitation-wrap.invitation-test-wrap .contactType02 .mobile-hidden {
+    display: none;
+  }
+}/*# sourceMappingURL=style.css.map */
