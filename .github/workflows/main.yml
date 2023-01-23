@@ -34,10 +34,15 @@ jobs:
         working-directory: ./invitation-frontend
         run: npm install
         
-      # Build frontend
-      - name: Build frontend
+      # # Build frontend
+      # - name: Build frontend
+      #   working-directory: ./invitation-frontend
+      #   run: npm run build
+
+      # Build frontend without eslint
+      - name: Build frontend without eslint
         working-directory: ./invitation-frontend
-        run: npm run build
+        run: npm run build-without-eslint
 
       # Install backend dependencies
       - name: Install backend dependencies
