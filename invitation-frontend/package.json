@@ -34,6 +34,7 @@
 		"dev": "concurrently --kill-others \"npm start\" \"npm run sass:watch\"",
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"build-without-eslint": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
 		"lint": "eslint --max-warnings 0 src/",
 		"test": "react-scripts test",
 		"sass:watch": "sass --watch --source-map src/style:src/style",
