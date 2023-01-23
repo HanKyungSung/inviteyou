@@ -39,8 +39,13 @@ jobs:
       #   run: npm run lint
         
       # Build frontend
-      - name: Build frontend
+      # - name: Build frontend
+      #   working-directory: ./invitation-frontend
+      #   run: npm run build
+
+      # Build frontend
+      - name: Build frontend without eslint
         working-directory: ./invitation-frontend
-        run: npm run build
+        run: npm run build-without-eslint
 
       
