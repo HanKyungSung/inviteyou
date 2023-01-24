@@ -14,6 +14,7 @@ function App() {
   const hostnames = isDevelopment ? Constants.localhostUrls : Constants.prodhostUrls;
   
   console.log('location', location);
+  console.log('environemnt', isDevelopment);
 
   const subdomain = window.location.host.split('.')[0];
 
