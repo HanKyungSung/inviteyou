@@ -22,9 +22,9 @@ app.use(
 );
 
 // Routes
-app.use('/registration', userRoute);
+app.use('/api/registration', userRoute);
 
-app.post('/rsvp', (req, res) => {
+app.post('/api/rsvp', (req, res) => {
   console.log(req.body);
   res.send(req.body);
 });
