@@ -5,6 +5,7 @@ import path from 'path';
 import * as dotenv from 'dotenv';
 import connectDB from './utils/connectDB';
 import userRoute from './routes/user.route';
+import rsvpRoute from './routes/rsvp.route';
 
 dotenv.config();
 
@@ -24,9 +25,10 @@ app.use(
 // Routes
 app.use('/api/registration', userRoute);
 
-app.post('/api/rsvp', (req, res) => {
-  console.log(req.body);
-  res.send(req.body);
+app.use('/api/rsvp', rsvpRoute);
+
+app.get('/api/calendar', (req, res) => {
+  res.download(path.join(__dirname, 'assets', 'myevents.ics'));
 });
 
 // start the Express server
