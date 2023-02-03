@@ -8,7 +8,7 @@ interface RsvpParams {
 export const sendRsvpApi = async (params: RsvpParams): Promise<void> => {
   const { REACT_APP_API_URL } = process.env;
 
-  const response = await fetch(`${REACT_APP_API_URL}/rsvp`, {
+  const response = await fetch(`${REACT_APP_API_URL}/api/rsvp`, {
     method: 'POST',
     body: JSON.stringify(params),
     headers: {

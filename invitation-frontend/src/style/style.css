@@ -117,8 +117,7 @@
   position: relative;
 }
 .invitation-wrap .visual img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .invitation-wrap .visual .visual-content .wedding-date span {
   display: block;
@@ -346,12 +345,6 @@
   padding: 1em 0;
   outline: none;
 }
-.invitation-wrap .rsvp form .input-wrap input[type=text]::-moz-placeholder {
-  color: #aaa;
-}
-.invitation-wrap .rsvp form .input-wrap input[type=text]:-ms-input-placeholder {
-  color: #aaa;
-}
 .invitation-wrap .rsvp form .input-wrap input[type=text]::placeholder {
   color: #aaa;
 }
@@ -492,7 +485,6 @@
 .invitation-wrap #header {
   background-color: #fff;
   box-shadow: none;
-  position: -webkit-sticky;
   position: sticky;
   left: 0;
   top: 0;
@@ -809,32 +801,6 @@
   top: -100px;
   right: 0;
 }
-.invitation-wrap.invitation-test-wrap .rsvpType02 {
-  width: 65%;
-}
-.invitation-wrap.invitation-test-wrap .rsvpType02 .input-wrap {
-  margin-bottom: 50px;
-}
-.invitation-wrap.invitation-test-wrap .rsvpType02 .input-wrap input[type=text] {
-  background-color: transparent;
-  border-color: #aaa;
-}
-.invitation-wrap.invitation-test-wrap .rsvpType02 .input-wrap textarea {
-  border-color: #aaa;
-  background-color: transparent;
-  border-radius: 5px;
-  font-size: 14px;
-  height: 150px;
-}
-.invitation-wrap.invitation-test-wrap .rsvpType02 .radio-wrap input[type=radio]:checked ~ .checkmark {
-  border-color: #C9736E;
-}
-.invitation-wrap.invitation-test-wrap .rsvpType02 .radio-wrap .checkmark {
-  border-color: #aaa;
-}
-.invitation-wrap.invitation-test-wrap .rsvpType02 .radio-wrap .checkmark::after {
-  background-color: #C9736E;
-}
 .invitation-wrap.invitation-test-wrap .galleryType02 {
   width: 100%;
   padding-bottom: 0;
@@ -1044,4 +1010,6 @@
   .invitation-wrap.invitation-test-wrap .contactType02 .mobile-hidden {
     display: none;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
