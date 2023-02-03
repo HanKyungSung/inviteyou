@@ -28,7 +28,7 @@ app.use('/api/registration', userRoute);
 app.use('/api/rsvp', rsvpRoute);
 
 app.get('/api/calendar', (req, res) => {
-  res.download('src/assets/myevents.ics');
+  res.download(path.join(__dirname, 'assets/myevents.ics'));
 });
 
 // start the Express server
