@@ -224,36 +224,6 @@
                 right: 0;
             }
         }
-        .rsvpType02{
-            width: 65%;
-            .input-wrap{
-                margin-bottom: 50px;
-                input[type=text]{
-                    background-color: transparent;
-                    border-color: #aaa;
-                }
-                textarea{
-                    border-color: #aaa;
-                    background-color: transparent;
-                    border-radius: 5px;
-                    font-size: 14px;
-                    height: 150px;
-                }
-            }
-            .radio-wrap {
-                input[type=radio]:checked ~ .checkmark{
-                    border-color: #C9736E;
-                }
-                .checkmark{
-                    border-color: #aaa;
-                    &::after{
-                        background-color: #C9736E;
-                    }
-                }
-            }
-            
-            
-        }
         .galleryType02{
             width: 100%;
             padding-bottom: 0;

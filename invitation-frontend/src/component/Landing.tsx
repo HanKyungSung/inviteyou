@@ -231,15 +231,6 @@ const Landing = () => {
                     >
                       CONTACT US
                     </Anchor>
-                    <Anchor
-                      component={Link}
-                      underline={false}
-                      className={classes.gnbList}
-                      color="dark"
-                      to="/Test"
-                    >
-                      TEST
-                    </Anchor>
                     <Button
                       variant="gradient"
                       color="color-white"
