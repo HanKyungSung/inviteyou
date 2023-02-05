@@ -54,8 +54,7 @@ jobs:
       - name: Install backend dependencies
         working-directory: ./invitation-backend
         run: npm install
-      - name: print
-        run: echo printenv
+
       # Build backend
       - name: Build backend
         working-directory: ./invitation-backend
