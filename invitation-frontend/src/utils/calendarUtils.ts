@@ -4,6 +4,8 @@ export const getIcsFile = async (subdomain: string): Promise<void> => {
   const response = await fetch(`${REACT_APP_API_URL}/api/calendar?subdomain=${subdomain}`);
 
   if (response.status === 200) {
+    // TODO:  Currently we are creating temporary link to download the file.
+    //        Ideally we should redirect the download backend -> frontend.
     const blob = await response.blob();
     const fileUrl = window.URL.createObjectURL(blob);
     let downloadLink = document.createElement('a');

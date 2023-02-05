@@ -1,19 +1,23 @@
 import { getModelForClass, prop } from '@typegoose/typegoose';
+import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 
-export class rsvp {
+export class Rsvp extends TimeStamps{
   @prop({ required: true })
   public name?: string;
 
   @prop({ required: true })
   public participate: string;
 
-  @prop({ required: true })
-  public menu: string;
+  @prop()
+  public menu?: string;
 
   @prop()
   public note?: string;
+
+  @prop({ required: true })
+  public subdomain: string;
 }
 
-const rsvpModel = getModelForClass(rsvp);
+const rsvpModel = getModelForClass(Rsvp);
 
 export default rsvpModel;

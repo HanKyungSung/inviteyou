@@ -1,9 +1,10 @@
 import express from 'express';
-import { rsvpHandler } from '../controllers/rsvp.controller';
+import { getParticipants, rsvpHandler } from '../controllers/rsvp.controller';
 
 const router = express.Router();
 
 // rsvp
-router.post('/', rsvpHandler);
+router.get('/list', getParticipants);
+router.put('/', rsvpHandler);
 
 export default router;
