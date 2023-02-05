@@ -14,6 +14,10 @@ import map from '../assets/img/map-han.png';
 import soundOn from '../assets/img/icon-sound-on.png';
 import soundOff from '../assets/img/icon-sound-off.png';
 
+interface HanSung {
+  subdomain: string;
+}
+
 interface SubmitInfo {
   name: string;
   rsvp: string;
@@ -90,8 +94,9 @@ const initModalInfo: ModalInfo = {
   }
 };
 
-const Test = () => {
+const HanSung = (props: HanSung) => {
   const audio = new Audio('../assets/music/music_han.mp3');
+  const { subdomain } = props;
   const [isMusicActive, setIsMusicActive] = useState<boolean>(true);
   const [initForm, setInitForm] = useState<boolean>(true);
   const [initNameInput, setInitNameInput] = useState<boolean>(true);
@@ -143,6 +148,7 @@ const Test = () => {
     setName("");
     setRsvp("");
     setMenu("");
+    setNote("");
     
     setIsNameValidated(false);
     setIsRsvpValidated(false);
@@ -150,6 +156,14 @@ const Test = () => {
   };
 
   const handleSendApi = () => {
+    sendRsvpApi({
+      name: name,
+      participate: rsvp,
+      menu: menu,
+      note: note,
+      subdomain
+    });
+
     setModalInfo({
       opened: true,
       submitInfo: {
@@ -159,6 +173,7 @@ const Test = () => {
         note: note
       }
     });
+
     resetForm();
   };
 
@@ -390,8 +405,7 @@ const Test = () => {
                   <td className="current">
                     <span
                       className="circle"
-                      onClick={() => { console.log("clicked");
-                      getIcsFile('we'); }}
+                      onClick={() => getIcsFile('we')}
                       style={{
                         cursor: "pointer"
                       }}
@@ -407,6 +421,17 @@ const Test = () => {
               </tbody>
             </table>
           </div>
+          <p style={{
+              color: '#888',
+              textAlign: 'center',
+              marginTop: '20px',
+              fontSize: '14px',
+              padding: '15px 0',
+              borderTop: '1px solid #eee',
+              borderBottom: '1px solid #eee'
+          }}>
+            일자를 클릭해서 캘린더에 추가하실 수 있어요!
+          </p>
         </section>
         <section className="rsvp rsvpType02">
           <h2 className="section-tit">결혼식 설문지</h2>
@@ -513,6 +538,7 @@ const Test = () => {
                 id="note"
                 cols={30}
                 rows={10}
+                value={note}
                 defaultValue=""
                 placeholder="알러지 등 기타 사항을 작성해주세요."
                 onChange={(e) => setNote(e.currentTarget.value)}
@@ -651,4 +677,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default HanSung;

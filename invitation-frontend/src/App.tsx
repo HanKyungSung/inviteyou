@@ -4,7 +4,8 @@ import CardBuilder from './CardBuilder';
 import Landing from './component/Landing';
 import Login from './component/Login';
 import Register from './component/Register';
-import Test from './component/Test';
+import HanSung from './component/HanSung';
+import HanSungList from './component/HanSungList';
 import * as Constants from './utils/Constants';
 
 function App() {
@@ -12,18 +13,21 @@ function App() {
   const isDevelopment = NODE_ENV === 'development';
   const hostname = isDevelopment ? Constants.localhostUrl : Constants.prodhostUrl;
   const hostnames = isDevelopment ? Constants.localhostUrls : Constants.prodhostUrls;
-  
-  console.log('location', location);
-  console.log('environemnt', isDevelopment);
-
   const subdomain = window.location.host.split('.')[0];
 
-  // Checking this should be dynamic. Need to save it in the database.
-  if(subdomain === 'we') {
+  // TODO: Checking this should be dynamic. Need to save it in the database.
+  if (subdomain === 'we') {
     return (
-      <Test />
+      <Routes>
+        <Route path="/" element={<HanSung subdomain={subdomain} />} />
+        <Route path="/list" element={<HanSungList subdomain={subdomain} />} />
+      </Routes>
     )
-  } else if(!hostnames.includes(window.location.hostname)) {
+  } else if (subdomain === 'sne') {
+    return (
+      <div>Working in Progress</div>
+    )
+  } else if (!hostnames.includes(window.location.hostname)) {
     // If subdomain doesn't match to anything, we reset the url.
     window.location.replace(hostname);
   }
