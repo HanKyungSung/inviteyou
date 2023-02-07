@@ -22,6 +22,7 @@ function App() {
       <>
         <Helmet>
           <title>You have been invited!</title>
+          <meta property="og:title" content="You have been invited!"></meta>
           <meta property="og:url" content="https:/we.inviteyou.ca/"></meta>
           <meta property="og:image" content="/public/og_imgs/we_og_img.png"></meta>
           <meta property="og:description" content="Welcome to Han & Jenny's wedding"></meta>
