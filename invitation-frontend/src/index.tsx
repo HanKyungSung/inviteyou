@@ -10,13 +10,13 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <HelmetProvider>
-    <React.StrictMode>
-      <BrowserRouter>
+  <React.StrictMode>
+    <BrowserRouter>
+      <HelmetProvider>
         <App />
-      </BrowserRouter>
-    </React.StrictMode>
-  </HelmetProvider>
+      </HelmetProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
