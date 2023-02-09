@@ -117,8 +117,7 @@
   position: relative;
 }
 .invitation-wrap .visual img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .invitation-wrap .visual .visual-content .wedding-date span {
   display: block;
@@ -346,9 +345,6 @@
   padding: 1em 0;
   outline: none;
 }
-.invitation-wrap .rsvp form .input-wrap input[type=text]::-moz-placeholder {
-  color: #aaa;
-}
 .invitation-wrap .rsvp form .input-wrap input[type=text]::placeholder {
   color: #aaa;
 }
@@ -370,6 +366,7 @@
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
 }
 .invitation-wrap .rsvp form .radio-wrap label {
@@ -990,9 +987,9 @@
     margin-top: 60px;
   }
   .invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .parents,
-  .invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .character,
-  .invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .parents,
-  .invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .character {
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .character,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .parents,
+.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .character {
     font-size: 16px;
   }
   .invitation-wrap.invitation-test-wrap .calendarType02::after {
@@ -1044,4 +1041,6 @@
     padding-left: 20px !important;
     padding-right: 20px !important;
   }
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -22,7 +22,7 @@ function App() {
       <>
         <Helmet>
           <title>You have been invited!</title>
-          <meta property="og:title" content="You have been invited!"></meta>
+          <meta property="og:title" content="InviteYou"></meta>
           <meta property="og:url" content="https:/we.inviteyou.ca/"></meta>
           <meta property="og:image" content="/public/og_imgs/we_og_img.png"></meta>
           <meta property="og:description" content="Welcome to Han & Jenny's wedding"></meta>
@@ -43,12 +43,21 @@ function App() {
   }
 
   return (
+    <>
+    <Helmet>
+      <title>You have been invited!</title>
+      <meta property="og:title" content="asdfasdf" data-react-helmet="true" data-rh="true" />
+      <meta property="og:url" content="https:/we.inviteyou.ca/"></meta>
+      <meta property="og:image" content="/public/og_imgs/we_og_img.png"></meta>
+      <meta property="og:description" content="Welcome to Han & Jenny's wedding"></meta>
+    </Helmet>
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/builder" element={<CardBuilder />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
     </Routes>
+    </>
   );
 }
 
