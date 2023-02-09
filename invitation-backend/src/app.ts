@@ -18,26 +18,36 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, '..', '..', 'invitation-frontend', 'build'));
-app.use(
-  express.static(
-    path.join(__dirname, '..', '..', 'invitation-frontend', 'build')
-  )
-);
+
 const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'build', 'index.html');
 // const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'public', 'index.html');
 app.get('/', (req, res) => {
-  console.log("asdf");
-  const indexFile = fs.readFileSync(indexFilePath, 'utf8');
-  // console.log(indexFile);
 
-  const updatedIndexfile = indexFile.replace("<title>Inviteyou</title>", "<title>test</title>");
-console.log(updatedIndexfile);
-  fs.writeFileSync(indexFilePath, updatedIndexfile);
-  
+  if (req.subdomains.length != 1) {
+    res.redirect('https://inviteyou.ca');
+  }
+
+  const indexFile = fs.readFileSync(indexFilePath, 'utf8');
+
+  // This is where we can modify the build/index.html file.
+  // The purpose of this is to update the tags in the head tag in html.
+  const updatedIndexFile = indexFile.replace("<title>Inviteyou</title>", "<title>test</title>");
+
+  // Below code is for future reference purpose.
+  // fs.writeFileSync(indexFilePath, updatedIndexFile);
   // res.sendFile(path.join(__dirname, '..', '..', 'invitation-frontend', 'build/index.html'));
-  res.send(updatedIndexfile);
+  res.send(updatedIndexFile);
 });
 
+app.use('/', express.static(
+    path.join(__dirname, '..', '..', 'invitation-frontend', 'build')
+  )
+);
+// app.use(
+//   express.static(
+//     path.join(__dirname, '..', '..', 'invitation-frontend', 'build')
+//   )
+// );
 // Routes
 app.use('/api/registration', userRoute);
 
