@@ -117,7 +117,8 @@
   position: relative;
 }
 .invitation-wrap .visual img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .invitation-wrap .visual .visual-content .wedding-date span {
   display: block;
@@ -345,6 +346,9 @@
   padding: 1em 0;
   outline: none;
 }
+.invitation-wrap .rsvp form .input-wrap input[type=text]::-moz-placeholder {
+  color: #aaa;
+}
 .invitation-wrap .rsvp form .input-wrap input[type=text]::placeholder {
   color: #aaa;
 }
@@ -366,7 +370,6 @@
   cursor: pointer;
   -webkit-user-select: none;
   -moz-user-select: none;
-  -ms-user-select: none;
   user-select: none;
 }
 .invitation-wrap .rsvp form .radio-wrap label {
@@ -881,6 +884,33 @@
 .invitation-wrap.invitation-test-wrap .locationType02 .map img {
   width: 100%;
 }
+.invitation-wrap.invitation-test-wrap .carousel-wrap {
+  padding-left: 120px;
+  padding-right: 120px;
+}
+.invitation-wrap.invitation-test-wrap .carousel-wrap .control-dots {
+  display: none;
+}
+.invitation-wrap.invitation-test-wrap .carousel-wrap button {
+  background-color: transparent;
+}
+.invitation-wrap.invitation-test-wrap .carousel-wrap .carousel-status {
+  display: none;
+}
+.invitation-wrap.invitation-test-wrap .carousel-wrap .thumbs-wrapper {
+  margin-left: 0;
+  margin-right: 0;
+}
+.invitation-wrap.invitation-test-wrap .carousel-wrap .thumb {
+  padding: 0;
+  cursor: pointer;
+}
+.invitation-wrap.invitation-test-wrap .carousel-wrap .thumb.selected {
+  border-color: #C9736E;
+}
+.invitation-wrap.invitation-test-wrap .carousel-wrap .thumb:hover {
+  border-color: #ccc;
+}
 .invitation-wrap .sound {
   width: 50px;
   height: 50px;
@@ -960,9 +990,9 @@
     margin-top: 60px;
   }
   .invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .parents,
-.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .character,
-.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .parents,
-.invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .character {
+  .invitation-wrap.invitation-test-wrap .introType02 .wedding-character .character-wrap .character,
+  .invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .parents,
+  .invitation-wrap.invitation-test-wrap .introType02 .wedding-character .parent-wrap .character {
     font-size: 16px;
   }
   .invitation-wrap.invitation-test-wrap .calendarType02::after {
@@ -1010,6 +1040,8 @@
   .invitation-wrap.invitation-test-wrap .contactType02 .mobile-hidden {
     display: none;
   }
-}
-
-/*# sourceMappingURL=style.css.map */
+  .invitation-wrap.invitation-test-wrap .carousel-wrap {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}/*# sourceMappingURL=style.css.map */
