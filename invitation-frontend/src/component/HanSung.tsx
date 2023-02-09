@@ -13,6 +13,8 @@ import imgLee from '../assets/img/img-lee.png';
 import map from '../assets/img/map-han.png';
 import soundOn from '../assets/img/icon-sound-on.png';
 import soundOff from '../assets/img/icon-sound-off.png';
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from 'react-responsive-carousel';
 
 interface HanSung {
   subdomain: string;
@@ -554,7 +556,29 @@ const HanSung = (props: HanSung) => {
               <img src={titleDeco} alt="titleDeco" />
             </figure>
           </span>
-          <div className="swiperType01">
+          <div className='carousel-wrap'>
+              <Carousel>
+                <div>
+                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
+                </div>
+                <div>
+                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
+                </div>
+                <div>
+                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
+                </div>
+                <div>
+                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
+                </div>
+                <div>
+                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
+                </div>
+                <div>
+                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
+                </div>
+              </Carousel>
+            </div>
+          {/* <div className="swiperType01">
             <Swiper
               effect={'coverflow'}
               grabCursor={true}
@@ -586,7 +610,7 @@ const HanSung = (props: HanSung) => {
             >
               {slide}
             </Swiper>
-          </div>
+          </div> */}
         </section>
         <section className="contact contactType02">
           <h2 className="section-tit">인사 전할 곳</h2>

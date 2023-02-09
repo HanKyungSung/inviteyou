@@ -309,6 +309,34 @@
                 }
             }
         }
+        .carousel-wrap {
+            padding-left: 120px;
+            padding-right: 120px;
+            .control-dots{
+                display: none;
+            }
+            button{
+                background-color: transparent;
+            }
+            .carousel-status{
+                display: none;
+            }
+            .thumbs-wrapper{
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .thumb{
+                padding: 0;
+                cursor: pointer;
+                &.selected{ 
+                    border-color: #C9736E;
+                }
+                &:hover{
+                    border-color: #ccc;
+                }
+            }
+            
+        }
     }
     .sound{
         width: 50px;
@@ -461,6 +489,10 @@
                 .mobile-hidden{
                     display: none;
                 }
+            }
+            .carousel-wrap {
+                padding-left: 20px!important;
+                padding-right: 20px!important;
             }
         }
     }
