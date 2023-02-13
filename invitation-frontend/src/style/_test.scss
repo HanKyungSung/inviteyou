@@ -6,6 +6,7 @@
         margin: 0 auto;
         background: url('../assets/img/bg-han.jpg') no-repeat 100% / cover;
         line-height: 1.8;
+        //
         section {
             margin-bottom: 150px;
             padding-top: 0;
@@ -31,7 +32,7 @@
                     max-height: 25px;
                 }
             }
-            button{
+            .custom-button{
                 background-color: #C9736E;
                 border: none;
                 padding: 15px 0;
@@ -102,15 +103,15 @@
                     width: 100%;
                     max-width: 720px;
                 }
-                &::before{
-                    content:"";
-                    width: 162px;
-                    height: 190px;
-                    background: url('../assets/img/visuan-han-deco2.png') no-repeat right / cover;
-                    display: inline-block;
-                    position: absolute;
-                    left: 0; bottom: 5px;
-                }
+                // &::before{
+                //     content:"";
+                //     width: 162px;
+                //     height: 190px;
+                //     background: url('../assets/img/visuan-han-deco2.png') no-repeat right / cover;
+                //     display: inline-block;
+                //     position: absolute;
+                //     left: 0; bottom: 5px;
+                // }
             }
             .wedding-details{
                 margin-top: 60px;
@@ -227,20 +228,6 @@
         .galleryType02{
             width: 100%;
             padding-bottom: 0;
-            .swiperType01 {
-                img{
-                    max-height: 670px!important;
-                }
-            }
-            .swiper-button-next,
-            .swiper-button-prev{
-                transform: translateY(-50%);
-                &::after{
-                    font-size: 35px;
-                    white-space: nowrap;
-                    color: #fff;
-                }
-            }
         }
         .contactType02{
             width: 65%;
@@ -312,30 +299,11 @@
         .carousel-wrap {
             padding-left: 120px;
             padding-right: 120px;
-            .control-dots{
-                display: none;
-            }
-            button{
-                background-color: transparent;
-            }
-            .carousel-status{
-                display: none;
-            }
-            .thumbs-wrapper{
-                margin-left: 0;
-                margin-right: 0;
-            }
-            .thumb{
-                padding: 0;
-                cursor: pointer;
-                &.selected{ 
-                    border-color: #C9736E;
-                }
-                &:hover{
-                    border-color: #ccc;
+            .carousel.carousel-slider{
+                .control-arrow:hover{
+                    background: transparent
                 }
             }
-            
         }
     }
     .sound{
@@ -378,7 +346,7 @@
                         max-height: 16px;
                     }
                 }
-                button{
+                .custom-button{
                     font-size: 16px;
                 }
             }
@@ -393,7 +361,7 @@
                     font-size: 35px;
                 }
                 .wedding-opening{
-                    padding: 40px 0 60px;
+                    padding: 40px 0 30px;
                     span{
                         font-size: 16px;
                         & + span{

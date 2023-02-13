@@ -1,15 +1,17 @@
-import React, { ReactHTML, useEffect, useState } from 'react';
-import { Navigation, EffectCoverflow } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Input, Radio, Notification, Modal } from '@mantine/core';
+import React, { useEffect, useState } from 'react';
+import { Input, Radio, Modal } from '@mantine/core';
 import { sendRsvpApi } from '../utils/rsvpUtils';
 import { getIcsFile } from '../utils/calendarUtils';
-import visualImg from '../assets/img/visual-han.jpg';
+// Main pictures
+// import visualImg from '../assets/img/visual-han.jpg';
+// import visualImg from '../assets/img/hansung/DSC_1336.jpg';
+// import visualImg from '../assets/img/hansung/DSC_1020.jpg';
+import visualImg from '../assets/img/hansung/hansung-main.png';
 import iconTel2 from '../assets/img/icon-tel2.png';
 import IconSlash from '../assets/img/icon-slash.png';
 import titleDeco from '../assets/img/section-tit-deco-han.png';
-import imgHan from '../assets/img/img-han.png';
-import imgLee from '../assets/img/img-lee.png';
+import imgHan from '../assets/img/hansung/img-han.png';
+import imgLee from '../assets/img/hansung/img-lee.png';
 import map from '../assets/img/map-han.png';
 import soundOn from '../assets/img/icon-sound-on.png';
 import soundOff from '../assets/img/icon-sound-off.png';
@@ -226,29 +228,34 @@ const HanSung = (props: HanSung) => {
     }
   };
 
-  const slides: string[] = [
-    require('../assets/img/img-gallery-han-1.jpg'),
-    // require('../assets/img/img-gallery-han-1.jpg'),
-    // require('../assets/img/img-gallery-han-1.jpg'),
-    // require('../assets/img/img-gallery-han-1.jpg'),
-    // require('../assets/img/img-gallery-han-1.jpg'),
-    // require('../assets/img/img-gallery-han-1.jpg'),
-    // require('../assets/img/img-gallery-han-1.jpg'),
-    // require('../assets/img/img-gallery-han-1.jpg'),
-    // require('../assets/img/img-gallery-han-1.jpg'),
-    // require('../assets/img/img-gallery-han-1.jpg')
+  const imgs: string[] = [
+    require('../assets/img/hansung/DSC_0735.jpg'),
+    require('../assets/img/hansung/DSC_0799.jpg'),
+    require('../assets/img/hansung/DSC_0932.jpg'),
+    require('../assets/img/hansung/DSC_1020.jpg'),
+    require('../assets/img/hansung/DSC_1219.jpg'),
+    require('../assets/img/hansung/DSC_1304.jpg'),
+    require('../assets/img/hansung/DSC_1336.jpg'),
+    require('../assets/img/hansung/DSC_1364.jpg'),
+    require('../assets/img/hansung/DSC_1590.jpg'),
+    require('../assets/img/hansung/DSC_1780.jpg'),
+    require('../assets/img/hansung/DSC_2035.jpg'),
+    require('../assets/img/hansung/DSC_2070.jpg'),
+    require('../assets/img/hansung/DSC_2203.jpg'),
+    require('../assets/img/hansung/DSC_2231.jpg'),
+    require('../assets/img/hansung/DSC_2284.jpg'),
+    require('../assets/img/hansung/0D1A1871_.jpg'),
+    require('../assets/img/hansung/0D1A1955_.jpg'),
+    require('../assets/img/hansung/0D1A1985_.jpg'),
+    require('../assets/img/hansung/0D1A2036_.jpg'),
   ];
 
-  const slide = slides.map((item) => {
-    const img = item;
-
+  const slides: JSX.Element[] = imgs.map((img) => {
     return (
-      <SwiperSlide key={`slide-${item}`}>
-        <figure>
-          <img src={img} alt={`Slide ${item}`} className="swiper-lazy" />
-        </figure>
-      </SwiperSlide>
-    );
+      <div key={`side-${img}`}>
+        <img src={img} alt={`Slide $(item)`} />
+      </div>
+    )
   });
 
   return (
@@ -308,6 +315,7 @@ const HanSung = (props: HanSung) => {
           </div>
           <figure className="visual-img">
             <img src={visualImg} alt="wedding visual img" />
+            {/* <img src={visualImg} style={{ height: "527px" }} alt="wedding visual img" /> */}
           </figure>
           <div className="wedding-details">
             <p className="wedding-location">Hart House Restaurant</p>
@@ -546,7 +554,7 @@ const HanSung = (props: HanSung) => {
                 onChange={(e) => setNote(e.currentTarget.value)}
               ></textarea>
             </span>
-            <button type="submit">설문지 제출하기</button>
+            <button className='custom-button' type="submit">설문지 제출하기</button>
           </form>
         </section>
         <section className="gallery galleryType02">
@@ -557,60 +565,16 @@ const HanSung = (props: HanSung) => {
             </figure>
           </span>
           <div className='carousel-wrap'>
-              <Carousel>
-                <div>
-                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
-                </div>
-                <div>
-                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
-                </div>
-                <div>
-                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
-                </div>
-                <div>
-                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
-                </div>
-                <div>
-                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
-                </div>
-                <div>
-                    <img src={require('../assets/img/img-gallery-han-1.jpg')} />
-                </div>
-              </Carousel>
-            </div>
-          {/* <div className="swiperType01">
-            <Swiper
-              effect={'coverflow'}
-              grabCursor={true}
-              centeredSlides={true}
-              slidesPerView={1.4}
-              coverflowEffect={{
-                rotate: 50,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: true
-              }}
-              loop={true}
-              autoplay={{
-                delay: 2500,
-                disableOnInteraction: false
-              }}
-              navigation={true}
-              modules={[EffectCoverflow, Navigation]}
-              breakpoints={{
-                300: {
-                  slidesPerView: 1.4
-                },
-                600: {
-                  slidesPerView: 2
-                }
-              }}
-              className="mySwiper"
+            <Carousel
+              showArrows={true}
+              useKeyboardArrows={true}
+              dynamicHeight={true}
+              showStatus={false}
+              showIndicators={false}
             >
-              {slide}
-            </Swiper>
-          </div> */}
+              {slides}
+            </Carousel>
+          </div>
         </section>
         <section className="contact contactType02">
           <h2 className="section-tit">인사 전할 곳</h2>
@@ -682,7 +646,7 @@ const HanSung = (props: HanSung) => {
             <figure className="map">
               <img src={map} alt="map" />
             </figure>
-            <button>
+            <button className="custom-button">
               <a href="https://goo.gl/maps/i4espr2pBkWbwCjH6">
                 지도에서 위치 확인하기
               </a>
