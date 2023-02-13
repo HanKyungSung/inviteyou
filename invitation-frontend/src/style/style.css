@@ -605,7 +605,7 @@
 .invitation-wrap.invitation-test-wrap section .title-devider img {
   max-height: 25px;
 }
-.invitation-wrap.invitation-test-wrap section button {
+.invitation-wrap.invitation-test-wrap section .custom-button {
   background-color: #C9736E;
   border: none;
   padding: 15px 0;
@@ -615,7 +615,7 @@
   width: 100%;
   cursor: pointer;
 }
-.invitation-wrap.invitation-test-wrap section button a {
+.invitation-wrap.invitation-test-wrap section .custom-button a {
   color: inherit;
   font: inherit;
 }
@@ -675,16 +675,6 @@
 .invitation-wrap.invitation-test-wrap .visualType04 .visual-img img {
   width: 100%;
   max-width: 720px;
-}
-.invitation-wrap.invitation-test-wrap .visualType04 .visual-img::before {
-  content: "";
-  width: 162px;
-  height: 190px;
-  background: url("../assets/img/visuan-han-deco2.png") no-repeat right/cover;
-  display: inline-block;
-  position: absolute;
-  left: 0;
-  bottom: 5px;
 }
 .invitation-wrap.invitation-test-wrap .visualType04 .wedding-details {
   margin-top: 60px;
@@ -805,19 +795,6 @@
   width: 100%;
   padding-bottom: 0;
 }
-.invitation-wrap.invitation-test-wrap .galleryType02 .swiperType01 img {
-  max-height: 670px !important;
-}
-.invitation-wrap.invitation-test-wrap .galleryType02 .swiper-button-next,
-.invitation-wrap.invitation-test-wrap .galleryType02 .swiper-button-prev {
-  transform: translateY(-50%);
-}
-.invitation-wrap.invitation-test-wrap .galleryType02 .swiper-button-next::after,
-.invitation-wrap.invitation-test-wrap .galleryType02 .swiper-button-prev::after {
-  font-size: 35px;
-  white-space: nowrap;
-  color: #fff;
-}
 .invitation-wrap.invitation-test-wrap .contactType02 {
   width: 65%;
 }
@@ -885,28 +862,8 @@
   padding-left: 120px;
   padding-right: 120px;
 }
-.invitation-wrap.invitation-test-wrap .carousel-wrap .control-dots {
-  display: none;
-}
-.invitation-wrap.invitation-test-wrap .carousel-wrap button {
-  background-color: transparent;
-}
-.invitation-wrap.invitation-test-wrap .carousel-wrap .carousel-status {
-  display: none;
-}
-.invitation-wrap.invitation-test-wrap .carousel-wrap .thumbs-wrapper {
-  margin-left: 0;
-  margin-right: 0;
-}
-.invitation-wrap.invitation-test-wrap .carousel-wrap .thumb {
-  padding: 0;
-  cursor: pointer;
-}
-.invitation-wrap.invitation-test-wrap .carousel-wrap .thumb.selected {
-  border-color: #C9736E;
-}
-.invitation-wrap.invitation-test-wrap .carousel-wrap .thumb:hover {
-  border-color: #ccc;
+.invitation-wrap.invitation-test-wrap .carousel-wrap .carousel.carousel-slider .control-arrow:hover {
+  background: transparent;
 }
 .invitation-wrap .sound {
   width: 50px;
@@ -947,7 +904,7 @@
   .invitation-wrap.invitation-test-wrap section .title-devider img {
     max-height: 16px;
   }
-  .invitation-wrap.invitation-test-wrap section button {
+  .invitation-wrap.invitation-test-wrap section .custom-button {
     font-size: 16px;
   }
   .invitation-wrap.invitation-test-wrap .visualType04 .visual-content::after {
@@ -958,7 +915,7 @@
     font-size: 35px;
   }
   .invitation-wrap.invitation-test-wrap .visualType04 .wedding-opening {
-    padding: 40px 0 60px;
+    padding: 40px 0 30px;
   }
   .invitation-wrap.invitation-test-wrap .visualType04 .wedding-opening span {
     font-size: 16px;

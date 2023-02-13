@@ -19,20 +19,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, '..', '..', 'invitation-frontend', 'build'));
 
-const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'build', 'index.html');
-// const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'public', 'index.html');
-app.get('/', (req, res) => {
-
+// const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'build', 'index.html');
+const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'public', 'index.html');
+app.get('/test', (req, res) => {
+  console.log("test");
   if (req.subdomains.length != 1) {
-    res.redirect('https://inviteyou.ca');
+    // res.redirect('https://inviteyou.ca');
   }
 
+  const { subdomains } = req;
+  const subdomain = subdomains[0];
   const indexFile = fs.readFileSync(indexFilePath, 'utf8');
+  let updatedIndexFile = indexFile;
 
-  // This is where we can modify the build/index.html file.
-  // The purpose of this is to update the tags in the head tag in html.
-  const updatedIndexFile = indexFile.replace("<title>Inviteyou</title>", "<title>test</title>");
-
+  // if(subdomain === 'we') {
+    // This is where we can modify the build/index.html file.
+    // The purpose of this is to update the tags in the head tag in html.
+    updatedIndexFile = indexFile
+      .replace("<title>Inviteyou</title>", "<title>You have been invited!</title>")
+      .replace(
+        "<meta name=\"description\" content=\"Mobile Invitation/RSVP for Wedding\" data-rh=\"true\" />",
+        "<meta name=\"description\" content=\"Welcome to Han & Jenny wedding!\" data-rh=\"true\" />",
+      );
+    console.log(updatedIndexFile);
+  // }
   // Below code is for future reference purpose.
   // fs.writeFileSync(indexFilePath, updatedIndexFile);
   // res.sendFile(path.join(__dirname, '..', '..', 'invitation-frontend', 'build/index.html'));
