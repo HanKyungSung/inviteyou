@@ -19,8 +19,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, '..', '..', 'invitation-frontend', 'build'));
 
-// const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'build', 'index.html');
-const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'public', 'index.html');
+// Production
+const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'build', 'index.html');
+
+// Development
+// const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'public', 'index.html');
 app.get('/', (req, res) => {
   if (req.subdomains.length != 1) {
     res.redirect('https://inviteyou.ca');
