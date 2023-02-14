@@ -63,6 +63,8 @@ app.use('/', express.static(
     path.join(__dirname, '..', '..', 'invitation-frontend', 'build')
   )
 );
+
+// Normal static return.
 // app.use(
 //   express.static(
 //     path.join(__dirname, '..', '..', 'invitation-frontend', 'build')
@@ -75,7 +77,7 @@ app.use('/api/rsvp', rsvpRoute);
 
 app.get('/api/calendar', (req, res) => {
   // TODO: Modify the ICS file depends on the subdomain query.
-  console.log(req.query);
+  // console.log(req.query);
   res.download(path.join(__dirname, '..', 'src/assets/myevents.ics'));
 });
 
