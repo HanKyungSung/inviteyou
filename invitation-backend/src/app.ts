@@ -21,10 +21,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'build', 'index.html');
 const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'public', 'index.html');
-app.get('/test', (req, res) => {
-  console.log("test");
+app.get('/', (req, res) => {
   if (req.subdomains.length != 1) {
-    // res.redirect('https://inviteyou.ca');
+    res.redirect('https://inviteyou.ca');
   }
 
   const { subdomains } = req;
@@ -32,17 +31,25 @@ app.get('/test', (req, res) => {
   const indexFile = fs.readFileSync(indexFilePath, 'utf8');
   let updatedIndexFile = indexFile;
 
-  // if(subdomain === 'we') {
+  if(subdomain === 'we') {
     // This is where we can modify the build/index.html file.
     // The purpose of this is to update the tags in the head tag in html.
     updatedIndexFile = indexFile
-      .replace("<title>Inviteyou</title>", "<title>You have been invited!</title>")
+      .replace(
+        "<title>Inviteyou</title>",
+        "<title>You have been invited!</title>"
+      )
       .replace(
         "<meta name=\"description\" content=\"Mobile Invitation/RSVP for Wedding\" data-rh=\"true\" />",
         "<meta name=\"description\" content=\"Welcome to Han & Jenny wedding!\" data-rh=\"true\" />",
+      )
+      .replace(
+        "<meta property=\"og:image\" content=\"/og_imgs/default_og_img.jpg\">",
+        "<meta property=\"og:image\" content=\"/og_imgs/we_og_img.png\">"
       );
+    // Debug purpose
     console.log(updatedIndexFile);
-  // }
+  }
   // Below code is for future reference purpose.
   // fs.writeFileSync(indexFilePath, updatedIndexFile);
   // res.sendFile(path.join(__dirname, '..', '..', 'invitation-frontend', 'build/index.html'));
