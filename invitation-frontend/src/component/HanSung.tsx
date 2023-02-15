@@ -77,6 +77,13 @@ const radioButtonStyle = {
     paddingLeft: "10px !important",
     fontFamily: "KoPub Batang",
     cursor: "pointer"
+  },
+  description: {
+    fontSize: "14px !important",
+    marginLeft: "12px !important",
+    marginTop:"5px !important",
+    fontFamily: "KoPub Batang",
+    color: "#39393b !important"
   }
 };
 
@@ -556,8 +563,9 @@ const HanSung = (props: HanSung) => {
             {/* beef chicken lasagna fish */}
             {rsvp === "yes" &&
               <Radio.Group
-                label="차림표"
+                label="메뉴"
                 required
+                orientation="vertical"
                 value={menu}
                 styles={radioGroupStyle}
                 onChange={(menu) => handleOnChangeMenuInput(menu)}
@@ -565,14 +573,16 @@ const HanSung = (props: HanSung) => {
               >
                 <Radio
                   name="menu"
-                  label="BEEF"
+                  label="Beef"
                   value="beef"
+                  description="Pomme Puree, Seasonal Vegetables, Fig Jus (GF)"
                   styles={radioButtonStyle}
                 />
                 <Radio
                   name="menu"
-                  label="FISH"
+                  label="Fish"
                   value="fish"
+                  description="Quinoa, Seasonal Vegetables, Baby Shrimp, Sun dried Tomato sauce, Basil & Mint Vinagrette (GF)"
                   styles={radioButtonStyle}
                 />
               </Radio.Group>
