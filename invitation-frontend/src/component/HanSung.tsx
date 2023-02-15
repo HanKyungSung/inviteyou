@@ -11,7 +11,8 @@ import imgLee from '../assets/img/hansung/img-lee.png';
 import map from '../assets/img/map-han.png';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
-import { color, fontSize, fontWeight, lineHeight } from '@mui/system';
+import soundOn from '../assets/img/icon-sound-on.png';
+import soundOff from '../assets/img/icon-sound-off.png';
 
 interface HanSung {
   subdomain: string;
@@ -76,6 +77,13 @@ const radioButtonStyle = {
     paddingLeft: "10px !important",
     fontFamily: "KoPub Batang",
     cursor: "pointer"
+  },
+  description: {
+    fontSize: "14px !important",
+    marginLeft: "12px !important",
+    marginTop:"5px !important",
+    fontFamily: "KoPub Batang",
+    color: "#39393b !important"
   }
 };
 
@@ -94,9 +102,9 @@ const initModalInfo: ModalInfo = {
 };
 
 const HanSung = (props: HanSung) => {
-  const audio = new Audio('../assets/music/music_han.mp3');
   const { subdomain } = props;
-  const [isMusicActive, setIsMusicActive] = useState<boolean>(true);
+  const [audio] = useState(new Audio(require("../assets/music/SnapInsta.io - sarah vaughan - A Lover's concerto (128 kbps).mp3")));
+  const [isMusicPlaying, setIsMusicPlaying] = useState<boolean>(false);
   const [initForm, setInitForm] = useState<boolean>(true);
   const [initNameInput, setInitNameInput] = useState<boolean>(true);
   const [name, setName] = useState<string>("");
@@ -109,6 +117,8 @@ const HanSung = (props: HanSung) => {
   const [modalInfo, setModalInfo] = useState<ModalInfo>(initModalInfo);
 
   useEffect(() => {
+    audio.loop = true;
+    audio.autoplay = true;
   }, []);
 
   const handleFormSubmit = (e: React.SyntheticEvent) => {
@@ -214,9 +224,9 @@ const HanSung = (props: HanSung) => {
     }
   };
 
-  const handleMusicPlay = () => {
-    setIsMusicActive(!isMusicActive);
-    if (isMusicActive) {
+  const handleMusicPlaying = () => {
+    setIsMusicPlaying(!isMusicPlaying);
+    if (isMusicPlaying) {
       audio.pause();
     } else {
       audio.play();
@@ -553,8 +563,9 @@ const HanSung = (props: HanSung) => {
             {/* beef chicken lasagna fish */}
             {rsvp === "yes" &&
               <Radio.Group
-                label="차림표"
+                label="메뉴"
                 required
+                orientation="vertical"
                 value={menu}
                 styles={radioGroupStyle}
                 onChange={(menu) => handleOnChangeMenuInput(menu)}
@@ -562,14 +573,16 @@ const HanSung = (props: HanSung) => {
               >
                 <Radio
                   name="menu"
-                  label="BEEF"
+                  label="Beef"
                   value="beef"
+                  description="Pomme Puree, Seasonal Vegetables, Fig Jus (GF)"
                   styles={radioButtonStyle}
                 />
                 <Radio
                   name="menu"
-                  label="FISH"
+                  label="Fish"
                   value="fish"
+                  description="Quinoa, Seasonal Vegetables, Baby Shrimp, Sun dried Tomato sauce, Basil & Mint Vinagrette (GF)"
                   styles={radioButtonStyle}
                 />
               </Radio.Group>
@@ -582,7 +595,6 @@ const HanSung = (props: HanSung) => {
                 cols={30}
                 rows={10}
                 value={note}
-                defaultValue=""
                 placeholder="알러지 등 기타 사항을 작성해주세요."
                 onChange={(e) => setNote(e.currentTarget.value)}
               ></textarea>
@@ -687,13 +699,13 @@ const HanSung = (props: HanSung) => {
             </button>
           </div>
         </section>
-        {/* <div className="sound" onClick={() => handleMusicPlay()}>
-          {!isMusicActive ? (
+        <div className="sound" onClick={() => handleMusicPlaying()}>
+          {!isMusicPlaying ? (
             <img src={soundOff} alt="sound-off" />
           ) : (
             <img src={soundOn} alt="sound-on" />
           )}
-        </div> */}
+        </div>
       </main>
     </>
   );
