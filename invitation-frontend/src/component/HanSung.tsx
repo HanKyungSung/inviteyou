@@ -243,6 +243,12 @@ const HanSung = (props: HanSung) => {
     require('../assets/img/hansung/0D1A1955_.jpg'),
     require('../assets/img/hansung/0D1A1985_.jpg'),
     require('../assets/img/hansung/0D1A2036_.jpg'),
+    require('../assets/img/hansung/0D1A2075_.jpg'),
+    require('../assets/img/hansung/0D1A2132_.jpg'),
+    require('../assets/img/hansung/0D1A2205_.jpg'),
+    require('../assets/img/hansung/0D1A2243_.jpg'),
+    require('../assets/img/hansung/0D1A2326_.jpg'),
+    require('../assets/img/hansung/0D1A2342_.jpg'),
   ];
 
   const slides: JSX.Element[] = imgs.map((img) => {
