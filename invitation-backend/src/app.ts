@@ -43,8 +43,8 @@ app.get('/', (req, res) => {
         "<title>You have been invited!</title>"
       )
       .replace(
-        "<meta name=\"description\" content=\"Mobile Invitation/RSVP for Wedding\" data-rh=\"true\" />",
-        "<meta name=\"description\" content=\"Welcome to Han & Jenny wedding!\" data-rh=\"true\" />",
+        "<meta name=\"description\" content=\"Mobile Invitation/RSVP for Wedding\" data-rh=\"true\"/>",
+        "<meta name=\"description\" content=\"Welcome to Han & Jenny wedding!\" data-rh=\"true\"/>",
       )
       .replace(
         "<meta property=\"og:image\" content=\"/og_imgs/default_og_img.jpg\">",
