@@ -264,7 +264,8 @@ const HanSung = (props: HanSung) => {
           title: {
             fontFamily: "KoPub Batang",
             color: "#444",
-            fontWeight: 700
+            fontWeight: 700,
+            margin: 0
           },
           body: {
             fontFamily: "KoPub Batang",
