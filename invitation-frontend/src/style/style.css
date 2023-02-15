@@ -902,6 +902,11 @@
   transform: translate(-50%, -50%);
 }
 
+@media only screen and (orientation: landscape) {
+  .invitation-wrap.invitation-test-wrap .visualType04 {
+    height: 1360px;
+  }
+}
 @media (max-width: 600px) {
   .invitation-wrap.invitation-test-wrap section {
     margin-bottom: 100px;
