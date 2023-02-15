@@ -664,10 +664,11 @@ const HanSung = (props: HanSung) => {
               <img src={titleDeco} alt="titleDeco" />
             </figure>
           </span>
-          <div className="location-info">
+          <div>
             <dl>
               <dt>Hart House Restaurant</dt>
-              <dd>6664 Deer Lake Ave, Burnaby, BC V5E 4H3, Canada</dd>
+              <dd>6664 Deer Lake Ave, Burnaby, BC</dd>
+              <dd>V5E 4H3, Canada</dd>
               <dd>604. 298. 4278</dd>
             </dl>
             <figure className="map">
