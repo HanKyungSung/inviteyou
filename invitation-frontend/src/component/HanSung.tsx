@@ -2,21 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { Input, Radio, Modal } from '@mantine/core';
 import { sendRsvpApi } from '../utils/rsvpUtils';
 import { getIcsFile } from '../utils/calendarUtils';
-// Main pictures
-// import visualImg from '../assets/img/visual-han.jpg';
-// import visualImg from '../assets/img/hansung/DSC_1336.jpg';
-// import visualImg from '../assets/img/hansung/DSC_1020.jpg';
-import visualImg from '../assets/img/hansung/hansung-main.png';
 import iconTel2 from '../assets/img/icon-tel2.png';
 import IconSlash from '../assets/img/icon-slash.png';
 import titleDeco from '../assets/img/section-tit-deco-han.png';
+import surveyDeco from '../assets/img/visuan-han-deco1.png';
 import imgHan from '../assets/img/hansung/img-han.png';
 import imgLee from '../assets/img/hansung/img-lee.png';
 import map from '../assets/img/map-han.png';
-import soundOn from '../assets/img/icon-sound-on.png';
-import soundOff from '../assets/img/icon-sound-off.png';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
+import { color, fontSize, fontWeight, lineHeight } from '@mui/system';
 
 interface HanSung {
   subdomain: string;
@@ -264,23 +259,57 @@ const HanSung = (props: HanSung) => {
         centered
         onClose={() => setModalInfo({ ...initModalInfo, opened: false })}
         opened={modalInfo.opened}
-        title={`${modalInfo.submitInfo.name}님 감사합니다.`}
+        title={`${modalInfo.submitInfo.name}님 설문 참여가 완료되었습니다 :)`}
         styles={{
           title: {
-            fontFamily: "KoPub Batang"
+            fontFamily: "KoPub Batang",
+            color: "#444",
+            fontWeight: 700
           },
           body: {
-            fontFamily: "KoPub Batang"
+            fontFamily: "KoPub Batang",
+            fontSize: '14px',
+            lineHeight: '1.5',
+            color: "#666"
           }
         }}
       >
         {modalInfo.submitInfo.rsvp === "yes" ?
-          <div>
-            4월29일날 뵙겠습니다.
+          <div className="survey-comment">
+            <p>
+              결혼식에 참석해주셔서 감사합니다.
+              <br /><br />
+              작성하신 설문 내용 확인 후, <br />
+              수정사항이 있으시거나 참석이 어려우실 경우, <br />
+              <a href={`tel:604-779-5421`} style={{color: '#666', textDecoration: 'none'}}>236.777.5421</a>로 문자 부탁드립니다. <br />
+            </p>
+            <p style={{color: '#ED8986', fontWeight: 700, marginTop: 50, fontSize: 16}}>
+              참석 여부 : {modalInfo.submitInfo.rsvp}<br />
+              메뉴 : {modalInfo.submitInfo.menu}<br />
+              기타사항 : {modalInfo.submitInfo.note}
+            </p>
+            <figure style={{position:'absolute', right: 0, bottom: 0, margin: 0}}>
+              <img src={surveyDeco} alt="surveyDeco" style={{maxHeight: 180}}/>
+            </figure>
           </div>
           :
-          <div>
-            아쉽지만 다음에뵙겠습니다.
+          <div className="survey-comment">
+            <p>
+              결혼식에서 뵙지 못해 아쉽습니다.
+              <br /><br />
+              응원에 힘입어 이쁜 신혼생활 하는 모습 <br />
+              보여 드리겠습니다. ^^
+              <br /><br />
+              수정사항이 있으시거나 참석이 가능하실 경우, <br />
+              <a href={`tel:604-779-5421`} style={{color: '#666', textDecoration: 'none'}}>236.777.5421</a>로 문자 부탁드립니다.     
+            </p>
+            <p style={{color: '#ED8986', fontWeight: 700, marginTop: 50, fontSize: 16}}>
+              참석 여부 : {modalInfo.submitInfo.rsvp}<br />
+              기타사항 : {modalInfo.submitInfo.note}
+            </p>
+            <figure style={{position:'absolute', right: 0, bottom: 0, margin: 0}}>
+              <img src={surveyDeco} alt="surveyDeco" style={{maxHeight: 180}}/>
+            </figure>
           </div>
         }
       </Modal>
@@ -313,11 +342,8 @@ const HanSung = (props: HanSung) => {
               </span>
             </p>
           </div>
-          <figure className="visual-img">
-            <img src={visualImg} alt="wedding visual img" />
-            {/* <img src={visualImg} style={{ height: "527px" }} alt="wedding visual img" /> */}
-          </figure>
           <div className="wedding-details">
+            <p className="wedding-name">이다연 그리고 성한경</p>
             <p className="wedding-location">Hart House Restaurant</p>
             <p className="wedding-date">2023년 04월 29일 토요일 오전 11시</p>
           </div>
@@ -653,13 +679,13 @@ const HanSung = (props: HanSung) => {
             </button>
           </div>
         </section>
-        <div className="sound" onClick={() => handleMusicPlay()}>
+        {/* <div className="sound" onClick={() => handleMusicPlay()}>
           {!isMusicActive ? (
             <img src={soundOff} alt="sound-off" />
           ) : (
             <img src={soundOn} alt="sound-on" />
           )}
-        </div>
+        </div> */}
       </main>
     </>
   );

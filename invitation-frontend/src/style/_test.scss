@@ -49,18 +49,20 @@
         }
         .visualType04{
             padding: 0;
+            height: 100vh;
+            background: url(../assets/img/hansung/hansung-main.jpg) no-repeat top / cover;
             .visual-content{
                 position: relative;
                 padding: 0 40px;
-                &::after{
-                    content:"";
-                    width: 135px;
-                    height: 168px;
-                    background: url('../assets/img/visuan-han-deco1.png') no-repeat right / cover;
-                    display: inline-block;
-                    position: absolute;
-                    right: 0; top: 0;
-                }
+                // &::after{
+                //     content:"";
+                //     width: 135px;
+                //     height: 168px;
+                //     background: url('../assets/img/visuan-han-deco1.png') no-repeat right / cover;
+                //     display: inline-block;
+                //     position: absolute;
+                //     right: 0; top: 0;
+                // }
             }
             .wedding-date-tit{
                 display: flex;
@@ -114,12 +116,20 @@
                 // }
             }
             .wedding-details{
-                margin-top: 60px;
+                position: absolute;
+                left: 50%;
+                bottom: 20px;
+                transform: translateX(-50%);
+                width: 100%;
                 p{
                     margin: 0;
                     line-height: 1.8;
                     font-size: 20px;
-                    color: #444;
+                    color: #fff;
+                    &.wedding-name{
+                        margin-bottom: 10px;
+                        font-weight: 700;
+                    }
                 }
             }
         }
@@ -304,6 +314,23 @@
                     background: transparent
                 }
             }
+            .thumbs-wrapper{
+                margin-left: 0;
+                margin-right: 0;
+                &:hover{
+                    border-color: #888!important;
+                }
+            }
+            .thumb{
+                padding: 0;
+                &.selected{
+                    border-color: #C9736E!important;
+                }
+                &:hover{
+                    border-color: #888!important;
+                }
+            }
+            
         }
     }
     .sound{
@@ -351,6 +378,7 @@
                 }
             }
             .visualType04 {
+                max-height: 720px;
                 .visual-content{
                     &::after{
                         width: 128px;
@@ -358,7 +386,7 @@
                     }
                 }
                 .wedding-date-tit{
-                    font-size: 35px;
+                    font-size: 40px;
                 }
                 .wedding-opening{
                     padding: 40px 0 30px;
