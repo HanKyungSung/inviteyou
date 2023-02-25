@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import './style/style.css';
 import CardBuilder from './CardBuilder';
 import Landing from './component/Landing';
@@ -19,19 +18,10 @@ function App() {
   // TODO: Checking this should be dynamic. Need to save it in the database.
   if (subdomain === 'we') {
     return (
-      <>
-        <Helmet>
-          <title>You have been invited!</title>
-          <meta property="og:title" content="InviteYou"></meta>
-          <meta property="og:url" content="https:/we.inviteyou.ca/"></meta>
-          <meta property="og:image" content="/public/og_imgs/we_og_img.png"></meta>
-          <meta property="og:description" content="Welcome to Han & Jenny's wedding"></meta>
-        </Helmet>
-        <Routes>
-          <Route path="/" element={<HanSung subdomain={subdomain} />} />
-          <Route path="/list" element={<HanSungList subdomain={subdomain} />} />
-        </Routes>
-      </>
+      <Routes>
+        <Route path="/" element={<HanSung subdomain={subdomain} />} />
+        <Route path="/list" element={<HanSungList subdomain={subdomain} />} />
+      </Routes>
     )
   } else if (subdomain === 'sne') {
     return (
@@ -43,21 +33,12 @@ function App() {
   }
 
   return (
-    <>
-    <Helmet>
-      <title>You have been invited!</title>
-      <meta property="og:title" content="asdfasdf" data-react-helmet="true" data-rh="true" />
-      <meta property="og:url" content="https:/we.inviteyou.ca/"></meta>
-      <meta property="og:image" content="/public/og_imgs/we_og_img.png"></meta>
-      <meta property="og:description" content="Welcome to Han & Jenny's wedding"></meta>
-    </Helmet>
     <Routes>
       <Route path="/" element={<Landing />} />
       <Route path="/builder" element={<CardBuilder />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
     </Routes>
-    </>
   );
 }
 
