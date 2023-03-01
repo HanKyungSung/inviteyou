@@ -616,6 +616,7 @@ const HanSung = (props: HanSung) => {
               dynamicHeight={true}
               showStatus={false}
               showIndicators={false}
+              swipeable={false}
             >
               {slides}
             </Carousel>
