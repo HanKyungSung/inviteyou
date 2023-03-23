@@ -18,7 +18,9 @@ import {
   Checkbox
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import { IconSearch, IconMenu2 } from '@tabler/icons';
+import LandingHeader from '../common/LandingHeader';
+import LandingFooter from '../common/LandingFooter';
+
 
 import { useState, useRef } from 'react';
 
@@ -27,43 +29,6 @@ const COLOR_BLACK = '#222222';
 const STYLE_BTN_COLOR = { from: '#ed6ea0', to: '#ec8c69', deg: 35 };
 
 const useStyles = createStyles((_theme, _params, _getRef) => ({
-  header: {
-    paddingTop: 25,
-    paddingBottom: 25,
-    border: 'none',
-    position: 'fixed',
-    width: '100%',
-    left: 0,
-    top: 0
-  },
-  headerLeft: {
-    display: 'flex',
-    flexWrap: 'nowrap'
-  },
-  headerRight: {
-    display: 'flex',
-    flexWrap: 'nowrap'
-  },
-  logo: {
-    margin: 0,
-    fontSize: 30,
-    fontWeight: 400,
-    color: COLOR_BLACK
-  },
-  gnbLists: {
-    display: 'flex',
-    alignItem: 'center',
-    fontSize: 16,
-    whiteSpace: 'nowrap',
-    gap: 10,
-    marginLeft: 30
-  },
-  gnbList: {
-    paddingLeft: 5,
-    paddingRight: 5,
-    fontSize: 16,
-    fontWeight: 400
-  },
   loginIcons: {
     display: 'flex',
     justifyContent: 'flex-end'
@@ -124,99 +89,7 @@ const Login = () => {
         }}
       >
         {/* HEADER */}
-        <Header height={90} className={classes.header}>
-          <Container size={1400}>
-            <Grid>
-              <Grid.Col lg={6}>
-                <Container className={classes.headerLeft}>
-                  <Anchor
-                    component={Link}
-                    underline={false}
-                    className={classes.logo}
-                    to="/"
-                  >
-                    <Text weight={700} component="span">
-                      Invite
-                    </Text>
-                    You
-                  </Anchor>
-                  <Group className={classes.gnbLists}>
-                    <Anchor
-                      component={Link}
-                      underline={false}
-                      className={classes.gnbList}
-                      color="dark"
-                      to="/"
-                    >
-                      ABOUT US
-                    </Anchor>
-                    <Anchor
-                      component={Link}
-                      underline={false}
-                      className={classes.gnbList}
-                      color="dark"
-                      to="/"
-                    >
-                      TEMPLATE
-                    </Anchor>
-                    <Anchor
-                      component={Link}
-                      underline={false}
-                      className={classes.gnbList}
-                      color="dark"
-                      to="/"
-                    >
-                      CONTACT US
-                    </Anchor>
-                    <Button
-                      variant="gradient"
-                      color="color-white"
-                      gradient={STYLE_BTN_COLOR}
-                      className={classes.gnbList}
-                      size="md"
-                      p={12}
-                      uppercase
-                    >
-                      <Anchor component={Link} underline={false} to="/builder">
-                        GET START
-                      </Anchor>
-                    </Button>
-                  </Group>
-                </Container>
-              </Grid.Col>
-              <Grid.Col lg="auto" offset={3}>
-                <Container className={classes.headerRight}>
-                  <Group className={classes.gnbLists}>
-                    <Anchor
-                      component={Link}
-                      underline={false}
-                      className={classes.gnbList}
-                      to="/Login"
-                    >
-                      Log in
-                    </Anchor>
-                    <Button
-                      color={SECONDARY_COLOR}
-                      className={classes.gnbList}
-                      styles={{ root: { backgroundColor: SECONDARY_COLOR } }}
-                      size="md"
-                      p={12}
-                      uppercase
-                    >
-                      <Anchor component={Link} underline={false} to="/Register">
-                        Sign up
-                      </Anchor>
-                    </Button>
-                  </Group>
-                  <Group className={classes.gnbLists} ml={20}>
-                    <IconSearch className={classes.gnbList} size={30} />
-                    <IconMenu2 className={classes.gnbList} size={30} />
-                  </Group>
-                </Container>
-              </Grid.Col>
-            </Grid>
-          </Container>
-        </Header>
+        <LandingHeader />
         {/* Register */}
         <Container py={250} size={1400}>
           <Title align="center" size={45} weight={700} mb={65} order={1}>
@@ -325,36 +198,7 @@ const Login = () => {
           </Container>
         </Container>
         {/* FOOTER */}
-        <Container py={50} fluid>
-          <Container size={1400}>
-            <Stack>
-              <Anchor
-                component={Link}
-                underline={false}
-                className={classes.logo}
-                to="/"
-                align="center"
-              >
-                <Text weight={700} component="span">
-                  Invite
-                </Text>
-                You
-              </Anchor>
-              <Box my={20}>
-                <Text size={16} color="grey" align="center">
-                  주소. 서울특별시 강남구 강남대로 123, 강남빌딩 201호
-                </Text>
-                <Text size={16} color="grey" align="center">
-                  Tel. +82. 02. 0000. 0000 Fax. +82. 02. 0000. 0000 Mail.
-                  sample@gmail.com
-                </Text>
-              </Box>
-              <Text size={14} color="grey" align="center">
-                ⓒ2022 Raon Design Limited
-              </Text>
-            </Stack>
-          </Container>
-        </Container>
+        <LandingFooter />
       </MantineProvider>
     </>
   );
