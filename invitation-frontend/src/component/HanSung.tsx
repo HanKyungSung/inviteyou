@@ -575,14 +575,14 @@ const HanSung = (props: HanSung) => {
                   name="menu"
                   label="Beef"
                   value="beef"
-                  description="Pomme Puree, Seasonal Vegetables, Fig Jus (GF)"
+                  description="Pomme Puree, Seasonal Vegetables, Red Wine Jus (GF)"
                   styles={radioButtonStyle}
                 />
                 <Radio
                   name="menu"
                   label="Fish"
                   value="fish"
-                  description="Quinoa, Seasonal Vegetables, Baby Shrimp, Sun dried Tomato sauce, Basil & Mint Vinagrette (GF)"
+                  description="Quinoa, Seasonal Vegetables, Sun dried Tomato sauce, Basil & Mint Vinagrette (GF)"
                   styles={radioButtonStyle}
                 />
               </Radio.Group>
