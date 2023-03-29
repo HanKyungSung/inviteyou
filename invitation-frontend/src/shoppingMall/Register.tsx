@@ -10,7 +10,8 @@ import {
   PasswordInput,
   Input,
   TextInput,
-  Checkbox
+  Checkbox,
+  Text
 } from '@mantine/core';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -19,6 +20,7 @@ import { IconEyeCheck, IconEyeOff } from '@tabler/icons';
 import LandingHeader from '../common/LandingHeader';
 import LandingFooter from '../common/LandingFooter';
 
+import * as Constant from './Constant';
 import * as ConstantStyle from '../common/Constant';
 
 const useStyles = createStyles((_theme, _params, _getRef) => ({
@@ -37,7 +39,8 @@ const useStyles = createStyles((_theme, _params, _getRef) => ({
 }));
 
 const defaultRegisterData = {
-  name : "",
+  firstName : "",
+  lastName : "",
   email : "",
   password : "",
   password2 : "",
@@ -46,62 +49,79 @@ const defaultRegisterData = {
 }
 
 const defaultRegisterErrorMessage: Record<string, string> = {
-  name: '',
-  email: '',
-  password: '',
-  password2: '',
-  checkbox1 : '',
-  checkbox2 : ''
+  fistName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  password2: "",
+  checkbox1 : "",
+  checkbox2 : ""
 }
 
 const Login = () => {
-  //Email regit
-  //password length : 8 above 16 below
-  //checkbox 
-  //name = first name/ last name
   const { classes } = useStyles();
   const [form, setForm] = useState(defaultRegisterData)
   const [errorMessages, setErrorMessages] = useState(defaultRegisterErrorMessage);
+  const [submitForm, setSubmitForm] = useState(false)
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   
   const handleSignUp = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log('submit', form)
+    e.preventDefault();
+    setSubmitForm(true);
+    const { firstName, lastName, email, password, password2, checkbox1, checkbox2 } = form;
+    const emptyInputError: Record<string, string> = {};
   
-    const { name, email, password, password2, checkbox1, checkbox2 } = form;
-    if (!name || !email || !password || !password2) {
-      const emptyInputError: Record<string, string> = {};
-      Object.entries(form).forEach(([key, value]) => {
-        if (!value) {
-          emptyInputError[key] = `Please enter ${key}`;
-        }
-
-        if (key === "checkbox1" && !value) {
-          emptyInputError[key] = "Please check checkbox1";
-        } else if (key === "checkbox2" && !value) {
-          emptyInputError[key] = "Please check checkbox2";
-        }
-      });
-      setErrorMessages(emptyInputError);
-    } else if (password !== password2) {
-      setErrorMessages(prevState => ({
-        ...prevState,
-        password2: 'Please confirm your password',
-      }));
-    } else {
-      setErrorMessages(defaultRegisterErrorMessage)
-      console.log('submit', form)
+    if (!firstName) {
+      emptyInputError.firstName = Constant.EMPTY_FIRST_NAME_ERROR;
     }
-  }
+    if (!lastName) {
+      emptyInputError.lastName = Constant.EMPTY_LAST_NAME_ERROR;
+    }
+    if (!email) {
+      emptyInputError.email = Constant.EMPTY_EMAIL_ERROR;
+    }
+    if (!password) {
+      emptyInputError.password = Constant.EMPTY_PASSWORD1_ERROR;
+    } else if (password.length < 8 || password.length > 16) {
+      emptyInputError.password = Constant.PASSWORD_REGEX_ERROR;
+    }
+    if (!password2) {
+      emptyInputError.password2 = Constant.EMPTY_PASSWORD2_ERROR;
+    } else if (password !== password2) {
+      emptyInputError.password2 = Constant.PASSWORD2_CONFORM_ERROR;
+    }
+    if (!checkbox1 || !checkbox2) {
+      emptyInputError.checkbox1 = Constant.EMPTY_CHECKBOX_ERROR;
+      emptyInputError.checkbox2 = Constant.EMPTY_CHECKBOX_ERROR;
+    }
+    if (email && !emailRegex.test(email)) {
+      emptyInputError.email = Constant.EMAIL_REGEX_ERROR;
+    }
+  
+    setErrorMessages(emptyInputError);
+  
+    if (Object.keys(emptyInputError).length === 0) {
+      console.log(form);
+    }
+  };
+  
   
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const {name, value} = e.target
-    setForm({...form, [name]: value})
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: value
+    }));
   }
-  
-  useEffect(() => {
-    console.log('form', form);
-    console.log('errorMessages', errorMessages);
-  }, [form, errorMessages]);
+
+  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, checked } = e.target;
+    setForm((prevForm) => ({
+      ...prevForm,
+      [name]: checked,
+    }));
+  }
+
 
   return (
     <>
@@ -132,13 +152,24 @@ const Login = () => {
                   <Stack spacing={20}>
                     <Input.Wrapper>
                       <TextInput 
-                        placeholder="Name" 
+                        placeholder="First Name" 
                         radius={5} 
                         size="xl" 
-                        value={form.name} 
+                        value={form.firstName} 
                         onChange={handleInputChange}
-                        name="name" 
-                        error={errorMessages.name}
+                        name="firstName" 
+                        error={errorMessages.firstName}
+                      />
+                    </Input.Wrapper>
+                    <Input.Wrapper>
+                      <TextInput 
+                        placeholder="Last Name" 
+                        radius={5} 
+                        size="xl" 
+                        value={form.lastName} 
+                        onChange={handleInputChange}
+                        name="lastName" 
+                        error={errorMessages.lastName}
                       />
                     </Input.Wrapper>
                     <Input.Wrapper>
@@ -158,6 +189,7 @@ const Login = () => {
                         radius={5}
                         size="xl"
                         name="password"
+                        maxLength={16}
                         value={form.password}
                         onChange={handleInputChange}
                         defaultValue="secret"
@@ -173,6 +205,7 @@ const Login = () => {
                         radius={5}
                         size="xl"
                         name="password2"
+                        maxLength={16}
                         value={form.password2}
                         onChange={handleInputChange}
                         defaultValue="secret"
@@ -184,7 +217,14 @@ const Login = () => {
                     </Input.Wrapper>
                     <Stack spacing={10}>
                       <Box className={classes.registerCheckboxWrap}>
-                        <Checkbox label="Privacy Policy" color="pink" size="md" />
+                        <Checkbox 
+                          label="Privacy Policy"
+                          color="pink"
+                          size="md" 
+                          name="checkbox1"
+                          checked={form.checkbox1}
+                          onChange={handleCheckboxChange}
+                        />
                         <Anchor
                           component={Link}
                           size={16}
@@ -196,7 +236,14 @@ const Login = () => {
                         </Anchor>
                       </Box>
                       <Box className={classes.registerCheckboxWrap}>
-                        <Checkbox label="Agreement" color="pink" size="md" />
+                        <Checkbox 
+                          label="Agreement"
+                          color="pink"
+                          size="md"
+                          name="checkbox2"
+                          checked={form.checkbox2}
+                          onChange={handleCheckboxChange}
+                        />
                         <Anchor
                           component={Link}
                           size={16}
@@ -208,6 +255,13 @@ const Login = () => {
                         </Anchor>
                       </Box>
                     </Stack>
+                    <Text color="red" size={18}>
+                      {submitForm && (!form.checkbox1 || !form.checkbox2) && (
+                        <Text color="red" size={18}>
+                          Please check both Privacy Policy and Agreement
+                        </Text>
+                      )}
+                    </Text>
                     <Button
                       variant="gradient"
                       color="color-white"
@@ -221,7 +275,7 @@ const Login = () => {
                     >
                       Sign Up
                     </Button>
-                    {/* <Button
+                    <Button
                       variant="outline"
                       color="pink"
                       fullWidth
@@ -235,7 +289,7 @@ const Login = () => {
                       >
                         Sign In
                       </Anchor>
-                    </Button> */}
+                    </Button>
                   </Stack>
               </Container>
             </form>
