@@ -64,12 +64,12 @@ const Login = () => {
   const [errorMessages, setErrorMessages] = useState(defaultRegisterErrorMessage);
   const [submitForm, setSubmitForm] = useState(false)
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emptyInputError: Record<string, string> = {};
   
   const handleSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitForm(true);
     const { firstName, lastName, email, password, password2, checkbox1, checkbox2 } = form;
-    const emptyInputError: Record<string, string> = {};
   
     if (!firstName) {
       emptyInputError.firstName = Constant.EMPTY_FIRST_NAME_ERROR;
