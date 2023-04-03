@@ -6,6 +6,8 @@ import Login from './component/Login';
 import Register from './component/Register';
 import HanSung from './component/HanSung';
 import HanSungList from './component/HanSungList';
+import SamHan from './component/SamHan';
+import SamHanList from './component/SamHanList';
 import * as Constants from './utils/Constants';
 
 function App() {
@@ -25,7 +27,10 @@ function App() {
     )
   } else if (subdomain === 'sne') {
     return (
-      <div>Working in Progress</div>
+      <Routes>
+        <Route path="/" element={<SamHan subdomain={subdomain} />} />
+        <Route path="/list" element={<SamHanList subdomain={subdomain} />} />
+      </Routes>
     )
   } else if (!hostnames.includes(window.location.hostname)) {
     // If subdomain doesn't match to anything, we reset the url.
