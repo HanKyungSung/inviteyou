@@ -1,23 +1,41 @@
 import { NextFunction, Request, Response } from 'express';
-import userModel from '../models/user';
+import UserModel from '../models/user';
 
 export const handleRegistration = async (req: Request, res: Response, next: NextFunction) => {
   // TODO: Need to see if the user exsists first
 
   try {
-    const { email, password } = req.body;
+    const { email, firstName, lastName, password } = req.body;
 
     // TODO: Better validation require
-    if (email === undefined || password === undefined) {
+    if (email === undefined ||
+      firstName === undefined ||
+      lastName === undefined ||
+      password === undefined
+    ) {
       return res.send(400);
     }
 
-    let createdUser = await userModel.create({
-      email: email,
-      password: password
-    });
+    // Check if the user already exists with the input email.
+    const existUser = await UserModel.findOne({ email: email }).exec();
 
-    return res.status(201).send(JSON.stringify(createdUser));
+    if (existUser !== null) {
+      return res.status(409).send('Email already used');
+    }
+
+    // If user doesn't exists, we create a new user.
+    const createdUser = new UserModel({
+      email: email,
+      firstName: firstName,
+      lastName: lastName
+    });
+    createdUser.setPassword(password);
+    await createdUser.save();
+
+    // Debug
+    console.log(createdUser);
+
+    return res.sendStatus(201);
   } catch (error) {
     return next(error);
   }

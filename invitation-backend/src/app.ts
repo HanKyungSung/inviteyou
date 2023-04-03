@@ -7,6 +7,7 @@ import * as dotenv from 'dotenv';
 import connectDB from './utils/connectDB';
 import userRoute from './routes/user.route';
 import rsvpRoute from './routes/rsvp.route';
+import authRoute from './routes/auth.route';
 
 dotenv.config();
 
@@ -72,6 +73,8 @@ app.use('/', express.static(
 // );
 // Routes
 app.use('/api/registration', userRoute);
+
+app.use('/api/login', authRoute)
 
 app.use('/api/rsvp', rsvpRoute);
 
