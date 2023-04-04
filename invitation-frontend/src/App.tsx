@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import './style/style.css';
 import CardBuilder from './CardBuilder';
-import Landing from './component/Landing';
+import Landing from './shoppingMall/Landing';
 import Login from './component/Login';
 import Register from './component/Register';
 import HanSung from './component/HanSung';
@@ -9,6 +9,8 @@ import HanSungList from './component/HanSungList';
 import SamHan from './component/SamHan';
 import SamHanList from './component/SamHanList';
 import * as Constants from './utils/Constants';
+import { Header } from '@mantine/core';
+import LandingHeader from './common/LandingHeader';
 
 function App() {
   const { NODE_ENV } = process.env;
@@ -43,6 +45,7 @@ function App() {
       <Route path="/builder" element={<CardBuilder />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Register" element={<Register />} />
+      <Route path="/header" element={<LandingHeader />} />
     </Routes>
   );
 }
