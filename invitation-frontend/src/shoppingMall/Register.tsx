@@ -49,7 +49,7 @@ const defaultRegisterData = {
 }
 
 const defaultRegisterErrorMessage: Record<string, string> = {
-  fistName: "",
+  firstName: "",
   lastName: "",
   email: "",
   password: "",
@@ -58,7 +58,7 @@ const defaultRegisterErrorMessage: Record<string, string> = {
   checkbox2 : ""
 }
 
-const Login = () => {
+const Register = () => {
   const { classes } = useStyles();
   const [form, setForm] = useState(defaultRegisterData)
   const [errorMessages, setErrorMessages] = useState(defaultRegisterErrorMessage);
@@ -66,54 +66,86 @@ const Login = () => {
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const emptyInputError: Record<string, string> = {};
   
+  const handleValidateInput = (name: keyof typeof form, value: string | boolean): string => {
+    let errorMessage = "";
+    switch (name) {
+      case "firstName":
+        if (!value) {
+          errorMessage = Constant.EMPTY_FIRST_NAME_ERROR;
+        }
+        break;
+      case "lastName":
+        if (!value) {
+          errorMessage = Constant.EMPTY_LAST_NAME_ERROR;
+        }
+        break;
+      case "email":
+        if (!value) {
+          errorMessage = Constant.EMPTY_EMAIL_ERROR;
+        } else if (typeof value === "string" && !emailRegex.test(value)) {
+          errorMessage = Constant.EMAIL_REGEX_ERROR;
+        }
+        break;
+      case "password":
+        if (!value) {
+          errorMessage = Constant.EMPTY_PASSWORD1_ERROR;
+        } else if (typeof value === "string" && (value.length < 8 || value.length > 16)) {
+          errorMessage = Constant.PASSWORD_REGEX_ERROR;
+        }
+        break;
+      case "password2":
+        if (!value) {
+          errorMessage = Constant.EMPTY_PASSWORD2_ERROR;
+        } else if (typeof value === "string" && (value.length < 8 || value.length > 16)) {
+          errorMessage = Constant.PASSWORD_REGEX_ERROR;
+        } else if (value !== form.password) {
+          errorMessage = Constant.PASSWORD2_CONFORM_ERROR;
+        }
+        break;
+      case "checkbox1":
+        if (!value) {
+          emptyInputError.checkbox1 = Constant.EMPTY_CHECKBOX_ERROR;
+        }
+        break;
+      case "checkbox2":
+        if (!value) {
+          emptyInputError.checkbox2 = Constant.EMPTY_CHECKBOX_ERROR;
+        }
+        break;
+      default:
+        break;
+    }
+    return errorMessage;
+  }
+
   const handleSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitForm(true);
-    const { firstName, lastName, email, password, password2, checkbox1, checkbox2 } = form;
-  
-    if (!firstName) {
-      emptyInputError.firstName = Constant.EMPTY_FIRST_NAME_ERROR;
+    
+    let inputErrors:Record<string, string> = {};
+    for (let name in form) {
+      const errorMessage = handleValidateInput(name as keyof typeof form, form[name as keyof typeof form])
+      if (errorMessage) {
+        inputErrors[name] = errorMessage;
+      }
     }
-    if (!lastName) {
-      emptyInputError.lastName = Constant.EMPTY_LAST_NAME_ERROR;
-    }
-    if (!email) {
-      emptyInputError.email = Constant.EMPTY_EMAIL_ERROR;
-    }
-    if (!password) {
-      emptyInputError.password = Constant.EMPTY_PASSWORD1_ERROR;
-    } else if (password.length < 8 || password.length > 16) {
-      emptyInputError.password = Constant.PASSWORD_REGEX_ERROR;
-    }
-    if (!password2) {
-      emptyInputError.password2 = Constant.EMPTY_PASSWORD2_ERROR;
-    } else if (password !== password2) {
-      emptyInputError.password2 = Constant.PASSWORD2_CONFORM_ERROR;
-    }
-    if (!checkbox1 || !checkbox2) {
-      emptyInputError.checkbox1 = Constant.EMPTY_CHECKBOX_ERROR;
-      emptyInputError.checkbox2 = Constant.EMPTY_CHECKBOX_ERROR;
-    }
-    if (email && !emailRegex.test(email)) {
-      emptyInputError.email = Constant.EMAIL_REGEX_ERROR;
-    }
-  
-    setErrorMessages(emptyInputError);
+    setErrorMessages(inputErrors);
   
     if (Object.keys(emptyInputError).length === 0) {
       console.log(form);
     }
   };
   
-  
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const {name, value} = e.target
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    const { name, value } = e.target;
+    const errorMessage: string = handleValidateInput(name as keyof typeof form, value);
+    setErrorMessages((prevErrors) => ({ ...prevErrors, [name]: errorMessage }));
     setForm((prevForm) => ({
       ...prevForm,
-      [name]: value
+      [name]: value,
     }));
-  }
-
+  };
+  
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, checked } = e.target;
     setForm((prevForm) => ({
@@ -121,7 +153,6 @@ const Login = () => {
       [name]: checked,
     }));
   }
-
 
   return (
     <>
@@ -301,4 +332,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Register;
