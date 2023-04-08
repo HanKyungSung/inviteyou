@@ -25,7 +25,7 @@ const useStyles = createStyles((_theme, _params, _getRef) => ({
     width: '100%',
     left: 0,
     top: 0,
-    backgroundColor: ConstantStyle.STYLE_BG_COLOR
+    backgroundColor: 'transparent'
   },
   headerLeft: {
     display: 'flex',
