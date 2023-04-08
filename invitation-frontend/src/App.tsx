@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import './style/style.css';
 import CardBuilder from './CardBuilder';
 import Landing from './shoppingMall/Landing';
-import Login from './component/Login';
+import Login from './shoppingMall/Login';
 import Register from './shoppingMall/Register';
 import HanSung from './component/HanSung';
 import HanSungList from './component/HanSungList';
