@@ -1,335 +1,21 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { IconPlus, IconMinus } from '@tabler/icons';
-import { Input, Radio, Modal, createStyles, NumberInput, NumberInputHandlers, ActionIcon, Text, MantineProvider, Container, Image } from '@mantine/core';
-import { sendRsvpApi } from '../utils/rsvpUtils';
+import { Input, Radio, Modal, NumberInput, NumberInputHandlers, ActionIcon, Text, MantineProvider, Container, Image } from '@mantine/core';
+import { sendRsvpApiSecondVersion } from '../utils/rsvpUtils';
 import { getIcsFile } from '../utils/calendarUtils';
 import imgSam from '../assets/img/samhan/img-sam.png';
 import imgEunhee from '../assets/img/samhan/img-eunhee.png';
-import imgVisual from '../assets/img/samhan/samhan-visual-bg.jpg';
 import map from '../assets/img/samhan/map.svg';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import soundOn from '../assets/img/icon-sound-on.png';
 import soundOff from '../assets/img/icon-sound-off.png';
-import { useMediaQuery, upperFirst } from '@mantine/hooks';
+import { useMediaQuery } from '@mantine/hooks';
 import { ImPhone } from 'react-icons/im';
 import { MdEmail } from 'react-icons/md';
-import { borderRadius } from '@mui/system';
+import { SamHanStyles } from '../style/SanHan';
 
-const useStyles = createStyles((theme) => ({
-  // Select Style
-  selectWrapper: {
-    display: 'flex',
-    alignItems: 'center',
-    marginTop : 5,
-    justifyContent: 'space-between',
-    padding: `1px 5px`,
-    borderRadius: 5,
-    border: '1px solid #ddd',
-    backgroundColor: '#fff',
-  },
-  'control': {
-    backgroundColor: '#fff',
-    border: '1px solid #ddd',
-    '&:disabled': {
-      borderColor: '1px solid #ddd',
-      opacity: 0.8,
-      backgroundColor: 'transparent',
-    },
-  },
-  'selectWrapper input': {
-    textAlign: 'center',
-    paddingRight: 10,
-    paddingLeft: 10,
-    height: 28,
-    flex: 1,
-  },
-  // Visual
-  invitationSam : {
-    position: 'relative'
-  },
-  invitationWrap : {
-    maxWidth: 800,
-    margin: '0 auto',
-    boxShadow : '-1px -1px 14px rgba(0,0,0,0.08)'
-  },
-  inr : {
-    maxWidth: 770,
-    padding: '0 15px',
-    display : 'flex',
-    flexDirection: 'column',
-    height: '100%',
-    justifyContent: 'space-between'
-  },
-  newVisual : {
-    width: '100%',
-    padding: '30px 0 50px 0',
-    background: `url(${imgVisual}) no-repeat center / cover`,
-    height: '100vh'
-  },
-  invitationTit : {
-    margin: 0,
-    textAlign: 'center',
-    color: '#fff',
-  },
-  characterInfo : {
-    position: 'relative',
-    color: '#fff',
-    marginBottom: 50
-  },
-  and : {
-    position: 'absolute',
-    left: '50%',
-    top : '50%',
-    transform : 'translate(-50%, -50%)',
-    fontWeight: 400,
-    fontFamily : 'Rouge Script!important',
-    opacity : 0.5,
-    textAlign: 'center',
-    display:'block',
-    "&::before" : {
-      content: `""`,
-      width: '30%',
-      height: 1,
-      background : '#fff',
-      opacity:0.3,
-      position: 'absolute',
-      left: 0,
-      top: '50%',
-      transform: 'translateY(-50%)'
-    },
-    "&::after" : {
-      content: `""`,
-      width: '30%',
-      height: 1,
-      background : '#fff',
-      opacity:0.3,
-      position: 'absolute',
-      right: 0,
-      top: '50%',
-      transform: 'translateY(-50%)'
-    }
-  },
-  // Intro
-  newIntro : {
-    position: 'relative',
-  },
-  sectionTitWrap : {
-    position: 'relative',
-  },
-  sectionTit : {
-    fontFamily : 'Rouge Script!important',
-    opacity: 0.1,
-    lineHeight: 1
-  },
-  sectionSubTit : {
-    position: 'absolute',
-    left: '50%',
-    bottom: '10%',
-    transform: 'translateX(-50%)',
-    textTransform : 'uppercase',
-    width: '100%'
-  },
-  titleDecoFigure : {
-    margin: '30px 0',
-    textAlign: 'center',
-    fontSize: 0
-  },
-  titleDecoImg : {
-    maxWidth: '100%',
-    margin: '0 auto'
-  },
-  titleDecoImg2 : {
-    maxWidth: '100%',
-    margin: '0 auto'
-  },
-  introMessage : {
-    width: '60%',
-    margin: '0 auto'
-  },
-  introDeco1Figure :{
-    position: 'absolute',
-    left: 0,
-    top: 0
-  },
-  introDeco2Figure :{
-    position: 'absolute',
-    right: 0,
-    bottom: 0
-  },
-  newCalendar : {
-    position : 'relative'
-  },
-  calendarTable : {
-    width: '100%',
-    marginBottom: 50,
-    fontFamily : 'Crimson Text!important',
-    th : {
-      fontWeight: 500,
-      textTransform: 'uppercase',
-      fontSize: 18,
-      color: '#666',
-      padding: '0.5em 0',
-      textAlign: 'center',
-      verticalAlign: 'middle',
-    },
-    td : {
-      width: 'calc(100%/7)',
-      textAlign: 'center',
-      verticalAlign: 'middle',
-      position: 'relative',
-      fontSize: 18,
-      color: '#666',
-      '&::after': {
-        content: `''`,
-        display: 'block',
-        marginTop: '100%',
-      },
-      span : {
-        position: 'absolute',
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-    }
-  },
-  current : {
-    background: '#2C4032',
-    borderRadius: '100%',
-    color: '#fff!important',
-    fontSize: 18,
-    textAlign: 'center',
-  },
-  calendarWeddingSummary : {
-    padding: '20px 0',
-    fontSize: 20,
-    color: '#2C4032',
-    textAlign: 'center',
-    borderTop: '1px solid #eee',
-    borderBottom: '1px solid #eee',
-  },
-  calendarDecoImg : {
-    margin: '0 auto'
-  },
-  contactList : {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 30
-  },
-  contactListLeft : {
-    display : 'flex'
-  },
-  contactInfoName : {
-    display: 'flex',
-    alignItems : 'end'
-  },
-  contactIcon : {
-    width: 40,
-    height: 40,
-    background: '#2C4032',
-    display: 'inline-flex',
-    justifyContent: 'center',
-    alignItems : 'center',
-    color: "#fff",
-    borderRadius : '100%',
-    margin: '0 5px',
-    fontSize: 18,
-    figure: {
-      width: 18,
-      height: 18
-    },
-  },
-  carouselWrap : {
-    '.slide' : {
-      img : {
-        width : '100%',
-        height: 500,
-        objectFit: 'contain'
-      }
-    },
-    '.thumb' : {
-      img : {
-        height: 100,
-        objectFit: 'contain'
-      }
-    }
-  },
-  map : {
-    marginBottom: 50
-  },
-  customButton : {
-    width: '100%',
-    height: 60,
-    fontSize: 20,
-    fontWeight: 500,
-    color: '#fff',
-    background : '#2C4032',
-    border : 'none',
-    outline : 'none',
-    marginTop: 50
-  },
-  countInput : {
-    input : {
-      textAlign: 'center'
-    }
-  },
-  textarea : {
-    width: '100%',
-    height: 150,
-    display: 'block',
-    marginTop: 5,
-    borderColor: '#ddd',
-    outline : 'none',
-    fontSize: 16,
-    padding: '15px 20px',
-    borderRadius: 5,
-    '::placeholder' : {
-      fontSize: 16
-    }
-  },
-  closeMenu : {
-    cursor: 'pointer'
-  },
-  menu : {
-    marginBottom : 20,
-    width: '70%'
-  },
-  hr : {
-    borderColor: '#ddd'
-  },
-  galleryDeco : {
-    position: 'absolute',
-    left : 0,
-    top : 0
-  },
-  contactDeco : {
-    position: 'absolute',
-    right : 0,
-    top : 0
-  },
-  sound : {
-    position: 'fixed',
-    bottom : 20,
-    right: 20,
-    width: 55,
-    height: 55,
-    padding: 6,
-    border: '2px solid #aaa',
-    borderRadius: '100%',
-    display: 'flex',
-    justifyContent: 'center',
-    alignContent : 'center',
-    img : {
-      width : 35,
-      height : 35
-    }
-  }
-}));
+const useStyles = SamHanStyles();
 
 interface SamHan {
   subdomain: string;
@@ -340,7 +26,8 @@ interface SamHan {
 interface SubmitInfo {
   name: string;
   rsvp: string;
-  menu: string;
+  adultCount: number;
+  childCount: number;
   note: string;
 }
 interface ModalInfo {
@@ -406,38 +93,40 @@ const radioButtonStyle = {
 
 const NAME_INPUT_ERROR = "Please enter the required field";
 const RSVP_INPUT_ERROR = "Please choose your attendance";
+const ADULT_COUNT_ERROR = "Please enter the adult count";
 
 const initModalInfo: ModalInfo = {
   opened: false,
   submitInfo: {
     name: "",
     rsvp: "",
-    menu: "",
+    adultCount: 0,
+    childCount: 0,
     note: ""
   }
 };
 
 const SamHan = (props: SamHan) => {
-  let min = 1;
+  let min = 0;
   let max = 10;
-
+  const { subdomain } = props;
   const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const { classes } = useStyles();
-  const handlers = useRef<NumberInputHandlers>(null);
-  const [value, setValue] = useState<number | undefined>(1);
-  const { subdomain } = props;
-  const [audio] = useState(new Audio(require("../assets/music/SnapInsta.io - sarah vaughan - A Lover's concerto (128 kbps).mp3")));
+  const adultCountInputHandlers = useRef<NumberInputHandlers>(null);
+  const childCountInputHandlers = useRef<NumberInputHandlers>(null);
+  const [adultCount, setAdultCount] = useState<number>(0);
+  const [childCount, setChildCount] = useState<number>(0);
+  const [audio] = useState(new Audio(require("../assets/music/SnapInsta.io - Frank Sinatra   I Love You Baby (128 kbps).mp3")));
   const [isMusicPlaying, setIsMusicPlaying] = useState<boolean>(false);
   const [initForm, setInitForm] = useState<boolean>(true);
   const [initNameInput, setInitNameInput] = useState<boolean>(true);
   const [name, setName] = useState<string>("");
   const [rsvp, setRsvp] = useState<string>("");
-  const [menu, setMenu] = useState<string>("");
   const [note, setNote] = useState<string>("");
   const [isNameValidated, setIsNameValidated] = useState<boolean>(false);
   const [isRsvpValidated, setIsRsvpValidated] = useState<boolean>(false);
-  const [isMenuValidated, setIsMenuValidated] = useState<boolean>(false);
+  const [isAdultCountValidated, setIsAdultCountValidated] = useState<boolean>(false);
   const [modalInfo, setModalInfo] = useState<ModalInfo>(initModalInfo);
 
   useEffect(() => {
@@ -460,17 +149,17 @@ const SamHan = (props: SamHan) => {
       setRsvp("");
     }
 
-    if (!isMenuValidated) {
-      setMenu("");
+    if (!isAdultCountValidated) {
+      setAdultCount(0);
     }
 
     if (isNameValidated && isRsvpValidated) {
-      if (rsvp === "yes" && isMenuValidated) {
+      if (rsvp === "yes" && isAdultCountValidated) {
         handleSendApi();
       } else if (rsvp === "no") {
         handleSendApi();
       }
-      console.log(name, rsvp, menu, note);
+      console.log(name, rsvp, note);
     }
   };
 
@@ -480,19 +169,21 @@ const SamHan = (props: SamHan) => {
 
     setName("");
     setRsvp("");
-    setMenu("");
+    setAdultCount(0);
+    setChildCount(0);
     setNote("");
     
     setIsNameValidated(false);
     setIsRsvpValidated(false);
-    setIsMenuValidated(false);
+    setIsAdultCountValidated(false);
   };
 
   const handleSendApi = () => {
-    sendRsvpApi({
+    sendRsvpApiSecondVersion({
       name: name,
       participate: rsvp,
-      menu: menu,
+      adultCount: adultCount,
+      childCount: childCount,
       note: note,
       subdomain
     });
@@ -502,7 +193,8 @@ const SamHan = (props: SamHan) => {
       submitInfo: {
         name: name,
         rsvp: rsvp,
-        menu: menu,
+        adultCount: adultCount,
+        childCount: childCount,
         note: note
       }
     });
@@ -526,15 +218,21 @@ const SamHan = (props: SamHan) => {
   const handleOnChangeRsvpInput = (answer: string) => {
     setRsvp(answer);
 
-    if (answer === "no") {
-      setMenu("");
-      setIsMenuValidated(false);
-    }
-
     if (answer === "") {
       setIsRsvpValidated(false);
     } else {
       setIsRsvpValidated(true);
+    }
+  };
+
+  const handleOnChnageAdultCount = (count: number) => {
+    setAdultCount(count);
+
+    if (count == 0) {
+      setAdultCount(0);
+      setIsAdultCountValidated(false);
+    } else {
+      setIsAdultCountValidated(true);
     }
   };
 
@@ -543,36 +241,33 @@ const SamHan = (props: SamHan) => {
     if (isMusicPlaying) {
       audio.pause();
     } else {
+      audio.currentTime = 80;
       audio.play();
     }
   };
 
   const imgs: string[] = [
-    require('../assets/img/hansung/DSC_0735.jpg'),
-    require('../assets/img/hansung/DSC_0799.jpg'),
-    require('../assets/img/hansung/DSC_0932.jpg'),
-    require('../assets/img/hansung/DSC_1020.jpg'),
-    require('../assets/img/hansung/DSC_1219.jpg'),
-    require('../assets/img/hansung/DSC_1304.jpg'),
-    require('../assets/img/hansung/DSC_1336.jpg'),
-    require('../assets/img/hansung/DSC_1364.jpg'),
-    require('../assets/img/hansung/DSC_1590.jpg'),
-    require('../assets/img/hansung/DSC_1780.jpg'),
-    require('../assets/img/hansung/DSC_2035.jpg'),
-    require('../assets/img/hansung/DSC_2070.jpg'),
-    require('../assets/img/hansung/DSC_2203.jpg'),
-    require('../assets/img/hansung/DSC_2231.jpg'),
-    require('../assets/img/hansung/DSC_2284.jpg'),
-    require('../assets/img/hansung/0D1A1871_.jpg'),
-    require('../assets/img/hansung/0D1A1955_.jpg'),
-    require('../assets/img/hansung/0D1A1985_.jpg'),
-    require('../assets/img/hansung/0D1A2036_.jpg'),
-    require('../assets/img/hansung/0D1A2075_.jpg'),
-    require('../assets/img/hansung/0D1A2132_.jpg'),
-    require('../assets/img/hansung/0D1A2205_.jpg'),
-    require('../assets/img/hansung/0D1A2243_.jpg'),
-    require('../assets/img/hansung/0D1A2326_.jpg'),
-    require('../assets/img/hansung/0D1A2342_.jpg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-04-51 002-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-04-52 003-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-04-53 004-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-04-55 005-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-04-56 006-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-04-57 007-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-04-58 008-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-04-59 009-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-01 010-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-02 011-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-03 012-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-05 013-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-06 014-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-07 015-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-09 016-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-10 017-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-11 018-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-12 019-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-14 020-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-15 021-min.jpeg'),
+    require('../assets/img/samhan/moment_pics/2023-04-07-23-05-16 022-min.jpeg')
   ];
 
   const slides: JSX.Element[] = imgs.map((img) => {
@@ -699,7 +394,9 @@ const SamHan = (props: SamHan) => {
             </span>
             <div className={classes.introMessage}>
               <Text size={RESPONSIVE_MOBILE ? 16 : 26} color="#555" align='center'>
-                Your presence at our wedding means a lot to all of us. Please let us have the honor to host you on this beautiful celebration of love and loyalty!
+                Your presence at our wedding means a lot to all of us.<br />
+                Please let us have the honor to host you on<br />
+                this beautiful celebration of love and loyalty!
               </Text>
               <Text underline size={RESPONSIVE_MOBILE ? 16 : 28} color="#555" align='center' pt={50}>Sam Han & Eunhee Jo</Text>
             </div>
@@ -764,7 +461,7 @@ const SamHan = (props: SamHan) => {
                       <td><span>15</span></td>
                       <td><span>16</span></td>
                       <td className={classes.current}
-                        onClick={() => getIcsFile('we')}
+                        onClick={() => getIcsFile({ subdomain: 'sne'})}
                         style={{
                           cursor: "pointer"
                         }}>
@@ -790,9 +487,16 @@ const SamHan = (props: SamHan) => {
                     </tr>
                   </tbody>
                 </table>
+                <button
+                  className={classes.customAddCalendarButton}
+                  type="button"
+                  onClick={() => getIcsFile({ subdomain: 'sne'})}
+                >
+                  Click here to add the event
+                </button>
               </Container>
               <div>
-                <figure style={{fontSize: 0, textAlign: 'center'}}>
+                <figure style={{fontSize: 0, textAlign: 'center', marginTop: '70px'}}>
                   <Image 
                     src={require('../assets/img/samhan/sam-calendar-deco1.png')} 
                     alt="calendarDeco" 
@@ -885,30 +589,32 @@ const SamHan = (props: SamHan) => {
               </Radio.Group>
               <div style={{display: 'flex', alignItems: 'center'}}>
                 <Input.Wrapper className={classes.countInput}>
-                  <label htmlFor="">How many adults?</label>
+                  <label htmlFor="">How many adults? <span style={{ color: 'red' }}>*</span></label>
                   <div className={classes.selectWrapper}>
                       <ActionIcon<'button'>
                         size={28}
                         variant="transparent"
-                        onClick={() => handlers.current?.decrement()}
-                        disabled={value === min}
+                        onClick={() => adultCountInputHandlers.current?.decrement()}
+                        disabled={adultCount === min}
                         onMouseDown={(event) => event.preventDefault()}
                       >
                         <IconMinus size="1rem" stroke={1.5} />
                       </ActionIcon>
                       <NumberInput
+                        required
+                        error={adultCount == 0 && !initForm ? ADULT_COUNT_ERROR : ""}
                         variant="unstyled"
                         min={min}
                         max={max}
-                        handlersRef={handlers}
-                        value={value}
-                        onChange={setValue}
+                        handlersRef={adultCountInputHandlers}
+                        value={adultCount}
+                        onChange={(count: number) => handleOnChnageAdultCount(count)}
                       />
                       <ActionIcon<'button'>
                         size={28}
                         variant="transparent"
-                        onClick={() => handlers.current?.increment()}
-                        disabled={value === max}
+                        onClick={() => adultCountInputHandlers.current?.increment()}
+                        disabled={adultCount === max}
                         onMouseDown={(event) => event.preventDefault()}
                       >
                         <IconPlus size="1rem" stroke={1.5} />
@@ -921,8 +627,8 @@ const SamHan = (props: SamHan) => {
                     <ActionIcon<'button'>
                       size={28}
                       variant="transparent"
-                      onClick={() => handlers.current?.decrement()}
-                      disabled={value === min}
+                      onClick={() => childCountInputHandlers.current?.decrement()}
+                      disabled={childCount === min}
                       onMouseDown={(event) => event.preventDefault()}
                     >
                       <IconMinus size="1rem" stroke={1.5} />
@@ -931,15 +637,15 @@ const SamHan = (props: SamHan) => {
                       variant="unstyled"
                       min={min}
                       max={max}
-                      handlersRef={handlers}
-                      value={value}
-                      onChange={setValue}
+                      handlersRef={childCountInputHandlers}
+                      value={childCount}
+                      onChange={(count: number) => setChildCount(count)}
                     />
                     <ActionIcon<'button'>
                       size={28}
                       variant="transparent"
-                      onClick={() => handlers.current?.increment()}
-                      disabled={value === max}
+                      onClick={() => childCountInputHandlers.current?.increment()}
+                      disabled={childCount === max}
                       onMouseDown={(event) => event.preventDefault()}
                     >
                       <IconPlus size="1rem" stroke={1.5} />
@@ -947,7 +653,7 @@ const SamHan = (props: SamHan) => {
                   </div>
                 </Input.Wrapper>
               </div>
-              <Text py={20}>Total Participate : 5</Text>
+              <Text py={20}>Total Participate : {adultCount + childCount}</Text>
               <div style={{marginBottom : 20}}>
                 <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between'}}>
                   <Text size={16}>Menu</Text>
@@ -955,6 +661,7 @@ const SamHan = (props: SamHan) => {
                     {!isMenuOpen ? 'Close' : 'Open'} Menu
                   </Text>
                 </div>
+                <Text size={14}>Server will take your order on the wedding day</Text>
                 {!isMenuOpen && (
                   <div>
                     <ul style={{padding: 20, border: '1px solid #ddd', borderRadius: 5}}>

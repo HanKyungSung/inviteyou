@@ -458,7 +458,7 @@ const HanSung = (props: HanSung) => {
                   <td className="current">
                     <span
                       className="circle"
-                      onClick={() => getIcsFile('we')}
+                      onClick={() => getIcsFile({ subdomain: 'we' })}
                       style={{
                         cursor: "pointer"
                       }}
