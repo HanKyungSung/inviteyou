@@ -8,9 +8,9 @@ interface HanSungList {
 
 interface Participant {
   name: string;
-  numberOfParticipate?: number;
+  adultCount?: number;
+  childCount?: number;
   participate: string;
-  menu?: string;
   note?: string;
   createdAt: string;
   updatedAt: string;
@@ -34,9 +34,9 @@ const HanSungList = (props: HanSungList) => {
   const rows = participants.map(participant => (
     <tr key={participant.name}>
       <td>{participant.name}</td>
-      <td>{participant.numberOfParticipate}</td>
       <td>{participant.participate}</td>
-      <td>{participant.menu}</td>
+      <td>{participant.adultCount}</td>
+      <td>{participant.childCount}</td>
       <td>{participant.note}</td>
       <td>{participant.createdAt}</td>
       <td>{participant.updatedAt}</td>
@@ -50,9 +50,9 @@ const HanSungList = (props: HanSungList) => {
           <thead>
             <tr>
               <th>Name</th>
-              <th>Number of guest</th>
               <th>Participate</th>
-              <th>Menu</th>
+              <th>Adult Count</th>
+              <th>Child Count</th>
               <th>Note</th>
               <th>Submission Date</th>
               <th>Updated At</th>

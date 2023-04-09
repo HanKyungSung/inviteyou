@@ -79,9 +79,32 @@ app.use('/api/login', authRoute)
 app.use('/api/rsvp', rsvpRoute);
 
 app.get('/api/calendar', (req, res) => {
+  // const icsFilePath = path.join(__dirname, 'assets', 'myevent.ics');
+  // console.log('icsFilePath', icsFilePath)
+  // const icsFile = fs.readFileSync(icsFilePath, 'utf8');
   // TODO: Modify the ICS file depends on the subdomain query.
   // console.log(req.query);
-  res.download(path.join(__dirname, '..', 'src/assets/myevents.ics'));
+  const { subdomain } = req.query;
+
+  // let updatedIcsFile = icsFile;
+  // console.log(icsFile)
+  if (subdomain == 'we') {
+    res.download(path.join(__dirname, '..', 'src/assets/myevents.ics'));
+  }
+  else if (subdomain == 'sne') {
+    // TODO: Need to create ics file dynamically.
+    // const startDate = new Date("2023-06-17T10:30Z");
+    // const endDate = new Date("2023-06-17T15:00Z");
+    // const summary = "상호 & 은희 wedding";
+    // const description = summary;
+    // const location = "5251 Oak St\\,\n Vancouver\\,\n BC V6M 4H1";
+    // const url = "sne.inviteyou.ca";
+    // console.log(startDate, endDate, location);
+    // updatedIcsFile = icsFile.replace("LOCATION:", `LOCATION: ${location}`);
+    res.download(path.join(__dirname, '..', 'src/assets/samhan.ics'));
+  } else {
+    res.sendStatus(400);
+  }
 });
 
 // start the Express server

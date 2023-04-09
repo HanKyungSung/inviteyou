@@ -12,6 +12,12 @@ export class Rsvp extends TimeStamps{
   public menu?: string;
 
   @prop()
+  public adultCount?: number;
+
+  @prop()
+  public childCount?: number;
+
+  @prop()
   public note?: string;
 
   @prop({ required: true })

@@ -34,7 +34,7 @@ export const sendRsvpApi = async (params: RsvpParams): Promise<void> => {
 };
 
 export const sendRsvpApiSecondVersion = async (params: sendRsvpApiSecondVersionProps): Promise<void> => {
-  const response = await fetch(`${REACT_APP_API_URL}/api/rsvp`, {
+  const response = await fetch(`${REACT_APP_API_URL}/api/rsvp/v2`, {
     method: 'PUT',
     body: JSON.stringify(params),
     headers: {
