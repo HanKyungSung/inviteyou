@@ -56,3 +56,40 @@ export const rsvpHandler = async (req: Request, res: Response, next: NextFunctio
     return next(error);
   }
 };
+
+export const rsvpHandlerSecondVersion = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { body } = req;
+    const { name, participate, note, subdomain } = body;
+    console.log(body);
+
+    if (name === undefined || participate === undefined) {
+      return res.send(400);
+    }
+
+    // Look for the exists record
+    const record = await rsvpModel.findOne({ name: name });
+
+    // Create a new record if no exist record found.
+    if (record === null) {
+      const createdRsvp = await rsvpModel.create({ ...body });
+
+      // Convert document to Object and remove object id from the result
+      const createdRsvpObject = createdRsvp.toObject();
+      delete createdRsvpObject._id;
+
+      return res.status(201).send(JSON.stringify(createdRsvpObject));
+    } else {
+      // Update the exists record.
+      const updatedRecord = await rsvpModel.updateOne({
+        name: name
+      }, {
+        ...body
+      });
+
+      return res.status(200).send(JSON.stringify(updatedRecord));
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
