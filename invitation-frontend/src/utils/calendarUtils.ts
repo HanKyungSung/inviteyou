@@ -1,5 +1,10 @@
-export const getIcsFile = async (subdomain: string): Promise<void> => {
+interface getIcsFileProps {
+  subdomain: string;
+};
+
+export const getIcsFile = async (props: getIcsFileProps): Promise<void> => {
   const { REACT_APP_API_URL } = process.env;
+  const { subdomain } = props;
 
   const response = await fetch(`${REACT_APP_API_URL}/api/calendar?subdomain=${subdomain}`);
 
