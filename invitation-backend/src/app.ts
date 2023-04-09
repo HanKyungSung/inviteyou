@@ -53,6 +53,22 @@ app.get('/', (req, res) => {
       );
     // Debug purpose
     console.log(updatedIndexFile);
+  } else if (subdomain === 'sne') {
+    updatedIndexFile = indexFile
+      .replace(
+        "<title>Inviteyou</title>",
+        "<title>You have been invited!</title>"
+      )
+      .replace(
+        "<meta name=\"description\" content=\"Mobile Invitation/RSVP for Wedding\" data-rh=\"true\"/>",
+        "<meta name=\"description\" content=\"Welcome to Sam & Eunhee wedding!\" data-rh=\"true\"/>",
+      )
+      .replace(
+        "<meta property=\"og:image\" content=\"/og_imgs/default_og_img.jpg\">",
+        "<meta property=\"og:image\" content=\"/og_imgs/sne_og_img.png\">"
+      );
+    // Debug purpose
+    console.log(updatedIndexFile);
   }
   // Below code is for future reference purpose.
   // fs.writeFileSync(indexFilePath, updatedIndexFile);
