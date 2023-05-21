@@ -68,7 +68,7 @@ export const rsvpHandlerSecondVersion = async (req: Request, res: Response, next
     }
 
     // Look for the exists record.
-    const record = await rsvpModel.findOne({ name: name });
+    const record = await rsvpModel.findOne({ name: name.trim() });
 
     // Create a new record if no exist record found.
     if (record === null) {
