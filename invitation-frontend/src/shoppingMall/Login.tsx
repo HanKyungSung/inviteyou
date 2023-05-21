@@ -73,13 +73,11 @@ const Login = () => {
     setErrorMessages(inputErrors);
   
     if (Object.keys(inputErrors).length === 0) {
-      console.log(form);
-
       setSubmitForm(true);
       // Make sure send domain so the user is login to the owned domain.
       const response = await sendLoginApi(form);
       const userInfo = await response.json();
-      console.log('userInfo', userInfo);
+
       login?.(userInfo)
       // upsertUserInfoToLocalStorage(userInfo);
       setSubmitForm(false);
