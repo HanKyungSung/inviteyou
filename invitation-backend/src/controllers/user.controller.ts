@@ -5,13 +5,14 @@ export const handleRegistration = async (req: Request, res: Response, next: Next
   // TODO: Need to see if the user exsists first
 
   try {
-    const { email, firstName, lastName, password } = req.body;
+    const { email, firstName, lastName, password, confirmedPassword } = req.body;
 
     // TODO: Better validation require
     if (email === undefined ||
       firstName === undefined ||
       lastName === undefined ||
-      password === undefined
+      password === undefined ||
+      confirmedPassword === undefined
     ) {
       return res.send(400);
     }
@@ -31,7 +32,7 @@ export const handleRegistration = async (req: Request, res: Response, next: Next
     });
     createdUser.setPassword(password);
     await createdUser.save();
-
+    await new Promise(r => setTimeout(r, 5000));
     // Debug
     console.log(createdUser);
 

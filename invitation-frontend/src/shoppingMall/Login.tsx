@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Title,
   Container,
@@ -12,14 +13,12 @@ import {
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
 import { IconEyeCheck, IconEyeOff } from '@tabler/icons';
-
 import LandingHeader from '../common/LandingHeader';
 import LandingFooter from '../common/LandingFooter';
-
 import * as Constant from './Constant';
 import * as ConstantStyle from '../common/Constant';
-
-import { useState } from 'react';
+import { sendLoginApi, upsertUserInfoToLocalStorage } from '../utils/AuthUtils';
+import { useAuth } from '../hooks/useAuth';
 
 const defaultLoginData = {
   email : "",
@@ -32,11 +31,11 @@ const defaultLoginErrorMessage : Record<string, string> = {
 }
 
 const Login = () => {
+  const { login } = useAuth();
   const [form, setForm] = useState(defaultLoginData)
   const [errorMessages, setErrorMessages] = useState(defaultLoginErrorMessage)
   const [submitForm, setSubmitForm] = useState(false)
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const emptyInputError : Record<string, string> = {}
 
   const handleValidateInput = (name: keyof typeof form, value: string): string => {
     let errorMessage = "";
@@ -55,15 +54,14 @@ const Login = () => {
           errorMessage = Constant.PASSWORD_REGEX_ERROR;
         }
         break;
-        default:
-        break;
+      default:
+      break;
     }
     return errorMessage;
   }
 
-  const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSubmitForm(true);
     
     let inputErrors:Record<string, string> = {};
     for (let name in form) {
@@ -74,8 +72,17 @@ const Login = () => {
     }
     setErrorMessages(inputErrors);
   
-    if (Object.keys(emptyInputError).length === 0) {
+    if (Object.keys(inputErrors).length === 0) {
       console.log(form);
+
+      setSubmitForm(true);
+      // Make sure send domain so the user is login to the owned domain.
+      const response = await sendLoginApi(form);
+      const userInfo = await response.json();
+      console.log('userInfo', userInfo);
+      login?.(userInfo)
+      // upsertUserInfoToLocalStorage(userInfo);
+      setSubmitForm(false);
     }
   }
 
@@ -135,85 +142,107 @@ const Login = () => {
                     size="xl"
                     name="password"
                     maxLength={16}
-                    value={form.password}
                     onChange={handleInputChange}
-                    defaultValue="secret"
-                      visibilityToggleIcon={({ reveal, size }) =>
-                        reveal ? <IconEyeOff size={size} /> : <IconEyeCheck size={size} />
+                    visibilityToggleIcon={({ reveal, size }) =>
+                      reveal ? <IconEyeOff size={size} /> : <IconEyeCheck size={size} />
                     }
                     error={errorMessages.password}
                   />
                 </Input.Wrapper>
                 <Stack spacing={30}>
-                  <Button
-                    variant="gradient"
-                    color="color-white"
-                    gradient={ConstantStyle.STYLE_BTN_COLOR}
-                    fullWidth
-                    size="xl"
-                    p={12}
-                    radius={5}
-                    uppercase
-                    type="submit"
-                  >
-                    Sign In
-                  </Button>
-                  {/* <Grid>
-                    <Grid.Col span={6}>
-                      <Checkbox label="Remember ID" color="pink" size="md" />
-                    </Grid.Col>
-                    <Grid.Col span={6} className={classes.loginIcons}>
-                      <Anchor component={Link} size={16} underline={false} to="/">
-                        Find ID
-                      </Anchor>
-                      <Text mx={10}>|</Text>
-                      <Anchor component={Link} size={16} underline={false} to="/">
-                        Find PW
-                      </Anchor>
-                    </Grid.Col>
-                  </Grid> */}
-                  <Button
-                    variant="outline"
-                    color="pink"
-                    fullWidth
-                    size="xl"
-                    p={12}
-                    radius={5}
-                    mb={30}
-                    uppercase
-                    type="submit"
-                  >
-                    <Anchor component={Link} underline={false} to="/Register">
-                      Sign Up
-                    </Anchor>
-                  </Button>
-                  {/* <Grid>
-                    <Grid.Col span={6}>
-                      <Text size={20} lineClamp={2}>
-                        Sign in or Create Account with
-                      </Text>
-                    </Grid.Col>
-                    <Grid.Col span={6}>
-                      <Group ml={20} className={classes.loginIcons}>
-                        <Anchor component={Link} underline={false} to="/">
-                          <Image
-                            src={require('../assets/img/icon-login-kakao.png')}
-                            alt="con-login-kakao"
-                            width={60}
-                            height={60}
-                          />
-                        </Anchor>
-                        <Anchor component={Link} underline={false} to="/">
-                          <Image
-                            src={require('../assets/img/icon-login-naver.png')}
-                            alt="con-login-naver"
-                            width={60}
-                            height={60}
-                          />
-                        </Anchor>
-                      </Group>
-                    </Grid.Col>
-                  </Grid> */}
+                  {submitForm ?
+                    <Button
+                      variant="gradient"
+                      color="color-white"
+                      gradient={ConstantStyle.STYLE_BTN_COLOR}
+                      fullWidth
+                      size="xl"
+                      p={12}
+                      radius={5}
+                      uppercase
+                      type="submit"
+                      loading={submitForm}
+                    >
+                      Sign In
+                    </Button>
+                    :
+                    <>
+                      <Button
+                        variant="gradient"
+                        color="color-white"
+                        gradient={ConstantStyle.STYLE_BTN_COLOR}
+                        fullWidth
+                        size="xl"
+                        p={12}
+                        radius={5}
+                        uppercase
+                        type="submit"
+                      >
+                        Sign In
+                      </Button>
+                      {/* <Grid>
+                        <Grid.Col span={6}>
+                          <Checkbox label="Remember ID" color="pink" size="md" />
+                        </Grid.Col>
+                        <Grid.Col span={6} className={classes.loginIcons}>
+                          <Anchor component={Link} size={16} underline={false} to="/">
+                            Find ID
+                          </Anchor>
+                          <Text mx={10}>|</Text>
+                          <Anchor component={Link} size={16} underline={false} to="/">
+                            Find PW
+                          </Anchor>
+                        </Grid.Col>
+                      </Grid> */}
+                      <Button
+                        variant="outline"
+                        color="pink"
+                        fullWidth
+                        size="xl"
+                        p={12}
+                        radius={5}
+                        mb={30}
+                        uppercase
+                        type="submit"
+                        component={Link}
+                        to="/Register"
+                        styles={{
+                          label: {
+                            color: "#ed6ea0"
+                          }
+                        }}
+                      >
+                        Sign Up
+                      </Button>
+                      {/* <Grid>
+                        <Grid.Col span={6}>
+                          <Text size={20} lineClamp={2}>
+                            Sign in or Create Account with
+                          </Text>
+                        </Grid.Col>
+                        <Grid.Col span={6}>
+                          <Group ml={20} className={classes.loginIcons}>
+                            <Anchor component={Link} underline={false} to="/">
+                              <Image
+                                src={require('../assets/img/icon-login-kakao.png')}
+                                alt="con-login-kakao"
+                                width={60}
+                                height={60}
+                              />
+                            </Anchor>
+                            <Anchor component={Link} underline={false} to="/">
+                              <Image
+                                src={require('../assets/img/icon-login-naver.png')}
+                                alt="con-login-naver"
+                                width={60}
+                                height={60}
+                              />
+                            </Anchor>
+                          </Group>
+                        </Grid.Col>
+                      </Grid> */}
+                    </>
+                  }
                 </Stack>
               </Stack>
             </Container>
