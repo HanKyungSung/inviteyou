@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Button, Grid, Table, Text } from '@mantine/core';
+import { Button, Grid, Table, Text, Modal } from '@mantine/core';
 import { getParticipants } from '../utils/rsvpUtils';
 import { deleteParticipateApi } from '../utils/ParticipateUtils';
+import { useAuth } from '../hooks/useAuth';
 
-interface SamHanList {
+interface ISamHanList {
   subdomain: string;
 }
 
-interface Participant {
+interface IParticipant {
   name: string;
   adultCount: number;
   childCount: number;
@@ -17,9 +18,21 @@ interface Participant {
   updatedAt: string;
 }
 
-const SamHanList = (props: SamHanList) => {
+interface IConfirmModal {
+  open: boolean;
+  name: string;
+}
+
+const initialConfirmModal = {
+  open: false,
+  name: ""
+};
+
+const SamHanList = (props: ISamHanList) => {
   const { subdomain } = props;
-  const [participants, setParticipants] = useState<Participant[]>([]);
+  const { user } = useAuth();
+  const [confirmModal, setConfirmModal] = useState<IConfirmModal>(initialConfirmModal);
+  const [participants, setParticipants] = useState<IParticipant[]>([]);
 
   const getParticipantList = async () => {
     const response = await getParticipants(subdomain);
@@ -32,14 +45,18 @@ const SamHanList = (props: SamHanList) => {
     getParticipantList();
   }, []);
 
-  const handleDeleteRow = async (participantName: string) => {
-    const response = await deleteParticipateApi(participantName);
+  const openConfirmModal = (participantName: string) => {
+    setConfirmModal({ open: true, name: participantName });
+  }
+
+  const handleDeleteRow = async () => {
+    const response = await deleteParticipateApi(confirmModal.name);
 
     if (response.status === 202) {
-      getParticipantList();
+      await getParticipantList();
     }
 
-    console.log(response.statusText);
+    await setConfirmModal(initialConfirmModal);
   };
 
   let totalAdultCounts = 0;
@@ -58,13 +75,36 @@ const SamHanList = (props: SamHanList) => {
         <td>{participant.note}</td>
         <td>{participant.createdAt}</td>
         <td>{participant.updatedAt}</td>
-        <td><Button onClick={() => handleDeleteRow(participant.name)}>Remove</Button></td>
+        <td><Button onClick={() => openConfirmModal(participant.name)}>Remove</Button></td>
       </tr>
     );
   });
     
   return (
     <Grid>
+      <Modal
+        opened={confirmModal.open}
+        onClose={() => setConfirmModal({
+          ...confirmModal,
+          open: false
+        })}
+        title={<Text>Are you sure remove <b>{confirmModal.name}</b>?</Text>}
+        centered
+      >
+        <Grid>
+          <Grid.Col span="content">
+            <Button
+              color='red'
+              onClick={() => handleDeleteRow()}
+            >
+              Yes
+            </Button>
+          </Grid.Col>
+          <Grid.Col span="content">
+            <Button onClick={() => setConfirmModal(initialConfirmModal)}>No</Button>
+          </Grid.Col>
+        </Grid>
+      </Modal>
       <Grid.Col span={6}>
         <Text>Total Rows: {participants.length}</Text>
         <Text>Total Adults: {totalAdultCounts}</Text>
