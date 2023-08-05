@@ -20,6 +20,10 @@ import * as ConstantStyle from '../common/Constant';
 import { sendLoginApi, upsertUserInfoToLocalStorage } from '../utils/AuthUtils';
 import { useAuth } from '../hooks/useAuth';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const defaultLoginData = {
   email : "",
   password : ""
@@ -76,11 +80,19 @@ const Login = () => {
       setSubmitForm(true);
       // Make sure send domain so the user is login to the owned domain.
       const response = await sendLoginApi(form);
-      const userInfo = await response.json();
-
-      login?.(userInfo)
-      // upsertUserInfoToLocalStorage(userInfo);
-      setSubmitForm(false);
+      // console.log(response.ok);
+      if(response.ok) {
+        const userInfo = await response.json();
+        login?.(userInfo)
+        // upsertUserInfoToLocalStorage(userInfo);
+        setSubmitForm(false);
+      } else {
+        console.log(response.ok);
+        toast.error('Incorrect email or password. Please try again.', {
+          position: toast.POSITION.TOP_CENTER,
+        });
+        setSubmitForm(false);
+      }
     }
   }
 
@@ -116,6 +128,7 @@ const Login = () => {
         <LandingHeader />
         {/* LOGIN */}
         <Container py={250} size={1400}>
+        <ToastContainer position="top-center" /> {/* Place the container at the desired position */}
           <Title align="center" size={45} weight={700} mb={65} order={1}>
             SIGN IN
           </Title>
@@ -212,6 +225,7 @@ const Login = () => {
                       >
                         Sign Up
                       </Button>
+                      
                       {/* <Grid>
                         <Grid.Col span={6}>
                           <Text size={20} lineClamp={2}>
