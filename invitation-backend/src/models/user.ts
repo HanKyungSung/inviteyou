@@ -17,6 +17,9 @@ export class User {
   @prop()
   salt: string;
 
+  @prop({ type: () => [String] })
+  subdomains: [string];
+
   setPassword(password: string) {
     // Creating a unique salt for a user.
     this.salt = crypto.randomBytes(16).toString('hex');

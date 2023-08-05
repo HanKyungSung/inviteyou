@@ -26,7 +26,13 @@ export const handleLogin = async (req: Request, res: Response, next: NextFunctio
 
     const token = jwt.sign({ user: existUser }, SECRET_KEY);
 
-    return res.status(200).json({ 'token': token });
+    return res.status(200).json({
+      'email': existUser.email,
+      'firstName': existUser.firstName,
+      'lastName': existUser.lastName,
+      'subdomains': existUser.subdomains,
+      'token': token
+    });
   } catch (error) {
     return next(error)
   }

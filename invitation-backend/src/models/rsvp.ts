@@ -3,7 +3,7 @@ import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 
 export class Rsvp extends TimeStamps{
   @prop({ required: true })
-  public name?: string;
+  public name: string;
 
   @prop({ required: true })
   public participate: string;

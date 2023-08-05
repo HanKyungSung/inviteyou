@@ -5,12 +5,12 @@ import Landing from './shoppingMall/Landing';
 import Login from './shoppingMall/Login';
 import Register from './shoppingMall/Register';
 import HanSung from './component/HanSung';
-import HanSungList from './component/HanSungList';
+import GuestList from './component/GuestList';
 import SamHan from './component/SamHan';
 import SamHanList from './component/SamHanList';
 import * as Constants from './utils/Constants';
-import { Header } from '@mantine/core';
 import LandingHeader from './common/LandingHeader';
+import ProtectedRoute from './component/ProtectedRoute';
 
 function App() {
   const { NODE_ENV } = process.env;
@@ -23,15 +23,21 @@ function App() {
   if (subdomain === 'we') {
     return (
       <Routes>
+        <Route path="/Login" element={<Login />} />
         <Route path="/" element={<HanSung subdomain={subdomain} />} />
-        <Route path="/list" element={<HanSungList subdomain={subdomain} />} />
+        <Route path="/list" element={<GuestList subdomain={subdomain} />} />
       </Routes>
     )
   } else if (subdomain === 'sne') {
     return (
       <Routes>
+        <Route path="/Login" element={<Login />} />
         <Route path="/" element={<SamHan subdomain={subdomain} />} />
-        <Route path="/list" element={<SamHanList subdomain={subdomain} />} />
+        <Route path="/list" element={
+          <ProtectedRoute subdomain='sne'>
+            <SamHanList subdomain={subdomain} />
+          </ProtectedRoute>
+        } />
       </Routes>
     )
   } else if (!hostnames.includes(window.location.hostname)) {

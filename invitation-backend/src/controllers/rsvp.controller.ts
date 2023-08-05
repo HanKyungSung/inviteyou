@@ -24,7 +24,7 @@ export const rsvpHandler = async (req: Request, res: Response, next: NextFunctio
       return res.send(400);
     }
 
-    // Look for the exists record
+    // Look for the exists record.
     const record = await rsvpModel.findOne({ name: name });
 
     // Create a new record if no exist record found.
@@ -37,7 +37,7 @@ export const rsvpHandler = async (req: Request, res: Response, next: NextFunctio
         subdomain
       });
 
-      // Convert document to Object and remove object id from the result
+      // Convert document to Object and remove object id from the result.
       const createdRsvpObject = createdRsvp.toObject();
       delete createdRsvpObject._id;
 
@@ -67,14 +67,14 @@ export const rsvpHandlerSecondVersion = async (req: Request, res: Response, next
       return res.send(400);
     }
 
-    // Look for the exists record
-    const record = await rsvpModel.findOne({ name: name });
+    // Look for the exists record.
+    const record = await rsvpModel.findOne({ name: name.trim() });
 
     // Create a new record if no exist record found.
     if (record === null) {
       const createdRsvp = await rsvpModel.create({ ...body });
 
-      // Convert document to Object and remove object id from the result
+      // Convert document to Object and remove object id from the result.
       const createdRsvpObject = createdRsvp.toObject();
       delete createdRsvpObject._id;
 
@@ -89,6 +89,27 @@ export const rsvpHandlerSecondVersion = async (req: Request, res: Response, next
 
       return res.status(200).send(JSON.stringify(updatedRecord));
     }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+export const deleteRsvpHandler = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const { body } = req;
+    const { name } = body;
+    
+    // Look for the exists record.
+    const record = await rsvpModel.findOne({ name: name });
+
+    if (record === null) {
+      return res.sendStatus(204);
+    }
+
+    // Delete the record.
+    record.delete();
+
+    return res.sendStatus(202);
   } catch (error) {
     return next(error);
   }

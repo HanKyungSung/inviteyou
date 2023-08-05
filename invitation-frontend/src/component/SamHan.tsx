@@ -336,9 +336,9 @@ const SamHan = (props: SamHan) => {
               </Text>
               <p style={{color: '#2C4032', fontWeight: 700, marginTop: 50, fontSize: 16}}>
                 Attendance : {modalInfo.submitInfo.rsvp}<br />
-                Number of Adult : <br />
-                Number of Kid : <br />
-                Number of Total Attendees : <br />
+                Number of Adult : {modalInfo.submitInfo.adultCount}<br />
+                Number of Kid : {modalInfo.submitInfo.childCount}<br />
+                Number of Total Attendees : {modalInfo.submitInfo.adultCount + modalInfo.submitInfo.childCount}<br />
                 Food Restriction Note : {modalInfo.submitInfo.note}
               </p>
               <figure style={{position:'absolute', right: 0, bottom: 0, margin: 0}}>
