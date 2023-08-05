@@ -20,3 +20,4 @@
 
 ## Contact us
 - Hailey Yang
+- YeonJae Kim
