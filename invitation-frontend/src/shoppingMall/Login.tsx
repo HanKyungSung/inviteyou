@@ -22,72 +22,84 @@ import * as ConstantStyle from '../common/Constant';
 import { useState } from 'react';
 
 const defaultLoginData = {
-  email : "",
-  password : ""
-}
+  email: '',
+  password: ''
+};
 
-const defaultLoginErrorMessage : Record<string, string> = {
-  email : "",
-  password : ""
-}
+const defaultLoginErrorMessage: Record<string, string> = {
+  email: '',
+  password: ''
+};
 
 const Login = () => {
-  const [form, setForm] = useState(defaultLoginData)
-  const [errorMessages, setErrorMessages] = useState(defaultLoginErrorMessage)
-  const [submitForm, setSubmitForm] = useState(false)
+  const [form, setForm] = useState(defaultLoginData);
+  const [errorMessages, setErrorMessages] = useState(defaultLoginErrorMessage);
+  const [submitForm, setSubmitForm] = useState(false);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const emptyInputError : Record<string, string> = {}
+  const emptyInputError: Record<string, string> = {};
 
-  const handleValidateInput = (name: keyof typeof form, value: string): string => {
-    let errorMessage = "";
+  const handleValidateInput = (
+    name: keyof typeof form,
+    value: string
+  ): string => {
+    let errorMessage = '';
     switch (name) {
-      case "email":
+      case 'email':
         if (!value) {
           errorMessage = Constant.EMPTY_EMAIL_ERROR;
-        } else if (typeof value === "string" && !emailRegex.test(value)) {
+        } else if (typeof value === 'string' && !emailRegex.test(value)) {
           errorMessage = Constant.EMAIL_REGEX_ERROR;
         }
         break;
-      case "password":
+      case 'password':
         if (!value) {
           errorMessage = Constant.EMPTY_PASSWORD1_ERROR;
-        } else if (typeof value === "string" && (value.length < 8 || value.length > 16)) {
+        } else if (
+          typeof value === 'string' &&
+          (value.length < 8 || value.length > 16)
+        ) {
           errorMessage = Constant.PASSWORD_REGEX_ERROR;
         }
         break;
-        default:
+      default:
         break;
     }
     return errorMessage;
-  }
+  };
 
   const handleSignIn = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitForm(true);
-    
-    let inputErrors:Record<string, string> = {};
+
+    let inputErrors: Record<string, string> = {};
     for (let name in form) {
-      const errorMessage = handleValidateInput(name as keyof typeof form, form[name as keyof typeof form])
+      const errorMessage = handleValidateInput(
+        name as keyof typeof form,
+        form[name as keyof typeof form]
+      );
       if (errorMessage) {
         inputErrors[name] = errorMessage;
       }
     }
     setErrorMessages(inputErrors);
-  
+
     if (Object.keys(emptyInputError).length === 0) {
       console.log(form);
     }
-  }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     const { name, value } = e.target;
-    const errorMessage: string = handleValidateInput(name as keyof typeof form, value);
+    const errorMessage: string = handleValidateInput(
+      name as keyof typeof form,
+      value
+    );
     setErrorMessages((prevErrors) => ({ ...prevErrors, [name]: errorMessage }));
     setForm((prevForm) => ({
       ...prevForm,
-      [name]: value,
+      [name]: value
     }));
-  }
+  };
 
   return (
     <>
@@ -103,7 +115,6 @@ const Login = () => {
             a: {
               color: 'inherit!important'
             }
-
           })
         }}
       >
@@ -118,11 +129,11 @@ const Login = () => {
             <Container size={430}>
               <Stack>
                 <Input.Wrapper>
-                  <TextInput 
-                    placeholder="Email" 
-                    radius={5} 
-                    size="xl" 
-                    value={form.email} 
+                  <TextInput
+                    placeholder="Email"
+                    radius={5}
+                    size="xl"
+                    value={form.email}
                     onChange={handleInputChange}
                     name="email"
                     error={errorMessages.email}
@@ -138,8 +149,12 @@ const Login = () => {
                     value={form.password}
                     onChange={handleInputChange}
                     defaultValue="secret"
-                      visibilityToggleIcon={({ reveal, size }) =>
-                        reveal ? <IconEyeOff size={size} /> : <IconEyeCheck size={size} />
+                    visibilityToggleIcon={({ reveal, size }) =>
+                      reveal ? (
+                        <IconEyeOff size={size} />
+                      ) : (
+                        <IconEyeCheck size={size} />
+                      )
                     }
                     error={errorMessages.password}
                   />
