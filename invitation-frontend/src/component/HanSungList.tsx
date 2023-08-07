@@ -17,7 +17,7 @@ interface Participant {
 
 const HanSungList = (props: HanSungList) => {
   const [participants, setParticipants] = useState<Participant[]>([]);
-  
+
   useEffect(() => {
     const { subdomain } = props;
     const getParticipantList = async () => {
@@ -30,7 +30,7 @@ const HanSungList = (props: HanSungList) => {
     getParticipantList();
   }, []);
 
-  const rows = participants.map(participant => (
+  const rows = participants.map((participant) => (
     <tr key={participant.name}>
       <td>{participant.name}</td>
       <td>{participant.participate}</td>
@@ -40,7 +40,7 @@ const HanSungList = (props: HanSungList) => {
       <td>{participant.updatedAt}</td>
     </tr>
   ));
-    
+
   return (
     <Grid>
       <Grid.Col span={6}>
@@ -59,7 +59,7 @@ const HanSungList = (props: HanSungList) => {
         </Table>
       </Grid.Col>
     </Grid>
-  )
+  );
 };
 
 export default HanSungList;

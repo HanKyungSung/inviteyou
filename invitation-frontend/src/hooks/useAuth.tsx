@@ -27,28 +27,29 @@ interface IAuthProviderProps {
 const AuthContext = createContext<Partial<IAuthContext>>({});
 
 export const AuthProvider = ({ children }: IAuthProviderProps) => {
-  const [user, setUser] = useLocalStorage("user", null);
+  const [user, setUser] = useLocalStorage('user', null);
   const navigate = useNavigate();
 
   const login = async (data: object) => {
     setUser(data);
-    navigate("/list");
+    navigate('/list');
   };
 
   const logout = () => {
     setUser(null);
-    navigate("/", { replace: true });
+    navigate('/', { replace: true });
   };
 
-  const value = useMemo(() => ({
+  const value = useMemo(
+    () => ({
       user,
       login,
       logout
     }),
     [user]
   );
-  
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => {

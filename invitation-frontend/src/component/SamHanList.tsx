@@ -1,8 +1,18 @@
 import { useEffect, useState } from 'react';
-import { Button, Container, Grid, Table, Text, Modal, Input, Radio, NumberInput, ScrollArea } from '@mantine/core';
+import {
+  Button,
+  Container,
+  Grid,
+  Table,
+  Text,
+  Modal,
+  Input,
+  Radio,
+  NumberInput
+} from '@mantine/core';
 import { getParticipants, sendRsvpApiSecondVersion } from '../utils/rsvpUtils';
 import { deleteParticipateApi } from '../utils/ParticipateUtils';
-import { useAuth } from '../hooks/useAuth';
+// import { useAuth } from '../hooks/useAuth';
 
 interface ISamHanList {
   subdomain: string;
@@ -38,24 +48,25 @@ interface IEditModal {
 
 const initialConfirmModal = {
   open: false,
-  name: ""
+  name: ''
 };
 
 const initEditModal = {
   open: false,
   user: {
-    name: "",
-    participate: "yes",
+    name: '',
+    participate: 'yes',
     adultCount: 0,
     childCount: 0,
-    note: ""
+    note: ''
   }
 };
 
 const SamHanList = (props: ISamHanList) => {
   const { subdomain } = props;
-  const { user } = useAuth();
-  const [confirmModal, setConfirmModal] = useState<IConfirmModal>(initialConfirmModal);
+  // const { user } = useAuth();
+  const [confirmModal, setConfirmModal] =
+    useState<IConfirmModal>(initialConfirmModal);
   const [editModal, setEditModal] = useState<IEditModal>(initEditModal);
   const [participants, setParticipants] = useState<IParticipant[]>([]);
 
@@ -65,14 +76,14 @@ const SamHanList = (props: ISamHanList) => {
 
     setParticipants(json);
   };
-  
+
   useEffect(() => {
     getParticipantList();
   }, []);
 
   const openConfirmModal = (participantName: string) => {
     setConfirmModal({ open: true, name: participantName });
-  }
+  };
 
   const handleDeleteRow = async () => {
     const response = await deleteParticipateApi(confirmModal.name);
@@ -87,7 +98,7 @@ const SamHanList = (props: ISamHanList) => {
   let totalAdultCounts = 0;
   let totalChildren = 0;
 
-  const rows = participants.map(participant => {
+  const rows = participants.map((participant) => {
     totalAdultCounts += participant.adultCount;
     totalChildren += participant.childCount;
 
@@ -100,29 +111,43 @@ const SamHanList = (props: ISamHanList) => {
         <td>{participant.note}</td>
         <td>{participant.createdAt}</td>
         <td>{participant.updatedAt}</td>
-        <td><Button onClick={() => openConfirmModal(participant.name)}>Remove</Button></td>
-        <td><Button onClick={() => setEditModal({
-          open: true,
-          user: {
-            name: participant.name,
-            participate: participant.participate,
-            adultCount: participant.adultCount,
-            childCount: participant.childCount,
-            note: participant.note !== undefined ? participant.note : ""
-          }
-        })}>Edit</Button></td>
+        <td>
+          <Button onClick={() => openConfirmModal(participant.name)}>
+            Remove
+          </Button>
+        </td>
+        <td>
+          <Button
+            onClick={() =>
+              setEditModal({
+                open: true,
+                user: {
+                  name: participant.name,
+                  participate: participant.participate,
+                  adultCount: participant.adultCount,
+                  childCount: participant.childCount,
+                  note: participant.note !== undefined ? participant.note : ''
+                }
+              })
+            }
+          >
+            Edit
+          </Button>
+        </td>
       </tr>
     );
   });
-    
+
   return (
     <Container fluid px={0}>
       <EditModal
         opened={editModal.open}
-        setModalOpen={(opened) => setEditModal({
-          ...editModal,
-          open: opened
-        })}
+        setModalOpen={(opened) =>
+          setEditModal({
+            ...editModal,
+            open: opened
+          })
+        }
         getParticipantList={getParticipantList}
         user={editModal.user}
         participants={participants}
@@ -130,28 +155,33 @@ const SamHanList = (props: ISamHanList) => {
       />
       <Modal
         opened={confirmModal.open}
-        onClose={() => setConfirmModal({
-          ...confirmModal,
-          open: false
-        })}
-        title={<Text>Are you sure remove <b>{confirmModal.name}</b>?</Text>}
+        onClose={() =>
+          setConfirmModal({
+            ...confirmModal,
+            open: false
+          })
+        }
+        title={
+          <Text>
+            Are you sure remove <b>{confirmModal.name}</b>?
+          </Text>
+        }
         centered
       >
         <Grid>
           <Grid.Col span="content">
-            <Button
-              color='red'
-              onClick={() => handleDeleteRow()}
-            >
+            <Button color="red" onClick={() => handleDeleteRow()}>
               Yes
             </Button>
           </Grid.Col>
           <Grid.Col span="content">
-            <Button onClick={() => setConfirmModal(initialConfirmModal)}>No</Button>
+            <Button onClick={() => setConfirmModal(initialConfirmModal)}>
+              No
+            </Button>
           </Grid.Col>
         </Grid>
       </Modal>
-      <Grid style={{ overflow: "auto" }}>
+      <Grid style={{ overflow: 'auto' }}>
         <Grid.Col span={12}>
           <Text>Total Rows: {participants.length}</Text>
           <Text>Total Adults: {totalAdultCounts}</Text>
@@ -175,7 +205,7 @@ const SamHanList = (props: ISamHanList) => {
         </Grid.Col>
       </Grid>
     </Container>
-  )
+  );
 };
 
 interface IEditModalProps {
@@ -184,7 +214,7 @@ interface IEditModalProps {
   getParticipantList: () => void;
   user: IEditableUser;
   subdomain: string;
-  participants: IParticipant[]
+  participants: IParticipant[];
 }
 
 interface IEditModalErrors {
@@ -194,46 +224,59 @@ interface IEditModalErrors {
 }
 
 const EditModal = (props: IEditModalProps) => {
-  const { opened, setModalOpen, getParticipantList, user, subdomain, participants } = props;
+  const {
+    opened,
+    setModalOpen,
+    getParticipantList,
+    user,
+    subdomain,
+    participants
+  } = props;
   const [editedUser, setEditedUser] = useState<IEditableUser>({ ...user });
   const [disableSubmit, setdisableSubmit] = useState<boolean>(true);
   const [errors] = useState<IEditModalErrors>({
-    nameError: "Name can not be empty.",
-    nameExistsError: "Entered name exists already exists",
-    adultCountError: "Adult count must be greater than 0"
+    nameError: 'Name can not be empty.',
+    nameExistsError: 'Entered name exists already exists',
+    adultCountError: 'Adult count must be greater than 0'
   });
 
-  const filteredParticipants = participants.filter((participant: IParticipant) => participant.name !== user.name);
-  const foundParticipant = filteredParticipants.find((participant: IParticipant) => participant.name === editedUser.name);
+  const filteredParticipants = participants.filter(
+    (participant: IParticipant) => participant.name !== user.name
+  );
+  const foundParticipant = filteredParticipants.find(
+    (participant: IParticipant) => participant.name === editedUser.name
+  );
 
   useEffect(() => {
     setEditedUser({ ...user });
   }, [user]);
 
   useEffect(() => {
-    if ((editedUser.name === user.name)
-    && (editedUser.participate === user.participate)
-    && (editedUser.adultCount === user.adultCount)
-    && (editedUser.childCount === user.childCount)
-    && (editedUser.note === user.note)) {
+    if (
+      editedUser.name === user.name &&
+      editedUser.participate === user.participate &&
+      editedUser.adultCount === user.adultCount &&
+      editedUser.childCount === user.childCount &&
+      editedUser.note === user.note
+    ) {
       setdisableSubmit(true);
-      return
+      return;
     }
 
     // Validations
-    if (editedUser.name === "") {
+    if (editedUser.name === '') {
       setdisableSubmit(true);
-      return
+      return;
     }
 
     if (foundParticipant) {
       setdisableSubmit(true);
-      return
+      return;
     }
 
     if (editedUser.adultCount == 0) {
       setdisableSubmit(true);
-      return
+      return;
     }
 
     setdisableSubmit(false);
@@ -245,23 +288,28 @@ const EditModal = (props: IEditModalProps) => {
     await sendRsvpApiSecondVersion({
       ...editedUser,
       subdomain: subdomain
-  });
+    });
     await setModalOpen(false);
     await getParticipantList();
-  }
+  };
 
   const nameError = () => {
-    if (editedUser.name === "") {
+    if (editedUser.name === '') {
       return errors.nameError;
     } else if (foundParticipant) {
       return errors.nameExistsError;
     } else {
-      return "";
+      return '';
     }
-  }
+  };
 
   return (
-    <Modal centered opened={opened} onClose={() => setModalOpen(false)} title="Update the participate" >
+    <Modal
+      centered
+      opened={opened}
+      onClose={() => setModalOpen(false)}
+      title="Update the participate"
+    >
       <form onSubmit={handleSubmit}>
         <Input.Wrapper
           required
@@ -270,29 +318,35 @@ const EditModal = (props: IEditModalProps) => {
           error={nameError()}
           styles={{
             root: {
-              marginBottom: "10px"
+              marginBottom: '10px'
             }
           }}
         >
-          <Input placeholder='Name' value={editedUser.name} onChange={(e: React.FormEvent<HTMLInputElement>) => {
-            setEditedUser({
-              ...editedUser,
-              name: e.currentTarget.value
-            })
-          }} />
+          <Input
+            placeholder="Name"
+            value={editedUser.name}
+            onChange={(e: React.FormEvent<HTMLInputElement>) => {
+              setEditedUser({
+                ...editedUser,
+                name: e.currentTarget.value
+              });
+            }}
+          />
         </Input.Wrapper>
         <Radio.Group
           withAsterisk
           value={editedUser.participate}
-          onChange={(e) => setEditedUser({
-            ...editedUser,
-            participate: e
-          })}
+          onChange={(e) =>
+            setEditedUser({
+              ...editedUser,
+              participate: e
+            })
+          }
           name="participate"
           label="Participate"
           styles={{
             root: {
-              marginBottom: "10px"
+              marginBottom: '10px'
             }
           }}
         >
@@ -305,14 +359,16 @@ const EditModal = (props: IEditModalProps) => {
           label="Adult Count"
           withAsterisk
           min={0}
-          error={editedUser.adultCount !== 0 ? "" : errors.adultCountError}
-          onChange={(count: number) => setEditedUser({
-            ...editedUser,
-            adultCount: count
-          })}
+          error={editedUser.adultCount !== 0 ? '' : errors.adultCountError}
+          onChange={(count: number) =>
+            setEditedUser({
+              ...editedUser,
+              adultCount: count
+            })
+          }
           styles={{
             root: {
-              marginBottom: "10px"
+              marginBottom: '10px'
             }
           }}
         />
@@ -321,13 +377,15 @@ const EditModal = (props: IEditModalProps) => {
           placeholder="Child Count"
           label="Child Count"
           min={0}
-          onChange={(count: number) => setEditedUser({
-            ...editedUser,
-            childCount: count
-          })}
+          onChange={(count: number) =>
+            setEditedUser({
+              ...editedUser,
+              childCount: count
+            })
+          }
           styles={{
             root: {
-              marginBottom: "10px"
+              marginBottom: '10px'
             }
           }}
         />
@@ -339,21 +397,19 @@ const EditModal = (props: IEditModalProps) => {
           rows={10}
           value={editedUser.note}
           placeholder="Please provide us any food restriction you have "
-          onChange={(e) => setEditedUser({
-            ...editedUser,
-            note: e.currentTarget.value
-          })}
+          onChange={(e) =>
+            setEditedUser({
+              ...editedUser,
+              note: e.currentTarget.value
+            })
+          }
           style={{
-            width: "100%"
+            width: '100%'
           }}
         />
         <Grid>
           <Grid.Col span="content">
-            <Button
-              type='submit'
-              color='red'
-              disabled={disableSubmit}
-            >
+            <Button type="submit" color="red" disabled={disableSubmit}>
               Yes
             </Button>
           </Grid.Col>
@@ -364,6 +420,6 @@ const EditModal = (props: IEditModalProps) => {
       </form>
     </Modal>
   );
-}
+};
 
 export default SamHanList;
