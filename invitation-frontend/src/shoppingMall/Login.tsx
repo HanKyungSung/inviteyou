@@ -9,8 +9,10 @@ import {
   MantineProvider,
   PasswordInput,
   Input,
-  TextInput
+  TextInput,
+  Notification
 } from '@mantine/core';
+
 import { Link } from 'react-router-dom';
 import { IconEyeCheck, IconEyeOff } from '@tabler/icons';
 import LandingHeader from '../common/LandingHeader';
@@ -19,10 +21,6 @@ import * as Constant from './Constant';
 import * as ConstantStyle from '../common/Constant';
 import { sendLoginApi, upsertUserInfoToLocalStorage } from '../utils/AuthUtils';
 import { useAuth } from '../hooks/useAuth';
-
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 
 const defaultLoginData = {
   email : "",
@@ -39,7 +37,14 @@ const Login = () => {
   const [form, setForm] = useState(defaultLoginData)
   const [errorMessages, setErrorMessages] = useState(defaultLoginErrorMessage)
   const [submitForm, setSubmitForm] = useState(false)
+  const [notificationVisible, setNotificationVisible] = useState(false);
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handleShowNotification = () => {
+    setNotificationVisible(true);
+    setSubmitForm(false);
+  };
 
   const handleValidateInput = (name: keyof typeof form, value: string): string => {
     let errorMessage = "";
@@ -87,10 +92,7 @@ const Login = () => {
         // upsertUserInfoToLocalStorage(userInfo);
         setSubmitForm(false);
       } else {
-        toast.error('Incorrect email or password. Please try again.', {
-          position: toast.POSITION.TOP_CENTER,
-        });
-        setSubmitForm(false);
+        handleShowNotification();
       }
     }
   }
@@ -126,8 +128,12 @@ const Login = () => {
         {/* HEADER */}
         <LandingHeader />
         {/* LOGIN */}
+        {notificationVisible && (
+        <Notification title="Error Message" >
+          Incorrect email or password. Please try again.
+        </Notification>
+      )}
         <Container py={250} size={1400}>
-        <ToastContainer position="top-center" /> 
           <Title align="center" size={45} weight={700} mb={65} order={1}>
             SIGN IN
           </Title>
