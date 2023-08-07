@@ -13,12 +13,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@typegoose/typegoose": "^9.12.1",
+    "@typegoose/typegoose": "^11.4.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
-    "mongoose": "^6.6.7"
+    "mongoose": "^7.4.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",

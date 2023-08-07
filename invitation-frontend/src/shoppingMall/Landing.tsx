@@ -12,10 +12,7 @@ import {
   Image,
   MantineProvider
 } from '@mantine/core';
-import {
-  IconArrowLeft,
-  IconArrowRight
-} from '@tabler/icons';
+import { IconArrowLeft, IconArrowRight } from '@tabler/icons';
 
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
@@ -163,21 +160,39 @@ const Landing = () => {
             className={classes.swiperLists}
           >
             <SwiperSlide className={classes.swiperList}>
-              <Container size={1400} className={classes.swiperContent} pb={RESPONSIVE_MOBILE ? 50 : 0}>
+              <Container
+                size={1400}
+                className={classes.swiperContent}
+                pb={RESPONSIVE_MOBILE ? 50 : 0}
+              >
                 <Grid justify="space-between" align="center">
                   <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 8}>
                     <Stack
                       spacing={0}
-                      style={{height: (RESPONSIVE_MOBILE ? 'auto': 700)}}
+                      style={{ height: RESPONSIVE_MOBILE ? 'auto' : 700 }}
                       justify={RESPONSIVE_MOBILE ? 'top' : 'center'}
                     >
-                      <Title size={RESPONSIVE_MOBILE ? 16 : RESPONSIVE_TABLET ? 20 : 40} weight={300} order={1}>
+                      <Title
+                        size={
+                          RESPONSIVE_MOBILE ? 16 : RESPONSIVE_TABLET ? 20 : 40
+                        }
+                        weight={300}
+                        order={1}
+                      >
                         Will you get married in spring?
                       </Title>
-                      <Title size={RESPONSIVE_TABLET ? 30 : 50} weight={500} order={2}>
+                      <Title
+                        size={RESPONSIVE_TABLET ? 30 : 50}
+                        weight={500}
+                        order={2}
+                      >
                         One Click to make mobile RSVP
                       </Title>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} pr={RESPONSIVE_TABLET ? 0 : 100} mt={20}>
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        pr={RESPONSIVE_TABLET ? 0 : 100}
+                        mt={20}
+                      >
                         Lorem Ipsum has been the industry standard dummy text
                         ever the 1500s, when an unknown printer took a galley of
                         typem to make a type specimen book.
@@ -203,7 +218,10 @@ const Landing = () => {
                       </Button>
                     </Stack>
                   </Grid.Col>
-                  <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 'content'} className={classes.swiperRight}>
+                  <Grid.Col
+                    span={RESPONSIVE_MOBILE ? 12 : 'content'}
+                    className={classes.swiperRight}
+                  >
                     <Box className={RESPONSIVE_MOBILE ? '' : classes.visualImg}>
                       <Image
                         src={require('../assets/img/visual-phone-mockup.png')}
@@ -244,26 +262,47 @@ const Landing = () => {
                   className={classes.swiperNav}
                   onClick={() => swiperRef.current?.slidePrev()}
                 >
-                  <IconArrowLeft size={RESPONSIVE_TABLET ? 16 : 20} color="black" />
+                  <IconArrowLeft
+                    size={RESPONSIVE_TABLET ? 16 : 20}
+                    color="black"
+                  />
                 </Button>
                 <Box className="swiper-custom-pagination"></Box>
                 <Button
                   className={classes.swiperNav}
                   onClick={() => swiperRef.current?.slideNext()}
                 >
-                  <IconArrowRight size={RESPONSIVE_TABLET ? 16 : 20} color="black" />
+                  <IconArrowRight
+                    size={RESPONSIVE_TABLET ? 16 : 20}
+                    color="black"
+                  />
                 </Button>
               </Group>
             </Container>
           </Swiper>
         </Container>
         {/* SECTION 01 */}
-        <Container py={RESPONSIVE_MOBILE ? 50 : RESPONSIVE_TABLET ? 50 : 150} px={0} fluid>
+        <Container
+          py={RESPONSIVE_MOBILE ? 50 : RESPONSIVE_TABLET ? 50 : 150}
+          px={0}
+          fluid
+        >
           <Stack spacing={0} align="center">
-            <Title size={RESPONSIVE_TABLET ? 20 : 35} weight={300} order={3} mb={10}>
+            <Title
+              size={RESPONSIVE_TABLET ? 20 : 35}
+              weight={300}
+              order={3}
+              mb={10}
+            >
               Will you get married in spring?
             </Title>
-            <Title size={RESPONSIVE_TABLET ? 30 : 50} weight={700} order={2}  align="center" transform="uppercase">
+            <Title
+              size={RESPONSIVE_TABLET ? 30 : 50}
+              weight={700}
+              order={2}
+              align="center"
+              transform="uppercase"
+            >
               <Text span color="#E4797C" inherit mr={10}>
                 One Click
               </Text>
@@ -299,12 +338,21 @@ const Landing = () => {
           </Stack>
         </Container>
         {/* SECTION 02 */}
-        <Container py={RESPONSIVE_MOBILE ? 50 : RESPONSIVE_TABLET ? 50 : 150} px={0} fluid className={classes.bgPink}>
+        <Container
+          py={RESPONSIVE_MOBILE ? 50 : RESPONSIVE_TABLET ? 50 : 150}
+          px={0}
+          fluid
+          className={classes.bgPink}
+        >
           <Container size={1400}>
             <Grid justify="space-between" align="center">
-              <Grid.Col span={RESPONSIVE_MOBILE ? 12: 6}>
+              <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6}>
                 <Stack spacing={0} align="left">
-                  <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} color={ConstantStyle.SECONDARY_COLOR}>
+                  <Text
+                    size={RESPONSIVE_TABLET ? 16 : 20}
+                    weight={500}
+                    color={ConstantStyle.SECONDARY_COLOR}
+                  >
                     OUR BENEFIT 01
                   </Text>
                   <Title
@@ -319,7 +367,11 @@ const Landing = () => {
                     <br />
                     100% customizable.
                   </Title>
-                  <Text size={RESPONSIVE_TABLET ? 16 : 25} weight={400} color="#666">
+                  <Text
+                    size={RESPONSIVE_TABLET ? 16 : 25}
+                    weight={400}
+                    color="#666"
+                  >
                     Every components in Inviteyou can customize from color to
                     font. Every components in Inviteyou can customize from color
                     to font.
@@ -346,7 +398,10 @@ const Landing = () => {
                 </Stack>
               </Grid.Col>
               <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 'content'}>
-                <Box ml={RESPONSIVE_MOBILE ? 0 : 50} mt={RESPONSIVE_MOBILE ? 20 : 0}>
+                <Box
+                  ml={RESPONSIVE_MOBILE ? 0 : 50}
+                  mt={RESPONSIVE_MOBILE ? 20 : 0}
+                >
                   <Image
                     src={require('../assets/img/visual-phone-mockup.png')}
                     alt="visual image"
@@ -359,23 +414,44 @@ const Landing = () => {
           </Container>
         </Container>
         {/* SECTION 03 */}
-        <Container py={RESPONSIVE_MOBILE ? 50 : RESPONSIVE_TABLET ? 50 : 150} px={0} fluid>
+        <Container
+          py={RESPONSIVE_MOBILE ? 50 : RESPONSIVE_TABLET ? 50 : 150}
+          px={0}
+          fluid
+        >
           <Container size={1400}>
             <Grid justify="space-between" align="center">
-              <Grid.Col span={RESPONSIVE_MOBILE ? 12: 6} order={2} orderSm={1} orderLg={2}>
-                <Box mr={RESPONSIVE_MOBILE ? 0 : 50} mt={RESPONSIVE_MOBILE ? 20 : 0}>
+              <Grid.Col
+                span={RESPONSIVE_MOBILE ? 12 : 6}
+                order={2}
+                orderSm={1}
+                orderLg={2}
+              >
+                <Box
+                  mr={RESPONSIVE_MOBILE ? 0 : 50}
+                  mt={RESPONSIVE_MOBILE ? 20 : 0}
+                >
                   <Image
                     src={require('../assets/img/landing-img-mockup.png')}
                     alt="visual image"
                     width="100%"
-                    style={{maxHeight: 450}}
+                    style={{ maxHeight: 450 }}
                     fit="contain"
                   />
                 </Box>
               </Grid.Col>
-              <Grid.Col span={RESPONSIVE_MOBILE ? 12: 6} order={1} orderSm={2} orderLg={1}>
+              <Grid.Col
+                span={RESPONSIVE_MOBILE ? 12 : 6}
+                order={1}
+                orderSm={2}
+                orderLg={1}
+              >
                 <Stack spacing={0} align="left">
-                  <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} color={ConstantStyle.SECONDARY_COLOR}>
+                  <Text
+                    size={RESPONSIVE_TABLET ? 16 : 20}
+                    weight={500}
+                    color={ConstantStyle.SECONDARY_COLOR}
+                  >
                     OUR BENEFIT 02
                   </Text>
                   <Title
@@ -390,7 +466,11 @@ const Landing = () => {
                     <br />
                     100% customizable.
                   </Title>
-                  <Text size={RESPONSIVE_TABLET ? 16 : 25} weight={400} color="#666">
+                  <Text
+                    size={RESPONSIVE_TABLET ? 16 : 25}
+                    weight={400}
+                    color="#666"
+                  >
                     Every components in Inviteyou can customize from color to
                     font. Every components in Inviteyou can customize from color
                     to font.
@@ -420,12 +500,21 @@ const Landing = () => {
           </Container>
         </Container>
         {/* SECTION 04 */}
-        <Container py={RESPONSIVE_MOBILE ? 50 : RESPONSIVE_TABLET ? 50 : 150} px={0} fluid className={classes.bgPink}>
+        <Container
+          py={RESPONSIVE_MOBILE ? 50 : RESPONSIVE_TABLET ? 50 : 150}
+          px={0}
+          fluid
+          className={classes.bgPink}
+        >
           <Container size={1400}>
             <Grid justify="space-between" align="center">
-              <Grid.Col span={RESPONSIVE_MOBILE ? 12: 6}>
+              <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6}>
                 <Stack spacing={0} align="left">
-                  <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} color={ConstantStyle.SECONDARY_COLOR}>
+                  <Text
+                    size={RESPONSIVE_TABLET ? 16 : 20}
+                    weight={500}
+                    color={ConstantStyle.SECONDARY_COLOR}
+                  >
                     OUR BENEFIT 03
                   </Text>
                   <Title
@@ -440,7 +529,11 @@ const Landing = () => {
                     <br />
                     100% customizable.
                   </Title>
-                  <Text size={RESPONSIVE_TABLET ? 16 : 25} weight={400} color="#666">
+                  <Text
+                    size={RESPONSIVE_TABLET ? 16 : 25}
+                    weight={400}
+                    color="#666"
+                  >
                     Every components in Inviteyou can customize from color to
                     font. Every components in Inviteyou can customize from color
                     to font.
@@ -466,13 +559,16 @@ const Landing = () => {
                   </Button>
                 </Stack>
               </Grid.Col>
-              <Grid.Col span={RESPONSIVE_MOBILE ? 12: 6}>
-                <Box mr={RESPONSIVE_MOBILE ? 0 : 50} mt={RESPONSIVE_MOBILE ? 20 : 0}>
+              <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6}>
+                <Box
+                  mr={RESPONSIVE_MOBILE ? 0 : 50}
+                  mt={RESPONSIVE_MOBILE ? 20 : 0}
+                >
                   <Image
                     src={require('../assets/img/landing-img-mockup.png')}
                     alt="visual image"
                     width="100%"
-                    style={{maxHeight: 450}}
+                    style={{ maxHeight: 450 }}
                     fit="contain"
                   />
                 </Box>
@@ -481,7 +577,10 @@ const Landing = () => {
           </Container>
         </Container>
         {/* SECTION 05 */}
-        <Container py={RESPONSIVE_MOBILE ? 50 : RESPONSIVE_TABLET ? 50 : 150} size={1400}>
+        <Container
+          py={RESPONSIVE_MOBILE ? 50 : RESPONSIVE_TABLET ? 50 : 150}
+          size={1400}
+        >
           <Title
             size={RESPONSIVE_TABLET ? 25 : 45}
             weight={700}
@@ -493,21 +592,28 @@ const Landing = () => {
             Mobile wedding invitation
           </Title>
           <Grid gutter={20}>
-            <Grid.Col span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3} mb={20}>
+            <Grid.Col
+              span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3}
+              mb={20}
+            >
               <Stack>
                 <Box className={classes.productItemImgWrap}>
                   <Image
                     src={require('../assets/img/sample-img-product-item.jpg')}
                     alt="item mockup"
                     width="100%"
-                    style={{maxHeight: 435}}
+                    style={{ maxHeight: 435 }}
                     fit="cover"
                   />
                 </Box>
                 <Box>
                   <Grid m={0}>
                     <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6} p={0}>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} transform="capitalize">
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        weight={500}
+                        transform="capitalize"
+                      >
                         invitation title
                       </Text>
                       <Text size={14} color="grey" transform="capitalize">
@@ -529,21 +635,28 @@ const Landing = () => {
                 </Box>
               </Stack>
             </Grid.Col>
-            <Grid.Col span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3} mb={20}>
+            <Grid.Col
+              span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3}
+              mb={20}
+            >
               <Stack>
                 <Box className={classes.productItemImgWrap}>
                   <Image
                     src={require('../assets/img/sample-img-product-item.jpg')}
                     alt="item mockup"
                     width="100%"
-                    style={{maxHeight: 435}}
+                    style={{ maxHeight: 435 }}
                     fit="cover"
                   />
                 </Box>
                 <Box>
                   <Grid m={0}>
                     <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6} p={0}>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} transform="capitalize">
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        weight={500}
+                        transform="capitalize"
+                      >
                         invitation title
                       </Text>
                       <Text size={14} color="grey" transform="capitalize">
@@ -565,21 +678,28 @@ const Landing = () => {
                 </Box>
               </Stack>
             </Grid.Col>
-            <Grid.Col span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3} mb={20}>
+            <Grid.Col
+              span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3}
+              mb={20}
+            >
               <Stack>
                 <Box className={classes.productItemImgWrap}>
                   <Image
                     src={require('../assets/img/sample-img-product-item.jpg')}
                     alt="item mockup"
                     width="100%"
-                    style={{maxHeight: 435}}
+                    style={{ maxHeight: 435 }}
                     fit="cover"
                   />
                 </Box>
                 <Box>
                   <Grid m={0}>
                     <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6} p={0}>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} transform="capitalize">
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        weight={500}
+                        transform="capitalize"
+                      >
                         invitation title
                       </Text>
                       <Text size={14} color="grey" transform="capitalize">
@@ -601,21 +721,28 @@ const Landing = () => {
                 </Box>
               </Stack>
             </Grid.Col>
-            <Grid.Col span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3} mb={20}>
+            <Grid.Col
+              span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3}
+              mb={20}
+            >
               <Stack>
                 <Box className={classes.productItemImgWrap}>
                   <Image
                     src={require('../assets/img/sample-img-product-item.jpg')}
                     alt="item mockup"
                     width="100%"
-                    style={{maxHeight: 435}}
+                    style={{ maxHeight: 435 }}
                     fit="cover"
                   />
                 </Box>
                 <Box>
                   <Grid m={0}>
                     <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6} p={0}>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} transform="capitalize">
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        weight={500}
+                        transform="capitalize"
+                      >
                         invitation title
                       </Text>
                       <Text size={14} color="grey" transform="capitalize">
@@ -637,21 +764,28 @@ const Landing = () => {
                 </Box>
               </Stack>
             </Grid.Col>
-            <Grid.Col span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3} mb={20}>
+            <Grid.Col
+              span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3}
+              mb={20}
+            >
               <Stack>
                 <Box className={classes.productItemImgWrap}>
                   <Image
                     src={require('../assets/img/sample-img-product-item.jpg')}
                     alt="item mockup"
                     width="100%"
-                    style={{maxHeight: 435}}
+                    style={{ maxHeight: 435 }}
                     fit="cover"
                   />
                 </Box>
                 <Box>
                   <Grid m={0}>
                     <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6} p={0}>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} transform="capitalize">
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        weight={500}
+                        transform="capitalize"
+                      >
                         invitation title
                       </Text>
                       <Text size={14} color="grey" transform="capitalize">
@@ -673,21 +807,28 @@ const Landing = () => {
                 </Box>
               </Stack>
             </Grid.Col>
-            <Grid.Col span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3} mb={20}>
+            <Grid.Col
+              span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3}
+              mb={20}
+            >
               <Stack>
                 <Box className={classes.productItemImgWrap}>
                   <Image
                     src={require('../assets/img/sample-img-product-item.jpg')}
                     alt="item mockup"
                     width="100%"
-                    style={{maxHeight: 435}}
+                    style={{ maxHeight: 435 }}
                     fit="cover"
                   />
                 </Box>
                 <Box>
                   <Grid m={0}>
                     <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6} p={0}>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} transform="capitalize">
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        weight={500}
+                        transform="capitalize"
+                      >
                         invitation title
                       </Text>
                       <Text size={14} color="grey" transform="capitalize">
@@ -709,21 +850,28 @@ const Landing = () => {
                 </Box>
               </Stack>
             </Grid.Col>
-            <Grid.Col span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3} mb={20}>
+            <Grid.Col
+              span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3}
+              mb={20}
+            >
               <Stack>
                 <Box className={classes.productItemImgWrap}>
                   <Image
                     src={require('../assets/img/sample-img-product-item.jpg')}
                     alt="item mockup"
                     width="100%"
-                    style={{maxHeight: 435}}
+                    style={{ maxHeight: 435 }}
                     fit="cover"
                   />
                 </Box>
                 <Box>
                   <Grid m={0}>
                     <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6} p={0}>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} transform="capitalize">
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        weight={500}
+                        transform="capitalize"
+                      >
                         invitation title
                       </Text>
                       <Text size={14} color="grey" transform="capitalize">
@@ -745,21 +893,28 @@ const Landing = () => {
                 </Box>
               </Stack>
             </Grid.Col>
-            <Grid.Col span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3} mb={20}>
+            <Grid.Col
+              span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3}
+              mb={20}
+            >
               <Stack>
                 <Box className={classes.productItemImgWrap}>
                   <Image
                     src={require('../assets/img/sample-img-product-item.jpg')}
                     alt="item mockup"
                     width="100%"
-                    style={{maxHeight: 435}}
+                    style={{ maxHeight: 435 }}
                     fit="cover"
                   />
                 </Box>
                 <Box>
                   <Grid m={0}>
                     <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6} p={0}>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} transform="capitalize">
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        weight={500}
+                        transform="capitalize"
+                      >
                         invitation title
                       </Text>
                       <Text size={14} color="grey" transform="capitalize">
@@ -781,21 +936,28 @@ const Landing = () => {
                 </Box>
               </Stack>
             </Grid.Col>
-            <Grid.Col span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3} mb={20}>
+            <Grid.Col
+              span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3}
+              mb={20}
+            >
               <Stack>
                 <Box className={classes.productItemImgWrap}>
                   <Image
                     src={require('../assets/img/sample-img-product-item.jpg')}
                     alt="item mockup"
                     width="100%"
-                    style={{maxHeight: 435}}
+                    style={{ maxHeight: 435 }}
                     fit="cover"
                   />
                 </Box>
                 <Box>
                   <Grid m={0}>
                     <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6} p={0}>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} transform="capitalize">
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        weight={500}
+                        transform="capitalize"
+                      >
                         invitation title
                       </Text>
                       <Text size={14} color="grey" transform="capitalize">
@@ -817,21 +979,28 @@ const Landing = () => {
                 </Box>
               </Stack>
             </Grid.Col>
-            <Grid.Col span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3} mb={20}>
+            <Grid.Col
+              span={RESPONSIVE_MOBILE ? 6 : RESPONSIVE_TABLET ? 4 : 3}
+              mb={20}
+            >
               <Stack>
                 <Box className={classes.productItemImgWrap}>
                   <Image
                     src={require('../assets/img/sample-img-product-item.jpg')}
                     alt="item mockup"
                     width="100%"
-                    style={{maxHeight: 435}}
+                    style={{ maxHeight: 435 }}
                     fit="cover"
                   />
                 </Box>
                 <Box>
                   <Grid m={0}>
                     <Grid.Col span={RESPONSIVE_MOBILE ? 12 : 6} p={0}>
-                      <Text size={RESPONSIVE_TABLET ? 16 : 20} weight={500} transform="capitalize">
+                      <Text
+                        size={RESPONSIVE_TABLET ? 16 : 20}
+                        weight={500}
+                        transform="capitalize"
+                      >
                         invitation title
                       </Text>
                       <Text size={14} color="grey" transform="capitalize">

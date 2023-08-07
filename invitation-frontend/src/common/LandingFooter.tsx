@@ -59,10 +59,18 @@ const LandingFooter = () => {
                 You
               </Anchor>
               <Box my={20}>
-                <Text size={RESPONSIVE_MOBILE ? 14 : 16} color="grey" align="center">
+                <Text
+                  size={RESPONSIVE_MOBILE ? 14 : 16}
+                  color="grey"
+                  align="center"
+                >
                   주소. 서울특별시 강남구 강남대로 123, 강남빌딩 201호
                 </Text>
-                <Text size={RESPONSIVE_MOBILE ? 14 : 16} color="grey" align="center">
+                <Text
+                  size={RESPONSIVE_MOBILE ? 14 : 16}
+                  color="grey"
+                  align="center"
+                >
                   Tel. +82. 02. 0000. 0000 Fax. +82. 02. 0000. 0000 Mail.
                   sample@gmail.com
                 </Text>

@@ -1,5 +1,5 @@
-import { Navigate } from "react-router-dom";
-import { useAuth } from "../hooks/useAuth";
+import { Navigate } from 'react-router-dom';
+import { useAuth } from '../hooks/useAuth';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -13,7 +13,7 @@ const ProtectedRoute = ({ children, subdomain }: ProtectedRouteProps) => {
     return <Navigate to="/login" />;
   }
 
-  if ((subdomain !== undefined) && (!user.subdomains.includes(subdomain))) {
+  if (subdomain !== undefined && !user.subdomains.includes(subdomain)) {
     return <Navigate to="/" />;
   }
 
