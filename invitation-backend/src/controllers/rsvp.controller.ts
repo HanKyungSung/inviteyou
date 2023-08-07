@@ -107,7 +107,7 @@ export const deleteRsvpHandler = async (req: Request, res: Response, next: NextF
     }
 
     // Delete the record.
-    record.delete();
+    await rsvpModel.deleteOne({ name: name });
 
     return res.sendStatus(202);
   } catch (error) {
