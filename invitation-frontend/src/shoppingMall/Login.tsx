@@ -2,9 +2,7 @@ import { useState } from 'react';
 import {
   Title,
   Container,
-  createStyles,
   Button,
-  Anchor,
   Stack,
   MantineProvider,
   PasswordInput,
@@ -17,7 +15,7 @@ import LandingHeader from '../common/LandingHeader';
 import LandingFooter from '../common/LandingFooter';
 import * as Constant from './Constant';
 import * as ConstantStyle from '../common/Constant';
-import { sendLoginApi, upsertUserInfoToLocalStorage } from '../utils/AuthUtils';
+import { sendLoginApi } from '../utils/AuthUtils';
 import { useAuth } from '../hooks/useAuth';
 
 const defaultLoginData = {
@@ -32,9 +30,9 @@ const defaultLoginErrorMessage: Record<string, string> = {
 
 const Login = () => {
   const { login } = useAuth();
-  const [form, setForm] = useState(defaultLoginData)
-  const [errorMessages, setErrorMessages] = useState(defaultLoginErrorMessage)
-  const [submitForm, setSubmitForm] = useState(false)
+  const [form, setForm] = useState(defaultLoginData);
+  const [errorMessages, setErrorMessages] = useState(defaultLoginErrorMessage);
+  const [submitForm, setSubmitForm] = useState(false);
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
   const handleValidateInput = (
@@ -68,9 +66,9 @@ const Login = () => {
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-    let inputErrors:Record<string, string> = {};
-    for (let name in form) {
+
+    const inputErrors: Record<string, string> = {};
+    for (const name in form) {
       const errorMessage = handleValidateInput(
         name as keyof typeof form,
         form[name as keyof typeof form]
@@ -80,14 +78,14 @@ const Login = () => {
       }
     }
     setErrorMessages(inputErrors);
-  
+
     if (Object.keys(inputErrors).length === 0) {
       setSubmitForm(true);
       // Make sure send domain so the user is login to the owned domain.
       const response = await sendLoginApi(form);
       const userInfo = await response.json();
 
-      login?.(userInfo)
+      login?.(userInfo);
       // upsertUserInfoToLocalStorage(userInfo);
       setSubmitForm(false);
     }
@@ -153,13 +151,17 @@ const Login = () => {
                     maxLength={16}
                     onChange={handleInputChange}
                     visibilityToggleIcon={({ reveal, size }) =>
-                      reveal ? <IconEyeOff size={size} /> : <IconEyeCheck size={size} />
+                      reveal ? (
+                        <IconEyeOff size={size} />
+                      ) : (
+                        <IconEyeCheck size={size} />
+                      )
                     }
                     error={errorMessages.password}
                   />
                 </Input.Wrapper>
                 <Stack spacing={30}>
-                  {submitForm ?
+                  {submitForm ? (
                     <Button
                       variant="gradient"
                       color="color-white"
@@ -174,7 +176,7 @@ const Login = () => {
                     >
                       Sign In
                     </Button>
-                    :
+                  ) : (
                     <>
                       <Button
                         variant="gradient"
@@ -217,7 +219,7 @@ const Login = () => {
                         to="/Register"
                         styles={{
                           label: {
-                            color: "#ed6ea0"
+                            color: '#ed6ea0'
                           }
                         }}
                       >
@@ -251,7 +253,7 @@ const Login = () => {
                         </Grid.Col>
                       </Grid> */}
                     </>
-                  }
+                  )}
                 </Stack>
               </Stack>
             </Container>

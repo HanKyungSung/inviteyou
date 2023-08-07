@@ -16,8 +16,12 @@ function App() {
   const { NODE_ENV } = process.env;
   const isDevelopment = NODE_ENV === 'development';
   const subdomain = window.location.host.split('.')[0];
-  const hostname = isDevelopment ? Constants.localhostUrl : Constants.prodhostUrl;
-  const hostnames = isDevelopment ? Constants.localhostUrls : Constants.prodhostUrls;
+  const hostname = isDevelopment
+    ? Constants.localhostUrl
+    : Constants.prodhostUrl;
+  const hostnames = isDevelopment
+    ? Constants.localhostUrls
+    : Constants.prodhostUrls;
 
   // TODO: Checking this should be dynamic. Need to save it in the database.
   if (subdomain === 'we') {
@@ -27,19 +31,22 @@ function App() {
         <Route path="/" element={<HanSung subdomain={subdomain} />} />
         <Route path="/list" element={<GuestList subdomain={subdomain} />} />
       </Routes>
-    )
+    );
   } else if (subdomain === 'sne') {
     return (
       <Routes>
         <Route path="/Login" element={<Login />} />
         <Route path="/" element={<SamHan subdomain={subdomain} />} />
-        <Route path="/list" element={
-          <ProtectedRoute subdomain='sne'>
-            <SamHanList subdomain={subdomain} />
-          </ProtectedRoute>
-        } />
+        <Route
+          path="/list"
+          element={
+            <ProtectedRoute subdomain="sne">
+              <SamHanList subdomain={subdomain} />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
-    )
+    );
   } else if (!hostnames.includes(window.location.hostname)) {
     // If subdomain doesn't match to anything, we reset the url.
     window.location.replace(hostname);

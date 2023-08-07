@@ -1,9 +1,14 @@
-import { DefaultRegisterDataProps, AttemptUserLogin } from "../common/interfaces";
-import { ILoggedInUser } from "../common/interfaces";
+import {
+  DefaultRegisterDataProps,
+  AttemptUserLogin
+} from '../common/interfaces';
+import { ILoggedInUser } from '../common/interfaces';
 
 const { REACT_APP_API_URL } = process.env;
 
-export const sendRegisterApi = async (params: DefaultRegisterDataProps): Promise<Response> => {
+export const sendRegisterApi = async (
+  params: DefaultRegisterDataProps
+): Promise<Response> => {
   const response = await fetch(`${REACT_APP_API_URL}/api/registration`, {
     method: 'POST',
     body: JSON.stringify(params),
@@ -15,7 +20,9 @@ export const sendRegisterApi = async (params: DefaultRegisterDataProps): Promise
   return response;
 };
 
-export const sendLoginApi = async (params: AttemptUserLogin): Promise<Response> => {
+export const sendLoginApi = async (
+  params: AttemptUserLogin
+): Promise<Response> => {
   const response = await fetch(`${REACT_APP_API_URL}/api/login`, {
     method: 'POST',
     body: JSON.stringify(params),

@@ -10,11 +10,8 @@ import {
   MantineProvider
 } from '@mantine/core';
 import { Link } from 'react-router-dom';
-import {
-  IconSearch,
-  IconMenu2,
-} from '@tabler/icons';
-  
+import { IconSearch, IconMenu2 } from '@tabler/icons';
+
 import * as ConstantStyle from '../common/Constant';
 import { useMediaQuery } from '@mantine/hooks';
 
@@ -79,11 +76,18 @@ const LandingHeader = () => {
         }}
       >
         {/* HEADER */}
-        <Header height={RESPONSIVE_MOBILE ? 60 : 90} className={classes.header} py={RESPONSIVE_MOBILE ? 10 : 25}>
+        <Header
+          height={RESPONSIVE_MOBILE ? 60 : 90}
+          className={classes.header}
+          py={RESPONSIVE_MOBILE ? 10 : 25}
+        >
           <Container size={1400}>
-            <Grid justify='space-between' align='center'>
+            <Grid justify="space-between" align="center">
               <Grid.Col span={6}>
-                <Container className={classes.headerLeft} px={RESPONSIVE_MOBILE ? 0 : 20}>
+                <Container
+                  className={classes.headerLeft}
+                  px={RESPONSIVE_MOBILE ? 0 : 20}
+                >
                   <Anchor
                     component={Link}
                     underline={false}
@@ -95,7 +99,10 @@ const LandingHeader = () => {
                     </Text>
                     You
                   </Anchor>
-                  <Group className={classes.gnbLists} style={{display: (RESPONSIVE_MOBILE ? 'none' : 'block')}}>
+                  <Group
+                    className={classes.gnbLists}
+                    style={{ display: RESPONSIVE_MOBILE ? 'none' : 'block' }}
+                  >
                     <Anchor
                       component={Link}
                       underline={false}
@@ -139,9 +146,15 @@ const LandingHeader = () => {
                   </Group>
                 </Container>
               </Grid.Col>
-              <Grid.Col span='content'>
-                <Container className={classes.headerRight} px={RESPONSIVE_MOBILE ? 0 : 20}>
-                  <Group className={classes.gnbLists} style={{display: (RESPONSIVE_MOBILE ? 'none' : 'block')}}>
+              <Grid.Col span="content">
+                <Container
+                  className={classes.headerRight}
+                  px={RESPONSIVE_MOBILE ? 0 : 20}
+                >
+                  <Group
+                    className={classes.gnbLists}
+                    style={{ display: RESPONSIVE_MOBILE ? 'none' : 'block' }}
+                  >
                     <Anchor
                       component={Link}
                       underline={false}
@@ -153,7 +166,9 @@ const LandingHeader = () => {
                     <Button
                       color={ConstantStyle.SECONDARY_COLOR}
                       className={classes.gnbList}
-                      styles={{ root: { backgroundColor: ConstantStyle.SECONDARY_COLOR } }}
+                      styles={{
+                        root: { backgroundColor: ConstantStyle.SECONDARY_COLOR }
+                      }}
                       size="md"
                       p={12}
                       uppercase
@@ -176,6 +191,5 @@ const LandingHeader = () => {
     </>
   );
 };
-  
+
 export default LandingHeader;
-  

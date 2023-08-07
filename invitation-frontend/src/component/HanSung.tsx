@@ -9,10 +9,11 @@ import surveyDeco from '../assets/img/visuan-han-deco1.png';
 import imgHan from '../assets/img/hansung/img-han.png';
 import imgLee from '../assets/img/hansung/img-lee.png';
 import map from '../assets/img/map-han.png';
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import 'react-responsive-carousel/lib/styles/carousel.min.css'; // requires a loader
 import { Carousel } from 'react-responsive-carousel';
 import soundOn from '../assets/img/icon-sound-on.png';
 import soundOff from '../assets/img/icon-sound-off.png';
+import musicFile from "../assets/music/SnapInsta.io - sarah vaughan - A Lover's concerto (128 kbps).mp3";
 
 interface HanSung {
   subdomain: string;
@@ -31,86 +32,86 @@ interface ModalInfo {
 
 const radioGroupStyle = {
   root: {
-    fontFamily: "KoPub Batang",
-    marginBottom: "16px !important"
+    fontFamily: 'KoPub Batang',
+    marginBottom: '16px !important'
   },
   required: {
     color: 'red !important'
   },
   label: {
-    marginBottom: "16px !important"
+    marginBottom: '16px !important'
   },
   error: {
     color: 'red !important',
-    fontFamily: "KoPub Batang",
-    marginTop: "10px !important"
+    fontFamily: 'KoPub Batang',
+    marginTop: '10px !important'
   }
 };
 
 const radioButtonStyle = {
   body: {
-    cursor: "pointer"
+    cursor: 'pointer'
   },
   icon: {
-    color: "#C9736E",
-    width: "12px",
-    height: "12px",
-    top: "calc(50% - 6px)",
-    left: "calc(50% - 6px)",
-    cursor: "pointer"
+    color: '#C9736E',
+    width: '12px',
+    height: '12px',
+    top: 'calc(50% - 6px)',
+    left: 'calc(50% - 6px)',
+    cursor: 'pointer'
   },
   radio: {
-    cursor: "pointer",
-    ":checked": {
-      backgroundColor: "#fff",
-      border: "1px solid #C9736E"
+    cursor: 'pointer',
+    ':checked': {
+      backgroundColor: '#fff',
+      border: '1px solid #C9736E'
     },
-    "&::after": {
-      backgroundColor: "#C9736E",
-      borderColor: "#C9736E"
+    '&::after': {
+      backgroundColor: '#C9736E',
+      borderColor: '#C9736E'
     }
   },
   inner: {
-    cursor: "pointer"
+    cursor: 'pointer'
   },
   label: {
-    paddingLeft: "10px !important",
-    fontFamily: "KoPub Batang",
-    cursor: "pointer"
+    paddingLeft: '10px !important',
+    fontFamily: 'KoPub Batang',
+    cursor: 'pointer'
   },
   description: {
-    fontSize: "14px !important",
-    marginLeft: "12px !important",
-    marginTop:"5px !important",
-    fontFamily: "KoPub Batang",
-    color: "#39393b !important"
+    fontSize: '14px !important',
+    marginLeft: '12px !important',
+    marginTop: '5px !important',
+    fontFamily: 'KoPub Batang',
+    color: '#39393b !important'
   }
 };
 
-const NAME_INPUT_ERROR = "필수로 입력하세요";
-const RSVP_INPUT_ERROR = "참석여부를 골라주세요";
-const MENU_INPUT_ERROR = "메인메뉴를 골라주세요";
+const NAME_INPUT_ERROR = '필수로 입력하세요';
+const RSVP_INPUT_ERROR = '참석여부를 골라주세요';
+const MENU_INPUT_ERROR = '메인메뉴를 골라주세요';
 
 const initModalInfo: ModalInfo = {
   opened: false,
   submitInfo: {
-    name: "",
-    rsvp: "",
-    menu: "",
-    note: ""
+    name: '',
+    rsvp: '',
+    menu: '',
+    note: ''
   }
 };
 
 const HanSung = (props: HanSung) => {
   const { subdomain } = props;
-  const [audio] = useState(new Audio(require("../assets/music/SnapInsta.io - sarah vaughan - A Lover's concerto (128 kbps).mp3")));
+  const [audio] = useState(new Audio(musicFile));
   const [isMusicPlaying, setIsMusicPlaying] = useState<boolean>(false);
   const [initForm, setInitForm] = useState<boolean>(true);
   const [initNameInput, setInitNameInput] = useState<boolean>(true);
-  const [name, setName] = useState<string>("");
-  const [rsvp, setRsvp] = useState<string>("");
-  const [menu, setMenu] = useState<string>("");
-  const [note, setNote] = useState<string>("");
+  const [name, setName] = useState<string>('');
+  const [rsvp, setRsvp] = useState<string>('');
+  const [menu, setMenu] = useState<string>('');
+  const [note, setNote] = useState<string>('');
   const [isNameValidated, setIsNameValidated] = useState<boolean>(false);
   const [isRsvpValidated, setIsRsvpValidated] = useState<boolean>(false);
   const [isMenuValidated, setIsMenuValidated] = useState<boolean>(false);
@@ -129,21 +130,21 @@ const HanSung = (props: HanSung) => {
 
     // Perform the validation
     if (!isNameValidated) {
-      setName("");
+      setName('');
     }
-    
+
     if (!isRsvpValidated) {
-      setRsvp("");
+      setRsvp('');
     }
 
     if (!isMenuValidated) {
-      setMenu("");
+      setMenu('');
     }
 
     if (isNameValidated && isRsvpValidated) {
-      if (rsvp === "yes" && isMenuValidated) {
+      if (rsvp === 'yes' && isMenuValidated) {
         handleSendApi();
-      } else if (rsvp === "no") {
+      } else if (rsvp === 'no') {
         handleSendApi();
       }
       console.log(name, rsvp, menu, note);
@@ -154,11 +155,11 @@ const HanSung = (props: HanSung) => {
     setInitForm(true);
     setInitNameInput(true);
 
-    setName("");
-    setRsvp("");
-    setMenu("");
-    setNote("");
-    
+    setName('');
+    setRsvp('');
+    setMenu('');
+    setNote('');
+
     setIsNameValidated(false);
     setIsRsvpValidated(false);
     setIsMenuValidated(false);
@@ -192,7 +193,7 @@ const HanSung = (props: HanSung) => {
     setName(newName);
     setInitNameInput(false);
 
-    if (newName === "") {
+    if (newName === '') {
       setIsNameValidated(false);
     } else {
       setIsNameValidated(true);
@@ -202,12 +203,12 @@ const HanSung = (props: HanSung) => {
   const handleOnChangeRsvpInput = (answer: string) => {
     setRsvp(answer);
 
-    if (answer === "no") {
-      setMenu("");
+    if (answer === 'no') {
+      setMenu('');
       setIsMenuValidated(false);
     }
 
-    if (answer === "") {
+    if (answer === '') {
       setIsRsvpValidated(false);
     } else {
       setIsRsvpValidated(true);
@@ -217,7 +218,7 @@ const HanSung = (props: HanSung) => {
   const handleOnChangeMenuInput = (menu: string) => {
     setMenu(menu);
 
-    if (menu === "") {
+    if (menu === '') {
       setIsMenuValidated(false);
     } else {
       setIsMenuValidated(true);
@@ -258,7 +259,7 @@ const HanSung = (props: HanSung) => {
     require('../assets/img/hansung/0D1A2205_.jpg'),
     require('../assets/img/hansung/0D1A2243_.jpg'),
     require('../assets/img/hansung/0D1A2326_.jpg'),
-    require('../assets/img/hansung/0D1A2342_.jpg'),
+    require('../assets/img/hansung/0D1A2342_.jpg')
   ];
 
   const slides: JSX.Element[] = imgs.map((img) => {
@@ -266,7 +267,7 @@ const HanSung = (props: HanSung) => {
       <div key={`side-${img}`}>
         <img src={img} alt={`Slide $(item)`} />
       </div>
-    )
+    );
   });
 
   return (
@@ -278,57 +279,101 @@ const HanSung = (props: HanSung) => {
         title={`${modalInfo.submitInfo.name}님 설문 참여가 완료되었습니다 :)`}
         styles={{
           title: {
-            fontFamily: "KoPub Batang",
-            color: "#444",
+            fontFamily: 'KoPub Batang',
+            color: '#444',
             fontWeight: 700,
             margin: 0
           },
           body: {
-            fontFamily: "KoPub Batang",
+            fontFamily: 'KoPub Batang',
             fontSize: '14px',
             lineHeight: '1.5',
-            color: "#666"
+            color: '#666'
           }
         }}
       >
-        {modalInfo.submitInfo.rsvp === "yes" ?
+        {modalInfo.submitInfo.rsvp === 'yes' ? (
           <div className="survey-comment">
             <p>
               결혼식에 참석해주셔서 감사합니다.
-              <br /><br />
+              <br />
+              <br />
               작성하신 설문 내용 확인 후, <br />
               수정사항이 있으시거나 참석이 어려우실 경우, <br />
-              <a href={`tel:604-779-5421`} style={{color: '#666', textDecoration: 'none'}}>236.777.5421</a>로 문자 부탁드립니다. <br />
+              <a
+                href={`tel:604-779-5421`}
+                style={{ color: '#666', textDecoration: 'none' }}
+              >
+                236.777.5421
+              </a>
+              로 문자 부탁드립니다. <br />
             </p>
-            <p style={{color: '#ED8986', fontWeight: 700, marginTop: 50, fontSize: 16}}>
-              참석 여부 : {modalInfo.submitInfo.rsvp}<br />
-              메뉴 : {modalInfo.submitInfo.menu}<br />
+            <p
+              style={{
+                color: '#ED8986',
+                fontWeight: 700,
+                marginTop: 50,
+                fontSize: 16
+              }}
+            >
+              참석 여부 : {modalInfo.submitInfo.rsvp}
+              <br />
+              메뉴 : {modalInfo.submitInfo.menu}
+              <br />
               기타사항 : {modalInfo.submitInfo.note}
             </p>
-            <figure style={{position:'absolute', right: 0, bottom: 0, margin: 0}}>
-              <img src={surveyDeco} alt="surveyDeco" style={{maxHeight: 180}}/>
+            <figure
+              style={{ position: 'absolute', right: 0, bottom: 0, margin: 0 }}
+            >
+              <img
+                src={surveyDeco}
+                alt="surveyDeco"
+                style={{ maxHeight: 180 }}
+              />
             </figure>
           </div>
-          :
+        ) : (
           <div className="survey-comment">
             <p>
               결혼식에서 뵙지 못해 아쉽습니다.
-              <br /><br />
+              <br />
+              <br />
               응원에 힘입어 이쁜 신혼생활 하는 모습 <br />
               보여 드리겠습니다. ^^
-              <br /><br />
+              <br />
+              <br />
               수정사항이 있으시거나 참석이 가능하실 경우, <br />
-              <a href={`tel:604-779-5421`} style={{color: '#666', textDecoration: 'none'}}>236.777.5421</a>로 문자 부탁드립니다.     
+              <a
+                href={`tel:604-779-5421`}
+                style={{ color: '#666', textDecoration: 'none' }}
+              >
+                236.777.5421
+              </a>
+              로 문자 부탁드립니다.
             </p>
-            <p style={{color: '#ED8986', fontWeight: 700, marginTop: 50, fontSize: 16}}>
-              참석 여부 : {modalInfo.submitInfo.rsvp}<br />
+            <p
+              style={{
+                color: '#ED8986',
+                fontWeight: 700,
+                marginTop: 50,
+                fontSize: 16
+              }}
+            >
+              참석 여부 : {modalInfo.submitInfo.rsvp}
+              <br />
               기타사항 : {modalInfo.submitInfo.note}
             </p>
-            <figure style={{position:'absolute', right: 0, bottom: 0, margin: 0}}>
-              <img src={surveyDeco} alt="surveyDeco" style={{maxHeight: 180}}/>
+            <figure
+              style={{ position: 'absolute', right: 0, bottom: 0, margin: 0 }}
+            >
+              <img
+                src={surveyDeco}
+                alt="surveyDeco"
+                style={{ maxHeight: 180 }}
+              />
             </figure>
           </div>
-        }
+        )}
       </Modal>
       <main className="invitation-wrap invitation-test-wrap">
         <section className="visual visualType04">
@@ -460,7 +505,7 @@ const HanSung = (props: HanSung) => {
                       className="circle"
                       onClick={() => getIcsFile({ subdomain: 'we' })}
                       style={{
-                        cursor: "pointer"
+                        cursor: 'pointer'
                       }}
                     >
                       29
@@ -474,7 +519,8 @@ const HanSung = (props: HanSung) => {
               </tbody>
             </table>
           </div>
-          <p style={{
+          <p
+            style={{
               color: '#888',
               textAlign: 'center',
               marginTop: '20px',
@@ -482,7 +528,8 @@ const HanSung = (props: HanSung) => {
               padding: '15px 0',
               borderTop: '1px solid #eee',
               borderBottom: '1px solid #eee'
-          }}>
+            }}
+          >
             일자를 클릭해서 캘린더에 추가하실 수 있어요!
           </p>
         </section>
@@ -498,21 +545,25 @@ const HanSung = (props: HanSung) => {
               id="name-input"
               label="성함"
               withAsterisk
-              error={name === "" && (!initNameInput || !initForm) ? NAME_INPUT_ERROR : ""}
+              error={
+                name === '' && (!initNameInput || !initForm)
+                  ? NAME_INPUT_ERROR
+                  : ''
+              }
               styles={{
                 root: {
-                  marginBottom: "16px !important"
+                  marginBottom: '16px !important'
                 },
                 required: {
                   color: 'red !important'
                 },
                 label: {
-                  fontFamily: "KoPub Batang"
+                  fontFamily: 'KoPub Batang'
                 },
                 error: {
                   color: 'red !important',
-                  fontFamily: "KoPub Batang",
-                  marginTop: "10px !important"
+                  fontFamily: 'KoPub Batang',
+                  marginTop: '10px !important'
                 }
               }}
             >
@@ -522,19 +573,21 @@ const HanSung = (props: HanSung) => {
                 variant="unstyled"
                 name="name"
                 value={name}
-                onChange={(e: React.ChangeEvent<HTMLInputElement>) => handleOnChangeNameInput(e)}
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                  handleOnChangeNameInput(e)
+                }
                 styles={{
                   wrapper: {
-                    "input::placeholder": {
-                      margin: "16px 0",
-                      fontSize: "16px"
+                    'input::placeholder': {
+                      margin: '16px 0',
+                      fontSize: '16px'
                     },
-                    padding: "16px 0 10px 0 !important",
-                    borderBottom: "1px solid #aaa !important"
+                    padding: '16px 0 10px 0 !important',
+                    borderBottom: '1px solid #aaa !important'
                   },
                   input: {
-                    fontSize: "16px",
-                    fontFamily: "KoPub Batang"
+                    fontSize: '16px',
+                    fontFamily: 'KoPub Batang'
                   }
                 }}
               />
@@ -545,7 +598,7 @@ const HanSung = (props: HanSung) => {
               value={rsvp}
               styles={radioGroupStyle}
               onChange={(answer) => handleOnChangeRsvpInput(answer)}
-              error={rsvp === "" && !initForm ? RSVP_INPUT_ERROR : ""}
+              error={rsvp === '' && !initForm ? RSVP_INPUT_ERROR : ''}
             >
               <Radio
                 name="participate"
@@ -561,7 +614,7 @@ const HanSung = (props: HanSung) => {
               />
             </Radio.Group>
             {/* beef chicken lasagna fish */}
-            {rsvp === "yes" &&
+            {rsvp === 'yes' && (
               <Radio.Group
                 label="메뉴"
                 required
@@ -569,7 +622,7 @@ const HanSung = (props: HanSung) => {
                 value={menu}
                 styles={radioGroupStyle}
                 onChange={(menu) => handleOnChangeMenuInput(menu)}
-                error={menu === "" && !initForm ? MENU_INPUT_ERROR : ""}
+                error={menu === '' && !initForm ? MENU_INPUT_ERROR : ''}
               >
                 <Radio
                   name="menu"
@@ -586,7 +639,7 @@ const HanSung = (props: HanSung) => {
                   styles={radioButtonStyle}
                 />
               </Radio.Group>
-            }
+            )}
             <span className="input-wrap">
               <label htmlFor="note">알러지 등 기타 사항을 작성해주세요.</label>
               <textarea
@@ -599,7 +652,9 @@ const HanSung = (props: HanSung) => {
                 onChange={(e) => setNote(e.currentTarget.value)}
               ></textarea>
             </span>
-            <button className='custom-button' type="submit">설문지 제출하기</button>
+            <button className="custom-button" type="submit">
+              설문지 제출하기
+            </button>
           </form>
         </section>
         <section className="gallery galleryType02">
@@ -609,7 +664,7 @@ const HanSung = (props: HanSung) => {
               <img src={titleDeco} alt="titleDeco" />
             </figure>
           </span>
-          <div className='carousel-wrap'>
+          <div className="carousel-wrap">
             <Carousel
               showArrows={true}
               useKeyboardArrows={true}
