@@ -32,9 +32,9 @@ const defaultLoginErrorMessage: Record<string, string> = {
 
 const Login = () => {
   const { login } = useAuth();
-  const [form, setForm] = useState(defaultLoginData)
-  const [errorMessages, setErrorMessages] = useState(defaultLoginErrorMessage)
-  const [submitForm, setSubmitForm] = useState(false)
+  const [form, setForm] = useState(defaultLoginData);
+  const [errorMessages, setErrorMessages] = useState(defaultLoginErrorMessage);
+  const [submitForm, setSubmitForm] = useState(false);
   const [notificationVisible, setNotificationVisible] = useState(false);
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -44,8 +44,11 @@ const Login = () => {
     setSubmitForm(false);
   };
 
-  const handleValidateInput = (name: keyof typeof form, value: string): string => {
-    let errorMessage = "";
+  const handleValidateInput = (
+    name: keyof typeof form,
+    value: string
+  ): string => {
+    let errorMessage = '';
     switch (name) {
       case 'email':
         if (!value) {
@@ -89,10 +92,9 @@ const Login = () => {
       setSubmitForm(true);
       // Make sure send domain so the user is login to the owned domain.
       const response = await sendLoginApi(form);
-
-      if(response.ok) {
+      if (response.ok) {
         const userInfo = await response.json();
-        login?.(userInfo)
+        login?.(userInfo);
         // upsertUserInfoToLocalStorage(userInfo);
         setSubmitForm(false);
       } else {
@@ -135,10 +137,14 @@ const Login = () => {
         <LandingHeader />
         {/* LOGIN */}
         {notificationVisible && (
-        <Notification title="Error Message" >
-          Incorrect email or password. Please try again.
-        </Notification>
-      )}
+          <Notification
+            styles={{ root: { marginTop: '80px' } }}
+            color="red"
+            title="Error Message"
+          >
+            Incorrect email or password. Please try again.
+          </Notification>
+        )}
         <Container py={250} size={1400}>
           <Title align="center" size={45} weight={700} mb={65} order={1}>
             SIGN IN
@@ -240,7 +246,6 @@ const Login = () => {
                       >
                         Sign Up
                       </Button>
-                      
                       {/* <Grid>
                         <Grid.Col span={6}>
                           <Text size={20} lineClamp={2}>
