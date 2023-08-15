@@ -36,10 +36,12 @@ const Login = () => {
   const [errorMessages, setErrorMessages] = useState(defaultLoginErrorMessage);
   const [submitForm, setSubmitForm] = useState(false);
   const [notificationVisible, setNotificationVisible] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState('');
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const handleShowNotification = () => {
+  const handleShowNotification = (errorMessage: string) => {
+    setNotificationMessage(errorMessage);
     setNotificationVisible(true);
     setSubmitForm(false);
   };
@@ -98,7 +100,12 @@ const Login = () => {
         // upsertUserInfoToLocalStorage(userInfo);
         setSubmitForm(false);
       } else {
-        handleShowNotification();
+        // console.log('code is: ' + response.status);
+        if (response.status === 404) {
+          handleShowNotification('No User Found');
+        } else if (response.status === 403) {
+          handleShowNotification('Password is incorrect');
+        }
       }
     }
   };
@@ -147,7 +154,7 @@ const Login = () => {
             title="Error Message"
             onClose={handleNotificationClose}
           >
-            Incorrect email or password. Please try again.
+            {notificationMessage}
           </Notification>
         )}
         <Container py={250} size={1400}>
