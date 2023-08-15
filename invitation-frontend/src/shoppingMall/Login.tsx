@@ -116,6 +116,10 @@ const Login = () => {
     }));
   };
 
+  const handleNotificationClose = () => {
+    setNotificationVisible(false);
+  };
+
   return (
     <>
       <MantineProvider
@@ -141,6 +145,7 @@ const Login = () => {
             styles={{ root: { marginTop: '80px' } }}
             color="red"
             title="Error Message"
+            onClose={handleNotificationClose}
           >
             Incorrect email or password. Please try again.
           </Notification>
