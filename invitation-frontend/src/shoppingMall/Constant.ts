@@ -9,3 +9,7 @@ export const PASSWORD2_CONFORM_ERROR = 'Please confirm your Password';
 export const PASSWORD_REGEX_ERROR =
   'Password should be between 8 to 16 characters';
 export const EMAIL_REGEX_ERROR = 'Please enter a valid email address';
+export const EMAIL_VERIFIED_ERROR =
+  'The Email you entered is incorrect. Please try again';
+export const PASSWORD_VERIFIED_ERROR =
+  'The Password you entered is incorrect. Please try again';

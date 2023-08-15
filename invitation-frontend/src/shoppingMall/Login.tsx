@@ -40,8 +40,15 @@ const Login = () => {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const handleShowNotification = (errorMessage: string) => {
+  const handleShowNotification = (
+    errorMessage: string,
+    name: keyof typeof form
+  ) => {
     setNotificationMessage(errorMessage);
+    setErrorMessages((prevErrors) => ({
+      ...prevErrors,
+      [name]: errorMessage
+    }));
     setNotificationVisible(true);
     setSubmitForm(false);
   };
@@ -100,11 +107,10 @@ const Login = () => {
         // upsertUserInfoToLocalStorage(userInfo);
         setSubmitForm(false);
       } else {
-        // console.log('code is: ' + response.status);
         if (response.status === 404) {
-          handleShowNotification('No User Found');
+          handleShowNotification(Constant.EMAIL_VERIFIED_ERROR, 'email');
         } else if (response.status === 403) {
-          handleShowNotification('Password is incorrect');
+          handleShowNotification(Constant.PASSWORD_VERIFIED_ERROR, 'password');
         }
       }
     }
