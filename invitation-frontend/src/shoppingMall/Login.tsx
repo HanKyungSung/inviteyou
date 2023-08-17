@@ -106,12 +106,10 @@ const Login = () => {
         login?.(userInfo);
         // upsertUserInfoToLocalStorage(userInfo);
         setSubmitForm(false);
-      } else {
-        if (response.status === 404) {
-          handleShowNotification(Constant.EMAIL_VERIFIED_ERROR, 'email');
-        } else if (response.status === 403) {
-          handleShowNotification(Constant.PASSWORD_VERIFIED_ERROR, 'password');
-        }
+      } else if (response.status === 404) {
+        handleShowNotification(Constant.EMAIL_VERIFIED_ERROR, 'email');
+      } else if (response.status === 403) {
+        handleShowNotification(Constant.PASSWORD_VERIFIED_ERROR, 'password');
       }
     }
   };
