@@ -56,7 +56,7 @@ const Visual3Styles = () =>
       width: '70%',
       position: 'absolute',
       left: '40%',
-      bottom: '30px',
+      top: '35%',
       transform: 'translate(-50%)',
       padding: '1em 0',
       fontSize: '1.5rem',
@@ -64,6 +64,92 @@ const Visual3Styles = () =>
     },
     weddingCharacter: {
       textTransform: 'uppercase'
+    },
+    newIntro: {
+      position: 'relative'
+    },
+    sectionTitWrap: {
+      position: 'relative'
+    },
+    sectionSubTit: {
+      position: 'absolute',
+      left: '50%',
+      marginLeft: '20px',
+      bottom: '20%',
+      transform: 'translateX(-50%)',
+      textTransform: 'uppercase',
+      fontWeight: 500,
+      width: '100%'
+    },
+    introMessage: {
+      width: '100%',
+      margin: '0 auto',
+      marginTop: '20px',
+      marginLeft: '20px'
+    },
+    calendarTop: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: '1.2em',
+      fontSize: '1rem',
+      paddingBottom: '20px',
+      borderBottom: '0.1rem solid rgb(102, 102, 102)'
+    },
+    weddingMonth: {
+      fontSize: '1.2em',
+      fontWeight: 500
+    },
+    weddingYear: {
+      fontSize: '0.9rem'
+    },
+    weddingDayOfWeek: {
+      textTransform: 'uppercase',
+      display: 'inline-block',
+      marginRight: '7px'
+    },
+    current: {
+      backgroundColor: 'rgb(180, 152, 133)',
+      color: '#fff',
+      fontWeight: 700,
+      borderRadius: '50%'
+    },
+    calendarTable: {
+      width: '100%',
+      marginBottom: 50,
+      fontFamily: 'Crimson Text!important',
+      th: {
+        fontWeight: 500,
+        textTransform: 'uppercase',
+        fontSize: 18,
+        color: '#666',
+        padding: '0.5em 0',
+        textAlign: 'center',
+        verticalAlign: 'middle'
+      },
+      td: {
+        width: 'calc(100%/7)',
+        textAlign: 'center',
+        verticalAlign: 'middle',
+        position: 'relative',
+        fontSize: 18,
+        color: '#666',
+        '&::after': {
+          content: `''`,
+          display: 'block',
+          marginTop: '100%'
+        },
+        span: {
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }
+      }
     }
   }));
 
