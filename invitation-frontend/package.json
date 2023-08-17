@@ -1,75 +1,76 @@
 {
-	"name": "invitation",
-	"version": "0.1.0",
-	"private": true,
-	"dependencies": {
-		"@emotion/react": "^11.10.5",
-		"@emotion/styled": "^11.10.4",
-		"@mantine/core": "^5.6.3",
-		"@mantine/hooks": "^5.6.3",
-		"@mui/material": "^5.10.9",
-		"@mui/styled-engine-sc": "^5.10.6",
-		"@tabler/icons": "^1.108.0",
-		"@testing-library/jest-dom": "^5.16.5",
-		"@testing-library/react": "^13.4.0",
-		"@testing-library/user-event": "^13.5.0",
-		"@types/jest": "^29.1.2",
-		"@types/node": "^18.8.3",
-		"@types/react-dom": "^18.0.6",
-		"body-parser": "^1.20.1",
-		"concurrently": "^7.4.0",
-		"dotenv": "^16.0.3",
-		"react": "^18.2.0",
-		"react-color": "^2.19.3",
-		"react-datepicker": "^4.8.0",
-		"react-dom": "^18.2.0",
-		"react-icons": "^4.8.0",
-		"react-responsive-carousel": "^3.2.23",
-		"react-router-dom": "^6.4.2",
-		"react-swiper": "^0.1.5",
-		"sass": "^1.55.0",
-		"styled-components": "^5.3.6",
-		"swiper": "^9.0.4",
-		"web-vitals": "^2.1.4"
-	},
-	"scripts": {
-		"dev": "concurrently --kill-others \"npm start\" \"npm run sass:watch\"",
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"build-without-eslint": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
-		"lint": "eslint --max-warnings 0 src/",
-		"test": "react-scripts test",
-		"sass:watch": "sass --watch --source-map src/style:src/style",
-		"eject": "react-scripts eject"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"devDependencies": {
-		"@types/react": "^18.0.21",
-		"@types/react-color": "^3.0.6",
-		"@typescript-eslint/eslint-plugin": "^5.41.0",
-		"@typescript-eslint/parser": "^5.41.0",
-		"eslint": "^8.26.0",
-		"eslint-config-prettier": "^8.5.0",
-		"eslint-plugin-prettier": "^4.2.1",
-		"prettier": "^2.7.1",
-		"react-scripts": "^5.0.1",
-		"typescript": "^4.8.4"
-	}
+  "name": "invitation",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.4",
+    "@mantine/core": "^5.6.3",
+    "@mantine/hooks": "^5.6.3",
+    "@mui/material": "^5.10.9",
+    "@mui/styled-engine-sc": "^5.10.6",
+    "@tabler/icons": "^1.108.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^29.1.2",
+    "@types/node": "^18.8.3",
+    "@types/react-dom": "^18.0.6",
+    "body-parser": "^1.20.1",
+    "concurrently": "^7.4.0",
+    "dotenv": "^16.0.3",
+    "react": "^18.2.0",
+    "react-color": "^2.19.3",
+    "react-datepicker": "^4.8.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^4.8.0",
+    "react-responsive-carousel": "^3.2.23",
+    "react-router-dom": "^6.4.2",
+    "react-swiper": "^0.1.5",
+    "react-toastify": "^9.1.3",
+    "sass": "^1.55.0",
+    "styled-components": "^5.3.6",
+    "swiper": "^9.0.4",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "dev": "concurrently --kill-others \"npm start\" \"npm run sass:watch\"",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "build-without-eslint": "DISABLE_ESLINT_PLUGIN=true react-scripts build",
+    "lint": "eslint --max-warnings 0 src/",
+    "test": "react-scripts test",
+    "sass:watch": "sass --watch --source-map src/style:src/style",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.21",
+    "@types/react-color": "^3.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
+    "@typescript-eslint/parser": "^5.41.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "react-scripts": "^5.0.1",
+    "typescript": "^4.8.4"
+  }
 }

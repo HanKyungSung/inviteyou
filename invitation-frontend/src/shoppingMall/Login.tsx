@@ -7,8 +7,10 @@ import {
   MantineProvider,
   PasswordInput,
   Input,
-  TextInput
+  TextInput,
+  Notification
 } from '@mantine/core';
+
 import { Link } from 'react-router-dom';
 import { IconEyeCheck, IconEyeOff } from '@tabler/icons';
 import LandingHeader from '../common/LandingHeader';
@@ -33,7 +35,23 @@ const Login = () => {
   const [form, setForm] = useState(defaultLoginData);
   const [errorMessages, setErrorMessages] = useState(defaultLoginErrorMessage);
   const [submitForm, setSubmitForm] = useState(false);
+  const [notificationVisible, setNotificationVisible] = useState(false);
+  const [notificationMessage, setNotificationMessage] = useState('');
+
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  const handleShowNotification = (
+    errorMessage: string,
+    name: keyof typeof form
+  ) => {
+    setNotificationMessage(errorMessage);
+    setErrorMessages((prevErrors) => ({
+      ...prevErrors,
+      [name]: errorMessage
+    }));
+    setNotificationVisible(true);
+    setSubmitForm(false);
+  };
 
   const handleValidateInput = (
     name: keyof typeof form,
@@ -83,11 +101,16 @@ const Login = () => {
       setSubmitForm(true);
       // Make sure send domain so the user is login to the owned domain.
       const response = await sendLoginApi(form);
-      const userInfo = await response.json();
-
-      login?.(userInfo);
-      // upsertUserInfoToLocalStorage(userInfo);
-      setSubmitForm(false);
+      if (response.ok) {
+        const userInfo = await response.json();
+        login?.(userInfo);
+        // upsertUserInfoToLocalStorage(userInfo);
+        setSubmitForm(false);
+      } else if (response.status === 404) {
+        handleShowNotification(Constant.EMAIL_VERIFIED_ERROR, 'email');
+      } else if (response.status === 403) {
+        handleShowNotification(Constant.PASSWORD_VERIFIED_ERROR, 'password');
+      }
     }
   };
 
@@ -102,6 +125,10 @@ const Login = () => {
       ...prevForm,
       [name]: value
     }));
+  };
+
+  const handleNotificationClose = () => {
+    setNotificationVisible(false);
   };
 
   return (
@@ -124,6 +151,16 @@ const Login = () => {
         {/* HEADER */}
         <LandingHeader />
         {/* LOGIN */}
+        {notificationVisible && (
+          <Notification
+            styles={{ root: { marginTop: '80px' } }}
+            color="red"
+            title="Error Message"
+            onClose={handleNotificationClose}
+          >
+            {notificationMessage}
+          </Notification>
+        )}
         <Container py={250} size={1400}>
           <Title align="center" size={45} weight={700} mb={65} order={1}>
             SIGN IN

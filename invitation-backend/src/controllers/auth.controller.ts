@@ -16,12 +16,12 @@ export const handleLogin = async (req: Request, res: Response, next: NextFunctio
     const existUser = await UserModel.findOne({ email: email }).exec();
 
     if (existUser === null) {
-      return res.status(409).send("Invalid email or password");
+      return res.status(404).send("User Not Found");
     }
 
     // Compare the password
     if (!existUser.validatePassword(password)) {
-      return res.status(403).send("Invalid email or password")
+      return res.status(403).send("Invalid password")
     }
 
     const token = jwt.sign({ user: existUser }, SECRET_KEY);
