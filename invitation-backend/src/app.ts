@@ -2,12 +2,12 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
-import fs from 'fs';
 import * as dotenv from 'dotenv';
 import connectDB from './utils/connectDB';
 import userRoute from './routes/user.route';
 import rsvpRoute from './routes/rsvp.route';
 import authRoute from './routes/auth.route';
+import { updateIndexfile } from './utils/IndexFileUtil';
 
 dotenv.config();
 
@@ -20,56 +20,30 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, '..', '..', 'invitation-frontend', 'build'));
 
-// Production
-const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'build', 'index.html');
-
-// Development
-// const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'public', 'index.html');
 app.get('/', (req, res) => {
   if (req.subdomains.length != 1) {
     res.redirect('https://inviteyou.ca');
   }
 
+  // Production
+  const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'build', 'index.html');
   const { subdomains } = req;
+  // Currently we only handle the one subdomain. ex) we.inviteyou.ca not we.are.inviteyou.ca
   const subdomain = subdomains[0];
-  const indexFile = fs.readFileSync(indexFilePath, 'utf8');
-  let updatedIndexFile = indexFile;
+  const updatedIndexFile = updateIndexfile(subdomain, indexFilePath);
+  console.log(updatedIndexFile)
 
-  if(subdomain === 'we') {
-    // This is where we can modify the build/index.html file.
-    // The purpose of this is to update the tags in the head tag in html.
-    updatedIndexFile = indexFile
-      .replace(
-        "<title>Inviteyou</title>",
-        "<title>You have been invited!</title>"
-      )
-      .replace(
-        "<meta name=\"description\" content=\"Mobile Invitation/RSVP for Wedding\" data-rh=\"true\"/>",
-        "<meta name=\"description\" content=\"Welcome to Han & Jenny wedding!\" data-rh=\"true\"/>",
-      )
-      .replace(
-        "<meta property=\"og:image\" content=\"/og_imgs/default_og_img.jpg\">",
-        "<meta property=\"og:image\" content=\"/og_imgs/we_og_img.png\">"
-      );
-    // Debug purpose
-    console.log(updatedIndexFile);
-  } else if (subdomain === 'sne') {
-    updatedIndexFile = indexFile
-      .replace(
-        "<title>Inviteyou</title>",
-        "<title>You have been invited!</title>"
-      )
-      .replace(
-        "<meta name=\"description\" content=\"Mobile Invitation/RSVP for Wedding\" data-rh=\"true\"/>",
-        "<meta name=\"description\" content=\"Welcome to Sam & Eunhee wedding!\" data-rh=\"true\"/>",
-      )
-      .replace(
-        "<meta property=\"og:image\" content=\"/og_imgs/default_og_img.jpg\">",
-        "<meta property=\"og:image\" content=\"/og_imgs/sne_og_img.png\">"
-      );
-    // Debug purpose
-    console.log(updatedIndexFile);
-  }
+  res.send(updatedIndexFile);
+});
+
+// This route is only for the og-tag testing using Ngrok.
+app.get('/test-subdomain/:subdomain', (req, res) => {
+  // Development
+  const indexFilePath = path.join(__dirname, '..', '..', 'invitation-frontend', 'public', 'index.html');
+  const { subdomain } = req.params;
+  const updatedIndexFile = updateIndexfile(subdomain, indexFilePath);
+
+  console.log(updatedIndexFile)
   // Below code is for future reference purpose.
   // fs.writeFileSync(indexFilePath, updatedIndexFile);
   // res.sendFile(path.join(__dirname, '..', '..', 'invitation-frontend', 'build/index.html'));
