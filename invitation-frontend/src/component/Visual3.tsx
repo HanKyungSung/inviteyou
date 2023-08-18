@@ -1,6 +1,9 @@
 import { Container, Image, MantineProvider, Text } from '@mantine/core';
 import { Visual3Styles } from '../style/Visual3Styles';
 import { useMediaQuery } from '@mantine/hooks';
+import imgBride from '../assets/img/visual3/img-bride.png';
+import imgGroom from '../assets/img/visual3/img-groom.png';
+import { ImPhone } from 'react-icons/im';
 
 const useStyles = Visual3Styles();
 
@@ -13,6 +16,7 @@ interface Visual3Props {
   month: string;
   location: string;
   time: string;
+  subdomain: string;
   // mainColor: ColorResult;
 }
 
@@ -125,7 +129,7 @@ const Visual3 = (props: Visual3Props) => {
                 October, <span className={classes.weddingYear}>2023</span>
               </strong>
               <span>
-                <span className={classes.weddingDayOfWeek}>FRI,</span>
+                <span className={classes.weddingDayOfWeek}>Fri,</span>
                 <span>01:30 PM</span>
               </span>
             </div>
@@ -190,10 +194,7 @@ const Visual3 = (props: Visual3Props) => {
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: '#FF0000' }}>5</span>
-                  </td>
-                  <td>
-                    <span>12</span>
+                    <span style={{ color: '#FF0000' }}>12</span>
                   </td>
                   <td>
                     <span>13</span>
@@ -208,15 +209,15 @@ const Visual3 = (props: Visual3Props) => {
                     <span>16</span>
                   </td>
                   <td>
-                    <span style={{ color: '#0000FF' }}>17</span>
+                    <span>17</span>
+                  </td>
+                  <td>
+                    <span style={{ color: '#0000FF' }}>18</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: '#FF0000' }}>18</span>
-                  </td>
-                  <td>
-                    <span>19</span>
+                    <span style={{ color: '#FF0000' }}>19</span>
                   </td>
                   <td>
                     <span>20</span>
@@ -231,21 +232,21 @@ const Visual3 = (props: Visual3Props) => {
                     <span>23</span>
                   </td>
                   <td>
-                    <span style={{ color: '#0000FF' }}>24</span>
+                    <span>24</span>
+                  </td>
+                  <td>
+                    <span style={{ color: '#0000FF' }}>25</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: '#FF0000' }}>25</span>
+                    <span style={{ color: '#FF0000' }}>26</span>
                   </td>
                   <td>
-                    <span>26</span>
+                    <span>27</span>
                   </td>
                   <td>
-                    <span className={classes.current}>27</span>
-                  </td>
-                  <td>
-                    <span>28</span>
+                    <span className={classes.current}>28</span>
                   </td>
                   <td>
                     <span>29</span>
@@ -254,11 +255,93 @@ const Visual3 = (props: Visual3Props) => {
                     <span>30</span>
                   </td>
                   <td>
-                    <span style={{ color: '#0000FF' }}>31</span>
+                    <span>31</span>
                   </td>
                 </tr>
               </tbody>
             </table>
+          </Container>
+          <Container size={550} py={100}>
+            <div className={classes.sectionTitWrap}>
+              <Text
+                className={classes.sectionSubTit}
+                color="rgb(180, 152, 133)"
+                align="left"
+                size={RESPONSIVE_MOBILE ? 20 : 40}
+              >
+                Contact Us
+              </Text>
+            </div>
+            <ul>
+              <li className={classes.contactList}>
+                <div className={classes.contactListLeft}>
+                  <figure>
+                    <Image
+                      src={imgBride}
+                      alt="brideImg"
+                      width={80}
+                      height={80}
+                    />
+                  </figure>
+                  <ul style={{ marginLeft: 15 }}>
+                    <li>
+                      <Text>Call To Bride</Text>
+                    </li>
+                    <li>
+                      <Text
+                        color="#888"
+                        style={{ textDecoration: 'underline' }}
+                      >
+                        Check Her Phone number
+                      </Text>
+                    </li>
+                  </ul>
+                </div>
+                <ul style={{ display: 'flex' }}>
+                  <li className={classes.contactIcon}>
+                    <figure>
+                      <a href={`tel:778-727-9067`}>
+                        <ImPhone />
+                      </a>
+                    </figure>
+                  </li>
+                </ul>
+              </li>
+              <li className={classes.contactList}>
+                <div className={classes.contactListLeft}>
+                  <figure>
+                    <Image
+                      src={imgGroom}
+                      alt="groomImg"
+                      width={80}
+                      height={80}
+                    />
+                  </figure>
+                  <ul style={{ marginLeft: 15 }}>
+                    <li>
+                      <Text>Call To Groom</Text>
+                    </li>
+                    <li>
+                      <Text
+                        color="#888"
+                        style={{ textDecoration: 'underline' }}
+                      >
+                        Check His Phone number
+                      </Text>
+                    </li>
+                  </ul>
+                </div>
+                <ul style={{ display: 'flex' }}>
+                  <li className={classes.contactIcon}>
+                    <figure>
+                      <a href={`tel:778-727-9067`}>
+                        <ImPhone />
+                      </a>
+                    </figure>
+                  </li>
+                </ul>
+              </li>
+            </ul>
           </Container>
         </main>
       </MantineProvider>

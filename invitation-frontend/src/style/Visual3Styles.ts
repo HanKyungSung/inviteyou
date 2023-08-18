@@ -56,7 +56,7 @@ const Visual3Styles = () =>
       width: '70%',
       position: 'absolute',
       left: '40%',
-      top: '35%',
+      top: '30%',
       transform: 'translate(-50%)',
       padding: '1em 0',
       fontSize: '1.5rem',
@@ -66,7 +66,8 @@ const Visual3Styles = () =>
       textTransform: 'uppercase'
     },
     newIntro: {
-      position: 'relative'
+      width: '100%',
+      height: '60vh'
     },
     sectionTitWrap: {
       position: 'relative'
@@ -74,7 +75,6 @@ const Visual3Styles = () =>
     sectionSubTit: {
       position: 'absolute',
       left: '50%',
-      marginLeft: '20px',
       bottom: '20%',
       transform: 'translateX(-50%)',
       textTransform: 'uppercase',
@@ -149,6 +149,33 @@ const Visual3Styles = () =>
           justifyContent: 'center',
           alignItems: 'center'
         }
+      }
+    },
+    contactList: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: 30
+    },
+    contactListLeft: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center'
+    },
+    contactIcon: {
+      width: 40,
+      height: 40,
+      background: 'rgb(180, 152, 133)',
+      display: 'inline-flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      color: '#fff',
+      borderRadius: '100%',
+      margin: '0 5px',
+      fontSize: 18,
+      figure: {
+        width: 18,
+        height: 18
       }
     }
   }));
