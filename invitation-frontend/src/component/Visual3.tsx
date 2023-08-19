@@ -1,11 +1,63 @@
-import { Container, Image, MantineProvider, Text } from '@mantine/core';
+import {
+  Button,
+  Container,
+  Image,
+  Input,
+  MantineProvider,
+  Radio,
+  Text
+} from '@mantine/core';
 import { Visual3Styles } from '../style/Visual3Styles';
 import { useMediaQuery } from '@mantine/hooks';
 import imgBride from '../assets/img/visual3/img-bride.png';
 import imgGroom from '../assets/img/visual3/img-groom.png';
 import { ImPhone } from 'react-icons/im';
+import { useState } from 'react';
 
 const useStyles = Visual3Styles();
+
+const radioGroupStyle = {
+  root: {
+    marginBottom: '20px !important'
+  },
+  required: {
+    color: 'red !important'
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: '16px !important',
+    marginTop: '16px !important'
+  },
+  error: {
+    color: 'red !important',
+    marginTop: '10px !important'
+  }
+};
+
+const radioButtonStyle = {
+  body: {
+    cursor: 'pointer'
+  },
+  icon: {
+    color: 'rgb(180, 152, 133)',
+    width: '12px',
+    height: '12px',
+    top: 'calc(50% - 6px)',
+    left: 'calc(50% - 6px)',
+    cursor: 'pointer'
+  },
+  radio: {
+    cursor: 'pointer',
+    ':checked': {
+      backgroundColor: '#fff',
+      border: '1px solid rgb(180, 152, 133)'
+    },
+    '&::after': {
+      backgroundColor: 'rgb(180, 152, 133)',
+      borderColor: 'rgb(180, 152, 133)'
+    }
+  }
+};
 
 interface Visual3Props {
   year: number;
@@ -13,7 +65,6 @@ interface Visual3Props {
   day: number;
   bride: string;
   groom: string;
-  month: string;
   location: string;
   time: string;
   subdomain: string;
@@ -22,8 +73,38 @@ interface Visual3Props {
 
 const Visual3 = (props: Visual3Props) => {
   const { classes } = useStyles();
-  const { year, monthNum, day, bride, groom, month, location, time } = props;
+  const { year, monthNum, day, bride, groom, location, time } = props;
   const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
+
+  const [isFirstOptionClicked, setIsFirstOptionClicked] = useState(false);
+  const [isSecondOptionClicked, setIsSecondOptionClicked] = useState(false);
+
+  const optionStyle = (theme: any, isClicked: boolean) => ({
+    root: {
+      flex: 1,
+      marginRight: 10,
+      marginTop: '3px',
+      '&:not([data-disabled])': theme.fn.hover({
+        backgroundColor: theme.fn.darken('#B39884', 0.05)
+      }),
+      backgroundColor: isClicked ? 'rgb(180, 152, 133)' : 'rgb(204, 204, 204)'
+    }
+  });
+
+  const handleOptionClick = (option: 'firstOption' | 'secondOption') => {
+    if (option === 'firstOption') {
+      setIsFirstOptionClicked(true);
+      setIsSecondOptionClicked(false);
+    } else if (option === 'secondOption') {
+      setIsSecondOptionClicked(true);
+      setIsFirstOptionClicked(false);
+    }
+  };
+
+  const handleFormSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
+  };
+
   return (
     <>
       <MantineProvider
@@ -31,7 +112,7 @@ const Visual3 = (props: Visual3Props) => {
           globalStyles: (_theme) => ({
             '*, *::before, *::after': {
               boxSizing: 'border-box',
-              fontFamily: 'Kopub Batang'
+              fontFamily: 'Kopub Batang!important'
             },
             body: {
               color: '#222'
@@ -76,12 +157,13 @@ const Visual3 = (props: Visual3Props) => {
               </p>
             </div>
           </Container>
+          {/* TODO: Need to adjust text inside image */}
           <Container className={classes.newIntro} py={100} px={0}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
-                align="left"
+                align="center"
                 size={RESPONSIVE_MOBILE ? 20 : 40}
               >
                 Forever together
@@ -261,7 +343,7 @@ const Visual3 = (props: Visual3Props) => {
               </tbody>
             </table>
           </Container>
-          <Container size={550} py={100}>
+          <Container size={550} py={70}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
@@ -342,6 +424,161 @@ const Visual3 = (props: Visual3Props) => {
                 </ul>
               </li>
             </ul>
+          </Container>
+          <Container size={550} py={70}>
+            <div className={classes.sectionTitWrap}>
+              <Text
+                className={classes.sectionSubTit}
+                color="rgb(180, 152, 133)"
+                align="left"
+                size={RESPONSIVE_MOBILE ? 20 : 40}
+              >
+                Apply to <br />
+                join our wedding
+              </Text>
+            </div>
+            <div style={{ marginTop: '40px' }}>
+              <form onSubmit={(e) => handleFormSubmit(e)}>
+                <Input.Wrapper
+                  id="name-input"
+                  label="NAME"
+                  styles={{
+                    root: {
+                      marginBottom: '16px !important' // why !important used? mantine Input 컴포넌트의 기본 스타일을 무시하기 위해?
+                    },
+                    required: {
+                      color: 'rgb(44, 69, 87) !important'
+                    },
+                    error: {
+                      color: 'rgb(44, 69, 87) !important',
+                      marginTop: '10px !important'
+                    }
+                  }}
+                >
+                  <Input
+                    id="name-input"
+                    placeholder="Please enter your full name"
+                    variant="unstyled"
+                    name="name"
+                    styles={{
+                      wrapper: {
+                        'input::placeholder': {
+                          margin: '16px 0',
+                          fontSize: '16px'
+                        },
+                        padding: '16px 0 10px 0 !important',
+                        borderBottom: '1px solid #ddd !important'
+                      },
+                      input: {
+                        fontSize: '16px'
+                      }
+                    }}
+                  />
+                </Input.Wrapper>
+                <Radio.Group label="INVITED FROM" styles={radioGroupStyle}>
+                  <Radio
+                    name="INVITED FROM"
+                    label="Bride Side"
+                    value="bride"
+                    styles={radioButtonStyle}
+                  />
+                  <Radio
+                    name="INVITED FROM"
+                    label="Groom Side"
+                    value="groom"
+                    styles={radioButtonStyle}
+                  />
+                </Radio.Group>
+                <div>
+                  <div>
+                    <Text size={16}>MENU</Text>
+                  </div>
+                  <div
+                    style={{
+                      cursor: 'pointer',
+                      display: 'flex',
+                      justifyContent: 'space-between'
+                    }}
+                  >
+                    <div
+                      className={`${classes.menu} ${
+                        isFirstOptionClicked ? classes.clickedMenu : ''
+                      }`}
+                      onClick={() => handleOptionClick('firstOption')}
+                    >
+                      <Text size={16} mb={10}>
+                        OPTION 01
+                      </Text>
+                      <Text>Tomato Pasta</Text>
+                      <Text>Turkey Salad</Text>
+                      <Text>Chicken Wings</Text>
+                      <Text>Fruit Plater</Text>
+                      <Text mb={10}>Chocolate Cake</Text>
+                      <Text mb={10}>Free Drink</Text>
+                    </div>
+                    <div
+                      className={`${classes.menu} ${
+                        isSecondOptionClicked ? classes.clickedMenu : ''
+                      }`}
+                      onClick={() => handleOptionClick('secondOption')}
+                    >
+                      <Text size={16} mb={10}>
+                        OPTION 02
+                      </Text>
+                      <Text>Tomato Pasta</Text>
+                      <Text>Turkey Salad</Text>
+                      <Text>Chicken Wings</Text>
+                      <Text>Fruit Plater</Text>
+                      <Text mb={10}>Chocolate Cake</Text>
+                      <Text mb={10}>Free Drink</Text>
+                    </div>
+                  </div>
+                  <div
+                    style={{
+                      cursor: 'pointer',
+                      display: 'flex',
+                      justifyContent: 'space-between'
+                    }}
+                  >
+                    <Button
+                      onClick={() => handleOptionClick('firstOption')}
+                      styles={(theme) =>
+                        optionStyle(theme, isFirstOptionClicked)
+                      }
+                      radius="xs"
+                      uppercase
+                    >
+                      Select This Menu
+                    </Button>
+                    <Button
+                      onClick={() => handleOptionClick('secondOption')}
+                      styles={(theme) =>
+                        optionStyle(theme, isSecondOptionClicked)
+                      }
+                      radius="xs"
+                      uppercase
+                    >
+                      Select This Menu
+                    </Button>
+                  </div>
+                </div>
+                {/* Menu End */}
+                <div style={{ marginTop: '40px' }}>
+                  <label htmlFor="note">Allegetic Note</label>
+                  <textarea
+                    name="note"
+                    id="note"
+                    cols={30}
+                    rows={10}
+                    placeholder="Please provide us any food restriction you have "
+                    className={classes.textarea}
+                  ></textarea>
+                </div>
+                <button className={classes.customButton} type="submit">
+                  SUBMIT
+                </button>
+              </form>
+            </div>
           </Container>
         </main>
       </MantineProvider>

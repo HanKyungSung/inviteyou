@@ -1,4 +1,4 @@
-import { createStyles } from '@mantine/core';
+import { Center, createStyles } from '@mantine/core';
 import imgVisual from '../assets/img/visual-02.jpg';
 
 const Visual3Styles = () =>
@@ -15,7 +15,7 @@ const Visual3Styles = () =>
       padding: '0 0 50px 0',
       background: `url(${imgVisual}) no-repeat center / cover`,
       marginTop: '15vh',
-      height: '100vh'
+      height: '50vh'
     },
     weddingMainDate: {
       lineHeight: '1.2',
@@ -52,14 +52,14 @@ const Visual3Styles = () =>
     weddingMainDateStrong: {
       fontSize: '3.5rem'
     },
+    // TODO: Need to adjust text inside image
     weddingDetails: {
       width: '70%',
       position: 'absolute',
-      left: '40%',
-      top: '30%',
-      transform: 'translate(-50%)',
+      left: '10%',
+      top: '8%',
       padding: '1em 0',
-      fontSize: '1.5rem',
+      fontSize: '1rem',
       color: '#fff'
     },
     weddingCharacter: {
@@ -67,7 +67,7 @@ const Visual3Styles = () =>
     },
     newIntro: {
       width: '100%',
-      height: '60vh'
+      height: '55vh'
     },
     sectionTitWrap: {
       position: 'relative'
@@ -177,6 +177,48 @@ const Visual3Styles = () =>
         width: 18,
         height: 18
       }
+    },
+    menu: {
+      flex: 1,
+      marginRight: 10,
+      border: '2px solid rgb(204, 204, 204)',
+      padding: 10,
+      textAlign: 'center'
+    },
+    clickedMenu: {
+      border: '2px solid rgb(180, 152, 133)',
+      color: 'rgb(180, 152, 133)'
+    },
+    inputWrap: {
+      paddingTop: '20px'
+    },
+    textarea: {
+      width: '100%',
+      height: 150,
+      display: 'block',
+      marginTop: 5,
+      borderColor: '#ddd',
+      outline: 'none',
+      fontSize: 16,
+      padding: '15px 20px',
+      borderRadius: 5,
+      color: 'rgb(180, 152, 133)',
+
+      '::placeholder': {
+        fontSize: 16
+      }
+    },
+    customButton: {
+      width: '100%',
+      height: 60,
+      fontSize: 20,
+      fontWeight: 500,
+      color: '#fff',
+      background: 'rgb(180, 152, 133)',
+      border: 'none',
+      outline: 'none',
+      marginTop: 25,
+      cursor: 'pointer'
     }
   }));
 
