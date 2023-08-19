@@ -1,4 +1,4 @@
-import { Center, createStyles } from '@mantine/core';
+import { createStyles } from '@mantine/core';
 import imgVisual from '../assets/img/visual-02.jpg';
 
 const Visual3Styles = () =>
@@ -219,6 +219,21 @@ const Visual3Styles = () =>
       outline: 'none',
       marginTop: 25,
       cursor: 'pointer'
+    },
+    carouselWrap: {
+      '.slide': {
+        img: {
+          width: '100%',
+          height: 280,
+          objectFit: 'contain'
+        }
+      },
+      '.thumb': {
+        img: {
+          height: 70,
+          objectFit: 'contain'
+        }
+      }
     }
   }));
 

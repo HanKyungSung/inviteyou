@@ -13,6 +13,7 @@ import imgBride from '../assets/img/visual3/img-bride.png';
 import imgGroom from '../assets/img/visual3/img-groom.png';
 import { ImPhone } from 'react-icons/im';
 import { useState } from 'react';
+import { Carousel } from 'react-responsive-carousel';
 
 const useStyles = Visual3Styles();
 
@@ -104,6 +105,22 @@ const Visual3 = (props: Visual3Props) => {
   const handleFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
   };
+
+  const imgs: string[] = [
+    require('../assets/img/visual3/moment_pics/1.png'),
+    require('../assets/img/visual3/moment_pics/2.png'),
+    require('../assets/img/visual3/moment_pics/3.png'),
+    require('../assets/img/visual3/moment_pics/4.png'),
+    require('../assets/img/visual3/moment_pics/5.png')
+  ];
+
+  const slides: JSX.Element[] = imgs.map((img) => {
+    return (
+      <div key={`side-${img}`}>
+        <img src={img} alt={`Slide $(item)`} />
+      </div>
+    );
+  });
 
   return (
     <>
@@ -579,6 +596,32 @@ const Visual3 = (props: Visual3Props) => {
                 </button>
               </form>
             </div>
+          </Container>
+          <Container size={550} py={70}>
+            <div className={classes.sectionTitWrap}>
+              <Text
+                className={classes.sectionSubTit}
+                color="rgb(180, 152, 133)"
+                align="left"
+                size={RESPONSIVE_MOBILE ? 20 : 40}
+              >
+                Our Gallery
+              </Text>
+            </div>
+            <Container size={500}>
+              <div className={classes.carouselWrap}>
+                <Carousel
+                  showArrows={true}
+                  useKeyboardArrows={true}
+                  dynamicHeight={true}
+                  showStatus={false}
+                  showIndicators={false}
+                  swipeable={false}
+                >
+                  {slides}
+                </Carousel>
+              </div>
+            </Container>
           </Container>
         </main>
       </MantineProvider>
