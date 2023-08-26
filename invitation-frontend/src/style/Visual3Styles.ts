@@ -14,8 +14,8 @@ const Visual3Styles = () =>
       width: '100%',
       padding: '0 0 50px 0',
       background: `url(${imgVisual}) no-repeat center / cover`,
-      marginTop: '15vh',
-      height: '50vh'
+      marginTop: '25vh',
+      height: '100vh'
     },
     weddingMainDate: {
       lineHeight: '1.2',
@@ -24,7 +24,7 @@ const Visual3Styles = () =>
       left: '50%',
       transform: 'translateX(-50%)',
       width: '16vw',
-      marginTop: '-15vh',
+      marginTop: '-25vh',
       height: '16vw',
       display: 'flex',
       justifyContent: 'center',
@@ -50,7 +50,8 @@ const Visual3Styles = () =>
       marginBottom: '10px'
     },
     weddingMainDateStrong: {
-      fontSize: '3.5rem'
+      fontSize: '3.5rem',
+      fontWeight: 900
     },
     // TODO: Need to adjust text inside image
     weddingDetails: {
@@ -66,8 +67,7 @@ const Visual3Styles = () =>
       textTransform: 'uppercase'
     },
     newIntro: {
-      width: '100%',
-      height: '55vh'
+      position: 'relative'
     },
     sectionTitWrap: {
       position: 'relative'

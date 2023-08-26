@@ -175,7 +175,7 @@ const Visual3 = (props: Visual3Props) => {
             </div>
           </Container>
           {/* TODO: Need to adjust text inside image */}
-          <Container className={classes.newIntro} py={100} px={0}>
+          <Container className={classes.newIntro} py={200} px={0}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
@@ -219,6 +219,7 @@ const Visual3 = (props: Visual3Props) => {
               </Text>
             </div>
           </Container>
+
           <Container
             style={{ border: '40px solid rgb(180, 152, 133)', padding: '20px' }}
             size={RESPONSIVE_MOBILE ? 550 : 450}
@@ -360,7 +361,7 @@ const Visual3 = (props: Visual3Props) => {
               </tbody>
             </table>
           </Container>
-          <Container size={550} py={70}>
+          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={70}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
