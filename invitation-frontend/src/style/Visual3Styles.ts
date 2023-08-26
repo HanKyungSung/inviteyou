@@ -14,8 +14,8 @@ const Visual3Styles = () =>
       width: '100%',
       padding: '0 0 50px 0',
       background: `url(${imgVisual}) no-repeat center / cover`,
-      marginTop: '25vh',
-      height: '100vh'
+      marginTop: '21vh',
+      height: '75vh'
     },
     weddingMainDate: {
       lineHeight: '1.2',
@@ -23,9 +23,9 @@ const Visual3Styles = () =>
       position: 'absolute',
       left: '50%',
       transform: 'translateX(-50%)',
-      width: '16vw',
-      marginTop: '-25vh',
-      height: '16vw',
+      width: '15.5vw',
+      height: '17.6vh',
+      marginTop: '-21vh',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
@@ -46,25 +46,27 @@ const Visual3Styles = () =>
       }
     },
     weddingMainDateSmall: {
-      fontSize: '2.3rem',
+      fontSize: '2rem',
       marginBottom: '10px'
     },
     weddingMainDateStrong: {
-      fontSize: '3.5rem',
+      fontSize: '3rem',
       fontWeight: 900
     },
     // TODO: Need to adjust text inside image
     weddingDetails: {
       width: '70%',
       position: 'absolute',
-      left: '10%',
-      top: '8%',
+      left: '7%',
+      top: '11%',
       padding: '1em 0',
-      fontSize: '1rem',
+      fontSize: '0.75rem',
       color: '#fff'
     },
     weddingCharacter: {
-      textTransform: 'uppercase'
+      textTransform: 'uppercase',
+      fontSize: '1.3rem',
+      fontWeight: 900
     },
     newIntro: {
       position: 'relative'
@@ -76,6 +78,7 @@ const Visual3Styles = () =>
       position: 'absolute',
       left: '50%',
       bottom: '10%',
+      lineHeight: '1.4',
       transform: 'translateX(-50%)',
       textTransform: 'uppercase',
       fontWeight: 900,
@@ -83,9 +86,7 @@ const Visual3Styles = () =>
     },
     introMessage: {
       width: '100%',
-      margin: '0 auto',
-      marginTop: '20px',
-      marginLeft: '20px'
+      marginTop: '35px'
     },
     calendarTop: {
       display: 'flex',
@@ -94,7 +95,8 @@ const Visual3Styles = () =>
       marginBottom: '1.2em',
       fontSize: '1rem',
       paddingBottom: '20px',
-      borderBottom: '0.1rem solid rgb(102, 102, 102)'
+      borderBottom: '0.1rem solid #aaaaaa',
+      color: 'rgb(0, 0, 0)'
     },
     weddingMonth: {
       fontSize: '1.2em',
@@ -116,13 +118,12 @@ const Visual3Styles = () =>
     },
     calendarTable: {
       width: '100%',
-      marginBottom: 50,
       fontFamily: 'Crimson Text!important',
       th: {
         fontWeight: 500,
         textTransform: 'uppercase',
-        fontSize: 18,
-        color: '#666',
+        fontSize: 15,
+        color: '#aaaaaa',
         padding: '0.5em 0',
         textAlign: 'center',
         verticalAlign: 'middle'
@@ -132,8 +133,8 @@ const Visual3Styles = () =>
         textAlign: 'center',
         verticalAlign: 'middle',
         position: 'relative',
-        fontSize: 18,
-        color: '#666',
+        fontSize: 15,
+        color: '#aaaaaa',
         '&::after': {
           content: `''`,
           display: 'block',
@@ -199,7 +200,7 @@ const Visual3Styles = () =>
       marginTop: 5,
       borderColor: '#ddd',
       outline: 'none',
-      fontSize: 16,
+      fontSize: 14,
       padding: '15px 20px',
       borderRadius: 5,
       color: 'rgb(180, 152, 133)',
@@ -227,23 +228,33 @@ const Visual3Styles = () =>
     carouselWrap: {
       '.slide': {
         img: {
+          margin: 0,
           width: '100%',
-          height: 280,
+          height: 300,
           objectFit: 'contain'
         }
       },
       '.thumb': {
+        marginRight: 0,
+        padding: 0,
         img: {
-          height: 70,
-          objectFit: 'contain'
+          height: 80,
+          objectFit: 'cover'
         }
+      },
+      '.carousel .thumbs-wrapper': {
+        margin: 0
+      },
+      '.carousel .thumb': {
+        marginRight: 0,
+        padding: 0
       }
     },
     locationList: {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: 30
+      marginBottom: 5
     },
     locationListLeft: {
       display: 'flex',

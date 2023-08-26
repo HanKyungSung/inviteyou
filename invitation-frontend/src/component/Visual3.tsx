@@ -158,7 +158,12 @@ const Visual3 = (props: Visual3Props) => {
         <main
           className={`${classes.invitationWrap} ${classes.invitationVisual}`}
         >
-          <Container className={classes.newVisual} fluid px={0}>
+          <Container
+            className={classes.newVisual}
+            fluid
+            px={0}
+            size={RESPONSIVE_MOBILE ? 550 : 450}
+          >
             <div className={classes.weddingMainDate}>
               <small className={classes.weddingMainDateSmall}>{year}</small>
               <strong className={classes.weddingMainDateStrong}>
@@ -176,20 +181,26 @@ const Visual3 = (props: Visual3Props) => {
             </div>
           </Container>
           {/* TODO: Need to adjust text inside image */}
-          <Container className={classes.newIntro} py={100} px={0}>
+          <Container
+            className={classes.newIntro}
+            size={RESPONSIVE_MOBILE ? 550 : 450}
+            py={50}
+            mt={50}
+          >
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
-                align="center"
-                size={RESPONSIVE_MOBILE ? 20 : 40}
+                align="left"
+                size={RESPONSIVE_MOBILE ? 20 : 30}
+                weight={900}
               >
                 Forever together
               </Text>
             </div>
             <div className={classes.introMessage}>
               <Text
-                size={RESPONSIVE_MOBILE ? 16 : 26}
+                size={RESPONSIVE_MOBILE ? 16 : 20}
                 color="#555"
                 align="left"
               >
@@ -222,7 +233,11 @@ const Visual3 = (props: Visual3Props) => {
           </Container>
 
           <Container
-            style={{ border: '40px solid rgb(180, 152, 133)', padding: '20px' }}
+            style={{
+              border: '40px solid rgb(180, 152, 133)',
+              color: '#bbbbbb',
+              padding: '20px'
+            }}
             size={RESPONSIVE_MOBILE ? 550 : 450}
           >
             <div className={classes.calendarTop}>
@@ -237,13 +252,13 @@ const Visual3 = (props: Visual3Props) => {
             <table className={classes.calendarTable}>
               <thead>
                 <tr>
-                  <th style={{ color: '#FF0000' }}>Sun</th>
+                  <th style={{ color: 'rgb(180, 152, 133)' }}>Sun</th>
                   <th>Mon</th>
                   <th>Tue</th>
                   <th>Wed</th>
                   <th>Thu</th>
                   <th>Fri</th>
-                  <th style={{ color: '#0000FF' }}>Sat</th>
+                  <th style={{ color: 'rgb(0, 0, 0)' }}>Sat</th>
                 </tr>
               </thead>
               <tbody>
@@ -267,12 +282,12 @@ const Visual3 = (props: Visual3Props) => {
                     <span>3</span>
                   </td>
                   <td>
-                    <span style={{ color: '#0000FF' }}>4</span>
+                    <span style={{ color: 'rgb(0,0,0)' }}>4</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: '#FF0000' }}>5</span>
+                    <span style={{ color: 'rgb(180, 152, 133)' }}>5</span>
                   </td>
                   <td>
                     <span>6</span>
@@ -290,12 +305,12 @@ const Visual3 = (props: Visual3Props) => {
                     <span>10</span>
                   </td>
                   <td>
-                    <span style={{ color: '#0000FF' }}>11</span>
+                    <span style={{ color: 'rgb(0,0,0)' }}>11</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: '#FF0000' }}>12</span>
+                    <span style={{ color: 'rgb(180, 152, 133)' }}>12</span>
                   </td>
                   <td>
                     <span>13</span>
@@ -313,12 +328,12 @@ const Visual3 = (props: Visual3Props) => {
                     <span>17</span>
                   </td>
                   <td>
-                    <span style={{ color: '#0000FF' }}>18</span>
+                    <span style={{ color: 'rgb(0,0,0)' }}>18</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: '#FF0000' }}>19</span>
+                    <span style={{ color: 'rgb(180, 152, 133)' }}>19</span>
                   </td>
                   <td>
                     <span>20</span>
@@ -336,12 +351,12 @@ const Visual3 = (props: Visual3Props) => {
                     <span>24</span>
                   </td>
                   <td>
-                    <span style={{ color: '#0000FF' }}>25</span>
+                    <span style={{ color: 'rgb(0, 0, 0)' }}>25</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: '#FF0000' }}>26</span>
+                    <span style={{ color: 'rgb(180, 152, 133)' }}>26</span>
                   </td>
                   <td>
                     <span>27</span>
@@ -362,14 +377,14 @@ const Visual3 = (props: Visual3Props) => {
               </tbody>
             </table>
           </Container>
-          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={100}>
+          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={85}>
             <div className={classes.sectionTitWrap}>
               {/* TODO: need to adjust padding with contact list */}
               <Text
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 40}
+                size={RESPONSIVE_MOBILE ? 20 : 30}
               >
                 Contact Us
               </Text>
@@ -387,7 +402,7 @@ const Visual3 = (props: Visual3Props) => {
                   </figure>
                   <ul style={{ marginLeft: 15 }}>
                     <li>
-                      <Text>Call To Bride</Text>
+                      <Text weight={'bold'}>Call To Bride</Text>
                     </li>
                     <li>
                       <Text
@@ -421,7 +436,7 @@ const Visual3 = (props: Visual3Props) => {
                   </figure>
                   <ul style={{ marginLeft: 15 }}>
                     <li>
-                      <Text>Call To Groom</Text>
+                      <Text weight={'bold'}>Call To Groom</Text>
                     </li>
                     <li>
                       <Text
@@ -445,13 +460,13 @@ const Visual3 = (props: Visual3Props) => {
               </li>
             </ul>
           </Container>
-          <Container size={550} py={70}>
+          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={70} mt={-20}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 40}
+                size={RESPONSIVE_MOBILE ? 20 : 30}
               >
                 Apply to <br />
                 join our wedding
@@ -526,15 +541,19 @@ const Visual3 = (props: Visual3Props) => {
                       }`}
                       onClick={() => handleOptionClick('firstOption')}
                     >
-                      <Text size={16} mb={10}>
+                      <Text size={12} mb={10}>
                         OPTION 01
                       </Text>
-                      <Text>Tomato Pasta</Text>
-                      <Text>Turkey Salad</Text>
-                      <Text>Chicken Wings</Text>
-                      <Text>Fruit Plater</Text>
-                      <Text mb={10}>Chocolate Cake</Text>
-                      <Text mb={10}>Free Drink</Text>
+                      <Text size={12}>Tomato Pasta</Text>
+                      <Text size={12}>Turkey Salad</Text>
+                      <Text size={12}>Chicken Wings</Text>
+                      <Text size={12}>Fruit Plater</Text>
+                      <Text size={12} mb={10}>
+                        Chocolate Cake
+                      </Text>
+                      <Text size={12} mb={10}>
+                        Free Drink
+                      </Text>
                     </div>
                     <div
                       className={`${classes.menu} ${
@@ -542,15 +561,19 @@ const Visual3 = (props: Visual3Props) => {
                       }`}
                       onClick={() => handleOptionClick('secondOption')}
                     >
-                      <Text size={16} mb={10}>
+                      <Text size={12} mb={10}>
                         OPTION 02
                       </Text>
-                      <Text>Tomato Pasta</Text>
-                      <Text>Turkey Salad</Text>
-                      <Text>Chicken Wings</Text>
-                      <Text>Fruit Plater</Text>
-                      <Text mb={10}>Chocolate Cake</Text>
-                      <Text mb={10}>Free Drink</Text>
+                      <Text size={12}>Tomato Pasta</Text>
+                      <Text size={12}>Turkey Salad</Text>
+                      <Text size={12}>Chicken Wings</Text>
+                      <Text size={12}>Fruit Plater</Text>
+                      <Text size={12} mb={10}>
+                        Chocolate Cake
+                      </Text>
+                      <Text size={12} mb={10}>
+                        Free Drink
+                      </Text>
                     </div>
                   </div>
                   <div
@@ -600,18 +623,19 @@ const Visual3 = (props: Visual3Props) => {
               </form>
             </div>
           </Container>
-          <Container size={550} py={70}>
+          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={70} mt={-20}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 40}
+                size={RESPONSIVE_MOBILE ? 20 : 30}
+                mb={20}
               >
                 Our Gallery
               </Text>
             </div>
-            <Container size={550}>
+            <Container size={RESPONSIVE_MOBILE ? 550 : 450}>
               <div className={classes.carouselWrap}>
                 <Carousel
                   showArrows={true}
@@ -626,13 +650,13 @@ const Visual3 = (props: Visual3Props) => {
               </div>
             </Container>
           </Container>
-          <Container size={550} py={70}>
+          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={100} mt={-80}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 40}
+                size={RESPONSIVE_MOBILE ? 20 : 30}
               >
                 Location
               </Text>
