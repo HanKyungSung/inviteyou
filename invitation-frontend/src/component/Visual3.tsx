@@ -14,6 +14,7 @@ import imgGroom from '../assets/img/visual3/img-groom.png';
 import { ImPhone } from 'react-icons/im';
 import { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
+import map from '../assets/img/visual3/map.svg';
 
 const useStyles = Visual3Styles();
 
@@ -175,7 +176,7 @@ const Visual3 = (props: Visual3Props) => {
             </div>
           </Container>
           {/* TODO: Need to adjust text inside image */}
-          <Container className={classes.newIntro} py={200} px={0}>
+          <Container className={classes.newIntro} py={100} px={0}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
@@ -361,8 +362,9 @@ const Visual3 = (props: Visual3Props) => {
               </tbody>
             </table>
           </Container>
-          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={70}>
+          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={100}>
             <div className={classes.sectionTitWrap}>
+              {/* TODO: need to adjust padding with contact list */}
               <Text
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
@@ -609,7 +611,7 @@ const Visual3 = (props: Visual3Props) => {
                 Our Gallery
               </Text>
             </div>
-            <Container size={500}>
+            <Container size={550}>
               <div className={classes.carouselWrap}>
                 <Carousel
                   showArrows={true}
@@ -623,6 +625,59 @@ const Visual3 = (props: Visual3Props) => {
                 </Carousel>
               </div>
             </Container>
+          </Container>
+          <Container size={550} py={70}>
+            <div className={classes.sectionTitWrap}>
+              <Text
+                className={classes.sectionSubTit}
+                color="rgb(180, 152, 133)"
+                align="left"
+                size={RESPONSIVE_MOBILE ? 20 : 40}
+              >
+                Location
+              </Text>
+            </div>
+            <li className={classes.locationList}>
+              <div className={classes.locationListLeft}>
+                <ul>
+                  <li>
+                    <Text
+                      weight={'bold'}
+                      pb={5}
+                      size={RESPONSIVE_MOBILE ? 16 : 25}
+                    >
+                      The Name Of Wedding Hall
+                    </Text>
+                  </li>
+                  <li>
+                    <Text size={RESPONSIVE_MOBILE ? 12 : 20}>{location}</Text>
+                  </li>
+                  <li>
+                    <Text size={RESPONSIVE_MOBILE ? 12 : 20}>
+                      TEL: +1) 778. 000. 0000
+                    </Text>
+                  </li>
+                </ul>
+              </div>
+              <ul style={{ display: 'flex' }}>
+                <li className={classes.contactIcon}>
+                  <figure>
+                    <a href={`tel:778-727-9067`}>
+                      <ImPhone />
+                    </a>
+                  </figure>
+                </li>
+              </ul>
+            </li>
+            <figure>
+              <Image src={map} alt="map" width="268" height="174" />
+            </figure>
+            <button
+              className={`${classes.customButton} ${classes.customButtonWithSmallFont}`}
+              type="submit"
+            >
+              Direct with google map
+            </button>
           </Container>
         </main>
       </MantineProvider>

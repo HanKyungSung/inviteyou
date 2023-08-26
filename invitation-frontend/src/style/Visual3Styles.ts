@@ -75,10 +75,10 @@ const Visual3Styles = () =>
     sectionSubTit: {
       position: 'absolute',
       left: '50%',
-      bottom: '20%',
+      bottom: '10%',
       transform: 'translateX(-50%)',
       textTransform: 'uppercase',
-      fontWeight: 500,
+      fontWeight: 900,
       width: '100%'
     },
     introMessage: {
@@ -163,8 +163,8 @@ const Visual3Styles = () =>
       alignItems: 'center'
     },
     contactIcon: {
-      width: 40,
-      height: 40,
+      width: 45,
+      height: 45,
       background: 'rgb(180, 152, 133)',
       display: 'inline-flex',
       justifyContent: 'center',
@@ -211,14 +211,18 @@ const Visual3Styles = () =>
     customButton: {
       width: '100%',
       height: 60,
-      fontSize: 20,
-      fontWeight: 500,
+      fontSize: 18,
+      fontWeight: 900,
       color: '#fff',
       background: 'rgb(180, 152, 133)',
       border: 'none',
       outline: 'none',
       marginTop: 25,
-      cursor: 'pointer'
+      cursor: 'pointer',
+      textTransform: 'uppercase'
+    },
+    customButtonWithSmallFont: {
+      fontSize: 16
     },
     carouselWrap: {
       '.slide': {
@@ -234,6 +238,17 @@ const Visual3Styles = () =>
           objectFit: 'contain'
         }
       }
+    },
+    locationList: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      marginBottom: 30
+    },
+    locationListLeft: {
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center'
     }
   }));
 
