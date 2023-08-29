@@ -482,6 +482,10 @@ const Visual3 = (props: Visual3Props) => {
                     required: {
                       color: 'rgb(44, 69, 87) !important'
                     },
+                    label: {
+                      fontFamily: 'KoPub Batang',
+                      fontSize: '16px'
+                    },
                     error: {
                       color: 'rgb(44, 69, 87) !important',
                       marginTop: '10px !important'
@@ -666,16 +670,16 @@ const Visual3 = (props: Visual3Props) => {
                     <Text
                       weight={'bold'}
                       pb={5}
-                      size={RESPONSIVE_MOBILE ? 16 : 25}
+                      size={RESPONSIVE_MOBILE ? 16 : 18}
                     >
                       The Name Of Wedding Hall
                     </Text>
                   </li>
                   <li>
-                    <Text size={RESPONSIVE_MOBILE ? 12 : 20}>{location}</Text>
+                    <Text size={RESPONSIVE_MOBILE ? 12 : 15}>{location}</Text>
                   </li>
                   <li>
-                    <Text size={RESPONSIVE_MOBILE ? 12 : 20}>
+                    <Text size={RESPONSIVE_MOBILE ? 12 : 15}>
                       TEL: +1) 778. 000. 0000
                     </Text>
                   </li>
