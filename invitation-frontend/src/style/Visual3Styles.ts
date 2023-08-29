@@ -11,7 +11,6 @@ const Visual3Styles = () =>
       margin: '0 auto'
     },
     newVisual: {
-      width: '100%',
       padding: '0 0 50px 0',
       background: `url(${imgVisual}) no-repeat center / cover`,
       marginTop: '21vh',
@@ -156,7 +155,8 @@ const Visual3Styles = () =>
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
-      marginBottom: 30
+      marginBottom: 30,
+      marginTop: 45
     },
     contactListLeft: {
       display: 'flex',

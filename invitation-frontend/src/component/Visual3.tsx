@@ -180,7 +180,6 @@ const Visual3 = (props: Visual3Props) => {
               </p>
             </div>
           </Container>
-          {/* TODO: Need to adjust text inside image */}
           <Container
             className={classes.newIntro}
             size={RESPONSIVE_MOBILE ? 550 : 450}
@@ -231,7 +230,6 @@ const Visual3 = (props: Visual3Props) => {
               </Text>
             </div>
           </Container>
-
           <Container
             style={{
               border: '40px solid rgb(180, 152, 133)',
@@ -384,7 +382,7 @@ const Visual3 = (props: Visual3Props) => {
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 30}
+                size={RESPONSIVE_MOBILE ? 20 : 25}
               >
                 Contact Us
               </Text>
@@ -466,7 +464,7 @@ const Visual3 = (props: Visual3Props) => {
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 30}
+                size={RESPONSIVE_MOBILE ? 20 : 25}
               >
                 Apply to <br />
                 join our wedding
@@ -629,8 +627,8 @@ const Visual3 = (props: Visual3Props) => {
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 30}
-                mb={20}
+                size={RESPONSIVE_MOBILE ? 20 : 25}
+                mb={40}
               >
                 Our Gallery
               </Text>
@@ -650,13 +648,13 @@ const Visual3 = (props: Visual3Props) => {
               </div>
             </Container>
           </Container>
-          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={100} mt={-80}>
+          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={100} mt={-50}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 30}
+                size={RESPONSIVE_MOBILE ? 20 : 25}
               >
                 Location
               </Text>
