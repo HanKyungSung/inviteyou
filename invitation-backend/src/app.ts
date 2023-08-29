@@ -1,5 +1,4 @@
 import express from 'express';
-import bodyParser from 'body-parser';
 import cors from 'cors';
 import path from 'path';
 import * as dotenv from 'dotenv';
@@ -15,8 +14,8 @@ const app = express();
 const port = 8080; // default port to listen
 
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 // app.set('view engine', 'ejs');
 // app.set('views', path.join(__dirname, '..', '..', 'invitation-frontend', 'build'));
 
