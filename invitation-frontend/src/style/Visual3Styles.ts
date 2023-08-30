@@ -118,7 +118,13 @@ const Visual3Styles = () =>
         color: '#aaaaaa',
         padding: '0.5em 0',
         textAlign: 'center',
-        verticalAlign: 'middle'
+        verticalAlign: 'middle',
+        '&.sun': {
+          color: 'rgb(180, 152, 133)'
+        },
+        '&.sat': {
+          color: 'rgb(0, 0, 0)'
+        }
       },
       td: {
         width: 'calc(100%/7)',
@@ -140,9 +146,21 @@ const Visual3Styles = () =>
           right: 0,
           display: 'flex',
           justifyContent: 'center',
-          alignItems: 'center'
+          alignItems: 'center',
+          '&.sun': {
+            color: 'rgb(180, 152, 133)'
+          },
+          '&.sat': {
+            color: 'rgb(0, 0, 0)'
+          }
         }
       }
+    },
+    sun: {
+      color: 'rgb(180, 152, 133)'
+    },
+    sat: {
+      color: 'rgb(0, 0, 0)'
     },
     contactList: {
       display: 'flex',
@@ -171,6 +189,15 @@ const Visual3Styles = () =>
         width: 18,
         height: 18
       }
+    },
+    marginTopForty: {
+      marginTop: '40px'
+    },
+    marginLeftFifteen: {
+      marginLeft: 15
+    },
+    flexDisplay: {
+      display: 'flex'
     },
     menu: {
       flex: 1,
@@ -201,6 +228,11 @@ const Visual3Styles = () =>
       '::placeholder': {
         fontSize: 16
       }
+    },
+    menuContainer: {
+      cursor: 'pointer',
+      display: 'flex',
+      justifyContent: 'space-between'
     },
     customButton: {
       width: '100%',

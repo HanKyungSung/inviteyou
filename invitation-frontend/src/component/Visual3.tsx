@@ -61,6 +61,43 @@ const radioButtonStyle = {
   }
 };
 
+const calendarContainer = {
+  border: '40px solid rgb(180, 152, 133)',
+  color: '#bbbbbb',
+  padding: '20px'
+};
+
+const inputWrapperStyle = {
+  root: {
+    marginBottom: '16px !important' // why !important used? mantine Input 컴포넌트의 기본 스타일을 무시하기 위해?
+  },
+  required: {
+    color: 'rgb(44, 69, 87) !important'
+  },
+  label: {
+    fontFamily: 'KoPub Batang',
+    fontSize: '16px'
+  },
+  error: {
+    color: 'rgb(44, 69, 87) !important',
+    marginTop: '10px !important'
+  }
+};
+
+const inputStyle = {
+  wrapper: {
+    'input::placeholder': {
+      margin: '16px 0',
+      fontSize: '16px'
+    },
+    padding: '16px 0 10px 0 !important',
+    borderBottom: '1px solid #ddd !important'
+  },
+  input: {
+    fontSize: '16px'
+  }
+};
+
 interface Visual3Props {
   year: number;
   monthNum: number;
@@ -81,8 +118,13 @@ const Visual3 = (props: Visual3Props) => {
   const responsiveContainer = {
     size: RESPONSIVE_MOBILE ? 550 : 450
   };
+
   const responsiveTitleText = {
     size: RESPONSIVE_MOBILE ? 20 : 25
+  };
+
+  const menuFontSize = {
+    size: 12
   };
 
   const [isFirstOptionClicked, setIsFirstOptionClicked] = useState(false);
@@ -249,14 +291,7 @@ const Visual3 = (props: Visual3Props) => {
               </Text>
             </div>
           </Container>
-          <Container
-            style={{
-              border: '40px solid rgb(180, 152, 133)',
-              color: '#bbbbbb',
-              padding: '20px'
-            }}
-            {...responsiveContainer}
-          >
+          <Container style={calendarContainer} {...responsiveContainer}>
             <div className={classes.calendarTop}>
               <strong className={classes.weddingMonth}>
                 October, <span className={classes.weddingYear}>2023</span>
@@ -269,13 +304,13 @@ const Visual3 = (props: Visual3Props) => {
             <table className={classes.calendarTable}>
               <thead>
                 <tr>
-                  <th style={{ color: 'rgb(180, 152, 133)' }}>Sun</th>
+                  <th className="sun">Sun</th>
                   <th>Mon</th>
                   <th>Tue</th>
                   <th>Wed</th>
                   <th>Thu</th>
                   <th>Fri</th>
-                  <th style={{ color: 'rgb(0, 0, 0)' }}>Sat</th>
+                  <th className="sat">Sat</th>
                 </tr>
               </thead>
               <tbody>
@@ -299,12 +334,12 @@ const Visual3 = (props: Visual3Props) => {
                     <span>3</span>
                   </td>
                   <td>
-                    <span style={{ color: 'rgb(0,0,0)' }}>4</span>
+                    <span className="sat">4</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: 'rgb(180, 152, 133)' }}>5</span>
+                    <span className="sun">5</span>
                   </td>
                   <td>
                     <span>6</span>
@@ -322,12 +357,12 @@ const Visual3 = (props: Visual3Props) => {
                     <span>10</span>
                   </td>
                   <td>
-                    <span style={{ color: 'rgb(0,0,0)' }}>11</span>
+                    <span className="sat">11</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: 'rgb(180, 152, 133)' }}>12</span>
+                    <span className="sun">12</span>
                   </td>
                   <td>
                     <span>13</span>
@@ -345,12 +380,12 @@ const Visual3 = (props: Visual3Props) => {
                     <span>17</span>
                   </td>
                   <td>
-                    <span style={{ color: 'rgb(0,0,0)' }}>18</span>
+                    <span className="sat">18</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: 'rgb(180, 152, 133)' }}>19</span>
+                    <span className="sun">19</span>
                   </td>
                   <td>
                     <span>20</span>
@@ -368,12 +403,12 @@ const Visual3 = (props: Visual3Props) => {
                     <span>24</span>
                   </td>
                   <td>
-                    <span style={{ color: 'rgb(0, 0, 0)' }}>25</span>
+                    <span className="sat">25</span>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <span style={{ color: 'rgb(180, 152, 133)' }}>26</span>
+                    <span className="sun">26</span>
                   </td>
                   <td>
                     <span>27</span>
@@ -417,21 +452,18 @@ const Visual3 = (props: Visual3Props) => {
                       height={80}
                     />
                   </figure>
-                  <ul style={{ marginLeft: 15 }}>
+                  <ul className={classes.marginLeftFifteen}>
                     <li>
                       <Text weight={'bold'}>Call To Bride</Text>
                     </li>
                     <li>
-                      <Text
-                        color="#888"
-                        style={{ textDecoration: 'underline' }}
-                      >
+                      <Text color="#888" underline>
                         Check Her Phone number
                       </Text>
                     </li>
                   </ul>
                 </div>
-                <ul style={{ display: 'flex' }}>
+                <ul className={classes.flexDisplay}>
                   <li className={classes.contactIcon}>
                     <figure>
                       <a href={`tel:778-727-9067`}>
@@ -451,21 +483,18 @@ const Visual3 = (props: Visual3Props) => {
                       height={80}
                     />
                   </figure>
-                  <ul style={{ marginLeft: 15 }}>
+                  <ul className={classes.marginLeftFifteen}>
                     <li>
                       <Text weight={'bold'}>Call To Groom</Text>
                     </li>
                     <li>
-                      <Text
-                        color="#888"
-                        style={{ textDecoration: 'underline' }}
-                      >
+                      <Text color="#888" underline>
                         Check His Phone number
                       </Text>
                     </li>
                   </ul>
                 </div>
-                <ul style={{ display: 'flex' }}>
+                <ul className={classes.flexDisplay}>
                   <li className={classes.contactIcon}>
                     <figure>
                       <a href={`tel:778-727-9067`}>
@@ -489,46 +518,15 @@ const Visual3 = (props: Visual3Props) => {
                 join our wedding
               </Text>
             </div>
-            <div style={{ marginTop: '40px' }}>
+            <div className={classes.marginTopForty}>
               <form onSubmit={(e) => handleFormSubmit(e)}>
-                <Input.Wrapper
-                  id="name-input"
-                  label="NAME"
-                  styles={{
-                    root: {
-                      marginBottom: '16px !important' // why !important used? mantine Input 컴포넌트의 기본 스타일을 무시하기 위해?
-                    },
-                    required: {
-                      color: 'rgb(44, 69, 87) !important'
-                    },
-                    label: {
-                      fontFamily: 'KoPub Batang',
-                      fontSize: '16px'
-                    },
-                    error: {
-                      color: 'rgb(44, 69, 87) !important',
-                      marginTop: '10px !important'
-                    }
-                  }}
-                >
+                <Input.Wrapper label="NAME" styles={inputWrapperStyle}>
                   <Input
                     id="name-input"
                     placeholder="Please enter your full name"
                     variant="unstyled"
                     name="name"
-                    styles={{
-                      wrapper: {
-                        'input::placeholder': {
-                          margin: '16px 0',
-                          fontSize: '16px'
-                        },
-                        padding: '16px 0 10px 0 !important',
-                        borderBottom: '1px solid #ddd !important'
-                      },
-                      input: {
-                        fontSize: '16px'
-                      }
-                    }}
+                    styles={inputStyle}
                   />
                 </Input.Wrapper>
                 <Radio.Group label="INVITED FROM" styles={radioGroupStyle}>
@@ -549,30 +547,24 @@ const Visual3 = (props: Visual3Props) => {
                   <div>
                     <Text size={16}>MENU</Text>
                   </div>
-                  <div
-                    style={{
-                      cursor: 'pointer',
-                      display: 'flex',
-                      justifyContent: 'space-between'
-                    }}
-                  >
+                  <div className={classes.menuContainer}>
                     <div
                       className={`${classes.menu} ${
                         isFirstOptionClicked ? classes.clickedMenu : ''
                       }`}
                       onClick={() => handleOptionClick('firstOption')}
                     >
-                      <Text size={12} mb={10}>
+                      <Text {...menuFontSize} mb={10}>
                         OPTION 01
                       </Text>
-                      <Text size={12}>Tomato Pasta</Text>
-                      <Text size={12}>Turkey Salad</Text>
-                      <Text size={12}>Chicken Wings</Text>
-                      <Text size={12}>Fruit Plater</Text>
-                      <Text size={12} mb={10}>
+                      <Text {...menuFontSize}>Tomato Pasta</Text>
+                      <Text {...menuFontSize}>Turkey Salad</Text>
+                      <Text {...menuFontSize}>Chicken Wings</Text>
+                      <Text {...menuFontSize}>Fruit Plater</Text>
+                      <Text {...menuFontSize} mb={10}>
                         Chocolate Cake
                       </Text>
-                      <Text size={12} mb={10}>
+                      <Text {...menuFontSize} mb={10}>
                         Free Drink
                       </Text>
                     </div>
@@ -582,28 +574,22 @@ const Visual3 = (props: Visual3Props) => {
                       }`}
                       onClick={() => handleOptionClick('secondOption')}
                     >
-                      <Text size={12} mb={10}>
+                      <Text {...menuFontSize} mb={10}>
                         OPTION 02
                       </Text>
-                      <Text size={12}>Tomato Pasta</Text>
-                      <Text size={12}>Turkey Salad</Text>
-                      <Text size={12}>Chicken Wings</Text>
-                      <Text size={12}>Fruit Plater</Text>
-                      <Text size={12} mb={10}>
+                      <Text {...menuFontSize}>Tomato Pasta</Text>
+                      <Text {...menuFontSize}>Turkey Salad</Text>
+                      <Text {...menuFontSize}>Chicken Wings</Text>
+                      <Text {...menuFontSize}>Fruit Plater</Text>
+                      <Text {...menuFontSize} mb={10}>
                         Chocolate Cake
                       </Text>
-                      <Text size={12} mb={10}>
+                      <Text {...menuFontSize} mb={10}>
                         Free Drink
                       </Text>
                     </div>
                   </div>
-                  <div
-                    style={{
-                      cursor: 'pointer',
-                      display: 'flex',
-                      justifyContent: 'space-between'
-                    }}
-                  >
+                  <div className={classes.menuContainer}>
                     <Button
                       onClick={() => handleOptionClick('firstOption')}
                       styles={(theme) =>
@@ -627,7 +613,7 @@ const Visual3 = (props: Visual3Props) => {
                   </div>
                 </div>
                 {/* Menu End */}
-                <div style={{ marginTop: '40px' }}>
+                <div className={classes.marginTopForty}>
                   <label htmlFor="note">Allegetic Note</label>
                   <textarea
                     name="note"
@@ -704,7 +690,7 @@ const Visual3 = (props: Visual3Props) => {
                   </li>
                 </ul>
               </div>
-              <ul style={{ display: 'flex' }}>
+              <ul className={classes.flexDisplay}>
                 <li className={classes.contactIcon}>
                   <figure>
                     <a href={`tel:778-727-9067`}>
