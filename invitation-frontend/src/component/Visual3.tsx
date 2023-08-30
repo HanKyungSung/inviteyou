@@ -4,6 +4,7 @@ import {
   Image,
   Input,
   MantineProvider,
+  MantineTheme,
   Radio,
   Text
 } from '@mantine/core';
@@ -60,6 +61,18 @@ const radioButtonStyle = {
     }
   }
 };
+
+const optionStyle = (theme: MantineTheme, isClicked: boolean) => ({
+  root: {
+    flex: 1,
+    marginRight: 10,
+    marginTop: '3px',
+    '&:not([data-disabled])': theme.fn.hover({
+      backgroundColor: theme.fn.darken('#B39884', 0.05)
+    }),
+    backgroundColor: isClicked ? 'rgb(180, 152, 133)' : 'rgb(204, 204, 204)'
+  }
+});
 
 const calendarContainer = {
   border: '40px solid rgb(180, 152, 133)',
@@ -129,18 +142,6 @@ const Visual3 = (props: Visual3Props) => {
 
   const [isFirstOptionClicked, setIsFirstOptionClicked] = useState(false);
   const [isSecondOptionClicked, setIsSecondOptionClicked] = useState(false);
-
-  const optionStyle = (theme: any, isClicked: boolean) => ({
-    root: {
-      flex: 1,
-      marginRight: 10,
-      marginTop: '3px',
-      '&:not([data-disabled])': theme.fn.hover({
-        backgroundColor: theme.fn.darken('#B39884', 0.05)
-      }),
-      backgroundColor: isClicked ? 'rgb(180, 152, 133)' : 'rgb(204, 204, 204)'
-    }
-  });
 
   const handleOptionClick = (option: 'firstOption' | 'secondOption') => {
     if (option === 'firstOption') {
