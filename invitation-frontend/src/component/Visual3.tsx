@@ -164,34 +164,46 @@ const Visual3 = (props: Visual3Props) => {
             px={0}
             size={RESPONSIVE_MOBILE ? 550 : 450}
           >
-            <div className={classes.weddingMainDate}>
-              <small className={classes.weddingMainDateSmall}>{year}</small>
-              <strong className={classes.weddingMainDateStrong}>
+            <div
+              className={`${classes.weddingMainDate} ${
+                RESPONSIVE_MOBILE ? '' : classes.weddingMainDateOnLaptopView
+              }`}
+            >
+              <Text size={RESPONSIVE_MOBILE ? 20 : 35} align="center">
+                {year}
+              </Text>
+              <Text
+                size={RESPONSIVE_MOBILE ? 50 : 60}
+                align="center"
+                weight={900}
+              >
                 {monthNum}/{day}
-              </strong>
+              </Text>
             </div>
-            <div className={classes.weddingDetails}>
-              <p className={classes.weddingCharacter}>
-                {bride} & {groom}
-              </p>
-              <p>@ {location}</p>
-              <p>
-                {monthNum}.{day}.{year} / {time}
-              </p>
+            <div className={classes.weddingDetailsContainer}>
+              <div className={classes.weddingDetails}>
+                <Text
+                  transform="uppercase"
+                  size={RESPONSIVE_MOBILE ? 22 : 26}
+                  weight={900}
+                  pb={13}
+                >
+                  {bride} & {groom}
+                </Text>
+                <Text size={RESPONSIVE_MOBILE ? 12 : 20}>@ {location}</Text>
+                <Text size={RESPONSIVE_MOBILE ? 12 : 20}>
+                  {monthNum}.{day}.{year} / {time}
+                </Text>
+              </div>
             </div>
           </Container>
-          <Container
-            className={classes.newIntro}
-            size={RESPONSIVE_MOBILE ? 550 : 450}
-            py={50}
-            mt={50}
-          >
+          <Container className={classes.newIntro} py={50} mt={50}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
                 color="rgb(180, 152, 133)"
-                align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 30}
+                align="center"
+                size={RESPONSIVE_MOBILE ? 20 : 26}
                 weight={900}
               >
                 Forever together
@@ -201,7 +213,7 @@ const Visual3 = (props: Visual3Props) => {
               <Text
                 size={RESPONSIVE_MOBILE ? 16 : 20}
                 color="#555"
-                align="left"
+                align="center"
               >
                 Lorem Ipsum is simply dummy
                 <br />
@@ -221,9 +233,9 @@ const Visual3 = (props: Visual3Props) => {
               </Text>
               <Text
                 underline
-                size={RESPONSIVE_MOBILE ? 16 : 28}
+                size={RESPONSIVE_MOBILE ? 16 : 20}
                 color="#555"
-                align="left"
+                align="center"
                 pt={50}
               >
                 Daniel Han & Anna Smith

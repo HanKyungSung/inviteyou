@@ -10,11 +10,12 @@ const Visual3Styles = () =>
       maxWidth: 800,
       margin: '0 auto'
     },
+    // TODO: Adjust background image on the laptop view
     newVisual: {
       padding: '0 0 50px 0',
       background: `url(${imgVisual}) no-repeat center / cover`,
-      marginTop: '21vh',
-      height: '75vh'
+      marginTop: '133px',
+      height: 'calc(100vh - 133px)'
     },
     weddingMainDate: {
       lineHeight: '1.2',
@@ -22,16 +23,14 @@ const Visual3Styles = () =>
       position: 'absolute',
       left: '50%',
       transform: 'translateX(-50%)',
-      width: '15.5vw',
-      height: '17.6vh',
-      marginTop: '-21vh',
+      marginTop: '-133px',
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
       flexDirection: 'column',
       color: '#fff',
-      minWidth: '250px',
-      minHeight: '250px',
+      minWidth: '185px',
+      minHeight: '175px',
       backgroundColor: 'rgb(180, 152, 133)',
       '&::after': {
         content: '""',
@@ -44,28 +43,22 @@ const Visual3Styles = () =>
         border: '1px solid #fff'
       }
     },
-    weddingMainDateSmall: {
-      fontSize: '2rem',
-      marginBottom: '10px'
+    weddingMainDateOnLaptopView: {
+      minWidth: '250px',
+      minHeight: '250px'
     },
-    weddingMainDateStrong: {
-      fontSize: '3rem',
-      fontWeight: 900
+    weddingDetailsContainer: {
+      maxWidth: 770,
+      padding: '0 25px',
+      display: 'flex',
+      flexDirection: 'column',
+      height: '100%',
+      justifyContent: 'end'
     },
     // TODO: Need to adjust text inside image
     weddingDetails: {
-      width: '70%',
-      position: 'absolute',
-      left: '7%',
-      top: '11%',
-      padding: '1em 0',
-      fontSize: '0.75rem',
+      position: 'relative',
       color: '#fff'
-    },
-    weddingCharacter: {
-      textTransform: 'uppercase',
-      fontSize: '1.3rem',
-      fontWeight: 900
     },
     newIntro: {
       position: 'relative'
