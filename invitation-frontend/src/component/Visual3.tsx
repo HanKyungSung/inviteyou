@@ -4,6 +4,7 @@ import {
   Image,
   Input,
   MantineProvider,
+  MantineTheme,
   Radio,
   Text
 } from '@mantine/core';
@@ -17,6 +18,18 @@ import { Carousel } from 'react-responsive-carousel';
 import map from '../assets/img/visual3/map.svg';
 
 const useStyles = Visual3Styles();
+
+interface Visual3Props {
+  year: number;
+  monthNum: number;
+  day: number;
+  bride: string;
+  groom: string;
+  location: string;
+  time: string;
+  subdomain: string;
+  // mainColor: ColorResult;
+}
 
 const radioGroupStyle = {
   root: {
@@ -98,21 +111,31 @@ const inputStyle = {
   }
 };
 
-interface Visual3Props {
-  year: number;
-  monthNum: number;
-  day: number;
-  bride: string;
-  groom: string;
-  location: string;
-  time: string;
-  subdomain: string;
-  // mainColor: ColorResult;
-}
+const optionStyle = (theme: MantineTheme, isClicked: boolean) => ({
+  root: {
+    flex: 1,
+    marginRight: 10,
+    marginTop: '3px',
+    '&:not([data-disabled])': theme.fn.hover({
+      backgroundColor: theme.fn.darken('#B39884', 0.05)
+    }),
+    backgroundColor: isClicked ? 'rgb(180, 152, 133)' : 'rgb(204, 204, 204)'
+  }
+});
+
+const NAME_INPUT_ERROR = 'Please enter your name';
+const INVITE_FROM_INPUT_ERROR = 'Please choose your side';
+const MENU_INPUT_ERROR = 'Please select one of the two options';
 
 const Visual3 = (props: Visual3Props) => {
   const { classes } = useStyles();
   const { year, monthNum, day, bride, groom, location, time } = props;
+
+  const [name, setName] = useState('');
+  const [invitedFrom, setInvitedFrom] = useState(null);
+  const [menuOption, setMenuOption] = useState(null);
+  const [allegicNote, setAllegicNote] = useState('');
+  const [error, setError] = useState('');
 
   const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
   const responsiveContainer = {
@@ -130,18 +153,6 @@ const Visual3 = (props: Visual3Props) => {
   const [isFirstOptionClicked, setIsFirstOptionClicked] = useState(false);
   const [isSecondOptionClicked, setIsSecondOptionClicked] = useState(false);
 
-  const optionStyle = (theme: any, isClicked: boolean) => ({
-    root: {
-      flex: 1,
-      marginRight: 10,
-      marginTop: '3px',
-      '&:not([data-disabled])': theme.fn.hover({
-        backgroundColor: theme.fn.darken('#B39884', 0.05)
-      }),
-      backgroundColor: isClicked ? 'rgb(180, 152, 133)' : 'rgb(204, 204, 204)'
-    }
-  });
-
   const handleOptionClick = (option: 'firstOption' | 'secondOption') => {
     if (option === 'firstOption') {
       setIsFirstOptionClicked(true);
@@ -154,6 +165,36 @@ const Visual3 = (props: Visual3Props) => {
 
   const handleFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
+
+    // validation - name, invited from (default value), menu option (default value), allegic note(optional)
+    if (!name.trim()) {
+      setError(NAME_INPUT_ERROR);
+    }
+
+    if (!invitedFrom) {
+      setError(INVITE_FROM_INPUT_ERROR);
+      return;
+    }
+
+    if (!menuOption) {
+      setError(MENU_INPUT_ERROR);
+      return;
+    }
+
+    // If everything is valid
+    const formData = {
+      name,
+      invitedFrom,
+      menuOption,
+      allegicNote
+    };
+
+    console.log(formData);
+  };
+
+  const handleOnChangeNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = e.currentTarget.value;
+    setName(newName);
   };
 
   const imgs: string[] = [
@@ -528,6 +569,10 @@ const Visual3 = (props: Visual3Props) => {
                     placeholder="Please enter your full name"
                     variant="unstyled"
                     name="name"
+                    value={name}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      handleOnChangeNameInput(e)
+                    }
                     styles={inputStyle}
                   />
                 </Input.Wrapper>
