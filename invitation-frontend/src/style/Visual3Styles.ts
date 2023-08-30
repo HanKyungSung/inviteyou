@@ -10,12 +10,14 @@ const Visual3Styles = () =>
       maxWidth: 800,
       margin: '0 auto'
     },
-    // TODO: Adjust background image on the laptop view
     newVisual: {
       padding: '0 0 50px 0',
       background: `url(${imgVisual}) no-repeat center / cover`,
       marginTop: '133px',
       height: 'calc(100vh - 133px)'
+    },
+    newVisualOnLaptopView: {
+      maxWidth: '70%'
     },
     weddingMainDate: {
       lineHeight: '1.2',
@@ -53,9 +55,8 @@ const Visual3Styles = () =>
       display: 'flex',
       flexDirection: 'column',
       height: '100%',
-      justifyContent: 'end'
+      justifyContent: 'flex-end'
     },
-    // TODO: Need to adjust text inside image
     weddingDetails: {
       position: 'relative',
       color: '#fff'

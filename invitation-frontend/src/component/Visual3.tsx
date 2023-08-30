@@ -208,7 +208,9 @@ const Visual3 = (props: Visual3Props) => {
           className={`${classes.invitationWrap} ${classes.invitationVisual}`}
         >
           <Container
-            className={classes.newVisual}
+            className={`${classes.newVisual} ${
+              RESPONSIVE_MOBILE ? '' : classes.newVisualOnLaptopView
+            }`}
             fluid
             px={0}
             size={RESPONSIVE_MOBILE ? 550 : 450}
