@@ -76,7 +76,14 @@ interface Visual3Props {
 const Visual3 = (props: Visual3Props) => {
   const { classes } = useStyles();
   const { year, monthNum, day, bride, groom, location, time } = props;
+
   const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
+  const responsiveContainer = {
+    size: RESPONSIVE_MOBILE ? 550 : 450
+  };
+  const responsiveTitleText = {
+    size: RESPONSIVE_MOBILE ? 20 : 25
+  };
 
   const [isFirstOptionClicked, setIsFirstOptionClicked] = useState(false);
   const [isSecondOptionClicked, setIsSecondOptionClicked] = useState(false);
@@ -248,7 +255,7 @@ const Visual3 = (props: Visual3Props) => {
               color: '#bbbbbb',
               padding: '20px'
             }}
-            size={RESPONSIVE_MOBILE ? 550 : 450}
+            {...responsiveContainer}
           >
             <div className={classes.calendarTop}>
               <strong className={classes.weddingMonth}>
@@ -387,14 +394,14 @@ const Visual3 = (props: Visual3Props) => {
               </tbody>
             </table>
           </Container>
-          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={85}>
+          <Container {...responsiveContainer} py={85}>
             <div className={classes.sectionTitWrap}>
               {/* TODO: need to adjust padding with contact list */}
               <Text
                 className={classes.sectionSubTit}
+                {...responsiveTitleText}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 25}
               >
                 Contact Us
               </Text>
@@ -470,13 +477,13 @@ const Visual3 = (props: Visual3Props) => {
               </li>
             </ul>
           </Container>
-          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={70} mt={-20}>
+          <Container {...responsiveContainer} py={70} mt={-20}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
+                {...responsiveTitleText}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 25}
               >
                 Apply to <br />
                 join our wedding
@@ -637,19 +644,19 @@ const Visual3 = (props: Visual3Props) => {
               </form>
             </div>
           </Container>
-          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={70} mt={-20}>
+          <Container {...responsiveContainer} py={70} mt={-20}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
+                {...responsiveTitleText}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 25}
                 mb={40}
               >
                 Our Gallery
               </Text>
             </div>
-            <Container size={RESPONSIVE_MOBILE ? 550 : 450}>
+            <Container {...responsiveContainer}>
               <div className={classes.carouselWrap}>
                 <Carousel
                   showArrows={true}
@@ -664,13 +671,13 @@ const Visual3 = (props: Visual3Props) => {
               </div>
             </Container>
           </Container>
-          <Container size={RESPONSIVE_MOBILE ? 550 : 450} py={100} mt={-50}>
+          <Container {...responsiveContainer} py={100} mt={-50}>
             <div className={classes.sectionTitWrap}>
               <Text
                 className={classes.sectionSubTit}
+                {...responsiveTitleText}
                 color="rgb(180, 152, 133)"
                 align="left"
-                size={RESPONSIVE_MOBILE ? 20 : 25}
               >
                 Location
               </Text>
