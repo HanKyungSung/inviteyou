@@ -19,6 +19,18 @@ import map from '../assets/img/visual3/map.svg';
 
 const useStyles = Visual3Styles();
 
+interface Visual3Props {
+  year: number;
+  monthNum: number;
+  day: number;
+  bride: string;
+  groom: string;
+  location: string;
+  time: string;
+  subdomain: string;
+  // mainColor: ColorResult;
+}
+
 const radioGroupStyle = {
   root: {
     marginBottom: '20px !important'
@@ -85,14 +97,14 @@ const inputWrapperStyle = {
     marginBottom: '16px !important' // why !important used? mantine Input 컴포넌트의 기본 스타일을 무시하기 위해?
   },
   required: {
-    color: 'rgb(44, 69, 87) !important'
+    color: 'red !important'
   },
   label: {
     fontFamily: 'KoPub Batang',
     fontSize: '16px'
   },
   error: {
-    color: 'rgb(44, 69, 87) !important',
+    color: 'red !important',
     marginTop: '10px !important'
   }
 };
@@ -111,21 +123,29 @@ const inputStyle = {
   }
 };
 
-interface Visual3Props {
-  year: number;
-  monthNum: number;
-  day: number;
-  bride: string;
-  groom: string;
-  location: string;
-  time: string;
-  subdomain: string;
-  // mainColor: ColorResult;
-}
+const NAME_INPUT_ERROR = 'Please enter your name';
+const SIDE_INPUT_ERROR = 'Please choose your side';
+const MENU_INPUT_ERROR = 'Please select an option';
 
 const Visual3 = (props: Visual3Props) => {
   const { classes } = useStyles();
   const { year, monthNum, day, bride, groom, location, time } = props;
+
+  const [name, setName] = useState<string>('');
+  const [side, setSide] = useState<string>('');
+  const [menu, setMenu] = useState<string>('');
+  const [note, setNote] = useState<string>('');
+
+  const [isFirstOptionClicked, setIsFirstOptionClicked] = useState(false);
+  const [isSecondOptionClicked, setIsSecondOptionClicked] = useState(false);
+
+  const [isNameValidated, setIsNameValidated] = useState<boolean>(false);
+  const [isSideValidated, setIsSideValidated] = useState<boolean>(false);
+  const [isMenuValidated, setIsMenuValidated] = useState<boolean>(false);
+
+  const [initForm, setInitForm] = useState<boolean>(true);
+  const [initNameInput, setInitNameInput] = useState<boolean>(true);
+  const [initMenuInput, setInitMenuInput] = useState<boolean>(true);
 
   const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
   const responsiveContainer = {
@@ -140,21 +160,57 @@ const Visual3 = (props: Visual3Props) => {
     size: 12
   };
 
-  const [isFirstOptionClicked, setIsFirstOptionClicked] = useState(false);
-  const [isSecondOptionClicked, setIsSecondOptionClicked] = useState(false);
+  const handleFormSubmit = (e: React.SyntheticEvent) => {
+    e.preventDefault();
 
-  const handleOptionClick = (option: 'firstOption' | 'secondOption') => {
-    if (option === 'firstOption') {
-      setIsFirstOptionClicked(true);
-      setIsSecondOptionClicked(false);
-    } else if (option === 'secondOption') {
-      setIsSecondOptionClicked(true);
-      setIsFirstOptionClicked(false);
+    setInitForm(false);
+
+    if (!isNameValidated) setName('');
+    if (!isSideValidated) setSide('');
+    if (!isMenuValidated) setMenu('');
+
+    if (isNameValidated && isSideValidated && isMenuValidated) {
+      // TODO: send api
+      console.log(name, side, menu, note);
     }
   };
 
-  const handleFormSubmit = (e: React.SyntheticEvent) => {
-    e.preventDefault();
+  const handleOnChangeNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = e.currentTarget.value;
+    setName(newName);
+    setInitNameInput(false);
+
+    if (newName === '') {
+      setIsNameValidated(false);
+    } else {
+      setIsNameValidated(true);
+    }
+  };
+
+  const handleOnchangeSideInput = (side: string) => {
+    setSide(side);
+
+    if (side === '') {
+      setIsSideValidated(false);
+    } else {
+      setIsSideValidated(true);
+    }
+  };
+
+  const handleOptionClick = (option: 'firstOption' | 'secondOption') => {
+    setInitMenuInput(false);
+
+    if (option === 'firstOption') {
+      setMenu('MENU_OPTION_1');
+      setIsFirstOptionClicked(true);
+      setIsSecondOptionClicked(false);
+      setIsMenuValidated(true);
+    } else if (option === 'secondOption') {
+      setMenu('MENU_OPTION_2');
+      setIsSecondOptionClicked(true);
+      setIsFirstOptionClicked(false);
+      setIsMenuValidated(true);
+    }
   };
 
   const imgs: string[] = [
@@ -523,16 +579,36 @@ const Visual3 = (props: Visual3Props) => {
             </div>
             <div className={classes.marginTopForty}>
               <form onSubmit={(e) => handleFormSubmit(e)}>
-                <Input.Wrapper label="NAME" styles={inputWrapperStyle}>
+                <Input.Wrapper
+                  label="NAME"
+                  styles={inputWrapperStyle}
+                  required
+                  error={
+                    name === '' && (!initNameInput || !initForm)
+                      ? NAME_INPUT_ERROR
+                      : ''
+                  }
+                >
                   <Input
                     id="name-input"
                     placeholder="Please enter your full name"
                     variant="unstyled"
                     name="name"
+                    value={name}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      handleOnChangeNameInput(e)
+                    }
                     styles={inputStyle}
                   />
                 </Input.Wrapper>
-                <Radio.Group label="INVITED FROM" styles={radioGroupStyle}>
+                <Radio.Group
+                  label="INVITED FROM"
+                  styles={radioGroupStyle}
+                  required
+                  value={side}
+                  onChange={(side) => handleOnchangeSideInput(side)}
+                  error={side === '' && !initForm ? SIDE_INPUT_ERROR : ''}
+                >
                   <Radio
                     name="INVITED FROM"
                     label="Bride Side"
@@ -545,10 +621,18 @@ const Visual3 = (props: Visual3Props) => {
                     value="groom"
                     styles={radioButtonStyle}
                   />
+                  <Radio
+                    name="INVITED FROM"
+                    label="Both Side"
+                    value="both"
+                    styles={radioButtonStyle}
+                  />
                 </Radio.Group>
                 <div>
                   <div>
-                    <Text size={16}>MENU</Text>
+                    <Text size={16}>
+                      MENU<span className={classes.asteriskColor}> *</span>
+                    </Text>
                   </div>
                   <div className={classes.menuContainer}>
                     <div
@@ -614,6 +698,14 @@ const Visual3 = (props: Visual3Props) => {
                       Select This Menu
                     </Button>
                   </div>
+
+                  {menu === '' && (!initMenuInput || !initForm) ? (
+                    <Text size={12} mt={10} className={classes.error}>
+                      {MENU_INPUT_ERROR}
+                    </Text>
+                  ) : (
+                    ''
+                  )}
                 </div>
                 {/* Menu End */}
                 <div className={classes.marginTopForty}>
@@ -625,6 +717,7 @@ const Visual3 = (props: Visual3Props) => {
                     rows={10}
                     placeholder="Please provide us any food restriction you have "
                     className={classes.textarea}
+                    onChange={(e) => setNote(e.currentTarget.value)}
                   ></textarea>
                 </div>
                 <button className={classes.customButton} type="submit">

@@ -230,6 +230,12 @@ const Visual3Styles = () =>
         fontSize: 16
       }
     },
+    asteriskColor: {
+      color: 'red'
+    },
+    error: {
+      color: 'red'
+    },
     menuContainer: {
       cursor: 'pointer',
       display: 'flex',
