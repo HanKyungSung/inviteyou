@@ -16,6 +16,7 @@ import { ImPhone } from 'react-icons/im';
 import { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import map from '../assets/img/visual3/map.svg';
+import { getIcsFile } from '../utils/calendarUtils';
 
 const useStyles = Visual3Styles();
 
@@ -26,6 +27,7 @@ interface Visual3Props {
   bride: string;
   groom: string;
   location: string;
+  specificLocation: string;
   time: string;
   subdomain: string;
   // mainColor: ColorResult;
@@ -129,7 +131,16 @@ const MENU_INPUT_ERROR = 'Please select an option';
 
 const Visual3 = (props: Visual3Props) => {
   const { classes } = useStyles();
-  const { year, monthNum, day, bride, groom, location, time } = props;
+  const {
+    year,
+    monthNum,
+    day,
+    bride,
+    groom,
+    location,
+    specificLocation,
+    time
+  } = props;
 
   const [name, setName] = useState<string>('');
   const [side, setSide] = useState<string>('');
@@ -356,7 +367,7 @@ const Visual3 = (props: Visual3Props) => {
                 October, <span className={classes.weddingYear}>2023</span>
               </strong>
               <span>
-                <span className={classes.weddingDayOfWeek}>Fri,</span>
+                <span className={classes.weddingDayOfWeek}>MON,</span>
                 <span>01:30 PM</span>
               </span>
             </div>
@@ -470,10 +481,15 @@ const Visual3 = (props: Visual3Props) => {
                     <span className="sun">26</span>
                   </td>
                   <td>
-                    <span>27</span>
+                    <span
+                      className={classes.current}
+                      onClick={() => getIcsFile({ subdomain: 'visual' })}
+                    >
+                      27
+                    </span>
                   </td>
                   <td>
-                    <span className={classes.current}>28</span>
+                    <span>28</span>
                   </td>
                   <td>
                     <span>29</span>
@@ -773,7 +789,7 @@ const Visual3 = (props: Visual3Props) => {
                       pb={5}
                       size={RESPONSIVE_MOBILE ? 16 : 18}
                     >
-                      The Name Of Wedding Hall
+                      {specificLocation}
                     </Text>
                   </li>
                   <li>
@@ -819,7 +835,8 @@ Visual3.defaultProps = {
   bride: 'Daniel',
   groom: 'Anna',
   month: 'October',
-  location: '0000 Vancouver St. Vancouver, BC, Canada',
+  location: '438 Seymour St, Vancouver, BC V6B 6H4',
+  specificLocation: 'Conference Plaza',
   time: '01:30 PM'
 };
 

@@ -118,6 +118,8 @@ app.get('/api/calendar', (req, res) => {
     // console.log(startDate, endDate, location);
     // updatedIcsFile = icsFile.replace("LOCATION:", `LOCATION: ${location}`);
     res.download(path.join(__dirname, '..', 'src/assets/samhan.ics'));
+  } else if (subdomain === 'visual') {
+    res.download(path.join(__dirname, '..', 'src/assets/visual.ics'));
   } else {
     res.sendStatus(400);
   }
