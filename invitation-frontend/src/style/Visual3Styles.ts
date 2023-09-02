@@ -259,6 +259,7 @@ const Visual3Styles = () =>
     },
     carouselWrap: {
       '.slide': {
+        cursor: 'pointer',
         img: {
           margin: 0,
           width: '100%',
@@ -275,7 +276,8 @@ const Visual3Styles = () =>
         }
       },
       '.carousel .thumbs-wrapper': {
-        margin: 0
+        margin: 0,
+        cursor: 'pointer'
       },
       '.carousel .thumb': {
         marginRight: 0,

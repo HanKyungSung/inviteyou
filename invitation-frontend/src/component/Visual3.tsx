@@ -173,8 +173,10 @@ const Visual3 = (props: Visual3Props) => {
   const [menu, setMenu] = useState<string>('');
   const [note, setNote] = useState<string>('');
 
-  const [isFirstOptionClicked, setIsFirstOptionClicked] = useState(false);
-  const [isSecondOptionClicked, setIsSecondOptionClicked] = useState(false);
+  const [isFirstOptionClicked, setIsFirstOptionClicked] =
+    useState<boolean>(false);
+  const [isSecondOptionClicked, setIsSecondOptionClicked] =
+    useState<boolean>(false);
 
   const [isNameValidated, setIsNameValidated] = useState<boolean>(false);
   const [isSideValidated, setIsSideValidated] = useState<boolean>(false);
@@ -185,6 +187,8 @@ const Visual3 = (props: Visual3Props) => {
   const [initMenuInput, setInitMenuInput] = useState<boolean>(true);
 
   const [modalInfo, setModalInfo] = useState<ModalInfo>(initModalInfo);
+  const [opened, setOpened] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<string>('');
 
   const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
   const responsiveContainer = {
@@ -277,13 +281,19 @@ const Visual3 = (props: Visual3Props) => {
     require('../assets/img/visual3/moment_pics/5.png')
   ];
 
-  const slides: JSX.Element[] = imgs.map((img) => {
+  const slides: JSX.Element[] = imgs.map((img, index) => {
     return (
-      <div key={`side-${img}`}>
-        <img src={img} alt={`Slide $(item)`} />
+      <div key={`slide-${img}`} onClick={() => handleOpen(img)}>
+        <img src={img} alt={`Slide ${index}`} />
       </div>
     );
   });
+  const handleOpen = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    setOpened(true);
+  };
+
+  const handleClose = () => setOpened(false);
 
   return (
     <>
@@ -871,6 +881,13 @@ const Visual3 = (props: Visual3Props) => {
                   {slides}
                 </Carousel>
               </div>
+              <Modal opened={opened} onClose={handleClose} size="xl">
+                <img
+                  src={selectedImage}
+                  alt="Selected preview"
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </Modal>
             </Container>
           </Container>
           <Container {...responsiveContainer} py={100} mt={-50}>
