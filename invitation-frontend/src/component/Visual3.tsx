@@ -19,6 +19,7 @@ import { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import map from '../assets/img/visual3/map.svg';
 import { getIcsFile } from '../utils/calendarUtils';
+import { sendRsvpApiThirdVersion } from '../utils/rsvpUtils';
 
 const useStyles = Visual3Styles();
 
@@ -154,6 +155,7 @@ const initModalInfo: ModalInfo = {
 };
 
 const Visual3 = (props: Visual3Props) => {
+  const { subdomain } = props;
   const { classes } = useStyles();
   const {
     year,
@@ -197,6 +199,15 @@ const Visual3 = (props: Visual3Props) => {
     size: 12
   };
 
+  const handleSendApi = () => {
+    sendRsvpApiThirdVersion({
+      name: name,
+      side: side,
+      menu: menu,
+      note: note,
+      subdomain
+    });
+  };
   const handleFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
 
@@ -207,6 +218,7 @@ const Visual3 = (props: Visual3Props) => {
     if (!isMenuValidated) setMenu('');
 
     if (isNameValidated && isSideValidated && isMenuValidated) {
+      handleSendApi();
       setModalInfo({
         opened: true,
         submitInfo: {
@@ -216,9 +228,6 @@ const Visual3 = (props: Visual3Props) => {
           note: note
         }
       });
-
-      // TODO: send api
-      console.log(name, side, menu, note);
     }
   };
 
