@@ -5,6 +5,7 @@ import {
   Input,
   MantineProvider,
   MantineTheme,
+  Modal,
   Radio,
   Text
 } from '@mantine/core';
@@ -13,6 +14,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import imgBride from '../assets/img/visual3/img-bride.png';
 import imgGroom from '../assets/img/visual3/img-groom.png';
 import { ImPhone } from 'react-icons/im';
+import surveyDeco from '../assets/img/visual3/modal-deco.png';
 import { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import map from '../assets/img/visual3/map.svg';
@@ -31,6 +33,18 @@ interface Visual3Props {
   time: string;
   subdomain: string;
   // mainColor: ColorResult;
+}
+
+interface SubmitInfo {
+  name: string;
+  side: string;
+  menu: string;
+  note?: string;
+}
+
+interface ModalInfo {
+  opened: boolean;
+  submitInfo: SubmitInfo;
 }
 
 const radioGroupStyle = {
@@ -129,6 +143,16 @@ const NAME_INPUT_ERROR = 'Please enter your name';
 const SIDE_INPUT_ERROR = 'Please choose your side';
 const MENU_INPUT_ERROR = 'Please select an option';
 
+const initModalInfo: ModalInfo = {
+  opened: false,
+  submitInfo: {
+    name: '',
+    side: '',
+    menu: '',
+    note: ''
+  }
+};
+
 const Visual3 = (props: Visual3Props) => {
   const { classes } = useStyles();
   const {
@@ -158,6 +182,8 @@ const Visual3 = (props: Visual3Props) => {
   const [initNameInput, setInitNameInput] = useState<boolean>(true);
   const [initMenuInput, setInitMenuInput] = useState<boolean>(true);
 
+  const [modalInfo, setModalInfo] = useState<ModalInfo>(initModalInfo);
+
   const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
   const responsiveContainer = {
     size: RESPONSIVE_MOBILE ? 550 : 450
@@ -181,6 +207,16 @@ const Visual3 = (props: Visual3Props) => {
     if (!isMenuValidated) setMenu('');
 
     if (isNameValidated && isSideValidated && isMenuValidated) {
+      setModalInfo({
+        opened: true,
+        submitInfo: {
+          name: name,
+          side: side,
+          menu: menu,
+          note: note
+        }
+      });
+
       // TODO: send api
       console.log(name, side, menu, note);
     }
@@ -272,6 +308,65 @@ const Visual3 = (props: Visual3Props) => {
           })
         }}
       >
+        <Modal
+          centered
+          onClose={() => setModalInfo({ ...initModalInfo, opened: false })}
+          opened={modalInfo.opened}
+          title={`Hello ${modalInfo.submitInfo.name},`}
+          styles={{
+            title: {
+              fontSize: '16px',
+              fontWeight: 700,
+              margin: 0,
+              color: 'rgb(180, 152, 133)'
+            },
+            body: {
+              fontSize: '14px',
+              lineHeight: '1.5',
+              color: 'rgb(0, 0, 0)'
+            }
+          }}
+        >
+          <div className="survey-comment">
+            <p>
+              Thank you for attendance at our wedding.
+              <br />
+              <br />
+              If you have any inquiries, <br />
+              please contact us at{' '}
+              <a
+                href="tel:778-727-9067"
+                style={{ color: 'rgb(180, 152, 133)', textDecoration: 'none' }}
+              >
+                '778-727-9067'
+              </a>
+              .
+            </p>
+            <p
+              style={{
+                color: 'rgb(180, 152, 133',
+                fontWeight: 900,
+                marginTop: 20,
+                fontSize: 16
+              }}
+            >
+              Invite from: {modalInfo.submitInfo.side}
+              <br />
+              Menu: {modalInfo.submitInfo.menu}
+              <br />
+              Allergic note: {modalInfo.submitInfo.note}
+            </p>
+            <figure
+              style={{ position: 'absolute', right: 0, bottom: 0, margin: 0 }}
+            >
+              <img
+                src={surveyDeco}
+                alt="surveyDeco"
+                style={{ maxHeight: 180 }}
+              />
+            </figure>
+          </div>
+        </Modal>
         <main
           className={`${classes.invitationWrap} ${classes.invitationVisual}`}
         >
