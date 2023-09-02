@@ -914,7 +914,9 @@ const Visual3 = (props: Visual3Props) => {
               className={`${classes.customButton} ${classes.customButtonWithSmallFont}`}
               type="submit"
             >
-              Direct with google map
+              <a href="https://goo.gl/maps/S936VaQr6rtAhYpF6" target="_blank">
+                Direct with google map
+              </a>
             </button>
           </Container>
         </main>
