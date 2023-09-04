@@ -1,3 +1,4 @@
+// 1. Group and order imports
 import {
   Button,
   Container,
@@ -9,14 +10,15 @@ import {
   Radio,
   Text
 } from '@mantine/core';
-import { Visual3Styles } from '../style/Visual3Styles';
 import { useMediaQuery } from '@mantine/hooks';
-import imgBride from '../assets/img/visual3/img-bride.png';
-import imgGroom from '../assets/img/visual3/img-groom.png';
 import { ImPhone } from 'react-icons/im';
-import surveyDeco from '../assets/img/visual3/modal-deco.png';
 import { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
+
+import { Visual3Styles } from '../style/Visual3Styles';
+import imgBride from '../assets/img/visual3/img-bride.png';
+import imgGroom from '../assets/img/visual3/img-groom.png';
+import surveyDeco from '../assets/img/visual3/modal-deco.png';
 import map from '../assets/img/visual3/map.svg';
 import { getIcsFile } from '../utils/calendarUtils';
 import { sendRsvpApiThirdVersion } from '../utils/rsvpUtils';
