@@ -1,4 +1,3 @@
-// 1. Group and order imports
 import {
   Button,
   Container,
