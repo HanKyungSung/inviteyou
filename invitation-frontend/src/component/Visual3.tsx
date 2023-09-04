@@ -111,7 +111,7 @@ const calendarContainer = {
 
 const inputWrapperStyle = {
   root: {
-    marginBottom: '16px !important' // why !important used? mantine Input 컴포넌트의 기본 스타일을 무시하기 위해?
+    marginBottom: '16px !important'
   },
   required: {
     color: 'red !important'
@@ -189,6 +189,13 @@ const Visual3 = (props: Visual3Props) => {
   const [modalInfo, setModalInfo] = useState<ModalInfo>(initModalInfo);
   const [opened, setOpened] = useState<boolean>(false);
   const [selectedImage, setSelectedImage] = useState<string>('');
+
+  const [hisPhoneNumberText, setHisPhoneNumberText] = useState(
+    'Check His Phone number'
+  );
+  const [herPhoneNumberText, setHerPhoneNumberText] = useState(
+    'Check Her Phone number'
+  );
 
   const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
   const responsiveContainer = {
@@ -620,7 +627,6 @@ const Visual3 = (props: Visual3Props) => {
           </Container>
           <Container {...responsiveContainer} py={85}>
             <div className={classes.sectionTitWrap}>
-              {/* TODO: need to adjust padding with contact list */}
               <Text
                 className={classes.sectionSubTit}
                 {...responsiveTitleText}
@@ -646,8 +652,15 @@ const Visual3 = (props: Visual3Props) => {
                       <Text weight={'bold'}>Call To Bride</Text>
                     </li>
                     <li>
-                      <Text color="#888" underline>
-                        Check Her Phone number
+                      <Text
+                        className={classes.textWithPointerCursor}
+                        color="#888"
+                        underline
+                        onClick={() =>
+                          setHerPhoneNumberText('+1) 778. 727. 9067')
+                        }
+                      >
+                        {herPhoneNumberText}
                       </Text>
                     </li>
                   </ul>
@@ -677,8 +690,15 @@ const Visual3 = (props: Visual3Props) => {
                       <Text weight={'bold'}>Call To Groom</Text>
                     </li>
                     <li>
-                      <Text color="#888" underline>
-                        Check His Phone number
+                      <Text
+                        className={classes.textWithPointerCursor}
+                        color="#888"
+                        underline
+                        onClick={() =>
+                          setHisPhoneNumberText('+1) 778. 723. 8027')
+                        }
+                      >
+                        {hisPhoneNumberText}
                       </Text>
                     </li>
                   </ul>
@@ -686,7 +706,7 @@ const Visual3 = (props: Visual3Props) => {
                 <ul className={classes.flexDisplay}>
                   <li className={classes.contactIcon}>
                     <figure>
-                      <a href={`tel:778-727-9067`}>
+                      <a href={`tel:778-723-8027`}>
                         <ImPhone />
                       </a>
                     </figure>

@@ -107,7 +107,11 @@ const Visual3Styles = () =>
       backgroundColor: 'rgb(180, 152, 133)',
       color: '#fff',
       fontWeight: 700,
-      borderRadius: '50%'
+      borderRadius: '50%',
+      cursor: 'pointer'
+    },
+    textWithPointerCursor: {
+      cursor: 'pointer'
     },
     calendarTable: {
       width: '100%',
