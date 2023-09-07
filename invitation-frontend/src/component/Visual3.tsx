@@ -151,7 +151,7 @@ const initModalInfo: ModalInfo = {
   opened: false,
   submitInfo: {
     name: '',
-    rsvp: 'YES',
+    rsvp: '',
     side: '',
     menu: '',
     note: ''
@@ -173,10 +173,10 @@ const Visual3 = (props: Visual3Props) => {
   } = props;
 
   const [name, setName] = useState<string>('');
+  const [rsvp, setRsvp] = useState<string>('');
   const [side, setSide] = useState<string>('');
   const [menu, setMenu] = useState<string>('');
   const [note, setNote] = useState<string>('');
-  const [rsvp, setRsvp] = useState<string>('');
 
   const [isFirstOptionClicked, setIsFirstOptionClicked] =
     useState<boolean>(false);
@@ -229,14 +229,19 @@ const Visual3 = (props: Visual3Props) => {
 
   const handleFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-    setRsvp('YES');
     setInitForm(false);
 
     if (!isNameValidated) setName('');
+    if (!isRsvpValidated) setRsvp('');
     if (!isSideValidated) setSide('');
     if (!isMenuValidated) setMenu('');
 
-    if (isNameValidated && isSideValidated && isMenuValidated) {
+    if (
+      isNameValidated &&
+      isRsvpValidated &&
+      isSideValidated &&
+      isMenuValidated
+    ) {
       handleSendApi();
       setModalInfo({
         opened: true,
@@ -395,6 +400,8 @@ const Visual3 = (props: Visual3Props) => {
                 fontSize: 16
               }}
             >
+              Attendance: {modalInfo.submitInfo.rsvp}
+              <br />
               Invite from: {modalInfo.submitInfo.side}
               <br />
               Menu: {modalInfo.submitInfo.menu}
@@ -771,7 +778,7 @@ const Visual3 = (props: Visual3Props) => {
                   />
                 </Input.Wrapper>
                 <Radio.Group
-                  label="Attendance"
+                  label="ATTENDANCE"
                   styles={radioGroupStyle}
                   required
                   value={rsvp}
@@ -779,13 +786,13 @@ const Visual3 = (props: Visual3Props) => {
                   error={rsvp === '' && !initForm ? RSVP_INPUT_ERROR : ''}
                 >
                   <Radio
-                    name="Attendance"
+                    name="ATTENDANCE"
                     label="Yes"
                     value="yes"
                     styles={radioButtonStyle}
                   />
                   <Radio
-                    name="Attendance"
+                    name="ATTENDANCE"
                     label="No"
                     value="no"
                     styles={radioButtonStyle}
