@@ -39,6 +39,7 @@ interface Visual3Props {
 
 interface SubmitInfo {
   name: string;
+  rsvp: string;
   side: string;
   menu: string;
   note?: string;
@@ -142,6 +143,7 @@ const inputStyle = {
 };
 
 const NAME_INPUT_ERROR = 'Please enter your name';
+const RSVP_INPUT_ERROR = 'Please choose your attendance';
 const SIDE_INPUT_ERROR = 'Please choose your side';
 const MENU_INPUT_ERROR = 'Please select an option';
 
@@ -149,6 +151,7 @@ const initModalInfo: ModalInfo = {
   opened: false,
   submitInfo: {
     name: '',
+    rsvp: 'YES',
     side: '',
     menu: '',
     note: ''
@@ -173,6 +176,7 @@ const Visual3 = (props: Visual3Props) => {
   const [side, setSide] = useState<string>('');
   const [menu, setMenu] = useState<string>('');
   const [note, setNote] = useState<string>('');
+  const [rsvp, setRsvp] = useState<string>('');
 
   const [isFirstOptionClicked, setIsFirstOptionClicked] =
     useState<boolean>(false);
@@ -180,6 +184,7 @@ const Visual3 = (props: Visual3Props) => {
     useState<boolean>(false);
 
   const [isNameValidated, setIsNameValidated] = useState<boolean>(false);
+  const [isRsvpValidated, setIsRsvpValidated] = useState<boolean>(false);
   const [isSideValidated, setIsSideValidated] = useState<boolean>(false);
   const [isMenuValidated, setIsMenuValidated] = useState<boolean>(false);
 
@@ -214,15 +219,17 @@ const Visual3 = (props: Visual3Props) => {
   const handleSendApi = () => {
     sendRsvpApiThirdVersion({
       name: name,
+      participate: rsvp,
       side: side,
       menu: menu,
       note: note,
       subdomain
     });
   };
+
   const handleFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
-
+    setRsvp('YES');
     setInitForm(false);
 
     if (!isNameValidated) setName('');
@@ -235,6 +242,7 @@ const Visual3 = (props: Visual3Props) => {
         opened: true,
         submitInfo: {
           name: name,
+          rsvp: rsvp,
           side: side,
           menu: menu,
           note: note
@@ -252,6 +260,16 @@ const Visual3 = (props: Visual3Props) => {
       setIsNameValidated(false);
     } else {
       setIsNameValidated(true);
+    }
+  };
+
+  const handleOnChangeRsvpInput = (rsvp: string) => {
+    setRsvp(rsvp);
+
+    if (rsvp === '') {
+      setIsRsvpValidated(false);
+    } else {
+      setIsRsvpValidated(true);
     }
   };
 
@@ -752,6 +770,27 @@ const Visual3 = (props: Visual3Props) => {
                     styles={inputStyle}
                   />
                 </Input.Wrapper>
+                <Radio.Group
+                  label="Attendance"
+                  styles={radioGroupStyle}
+                  required
+                  value={rsvp}
+                  onChange={(rsvp) => handleOnChangeRsvpInput(rsvp)}
+                  error={rsvp === '' && !initForm ? RSVP_INPUT_ERROR : ''}
+                >
+                  <Radio
+                    name="Attendance"
+                    label="Yes"
+                    value="yes"
+                    styles={radioButtonStyle}
+                  />
+                  <Radio
+                    name="Attendance"
+                    label="No"
+                    value="no"
+                    styles={radioButtonStyle}
+                  />
+                </Radio.Group>
                 <Radio.Group
                   label="INVITED FROM"
                   styles={radioGroupStyle}
