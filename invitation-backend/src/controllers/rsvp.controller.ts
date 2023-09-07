@@ -45,9 +45,9 @@ export const rsvpHandler = async (req: Request, res: Response, next: NextFunctio
     } else {
       // Update the exists record.
       const updatedRecord = await rsvpModel.updateOne({
-          name: name
+        name: name
       }, {
-          ...body
+        ...body
       });
 
       return res.status(200).send(JSON.stringify(updatedRecord));
@@ -82,9 +82,9 @@ export const rsvpHandlerSecondVersion = async (req: Request, res: Response, next
     } else {
       // Update the exists record.
       const updatedRecord = await rsvpModel.updateOne({
-          name: name
+        name: name
       }, {
-          ...body
+        ...body
       });
 
       return res.status(200).send(JSON.stringify(updatedRecord));
@@ -101,10 +101,10 @@ export const rsvpHandlerThirdVersion = async (
 ) => {
   try {
     const { body } = req;
-    const { name, side, menu, note, subdomain } = body;
-    // console.log(body);
+    const { name, participate, side, menu, note, subdomain } = body;
     if (
       name === undefined ||
+      participate === undefined ||
       side === undefined ||
       menu === undefined
     ) {
@@ -116,6 +116,7 @@ export const rsvpHandlerThirdVersion = async (
     if (record === null) {
       const createdRsvp = await rsvpModel.create({
         name,
+        participate,
         side,
         menu,
         note,
