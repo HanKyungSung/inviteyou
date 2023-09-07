@@ -1,7 +1,7 @@
 import { getModelForClass, prop } from '@typegoose/typegoose';
 import { TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
 
-export class Rsvp extends TimeStamps{
+export class Rsvp extends TimeStamps {
   @prop({ required: true })
   public name: string;
 
@@ -19,6 +19,9 @@ export class Rsvp extends TimeStamps{
 
   @prop()
   public note?: string;
+  
+  @prop()
+  public side?: string;
 
   @prop({ required: true })
   public subdomain: string;

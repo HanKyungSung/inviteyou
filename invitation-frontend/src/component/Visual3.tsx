@@ -216,6 +216,24 @@ const Visual3 = (props: Visual3Props) => {
     size: 12
   };
 
+  const resetForm = () => {
+    setInitForm(true);
+    setInitNameInput(true);
+    setInitMenuInput(true);
+
+    setName('');
+    setRsvp('');
+    setSide('');
+    setMenu('');
+    handleOptionClick('firstOption');
+    setNote('');
+
+    setIsNameValidated(false);
+    setIsRsvpValidated(false);
+    setIsSideValidated(false);
+    setIsMenuValidated(false);
+  };
+
   const handleSendApi = () => {
     sendRsvpApiThirdVersion({
       name: name,
@@ -225,6 +243,8 @@ const Visual3 = (props: Visual3Props) => {
       note: note,
       subdomain
     });
+
+    resetForm();
   };
 
   const handleFormSubmit = (e: React.SyntheticEvent) => {
@@ -912,6 +932,7 @@ const Visual3 = (props: Visual3Props) => {
                     id="note"
                     cols={30}
                     rows={10}
+                    value={note}
                     placeholder="Please provide us any food restriction you have "
                     className={classes.textarea}
                     onChange={(e) => setNote(e.currentTarget.value)}
