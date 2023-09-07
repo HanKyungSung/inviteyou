@@ -17,6 +17,7 @@ interface sendRsvpApiSecondVersionProps {
 
 interface sendRsvpApiThirdVersionProps {
   name: string;
+  participate: string;
   side: string;
   menu: string;
   note: string;
