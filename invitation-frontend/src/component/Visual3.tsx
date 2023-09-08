@@ -225,7 +225,8 @@ const Visual3 = (props: Visual3Props) => {
     setRsvp('');
     setSide('');
     setMenu('');
-    handleOptionClick('firstOption');
+    setIsFirstOptionClicked(false);
+    setIsSecondOptionClicked(false);
     setNote('');
 
     setIsNameValidated(false);
@@ -310,17 +311,16 @@ const Visual3 = (props: Visual3Props) => {
 
   const handleOptionClick = (option: 'firstOption' | 'secondOption') => {
     setInitMenuInput(false);
+    setIsMenuValidated(true);
 
     if (option === 'firstOption') {
       setMenu('MENU_OPTION_1');
       setIsFirstOptionClicked(true);
       setIsSecondOptionClicked(false);
-      setIsMenuValidated(true);
     } else if (option === 'secondOption') {
       setMenu('MENU_OPTION_2');
       setIsSecondOptionClicked(true);
       setIsFirstOptionClicked(false);
-      setIsMenuValidated(true);
     }
   };
 
