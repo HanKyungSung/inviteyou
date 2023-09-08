@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { Container, Table, Text } from '@mantine/core';
+import { Button, Container, Table, Text } from '@mantine/core';
 import { getParticipants } from '../utils/rsvpUtils';
+import { deleteParticipateSecondApi } from '../utils/ParticipateUtils';
 
 interface Visual3ListProps {
   subdomain: string;
@@ -19,15 +20,26 @@ interface Participant {
 const Visual3List = ({ subdomain }: Visual3ListProps) => {
   const [participants, setParticipants] = useState<Participant[]>([]);
 
-  useEffect(() => {
-    const getParticipantList = async () => {
-      const response = await getParticipants(subdomain);
-      const json = await response.json();
-      setParticipants(json);
-    };
+  const getParticipantList = async () => {
+    const response = await getParticipants(subdomain);
+    const json = await response.json();
 
+    setParticipants(json);
+  };
+
+  useEffect(() => {
     getParticipantList();
-  }, [subdomain]);
+  }, []);
+
+  const handleDeleteRow = async (name: string) => {
+    const response = await deleteParticipateSecondApi(name);
+
+    if (response.ok) {
+      await getParticipantList();
+    } else {
+      console.error('Error deleting participant:', await response.text());
+    }
+  };
 
   return (
     <Container fluid px={0}>
@@ -54,6 +66,11 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
               <td>{participant.note}</td>
               <td>{new Date(participant.createdAt).toLocaleDateString()}</td>
               <td>{new Date(participant.updatedAt).toLocaleDateString()}</td>
+              <td>
+                <Button onClick={() => handleDeleteRow(participant.name)}>
+                  Remove
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>

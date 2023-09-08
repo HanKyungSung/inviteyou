@@ -19,3 +19,22 @@ export const deleteParticipateApi = async (name: string): Promise<Response> => {
 
   return response;
 };
+
+export const deleteParticipateSecondApi = async (
+  name: string
+): Promise<Response> => {
+  const authUser: ILoggedInUser | null = getUserInfo();
+  console.log(authUser);
+  const response = await fetch(`${REACT_APP_API_URL}/api/rsvp/v3`, {
+    method: 'DELETE',
+    body: JSON.stringify({
+      name: name
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${authUser?.token}`
+    }
+  });
+
+  return response;
+};
