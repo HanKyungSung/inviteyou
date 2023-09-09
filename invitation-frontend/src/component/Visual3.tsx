@@ -5,19 +5,50 @@ import {
   Input,
   MantineProvider,
   MantineTheme,
+  Modal,
   Radio,
   Text
 } from '@mantine/core';
-import { Visual3Styles } from '../style/Visual3Styles';
 import { useMediaQuery } from '@mantine/hooks';
-import imgBride from '../assets/img/visual3/img-bride.png';
-import imgGroom from '../assets/img/visual3/img-groom.png';
 import { ImPhone } from 'react-icons/im';
 import { useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
+
+import { Visual3Styles } from '../style/Visual3Styles';
+import imgBride from '../assets/img/visual3/img-bride.png';
+import imgGroom from '../assets/img/visual3/img-groom.png';
+import surveyDeco from '../assets/img/visual3/modal-deco.png';
 import map from '../assets/img/visual3/map.svg';
+import { getIcsFile } from '../utils/calendarUtils';
+import { sendRsvpApiThirdVersion } from '../utils/rsvpUtils';
 
 const useStyles = Visual3Styles();
+
+interface Visual3Props {
+  year: number;
+  monthNum: number;
+  day: number;
+  bride: string;
+  groom: string;
+  location: string;
+  specificLocation: string;
+  time: string;
+  subdomain: string;
+  // mainColor: ColorResult;
+}
+
+interface SubmitInfo {
+  name: string;
+  rsvp: string;
+  side: string;
+  menu: string;
+  note?: string;
+}
+
+interface ModalInfo {
+  opened: boolean;
+  submitInfo: SubmitInfo;
+}
 
 const radioGroupStyle = {
   root: {
@@ -82,17 +113,17 @@ const calendarContainer = {
 
 const inputWrapperStyle = {
   root: {
-    marginBottom: '16px !important' // why !important used? mantine Input 컴포넌트의 기본 스타일을 무시하기 위해?
+    marginBottom: '16px !important'
   },
   required: {
-    color: 'rgb(44, 69, 87) !important'
+    color: 'red !important'
   },
   label: {
     fontFamily: 'KoPub Batang',
     fontSize: '16px'
   },
   error: {
-    color: 'rgb(44, 69, 87) !important',
+    color: 'red !important',
     marginTop: '10px !important'
   }
 };
@@ -111,21 +142,66 @@ const inputStyle = {
   }
 };
 
-interface Visual3Props {
-  year: number;
-  monthNum: number;
-  day: number;
-  bride: string;
-  groom: string;
-  location: string;
-  time: string;
-  subdomain: string;
-  // mainColor: ColorResult;
-}
+const NAME_INPUT_ERROR = 'Please enter your name';
+const RSVP_INPUT_ERROR = 'Please choose your attendance';
+const SIDE_INPUT_ERROR = 'Please choose your side';
+const MENU_INPUT_ERROR = 'Please select an option';
+
+const initModalInfo: ModalInfo = {
+  opened: false,
+  submitInfo: {
+    name: '',
+    rsvp: '',
+    side: '',
+    menu: '',
+    note: ''
+  }
+};
 
 const Visual3 = (props: Visual3Props) => {
+  const { subdomain } = props;
   const { classes } = useStyles();
-  const { year, monthNum, day, bride, groom, location, time } = props;
+  const {
+    year,
+    monthNum,
+    day,
+    bride,
+    groom,
+    location,
+    specificLocation,
+    time
+  } = props;
+
+  const [name, setName] = useState<string>('');
+  const [rsvp, setRsvp] = useState<string>('');
+  const [side, setSide] = useState<string>('');
+  const [menu, setMenu] = useState<string>('');
+  const [note, setNote] = useState<string>('');
+
+  const [isFirstOptionClicked, setIsFirstOptionClicked] =
+    useState<boolean>(false);
+  const [isSecondOptionClicked, setIsSecondOptionClicked] =
+    useState<boolean>(false);
+
+  const [isNameValidated, setIsNameValidated] = useState<boolean>(false);
+  const [isRsvpValidated, setIsRsvpValidated] = useState<boolean>(false);
+  const [isSideValidated, setIsSideValidated] = useState<boolean>(false);
+  const [isMenuValidated, setIsMenuValidated] = useState<boolean>(false);
+
+  const [initForm, setInitForm] = useState<boolean>(true);
+  const [initNameInput, setInitNameInput] = useState<boolean>(true);
+  const [initMenuInput, setInitMenuInput] = useState<boolean>(true);
+
+  const [modalInfo, setModalInfo] = useState<ModalInfo>(initModalInfo);
+  const [opened, setOpened] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<string>('');
+
+  const [hisPhoneNumberText, setHisPhoneNumberText] = useState(
+    'Check His Phone number'
+  );
+  const [herPhoneNumberText, setHerPhoneNumberText] = useState(
+    'Check Her Phone number'
+  );
 
   const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
   const responsiveContainer = {
@@ -140,21 +216,112 @@ const Visual3 = (props: Visual3Props) => {
     size: 12
   };
 
-  const [isFirstOptionClicked, setIsFirstOptionClicked] = useState(false);
-  const [isSecondOptionClicked, setIsSecondOptionClicked] = useState(false);
+  const resetForm = () => {
+    setInitForm(true);
+    setInitNameInput(true);
+    setInitMenuInput(true);
 
-  const handleOptionClick = (option: 'firstOption' | 'secondOption') => {
-    if (option === 'firstOption') {
-      setIsFirstOptionClicked(true);
-      setIsSecondOptionClicked(false);
-    } else if (option === 'secondOption') {
-      setIsSecondOptionClicked(true);
-      setIsFirstOptionClicked(false);
-    }
+    setName('');
+    setRsvp('');
+    setSide('');
+    setMenu('');
+    setIsFirstOptionClicked(false);
+    setIsSecondOptionClicked(false);
+    setNote('');
+
+    setIsNameValidated(false);
+    setIsRsvpValidated(false);
+    setIsSideValidated(false);
+    setIsMenuValidated(false);
+  };
+
+  const handleSendApi = () => {
+    sendRsvpApiThirdVersion({
+      name: name,
+      participate: rsvp,
+      side: side,
+      menu: menu,
+      note: note,
+      subdomain
+    });
+
+    resetForm();
   };
 
   const handleFormSubmit = (e: React.SyntheticEvent) => {
     e.preventDefault();
+    setInitForm(false);
+
+    if (!isNameValidated) setName('');
+    if (!isRsvpValidated) setRsvp('');
+    if (!isSideValidated) setSide('');
+    if (!isMenuValidated) setMenu('');
+
+    if (
+      isNameValidated &&
+      isRsvpValidated &&
+      isSideValidated &&
+      isMenuValidated
+    ) {
+      handleSendApi();
+      setModalInfo({
+        opened: true,
+        submitInfo: {
+          name: name,
+          rsvp: rsvp,
+          side: side,
+          menu: menu,
+          note: note
+        }
+      });
+    }
+  };
+
+  const handleOnChangeNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newName = e.currentTarget.value;
+    setName(newName);
+    setInitNameInput(false);
+
+    if (newName === '') {
+      setIsNameValidated(false);
+    } else {
+      setIsNameValidated(true);
+    }
+  };
+
+  const handleOnChangeRsvpInput = (rsvp: string) => {
+    setRsvp(rsvp);
+
+    if (rsvp === '') {
+      setIsRsvpValidated(false);
+    } else {
+      setIsRsvpValidated(true);
+    }
+  };
+
+  const handleOnchangeSideInput = (side: string) => {
+    setSide(side);
+
+    if (side === '') {
+      setIsSideValidated(false);
+    } else {
+      setIsSideValidated(true);
+    }
+  };
+
+  const handleOptionClick = (option: 'firstOption' | 'secondOption') => {
+    setInitMenuInput(false);
+    setIsMenuValidated(true);
+
+    if (option === 'firstOption') {
+      setMenu('MENU_OPTION_1');
+      setIsFirstOptionClicked(true);
+      setIsSecondOptionClicked(false);
+    } else if (option === 'secondOption') {
+      setMenu('MENU_OPTION_2');
+      setIsSecondOptionClicked(true);
+      setIsFirstOptionClicked(false);
+    }
   };
 
   const imgs: string[] = [
@@ -165,13 +332,19 @@ const Visual3 = (props: Visual3Props) => {
     require('../assets/img/visual3/moment_pics/5.png')
   ];
 
-  const slides: JSX.Element[] = imgs.map((img) => {
+  const slides: JSX.Element[] = imgs.map((img, index) => {
     return (
-      <div key={`side-${img}`}>
-        <img src={img} alt={`Slide $(item)`} />
+      <div key={`slide-${img}`} onClick={() => handleOpen(img)}>
+        <img src={img} alt={`Slide ${index}`} />
       </div>
     );
   });
+  const handleOpen = (imageSrc: string) => {
+    setSelectedImage(imageSrc);
+    setOpened(true);
+  };
+
+  const handleClose = () => setOpened(false);
 
   return (
     <>
@@ -205,6 +378,67 @@ const Visual3 = (props: Visual3Props) => {
           })
         }}
       >
+        <Modal
+          centered
+          onClose={() => setModalInfo({ ...initModalInfo, opened: false })}
+          opened={modalInfo.opened}
+          title={`Hello ${modalInfo.submitInfo.name},`}
+          styles={{
+            title: {
+              fontSize: '16px',
+              fontWeight: 700,
+              margin: 0,
+              color: 'rgb(180, 152, 133)'
+            },
+            body: {
+              fontSize: '14px',
+              lineHeight: '1.5',
+              color: 'rgb(0, 0, 0)'
+            }
+          }}
+        >
+          <div className="survey-comment">
+            <p>
+              Thank you for attendance at our wedding.
+              <br />
+              <br />
+              If you have any inquiries, <br />
+              please contact us at{' '}
+              <a
+                href="tel:778-727-9067"
+                style={{ color: 'rgb(180, 152, 133)', textDecoration: 'none' }}
+              >
+                '778-727-9067'
+              </a>
+              .
+            </p>
+            <p
+              style={{
+                color: 'rgb(180, 152, 133',
+                fontWeight: 900,
+                marginTop: 20,
+                fontSize: 16
+              }}
+            >
+              Attendance: {modalInfo.submitInfo.rsvp}
+              <br />
+              Invite from: {modalInfo.submitInfo.side}
+              <br />
+              Menu: {modalInfo.submitInfo.menu}
+              <br />
+              Allergic note: {modalInfo.submitInfo.note}
+            </p>
+            <figure
+              style={{ position: 'absolute', right: 0, bottom: 0, margin: 0 }}
+            >
+              <img
+                src={surveyDeco}
+                alt="surveyDeco"
+                style={{ maxHeight: 180 }}
+              />
+            </figure>
+          </div>
+        </Modal>
         <main
           className={`${classes.invitationWrap} ${classes.invitationVisual}`}
         >
@@ -300,7 +534,7 @@ const Visual3 = (props: Visual3Props) => {
                 October, <span className={classes.weddingYear}>2023</span>
               </strong>
               <span>
-                <span className={classes.weddingDayOfWeek}>Fri,</span>
+                <span className={classes.weddingDayOfWeek}>MON,</span>
                 <span>01:30 PM</span>
               </span>
             </div>
@@ -414,10 +648,15 @@ const Visual3 = (props: Visual3Props) => {
                     <span className="sun">26</span>
                   </td>
                   <td>
-                    <span>27</span>
+                    <span
+                      className={classes.current}
+                      onClick={() => getIcsFile({ subdomain: 'visual' })}
+                    >
+                      27
+                    </span>
                   </td>
                   <td>
-                    <span className={classes.current}>28</span>
+                    <span>28</span>
                   </td>
                   <td>
                     <span>29</span>
@@ -434,7 +673,6 @@ const Visual3 = (props: Visual3Props) => {
           </Container>
           <Container {...responsiveContainer} py={85}>
             <div className={classes.sectionTitWrap}>
-              {/* TODO: need to adjust padding with contact list */}
               <Text
                 className={classes.sectionSubTit}
                 {...responsiveTitleText}
@@ -460,8 +698,15 @@ const Visual3 = (props: Visual3Props) => {
                       <Text weight={'bold'}>Call To Bride</Text>
                     </li>
                     <li>
-                      <Text color="#888" underline>
-                        Check Her Phone number
+                      <Text
+                        className={classes.textWithPointerCursor}
+                        color="#888"
+                        underline
+                        onClick={() =>
+                          setHerPhoneNumberText('+1) 778. 727. 9067')
+                        }
+                      >
+                        {herPhoneNumberText}
                       </Text>
                     </li>
                   </ul>
@@ -491,8 +736,15 @@ const Visual3 = (props: Visual3Props) => {
                       <Text weight={'bold'}>Call To Groom</Text>
                     </li>
                     <li>
-                      <Text color="#888" underline>
-                        Check His Phone number
+                      <Text
+                        className={classes.textWithPointerCursor}
+                        color="#888"
+                        underline
+                        onClick={() =>
+                          setHisPhoneNumberText('+1) 778. 723. 8027')
+                        }
+                      >
+                        {hisPhoneNumberText}
                       </Text>
                     </li>
                   </ul>
@@ -500,7 +752,7 @@ const Visual3 = (props: Visual3Props) => {
                 <ul className={classes.flexDisplay}>
                   <li className={classes.contactIcon}>
                     <figure>
-                      <a href={`tel:778-727-9067`}>
+                      <a href={`tel:778-723-8027`}>
                         <ImPhone />
                       </a>
                     </figure>
@@ -523,16 +775,57 @@ const Visual3 = (props: Visual3Props) => {
             </div>
             <div className={classes.marginTopForty}>
               <form onSubmit={(e) => handleFormSubmit(e)}>
-                <Input.Wrapper label="NAME" styles={inputWrapperStyle}>
+                <Input.Wrapper
+                  label="NAME"
+                  styles={inputWrapperStyle}
+                  required
+                  error={
+                    name === '' && (!initNameInput || !initForm)
+                      ? NAME_INPUT_ERROR
+                      : ''
+                  }
+                >
                   <Input
                     id="name-input"
                     placeholder="Please enter your full name"
                     variant="unstyled"
                     name="name"
+                    value={name}
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      handleOnChangeNameInput(e)
+                    }
                     styles={inputStyle}
                   />
                 </Input.Wrapper>
-                <Radio.Group label="INVITED FROM" styles={radioGroupStyle}>
+                <Radio.Group
+                  label="ATTENDANCE"
+                  styles={radioGroupStyle}
+                  required
+                  value={rsvp}
+                  onChange={(rsvp) => handleOnChangeRsvpInput(rsvp)}
+                  error={rsvp === '' && !initForm ? RSVP_INPUT_ERROR : ''}
+                >
+                  <Radio
+                    name="ATTENDANCE"
+                    label="Yes"
+                    value="yes"
+                    styles={radioButtonStyle}
+                  />
+                  <Radio
+                    name="ATTENDANCE"
+                    label="No"
+                    value="no"
+                    styles={radioButtonStyle}
+                  />
+                </Radio.Group>
+                <Radio.Group
+                  label="INVITED FROM"
+                  styles={radioGroupStyle}
+                  required
+                  value={side}
+                  onChange={(side) => handleOnchangeSideInput(side)}
+                  error={side === '' && !initForm ? SIDE_INPUT_ERROR : ''}
+                >
                   <Radio
                     name="INVITED FROM"
                     label="Bride Side"
@@ -545,10 +838,18 @@ const Visual3 = (props: Visual3Props) => {
                     value="groom"
                     styles={radioButtonStyle}
                   />
+                  <Radio
+                    name="INVITED FROM"
+                    label="Both Side"
+                    value="both"
+                    styles={radioButtonStyle}
+                  />
                 </Radio.Group>
                 <div>
                   <div>
-                    <Text size={16}>MENU</Text>
+                    <Text size={16}>
+                      MENU<span className={classes.asteriskColor}> *</span>
+                    </Text>
                   </div>
                   <div className={classes.menuContainer}>
                     <div
@@ -614,6 +915,14 @@ const Visual3 = (props: Visual3Props) => {
                       Select This Menu
                     </Button>
                   </div>
+
+                  {menu === '' && (!initMenuInput || !initForm) ? (
+                    <Text size={12} mt={10} className={classes.error}>
+                      {MENU_INPUT_ERROR}
+                    </Text>
+                  ) : (
+                    ''
+                  )}
                 </div>
                 {/* Menu End */}
                 <div className={classes.marginTopForty}>
@@ -623,8 +932,10 @@ const Visual3 = (props: Visual3Props) => {
                     id="note"
                     cols={30}
                     rows={10}
+                    value={note}
                     placeholder="Please provide us any food restriction you have "
                     className={classes.textarea}
+                    onChange={(e) => setNote(e.currentTarget.value)}
                   ></textarea>
                 </div>
                 <button className={classes.customButton} type="submit">
@@ -658,6 +969,13 @@ const Visual3 = (props: Visual3Props) => {
                   {slides}
                 </Carousel>
               </div>
+              <Modal opened={opened} onClose={handleClose} size="xl">
+                <img
+                  src={selectedImage}
+                  alt="Selected preview"
+                  style={{ width: '100%', height: 'auto' }}
+                />
+              </Modal>
             </Container>
           </Container>
           <Container {...responsiveContainer} py={100} mt={-50}>
@@ -680,7 +998,7 @@ const Visual3 = (props: Visual3Props) => {
                       pb={5}
                       size={RESPONSIVE_MOBILE ? 16 : 18}
                     >
-                      The Name Of Wedding Hall
+                      {specificLocation}
                     </Text>
                   </li>
                   <li>
@@ -710,7 +1028,9 @@ const Visual3 = (props: Visual3Props) => {
               className={`${classes.customButton} ${classes.customButtonWithSmallFont}`}
               type="submit"
             >
-              Direct with google map
+              <a href="https://goo.gl/maps/S936VaQr6rtAhYpF6" target="_blank">
+                Direct with google map
+              </a>
             </button>
           </Container>
         </main>
@@ -726,7 +1046,8 @@ Visual3.defaultProps = {
   bride: 'Daniel',
   groom: 'Anna',
   month: 'October',
-  location: '0000 Vancouver St. Vancouver, BC, Canada',
+  location: '438 Seymour St, Vancouver, BC V6B 6H4',
+  specificLocation: 'Conference Plaza',
   time: '01:30 PM'
 };
 

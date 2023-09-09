@@ -94,11 +94,65 @@ export const rsvpHandlerSecondVersion = async (req: Request, res: Response, next
   }
 };
 
-export const deleteRsvpHandler = async (req: Request, res: Response, next: NextFunction) => {
+export const rsvpHandlerThirdVersion = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { body } = req;
+    const { name, participate, side, menu, note, subdomain } = body;
+    if (
+      name === undefined ||
+      participate === undefined ||
+      side === undefined ||
+      menu === undefined
+    ) {
+      return res.send(400);
+    }
+
+    const record = await rsvpModel.findOne({ name: name });
+
+    if (record === null) {
+      const createdRsvp = await rsvpModel.create({
+        name,
+        participate,
+        side,
+        menu,
+        note,
+        subdomain
+      });
+
+      const createdRsvpObject = createdRsvp.toObject();
+      delete createdRsvpObject._id;
+
+      return res.status(201).send(JSON.stringify(createdRsvpObject));
+    } else {
+      const updatedRecord = await rsvpModel.updateOne(
+        {
+          name: name
+        },
+        {
+          ...body
+        }
+      );
+
+      return res.status(200).send(JSON.stringify(updatedRecord));
+    }
+  } catch (error) {
+    return next(error);
+  }
+};
+
+export const deleteRsvpHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   try {
     const { body } = req;
     const { name } = body;
-    
+
     // Look for the exists record.
     const record = await rsvpModel.findOne({ name: name });
 

@@ -107,7 +107,11 @@ const Visual3Styles = () =>
       backgroundColor: 'rgb(180, 152, 133)',
       color: '#fff',
       fontWeight: 700,
-      borderRadius: '50%'
+      borderRadius: '50%',
+      cursor: 'pointer'
+    },
+    textWithPointerCursor: {
+      cursor: 'pointer'
     },
     calendarTable: {
       width: '100%',
@@ -230,6 +234,12 @@ const Visual3Styles = () =>
         fontSize: 16
       }
     },
+    asteriskColor: {
+      color: 'red'
+    },
+    error: {
+      color: 'red'
+    },
     menuContainer: {
       cursor: 'pointer',
       display: 'flex',
@@ -253,6 +263,7 @@ const Visual3Styles = () =>
     },
     carouselWrap: {
       '.slide': {
+        cursor: 'pointer',
         img: {
           margin: 0,
           width: '100%',
@@ -269,7 +280,8 @@ const Visual3Styles = () =>
         }
       },
       '.carousel .thumbs-wrapper': {
-        margin: 0
+        margin: 0,
+        cursor: 'pointer'
       },
       '.carousel .thumb': {
         marginRight: 0,
