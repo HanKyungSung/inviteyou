@@ -11,6 +11,7 @@ import {
 } from '@mantine/core';
 import { getParticipants } from '../utils/rsvpUtils';
 import { deleteParticipateSecondApi } from '../utils/ParticipateUtils';
+import Visual3RSVPForm from './Visual3RSVPForm';
 
 interface Visual3ListProps {
   subdomain: string;
@@ -58,6 +59,16 @@ const initEditModal = {
 interface IConfirmModal {
   open: boolean;
   name: string;
+}
+
+interface ConfirmDeleteModalProps {
+  confirmModal: IConfirmModal;
+  setConfirmModal: (modal: { open: boolean; name: string }) => void;
+  handleDeleteRow: () => void;
+  initialConfirmModal: {
+    open: boolean;
+    name: string;
+  };
 }
 
 // TODO: import these styles from Visual3.tsx
@@ -136,21 +147,65 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
 
   const openConfirmModal = (participantName: string) => {
     setConfirmModal({ open: true, name: participantName });
-    handleDeleteRow(participantName);
   };
 
-  const handleDeleteRow = async (name: string) => {
-    const response = await deleteParticipateSecondApi(name);
+  const handleDeleteRow = async () => {
+    const response = await deleteParticipateSecondApi(confirmModal.name);
 
     if (response.ok) {
       await getParticipantList();
     } else {
       console.error('Error deleting participant:', await response.text());
     }
+
+    setConfirmModal(initialConfirmModal);
+  };
+
+  const ConfirmDeleteModal: React.FC<ConfirmDeleteModalProps> = ({
+    confirmModal,
+    setConfirmModal,
+    handleDeleteRow,
+    initialConfirmModal
+  }) => {
+    const handleCloseModal = () => {
+      setConfirmModal({
+        ...confirmModal,
+        open: false
+      });
+    };
+
+    const handleCancelDeletion = () => {
+      setConfirmModal(initialConfirmModal);
+    };
+
+    return (
+      <Modal
+        opened={confirmModal.open}
+        onClose={handleCloseModal}
+        centered
+        title={
+          <Text>
+            Are you sure to remove <b>{confirmModal.name}?</b>
+          </Text>
+        }
+      >
+        <Grid>
+          <Grid.Col span="content">
+            <Button color="red" onClick={handleDeleteRow}>
+              YES
+            </Button>
+          </Grid.Col>
+          <Grid.Col span="content">
+            <Button onClick={handleCancelDeletion}>NO</Button>
+          </Grid.Col>
+        </Grid>
+      </Modal>
+    );
   };
 
   return (
     <Container fluid px={0}>
+      {/* Edit Modal */}
       <EditModal
         opened={editModal.open}
         setModalOpen={(opened) =>
@@ -164,7 +219,13 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
         participants={participants}
         subdomain={subdomain}
       />
-
+      {/* Delete Confirm Modal */}
+      <ConfirmDeleteModal
+        confirmModal={confirmModal}
+        setConfirmModal={setConfirmModal}
+        handleDeleteRow={handleDeleteRow}
+        initialConfirmModal={initialConfirmModal}
+      />
       <Text>Total Rows: {participants.length}</Text>
       <Table>
         <thead>
@@ -230,12 +291,12 @@ interface IEditModalProps {
 }
 
 const EditModal = (props: IEditModalProps) => {
-  const { setModalOpen } = props;
+  const { opened, setModalOpen } = props;
 
   return (
     <Modal
       centered
-      opened={true}
+      opened={opened}
       onClose={() => setModalOpen(false)}
       title="UPDATE THE PARTICIPATE"
     >
