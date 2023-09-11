@@ -1,5 +1,14 @@
 import { useEffect, useState } from 'react';
-import { Button, Container, Table, Text } from '@mantine/core';
+import {
+  Button,
+  Container,
+  Grid,
+  Input,
+  Modal,
+  Radio,
+  Table,
+  Text
+} from '@mantine/core';
 import { getParticipants } from '../utils/rsvpUtils';
 import { deleteParticipateSecondApi } from '../utils/ParticipateUtils';
 
@@ -17,9 +26,103 @@ interface Participant {
   updatedAt: string;
 }
 
+interface IEditableUser {
+  name: string;
+  participate: string;
+  side: string;
+  menu: string;
+  note: string;
+}
+
+interface IEditModal {
+  open: boolean;
+  user: IEditableUser;
+}
+
+const initialConfirmModal = {
+  open: false,
+  name: ''
+};
+
+const initEditModal = {
+  open: false,
+  user: {
+    name: '',
+    participate: '',
+    side: '',
+    menu: '',
+    note: ''
+  }
+};
+
+interface IConfirmModal {
+  open: boolean;
+  name: string;
+}
+
+// TODO: import these styles from Visual3.tsx
+const inputStyle = {
+  wrapper: {
+    'input::placeholder': {
+      margin: '16px 0',
+      fontSize: '16px'
+    },
+    padding: '16px 0 10px 0 !important',
+    borderBottom: '1px solid #ddd !important'
+  },
+  input: {
+    fontSize: '16px'
+  }
+};
+
+const radioGroupStyle = {
+  root: {
+    marginBottom: '20px !important'
+  },
+  required: {
+    color: 'red !important'
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: '16px !important',
+    marginTop: '16px !important'
+  },
+  error: {
+    color: 'red !important',
+    marginTop: '10px !important'
+  }
+};
+
+const radioButtonStyle = {
+  body: {
+    cursor: 'pointer'
+  },
+  icon: {
+    color: 'rgb(180, 152, 133)',
+    width: '12px',
+    height: '12px',
+    top: 'calc(50% - 6px)',
+    left: 'calc(50% - 6px)',
+    cursor: 'pointer'
+  },
+  radio: {
+    cursor: 'pointer',
+    ':checked': {
+      backgroundColor: '#fff',
+      border: '1px solid rgb(180, 152, 133)'
+    },
+    '&::after': {
+      backgroundColor: 'rgb(180, 152, 133)',
+      borderColor: 'rgb(180, 152, 133)'
+    }
+  }
+};
+
 const Visual3List = ({ subdomain }: Visual3ListProps) => {
   const [participants, setParticipants] = useState<Participant[]>([]);
-
+  const [confirmModal, setConfirmModal] =
+    useState<IConfirmModal>(initialConfirmModal);
+  const [editModal, setEditModal] = useState<IEditModal>(initEditModal);
   const getParticipantList = async () => {
     const response = await getParticipants(subdomain);
     const json = await response.json();
@@ -30,6 +133,11 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
   useEffect(() => {
     getParticipantList();
   }, []);
+
+  const openConfirmModal = (participantName: string) => {
+    setConfirmModal({ open: true, name: participantName });
+    handleDeleteRow(participantName);
+  };
 
   const handleDeleteRow = async (name: string) => {
     const response = await deleteParticipateSecondApi(name);
@@ -43,6 +151,20 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
 
   return (
     <Container fluid px={0}>
+      <EditModal
+        opened={editModal.open}
+        setModalOpen={(opened) =>
+          setEditModal({
+            ...editModal,
+            open: opened
+          })
+        }
+        getParticipantList={getParticipantList}
+        user={editModal.user}
+        participants={participants}
+        subdomain={subdomain}
+      />
+
       <Text>Total Rows: {participants.length}</Text>
       <Table>
         <thead>
@@ -67,8 +189,27 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
               <td>{new Date(participant.createdAt).toLocaleDateString()}</td>
               <td>{new Date(participant.updatedAt).toLocaleDateString()}</td>
               <td>
-                <Button onClick={() => handleDeleteRow(participant.name)}>
+                <Button onClick={() => openConfirmModal(participant.name)}>
                   Remove
+                </Button>
+              </td>
+              <td>
+                <Button
+                  onClick={() =>
+                    setEditModal({
+                      open: true,
+                      user: {
+                        name: participant.name,
+                        participate: participant.participate,
+                        side: participant.side,
+                        menu: participant.menu,
+                        note:
+                          participant.note !== undefined ? participant.note : ''
+                      }
+                    })
+                  }
+                >
+                  Edit
                 </Button>
               </td>
             </tr>
@@ -76,6 +217,111 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
         </tbody>
       </Table>
     </Container>
+  );
+};
+
+interface IEditModalProps {
+  opened: boolean;
+  setModalOpen: (opened: boolean) => void;
+  getParticipantList: () => void;
+  user: IEditableUser;
+  subdomain: string;
+  participants: Participant[];
+}
+
+const EditModal = (props: IEditModalProps) => {
+  const { setModalOpen } = props;
+
+  return (
+    <Modal
+      centered
+      opened={true}
+      onClose={() => setModalOpen(false)}
+      title="UPDATE THE PARTICIPATE"
+    >
+      <form>
+        <Input.Wrapper
+          required
+          id="edit-modal-name"
+          label="NAME"
+          styles={{
+            root: {
+              marginBottom: '10px'
+            }
+          }}
+        >
+          <Input placeholder="Name" styles={inputStyle} />
+          <Radio.Group
+            withAsterisk
+            name="participate"
+            label="PARTICIPATE"
+            styles={radioGroupStyle}
+          >
+            <Radio value="yes" label="Yes" styles={radioButtonStyle} />
+            <Radio value="no" label="No" styles={radioButtonStyle} />
+          </Radio.Group>
+          <Radio.Group
+            label="INVITED FROM"
+            styles={radioGroupStyle}
+            withAsterisk
+          >
+            <Radio
+              name="INVITED FROM"
+              label="Bride Side"
+              value="bride"
+              styles={radioButtonStyle}
+            />
+            <Radio
+              name="INVITED FROM"
+              label="Groom Side"
+              value="groom"
+              styles={radioButtonStyle}
+            />
+            <Radio
+              name="INVITED FROM"
+              label="Both Side"
+              value="both"
+              styles={radioButtonStyle}
+            />
+          </Radio.Group>
+          <Radio.Group label="MENU" styles={radioGroupStyle} withAsterisk>
+            <Radio
+              name="OPTION 1"
+              label="OPTION 1"
+              value="MENU_OPTION_1"
+              styles={radioButtonStyle}
+            />
+            <Radio
+              name="OPTION 2"
+              label="OPTION 2"
+              value="MENU_OPTION_2"
+              styles={radioButtonStyle}
+            />
+          </Radio.Group>
+          <label>NOTE</label>
+          <textarea
+            name="note"
+            id="note"
+            cols={30}
+            rows={10}
+            placeholder="Please provide us any food restriction you have "
+            style={{
+              width: '100%'
+            }}
+          />
+          <Grid>
+            <Grid.Col span="content">
+              <Button type="submit" color="red">
+                Yes
+              </Button>
+            </Grid.Col>
+            <Grid.Col span="content">
+              <Button onClick={() => setModalOpen(false)}>No</Button>
+            </Grid.Col>
+          </Grid>
+        </Input.Wrapper>
+      </form>
+    </Modal>
   );
 };
 
