@@ -11,7 +11,7 @@ import {
 } from '@mantine/core';
 import { getParticipants } from '../utils/rsvpUtils';
 import { deleteParticipateSecondApi } from '../utils/ParticipateUtils';
-import Visual3RSVPForm from './Visual3RSVPForm';
+import { Visual3RSVPForm } from './Visual3';
 
 interface Visual3ListProps {
   subdomain: string;
@@ -71,69 +71,12 @@ interface ConfirmDeleteModalProps {
   };
 }
 
-// TODO: import these styles from Visual3.tsx
-const inputStyle = {
-  wrapper: {
-    'input::placeholder': {
-      margin: '16px 0',
-      fontSize: '16px'
-    },
-    padding: '16px 0 10px 0 !important',
-    borderBottom: '1px solid #ddd !important'
-  },
-  input: {
-    fontSize: '16px'
-  }
-};
-
-const radioGroupStyle = {
-  root: {
-    marginBottom: '20px !important'
-  },
-  required: {
-    color: 'red !important'
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: '16px !important',
-    marginTop: '16px !important'
-  },
-  error: {
-    color: 'red !important',
-    marginTop: '10px !important'
-  }
-};
-
-const radioButtonStyle = {
-  body: {
-    cursor: 'pointer'
-  },
-  icon: {
-    color: 'rgb(180, 152, 133)',
-    width: '12px',
-    height: '12px',
-    top: 'calc(50% - 6px)',
-    left: 'calc(50% - 6px)',
-    cursor: 'pointer'
-  },
-  radio: {
-    cursor: 'pointer',
-    ':checked': {
-      backgroundColor: '#fff',
-      border: '1px solid rgb(180, 152, 133)'
-    },
-    '&::after': {
-      backgroundColor: 'rgb(180, 152, 133)',
-      borderColor: 'rgb(180, 152, 133)'
-    }
-  }
-};
-
 const Visual3List = ({ subdomain }: Visual3ListProps) => {
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [confirmModal, setConfirmModal] =
     useState<IConfirmModal>(initialConfirmModal);
   const [editModal, setEditModal] = useState<IEditModal>(initEditModal);
+
   const getParticipantList = async () => {
     const response = await getParticipants(subdomain);
     const json = await response.json();
@@ -291,97 +234,19 @@ interface IEditModalProps {
 }
 
 const EditModal = (props: IEditModalProps) => {
-  const { opened, setModalOpen } = props;
+  const { opened, setModalOpen, user, subdomain } = props;
 
   return (
     <Modal
       centered
       opened={opened}
       onClose={() => setModalOpen(false)}
-      title="UPDATE THE PARTICIPATE"
+      title={`UPDATE THE PARTICIPATE ${user.name}`}
+      size="xl"
     >
-      <form>
-        <Input.Wrapper
-          required
-          id="edit-modal-name"
-          label="NAME"
-          styles={{
-            root: {
-              marginBottom: '10px'
-            }
-          }}
-        >
-          <Input placeholder="Name" styles={inputStyle} />
-          <Radio.Group
-            withAsterisk
-            name="participate"
-            label="PARTICIPATE"
-            styles={radioGroupStyle}
-          >
-            <Radio value="yes" label="Yes" styles={radioButtonStyle} />
-            <Radio value="no" label="No" styles={radioButtonStyle} />
-          </Radio.Group>
-          <Radio.Group
-            label="INVITED FROM"
-            styles={radioGroupStyle}
-            withAsterisk
-          >
-            <Radio
-              name="INVITED FROM"
-              label="Bride Side"
-              value="bride"
-              styles={radioButtonStyle}
-            />
-            <Radio
-              name="INVITED FROM"
-              label="Groom Side"
-              value="groom"
-              styles={radioButtonStyle}
-            />
-            <Radio
-              name="INVITED FROM"
-              label="Both Side"
-              value="both"
-              styles={radioButtonStyle}
-            />
-          </Radio.Group>
-          <Radio.Group label="MENU" styles={radioGroupStyle} withAsterisk>
-            <Radio
-              name="OPTION 1"
-              label="OPTION 1"
-              value="MENU_OPTION_1"
-              styles={radioButtonStyle}
-            />
-            <Radio
-              name="OPTION 2"
-              label="OPTION 2"
-              value="MENU_OPTION_2"
-              styles={radioButtonStyle}
-            />
-          </Radio.Group>
-          <label>NOTE</label>
-          <textarea
-            name="note"
-            id="note"
-            cols={30}
-            rows={10}
-            placeholder="Please provide us any food restriction you have "
-            style={{
-              width: '100%'
-            }}
-          />
-          <Grid>
-            <Grid.Col span="content">
-              <Button type="submit" color="red">
-                Yes
-              </Button>
-            </Grid.Col>
-            <Grid.Col span="content">
-              <Button onClick={() => setModalOpen(false)}>No</Button>
-            </Grid.Col>
-          </Grid>
-        </Input.Wrapper>
-      </form>
+      <Container>
+        <Visual3RSVPForm subdomain={subdomain} />
+      </Container>
     </Modal>
   );
 };
