@@ -32,3 +32,11 @@ export interface AttemptUserLogin {
   email: string;
   password: string;
 }
+
+export interface SubmitInfo {
+  name: string;
+  rsvp: string;
+  side: string;
+  menu: string;
+  note?: string;
+}

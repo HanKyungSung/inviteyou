@@ -12,6 +12,7 @@ import {
 import { getParticipants } from '../utils/rsvpUtils';
 import { deleteParticipateSecondApi } from '../utils/ParticipateUtils';
 import { Visual3RSVPForm } from './Visual3';
+import { SubmitInfo } from '../common/interfaces';
 
 interface Visual3ListProps {
   subdomain: string;
@@ -277,6 +278,13 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
           ))}
         </tbody>
       </Table>
+      <Visual3RSVPForm
+        subdomain="visual"
+        onSubmit={(submitInfo: SubmitInfo) => {
+          console.log('submitInfo', submitInfo);
+          // TODO: Need to open the modal, send api etc..
+        }}
+      />
     </Container>
   );
 };

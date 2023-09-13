@@ -13,7 +13,7 @@ import { useMediaQuery } from '@mantine/hooks';
 import { ImPhone } from 'react-icons/im';
 import { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
-
+import { SubmitInfo } from '../common/interfaces';
 import { Visual3Styles } from '../style/Visual3Styles';
 import imgBride from '../assets/img/visual3/img-bride.png';
 import imgGroom from '../assets/img/visual3/img-groom.png';
@@ -37,14 +37,6 @@ interface Visual3Props {
   // mainColor: ColorResult;
 }
 
-interface SubmitInfo {
-  name: string;
-  rsvp: string;
-  side: string;
-  menu: string;
-  note?: string;
-}
-
 interface ModalInfo {
   opened: boolean;
   submitInfo: SubmitInfo;
@@ -52,6 +44,7 @@ interface ModalInfo {
 
 interface Visual3RSVPFormProps {
   subdomain: string;
+  onSubmit: (info: SubmitInfo) => void;
 }
 
 const radioGroupStyle = {
@@ -171,8 +164,6 @@ export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
   const [side, setSide] = useState<string>('');
   const [menu, setMenu] = useState<string>('');
   const [note, setNote] = useState<string>('');
-  const [modalInfo, setModalInfo] = useState<ModalInfo>(initModalInfo);
-
   const [isFirstOptionClicked, setIsFirstOptionClicked] =
     useState<boolean>(false);
   const [isSecondOptionClicked, setIsSecondOptionClicked] =
@@ -191,9 +182,6 @@ export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
     size: 12
   };
 
-  useEffect(() => {
-    console.log(modalInfo);
-  }, [modalInfo]);
   const resetForm = () => {
     setInitForm(true);
     setInitNameInput(true);
@@ -241,17 +229,13 @@ export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
       isSideValidated &&
       isMenuValidated
     ) {
-      console.log(name);
-      // handleSendApi();
-      setModalInfo({
-        opened: true,
-        submitInfo: {
-          name: name,
-          rsvp: rsvp,
-          side: side,
-          menu: menu,
-          note: note
-        }
+      handleSendApi();
+      props.onSubmit({
+        name: name,
+        rsvp: rsvp,
+        side: side,
+        menu: menu,
+        note: note
       });
     }
   };
@@ -954,7 +938,15 @@ const Visual3 = (props: Visual3Props) => {
               </Text>
             </div>
             <div className={classes.marginTopForty}>
-              <Visual3RSVPForm subdomain={subdomain} />
+              <Visual3RSVPForm
+                subdomain={subdomain}
+                onSubmit={(submitInfo: SubmitInfo) => {
+                  setModalInfo({
+                    opened: true,
+                    submitInfo: submitInfo
+                  });
+                }}
+              />
             </div>
           </Container>
           <Container {...responsiveContainer} py={70} mt={-20}>
