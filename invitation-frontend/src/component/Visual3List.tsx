@@ -10,14 +10,17 @@ import {
   Text
 } from '@mantine/core';
 import { getParticipants } from '../utils/rsvpUtils';
-import { deleteParticipateSecondApi } from '../utils/ParticipateUtils';
-import { Visual3RSVPForm } from './Visual3';
+import {
+  deleteParticipateSecondApi,
+  sendPostRsvpApi
+} from '../utils/ParticipateUtils';
 
 interface Visual3ListProps {
   subdomain: string;
 }
 
 interface IParticipant {
+  _id: object;
   name: string;
   participate: string;
   side: string;
@@ -35,6 +38,7 @@ const initialConfirmModal = {
 const initEditModal = {
   open: false,
   user: {
+    _id: {},
     name: '',
     participate: '',
     side: '',
@@ -44,6 +48,7 @@ const initEditModal = {
 };
 
 interface IEditableUser {
+  _id: object;
   name: string;
   participate: string;
   side: string;
@@ -256,10 +261,11 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
               </td>
               <td>
                 <Button
-                  onClick={() =>
+                  onClick={() => {
                     setEditModal({
                       open: true,
                       user: {
+                        _id: participant._id,
                         name: participant.name,
                         participate: participant.participate,
                         side: participant.side,
@@ -267,8 +273,8 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
                         note:
                           participant.note !== undefined ? participant.note : ''
                       }
-                    })
-                  }
+                    });
+                  }}
                 >
                   Edit
                 </Button>
@@ -292,46 +298,41 @@ interface IEditModalProps {
 
 interface IEditModalErrors {
   nameError: string;
-  nameExistsError: string;
 }
 
 const EditModal = (props: IEditModalProps) => {
-  const {
-    opened,
-    setModalOpen,
-    getParticipantList,
-    user,
-    subdomain,
-    participants
-  } = props;
+  const { opened, setModalOpen, getParticipantList, user, subdomain } = props;
 
   const [editedUser, setEditedUser] = useState<IEditableUser>({ ...user });
 
   const [errors] = useState<IEditModalErrors>({
-    nameError: 'Name can not be empty',
-    nameExistsError: 'Entered name already exists'
+    nameError: 'Name can not be empty'
   });
-
-  const filteredParticipant = participants.filter(
-    (participant: IParticipant) => participant.name !== user.name
-  );
-
-  const foundParticipant = filteredParticipant.find(
-    (participant: IParticipant) => participant.name === editedUser.name
-  );
 
   useEffect(() => {
     setEditedUser({ ...user });
   }, [user]);
 
-  console.log(editedUser);
   const nameError = () => {
     if (editedUser.name === '') {
       return errors.nameError;
-    } else if (foundParticipant) {
-      return errors.nameExistsError;
     } else {
       return '';
+    }
+  };
+
+  const handleSubmit = async (e: React.SyntheticEvent) => {
+    e.preventDefault();
+    const response = await sendPostRsvpApi({
+      ...editedUser,
+      subdomain: subdomain
+    });
+
+    if (response.ok) {
+      await setModalOpen(false);
+      await getParticipantList();
+    } else {
+      console.error('Error editing participant:', await response.text());
     }
   };
 
@@ -343,7 +344,7 @@ const EditModal = (props: IEditModalProps) => {
       title={`UPDATE THE PARTICIPATE ${user.name}`}
       size="xl"
     >
-      <form>
+      <form onSubmit={handleSubmit}>
         <Input.Wrapper
           required
           id="edit-modal-name"
