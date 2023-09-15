@@ -152,13 +152,12 @@ export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
   };
 
   const resetForm = () => {
+    resetFields();
     setInitForm(true);
     setInitNameInput(true);
     setInitMenuInput(true);
-    resetFields();
     setIsFirstOptionClicked(false);
     setIsSecondOptionClicked(false);
-
     setIsNameValidated(false);
     setIsRsvpValidated(false);
     setIsSideValidated(false);
@@ -176,17 +175,16 @@ export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
   });
 
   const resetFields = () => {
-    if (!isNameValidated) setName('');
-    if (!isRsvpValidated) setRsvp('');
-    if (!isSideValidated) setSide('');
-    if (!isMenuValidated) setMenu('');
+    setName('');
+    setRsvp('');
+    setSide('');
+    setMenu('');
     setNote('');
   };
 
   const handleFormSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setInitForm(false);
-
     if (
       isNameValidated &&
       isRsvpValidated &&
@@ -207,9 +205,8 @@ export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
           console.error('Error editing participant:', await response.text());
         }
       }
-
-      resetForm();
     }
+    resetForm();
   };
 
   const handleOnChangeNameInput = (e: React.ChangeEvent<HTMLInputElement>) => {
