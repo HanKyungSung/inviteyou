@@ -1,7 +1,7 @@
 import { getUserInfo } from './AuthUtils';
 import { ILoggedInUser } from '../common/interfaces';
 interface IEditParticipateApi {
-  _id: object;
+  _id?: object;
   name: string;
   participate: string;
   side: string;

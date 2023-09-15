@@ -1,19 +1,9 @@
 import { useEffect, useState } from 'react';
-import {
-  Button,
-  Container,
-  Grid,
-  Input,
-  Modal,
-  Radio,
-  Table,
-  Text
-} from '@mantine/core';
+import { Button, Container, Grid, Modal, Table, Text } from '@mantine/core';
 import { getParticipants } from '../utils/rsvpUtils';
-import {
-  deleteParticipateSecondApi,
-  sendPostRsvpApi
-} from '../utils/ParticipateUtils';
+import { deleteParticipateSecondApi } from '../utils/ParticipateUtils';
+import { Visual3RSVPForm } from './Visual3RSVPForm';
+import { SubmitInfo } from '../common/interfaces';
 
 interface Visual3ListProps {
   subdomain: string;
@@ -48,7 +38,7 @@ const initEditModal = {
 };
 
 interface IEditableUser {
-  _id: object;
+  _id?: object;
   name: string;
   participate: string;
   side: string;
@@ -75,64 +65,6 @@ interface ConfirmDeleteModalProps {
     name: string;
   };
 }
-
-const inputStyle = {
-  wrapper: {
-    'input::placeholder': {
-      margin: '16px 0',
-      fontSize: '16px'
-    },
-    padding: '16px 0 10px 0 !important',
-    borderBottom: '1px solid #ddd !important'
-  },
-  input: {
-    fontSize: '16px'
-  }
-};
-
-const radioGroupStyle = {
-  root: {
-    marginBottom: '20px !important'
-  },
-  required: {
-    color: 'red !important'
-  },
-  label: {
-    fontSize: 16,
-    marginBottom: '16px !important',
-    marginTop: '16px !important'
-  },
-  error: {
-    color: 'red !important',
-    marginTop: '10px !important'
-  }
-};
-
-const radioButtonStyle = {
-  body: {
-    cursor: 'pointer'
-  },
-  icon: {
-    color: 'rgb(180, 152, 133)',
-    width: '12px',
-    height: '12px',
-    top: 'calc(50% - 6px)',
-    left: 'calc(50% - 6px)',
-    cursor: 'pointer'
-  },
-  radio: {
-    cursor: 'pointer',
-    ':checked': {
-      backgroundColor: '#fff',
-      border: '1px solid rgb(180, 152, 133)'
-    },
-    '&::after': {
-      backgroundColor: 'rgb(180, 152, 133)',
-      borderColor: 'rgb(180, 152, 133)'
-    }
-  }
-};
-
 const Visual3List = ({ subdomain }: Visual3ListProps) => {
   const [participants, setParticipants] = useState<IParticipant[]>([]);
   const [confirmModal, setConfirmModal] =
@@ -142,7 +74,7 @@ const Visual3List = ({ subdomain }: Visual3ListProps) => {
   const getParticipantList = async () => {
     const response = await getParticipants(subdomain);
     const json = await response.json();
-
+    console.log(json);
     setParticipants(json);
   };
 
@@ -296,45 +228,8 @@ interface IEditModalProps {
   participants: IParticipant[];
 }
 
-interface IEditModalErrors {
-  nameError: string;
-}
-
 const EditModal = (props: IEditModalProps) => {
   const { opened, setModalOpen, getParticipantList, user, subdomain } = props;
-
-  const [editedUser, setEditedUser] = useState<IEditableUser>({ ...user });
-
-  const [errors] = useState<IEditModalErrors>({
-    nameError: 'Name can not be empty'
-  });
-
-  useEffect(() => {
-    setEditedUser({ ...user });
-  }, [user]);
-
-  const nameError = () => {
-    if (editedUser.name === '') {
-      return errors.nameError;
-    } else {
-      return '';
-    }
-  };
-
-  const handleSubmit = async (e: React.SyntheticEvent) => {
-    e.preventDefault();
-    const response = await sendPostRsvpApi({
-      ...editedUser,
-      subdomain: subdomain
-    });
-
-    if (response.ok) {
-      await setModalOpen(false);
-      await getParticipantList();
-    } else {
-      console.error('Error editing participant:', await response.text());
-    }
-  };
 
   return (
     <Modal
@@ -344,131 +239,17 @@ const EditModal = (props: IEditModalProps) => {
       title={`UPDATE THE PARTICIPATE ${user.name}`}
       size="xl"
     >
-      <form onSubmit={handleSubmit}>
-        <Input.Wrapper
-          required
-          id="edit-modal-name"
-          label="NAME"
-          error={nameError()}
-          styles={{
-            root: {
-              marginBottom: '10px'
-            }
-          }}
-        >
-          <Input
-            placeholder="Name"
-            value={editedUser.name}
-            onChange={(e: React.FormEvent<HTMLInputElement>) => {
-              setEditedUser({
-                ...editedUser,
-                name: e.currentTarget.value
-              });
-            }}
-            styles={inputStyle}
-          />
-          <Radio.Group
-            withAsterisk
-            value={editedUser.participate}
-            onChange={(e) => {
-              setEditedUser({
-                ...editedUser,
-                participate: e
-              });
-            }}
-            name="participate"
-            label="PARTICIPATE"
-            styles={radioGroupStyle}
-          >
-            <Radio value="yes" label="Yes" styles={radioButtonStyle} />
-            <Radio value="no" label="No" styles={radioButtonStyle} />
-          </Radio.Group>
-          <Radio.Group
-            label="INVITED FROM"
-            styles={radioGroupStyle}
-            withAsterisk
-            value={editedUser.side}
-            onChange={(e) => {
-              setEditedUser({
-                ...editedUser,
-                side: e
-              });
-            }}
-          >
-            <Radio
-              name="INVITED FROM"
-              label="Bride Side"
-              value="bride"
-              styles={radioButtonStyle}
-            />
-            <Radio
-              name="INVITED FROM"
-              label="Groom Side"
-              value="groom"
-              styles={radioButtonStyle}
-            />
-            <Radio
-              name="INVITED FROM"
-              label="Both Side"
-              value="both"
-              styles={radioButtonStyle}
-            />
-          </Radio.Group>
-          <Radio.Group
-            label="MENU"
-            value={editedUser.menu}
-            onChange={(e) => {
-              setEditedUser({
-                ...editedUser,
-                menu: e
-              });
-            }}
-            styles={radioGroupStyle}
-            withAsterisk
-          >
-            <Radio
-              name="OPTION 1"
-              label="OPTION 1"
-              value="MENU_OPTION_1"
-              styles={radioButtonStyle}
-            />
-            <Radio
-              name="OPTION 2"
-              label="OPTION 2"
-              value="MENU_OPTION_2"
-              styles={radioButtonStyle}
-            />
-          </Radio.Group>
-          <label>NOTE</label>
-          <textarea
-            name="note"
-            id="note"
-            value={editedUser.note}
-            onChange={(e) =>
-              setEditedUser({
-                ...editedUser,
-                note: e.currentTarget.value
-              })
-            }
-            cols={30}
-            rows={10}
-            placeholder="Please provide us any food restriction you have "
-            style={{
-              width: '100%'
-            }}
-          />
-          <Grid>
-            <Grid.Col span="content">
-              <Button type="submit" color="red">
-                Yes
-              </Button>
-            </Grid.Col>
-            <Grid.Col span="content">
-              <Button onClick={() => setModalOpen(false)}>No</Button>
-            </Grid.Col>
-          </Grid>
-        </Input.Wrapper>
-      </form>
+      <Visual3RSVPForm
+        _id={user._id}
+        subdomain={subdomain}
+        actionType="POST"
+        opened={false}
+        setModalOpen={setModalOpen}
+        getParticipantList={getParticipantList}
+        onSubmit={(submitInfo: SubmitInfo) => {
+          console.log(submitInfo);
+        }}
+      />
     </Modal>
   );
 };
