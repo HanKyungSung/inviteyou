@@ -243,7 +243,6 @@ const EditModal = (props: IEditModalProps) => {
         _id={user._id}
         subdomain={subdomain}
         actionType="POST"
-        opened={false}
         setModalOpen={setModalOpen}
         getParticipantList={getParticipantList}
         onSubmit={(submitInfo: SubmitInfo) => {

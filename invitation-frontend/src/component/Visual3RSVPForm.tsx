@@ -6,11 +6,11 @@ import { sendPostRsvpApi } from '../utils/ParticipateUtils';
 import { ModalInfo, useStyles } from './Visual3';
 
 interface Visual3RSVPFormProps {
-  _id?: object;
   subdomain: string;
   actionType: 'POST' | 'PUT';
   onSubmit: (info: SubmitInfo) => void;
-  opened?: boolean;
+  // Props passed from Visual3List's EditModal
+  _id?: object;
   setModalOpen?: (opened: boolean) => void;
   getParticipantList?: () => void;
 }
@@ -155,14 +155,9 @@ export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
     setInitForm(true);
     setInitNameInput(true);
     setInitMenuInput(true);
-
-    setName('');
-    setRsvp('');
-    setSide('');
-    setMenu('');
+    resetFields();
     setIsFirstOptionClicked(false);
     setIsSecondOptionClicked(false);
-    setNote('');
 
     setIsNameValidated(false);
     setIsRsvpValidated(false);
@@ -185,13 +180,12 @@ export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
     if (!isRsvpValidated) setRsvp('');
     if (!isSideValidated) setSide('');
     if (!isMenuValidated) setMenu('');
+    setNote('');
   };
 
   const handleFormSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
     setInitForm(false);
-
-    resetFields();
 
     if (
       isNameValidated &&
@@ -401,7 +395,6 @@ export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
             Select This Menu
           </Button>
         </div>
-
         {menu === '' && (!initMenuInput || !initForm) ? (
           <Text size={12} mt={10} className={classes.error}>
             {MENU_INPUT_ERROR}
@@ -410,7 +403,6 @@ export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
           ''
         )}
       </div>
-      {/* Menu End */}
       <div className={classes.marginTopForty}>
         <label htmlFor="note">Allegetic Note</label>
         <textarea
