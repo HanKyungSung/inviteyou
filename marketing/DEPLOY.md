@@ -10,7 +10,43 @@ This folder holds the **static marketing site** served at `https://inviteyou.ca`
 
 ---
 
-## Option A — Automated (recommended, no local SSH needed)
+## ✅ Status: LIVE (deployed 2026-07-06)
+
+The server-side Nginx setup below has **already been applied** to the droplet
+(`147.182.215.135`). Current live routing:
+
+| Host | Serves |
+|------|--------|
+| `inviteyou.ca` | Static marketing site (`/var/www/inviteyou-web`) |
+| `www.inviteyou.ca` | 301 redirect → `inviteyou.ca` |
+| `we.inviteyou.ca` | React invitation app (unchanged) |
+| `api.inviteyou.ca` | Express/MongoDB backend (unchanged) |
+| `k-golf.inviteyou.ca` | K one Golf (unchanged) |
+
+**How it was actually done:** rather than a separate site file, the apex + www
+handling was integrated into the existing `/etc/nginx/sites-available/inviteyou.ca`
+so the `k-golf.inviteyou.ca` and `*.inviteyou.ca` (we./api.) server blocks are
+preserved verbatim. The full deployed config is checked in as
+[`nginx-inviteyou-marketing.conf`](./nginx-inviteyou-marketing.conf). Certs reused:
+apex uses `inviteyou.ca-0001`, www reuses the `*.inviteyou.ca` wildcard cert
+`inviteyou.ca-0002` (no new certbot needed). A timestamped backup of the previous
+config was saved on the server as `/etc/nginx/sites-available/inviteyou.ca.bak.*`.
+
+**Rollback:** restore the backup and reload —
+```bash
+ssh root@147.182.215.135 \
+  'cp $(ls -t /etc/nginx/sites-available/inviteyou.ca.bak.* | head -1) \
+      /etc/nginx/sites-available/inviteyou.ca && nginx -t && systemctl reload nginx'
+```
+
+Ongoing content updates deploy automatically via `.github/workflows/marketing.yml`
+(rsync to `MARKETING_TARGET_PATH` = `/var/www/inviteyou-web`).
+
+---
+
+The sections below document the setup for reference / re-creation from scratch.
+
+## Option A — Automated (workflow, no local SSH needed)
 
 The repo already has SSH access to the droplet (the same secrets `main.yml` uses:
 `SERVER_SSH_KEY` / `SSH_HOST` / `SSH_USER`). The **`Marketing Server Setup (Nginx/TLS)`**

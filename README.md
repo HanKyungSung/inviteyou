@@ -42,6 +42,10 @@ All hostnames resolve to the same droplet (`147.182.215.135`); Nginx routes by h
 | `we.inviteyou.ca` | Invitation app (React SPA) | `main.yml` deploy target |
 | `api.inviteyou.ca` | Invitation backend (Express/MongoDB) | `main.yml` deploy target |
 
+> **Status:** the marketing site is **live** — `inviteyou.ca` + `www` serve the
+> static site; `we.` / `api.` are unchanged. See [`marketing/DEPLOY.md`](marketing/DEPLOY.md)
+> for the deployed Nginx config and rollback steps.
+
 ---
 
 # 1. Invitation app (existing MERN product)
