@@ -10,7 +10,30 @@ This folder holds the **static marketing site** served at `https://inviteyou.ca`
 
 ---
 
-## One-time server setup (run on the droplet via SSH)
+## Option A — Automated (recommended, no local SSH needed)
+
+The repo already has SSH access to the droplet (the same secrets `main.yml` uses:
+`SERVER_SSH_KEY` / `SSH_HOST` / `SSH_USER`). The **`Marketing Server Setup (Nginx/TLS)`**
+workflow (`.github/workflows/marketing-server-setup.yml`) does the server setup
+for you over SSH — the same way the `konegolf` repo configures this droplet.
+
+1. GitHub → **Actions** → **Marketing Server Setup (Nginx/TLS)** → **Run workflow**.
+2. Leave `apply` as `dry-run` for the first run. It will:
+   - print the current `server_name` blocks (so you can see what serves apex/www today),
+   - create the web root, upload the Nginx config, and run `nginx -t`,
+   - **change nothing** (auto-rolls back the symlink) — safe to run anytime.
+   - Set `run_certbot: true` on this run if the TLS cert doesn't yet cover apex + www.
+3. Review the dry-run log. If the apex/www is currently handled inside the same
+   block as `we.`/`api.`, first remove `inviteyou.ca www.inviteyou.ca` from that
+   block's `server_name` (see Option B step 2) so there's no conflict.
+4. Re-run the workflow with **`apply` = `apply`** to enable the site and reload Nginx.
+   On any `nginx -t` failure it automatically rolls back and makes no changes.
+
+> Prefer doing it by hand? Use **Option B** below.
+
+---
+
+## Option B — Manual one-time server setup (run on the droplet via SSH)
 
 > Requires SSH access to `147.182.215.135` with sudo.
 

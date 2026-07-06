@@ -102,6 +102,13 @@ See **[`marketing/DEPLOY.md`](marketing/DEPLOY.md)** for the one-time Nginx/TLS
 setup on the droplet, verification commands, and rollback steps. The Nginx server
 block lives in [`marketing/nginx-inviteyou-marketing.conf`](marketing/nginx-inviteyou-marketing.conf).
 
+There are two ways to do the server setup:
+- **Automated (recommended):** run the **`Marketing Server Setup (Nginx/TLS)`**
+  workflow (`.github/workflows/marketing-server-setup.yml`) from the Actions tab.
+  It SSHes into the droplet using the existing deploy secrets and installs the
+  Nginx block for you (defaults to a safe dry-run; set `apply=apply` to go live).
+- **Manual:** follow the SSH steps in `marketing/DEPLOY.md`.
+
 ---
 
 # CI / CD
@@ -121,6 +128,15 @@ Both deploys reuse the same SSH secrets: `SERVER_SSH_KEY`, `SSH_HOST`, `SSH_USER
 - **Does:** rsyncs the `marketing/` folder over SSH to `MARKETING_TARGET_PATH`
   (default `/var/www/inviteyou-web`) with `--delete`, excluding the `.py`
   generator scripts (serves `inviteyou.ca` / `www`).
+
+## `marketing-server-setup.yml` — One-time Nginx/TLS setup
+- **Trigger:** manual **workflow_dispatch** only (never runs automatically).
+- **Does:** SSHes into the droplet with the existing `SERVER_SSH_KEY` / `SSH_HOST`
+  / `SSH_USER` secrets (the same droplet + access pattern the `konegolf` repo
+  uses) to install the apex/www Nginx block, optionally run `certbot`, validate
+  with `nginx -t`, and reload. Defaults to a safe **dry-run** (auto-rolls back,
+  changes nothing); set input `apply=apply` to actually enable + reload. Leaves
+  `we.` / `api.` untouched.
 
 ### Does the marketing pipeline only trigger on marketing changes?
 **Yes** — `marketing.yml` only runs when files inside `marketing/**` (or its own

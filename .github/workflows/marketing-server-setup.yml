@@ -1,0 +1,86 @@
+name: Marketing Server Setup (Nginx/TLS)
+
+# Manual, konegolf-style server setup: SSHes into the SAME droplet that main.yml
+# already deploys to (via the existing SERVER_SSH_KEY / SSH_HOST / SSH_USER secrets)
+# and installs the static-site Nginx block for inviteyou.ca + www.
+#
+# This NEVER runs automatically. It only runs when you trigger it from the
+# Actions tab, and it defaults to a safe DRY-RUN that changes nothing on the
+# server. Set "apply" to the word "apply" to actually enable the site + reload.
+#
+# It leaves we.inviteyou.ca and api.inviteyou.ca completely untouched.
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Type 'apply' to enable the site and reload Nginx. Anything else = DRY-RUN (validate only, no changes)."
+        required: true
+        default: "dry-run"
+      run_certbot:
+        description: "Obtain/expand the TLS cert for inviteyou.ca + www (only if it doesn't already cover them)."
+        type: boolean
+        default: false
+
+jobs:
+  setup:
+    name: Configure Nginx on the droplet
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (for the Nginx conf)
+        uses: actions/checkout@v4
+
+      - name: Load deploy SSH key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SERVER_SSH_KEY }}
+
+      - name: Trust the droplet host key
+        run: |
+          if [ -z "${{ secrets.SSH_HOST }}" ]; then echo 'SSH_HOST secret missing' >&2; exit 1; fi
+          ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Show what currently serves apex/www (diagnostic)
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "sudo grep -Rano 'server_name[^;]*;' /etc/nginx/sites-enabled/ /etc/nginx/conf.d/ 2>/dev/null || true"
+
+      - name: Ensure web root exists
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "sudo mkdir -p '${{ secrets.MARKETING_TARGET_PATH }}' && sudo chown -R \$(whoami):www-data '${{ secrets.MARKETING_TARGET_PATH }}' || true"
+
+      - name: Upload the Nginx config to sites-available
+        run: |
+          scp marketing/nginx-inviteyou-marketing.conf \
+            ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:/tmp/inviteyou-marketing.conf
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "sudo mv /tmp/inviteyou-marketing.conf /etc/nginx/sites-available/inviteyou-marketing"
+
+      - name: (Optional) Obtain TLS certificate
+        if: ${{ github.event.inputs.run_certbot == 'true' }}
+        run: |
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} \
+            "sudo certbot --nginx -d inviteyou.ca -d www.inviteyou.ca --non-interactive --agree-tos --redirect || true"
+
+      - name: Validate, then enable (apply) or roll back (dry-run)
+        run: |
+          APPLY='${{ github.event.inputs.apply }}'
+          ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "APPLY='$APPLY' bash -s" <<'EOSSH'
+          set -e
+          LINK=/etc/nginx/sites-enabled/inviteyou-marketing
+          sudo ln -sf /etc/nginx/sites-available/inviteyou-marketing "$LINK"
+          if sudo nginx -t; then
+            if [ "$APPLY" = "apply" ]; then
+              sudo systemctl reload nginx
+              echo "✅ ENABLED: inviteyou.ca + www now served from the static site; Nginx reloaded."
+            else
+              sudo rm -f "$LINK"
+              echo "✅ DRY-RUN OK: config is valid. Left DISABLED, nothing reloaded. Re-run with apply='apply' to go live."
+            fi
+          else
+            sudo rm -f "$LINK"
+            echo "❌ nginx -t FAILED — rolled back, no changes applied." >&2
+            exit 1
+          fi
+          EOSSH
