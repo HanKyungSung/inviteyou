@@ -11,6 +11,27 @@ DigitalOcean droplet but are otherwise unrelated:
 > The two are deployed separately and do not affect each other. Changing the
 > marketing site never redeploys the app's runtime, and vice versa.
 
+## Table of contents
+
+- [Repository structure](#repository-structure)
+- [Domain / hostname map](#domain--hostname-map)
+- [1. Invitation app (existing MERN product)](#1-invitation-app-existing-mern-product)
+  - [Tech stack](#tech-stack)
+  - [How to start](#how-to-start)
+  - [Frontend `.env`](#frontend-env)
+  - [Backend `.env`](#backend-env)
+- [2. Marketing site (new static site)](#2-marketing-site-new-static-site)
+  - [Local preview](#local-preview)
+  - [Regenerating pages](#regenerating-pages)
+  - [Server setup & deployment](#server-setup--deployment)
+- [CI / CD](#ci--cd)
+  - [`main.yml` — Invitation app](#mainyml--invitation-app)
+  - [`marketing.yml` — Marketing site](#marketingyml--marketing-site)
+  - [`marketing-server-setup.yml` — One-time Nginx/TLS setup](#marketing-server-setupyml--one-time-nginxtls-setup)
+  - [Does the marketing pipeline only trigger on marketing changes?](#does-the-marketing-pipeline-only-trigger-on-marketing-changes)
+  - [Required GitHub secrets](#required-github-secrets)
+- [Contact us](#contact-us)
+
 ---
 
 ## Repository structure
