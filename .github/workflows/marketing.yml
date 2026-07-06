@@ -31,4 +31,5 @@ jobs:
           SOURCE: "marketing/"
           # Keep the remote dir in sync and skip local tooling
           ARGS: "-rltgoDzvO --delete"
-          EXCLUDE: "/build_site.py, /connect_nav.py, /.DS_Store"
+          # Exclude generator scripts, docs, and server config — never serve these
+          EXCLUDE: "*.py, *.md, *.conf, /.DS_Store"
