@@ -1,0 +1,34 @@
+name: Deploy Marketing Site
+
+# Deploys the static marketing site (marketing/) to the droplet.
+# inviteyou.ca + www are served from this folder via a dedicated Nginx block.
+# The invitation app (we.inviteyou.ca) and api.inviteyou.ca are unaffected.
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "marketing/**"
+      - ".github/workflows/marketing.yml"
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy static site over SSH
+        uses: easingthemes/ssh-deploy@v2.2.11
+        env:
+          # Reuses the existing deploy secrets
+          SSH_PRIVATE_KEY: ${{ secrets.SERVER_SSH_KEY }}
+          REMOTE_HOST: ${{ secrets.SSH_HOST }}
+          REMOTE_USER: ${{ secrets.SSH_USER }}
+          # New dedicated target directory on the server (e.g. /var/www/inviteyou-web)
+          TARGET: ${{ secrets.MARKETING_TARGET_PATH }}
+          # Only the static site folder; trailing slash copies its contents
+          SOURCE: "marketing/"
+          # Keep the remote dir in sync and skip local tooling
+          ARGS: "-rltgoDzvO --delete"
+          EXCLUDE: "/build_site.py, /connect_nav.py, /.DS_Store"
