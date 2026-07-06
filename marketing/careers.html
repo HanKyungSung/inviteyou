@@ -1,0 +1,384 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Careers | InviteYou.ca</title>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed": "#410007",
+                    "outline-variant": "#c2c6d9",
+                    "tertiary-fixed": "#ffdad8",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#2d3135",
+                    "surface-tint": "#0053da",
+                    "error-container": "#ffdad6",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "secondary-fixed-dim": "#44dfab",
+                    "on-surface": "#181c20",
+                    "tertiary": "#94393b",
+                    "on-secondary-fixed-variant": "#00513a",
+                    "surface-variant": "#e0e3e8",
+                    "inverse-on-surface": "#eef1f6",
+                    "on-secondary-fixed": "#002116",
+                    "on-secondary-container": "#007354",
+                    "on-primary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "ghost-white": "#F8F9FA",
+                    "secondary": "#006c4f",
+                    "on-error": "#ffffff",
+                    "soft-teal": "#20C997",
+                    "surface-subtle": "#FBF2F2",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "background": "#f7f9ff",
+                    "outline": "#737687",
+                    "surface-container": "#ebeef3",
+                    "secondary-container": "#67fcc6",
+                    "surface-container-highest": "#e0e3e8",
+                    "surface-container-high": "#e5e8ee",
+                    "inverse-primary": "#b4c5ff",
+                    "on-tertiary-fixed-variant": "#7f292c",
+                    "on-primary-fixed": "#00174b",
+                    "primary-fixed": "#dbe1ff",
+                    "error": "#ba1a1a",
+                    "electric-blue": "#0062FF",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface-bright": "#f7f9ff",
+                    "tertiary-container": "#b35052",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#d7dadf",
+                    "primary": "#004cca",
+                    "primary-container": "#0062ff",
+                    "secondary-container": "#67fcc6",
+                    "on-background": "#181c20",
+                    "surface": "#f7f9ff",
+                    "on-primary-container": "#f3f3ff",
+                    "on-tertiary-container": "#fff1ef",
+                    "surface-container-low": "#f1f4f9",
+                    "on-surface-variant": "#424656",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "margin-desktop": "64px",
+                    "unit": "4px",
+                    "max-width": "1280px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-md": ["JetBrains Mono"],
+                    "headline-xl": ["Hanken Grotesk"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "body-md": ["Inter"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-md": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-xl": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(233, 236, 237, 0.5);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 30%, rgba(0, 98, 255, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 10% 80%, rgba(32, 201, 151, 0.05) 0%, transparent 50%);
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/70 backdrop-blur-xl shadow-sm">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-4">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary tracking-tight" style="cursor:pointer">InviteYou.ca</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="services.html">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="solutions.html">Solutions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="process.html">Process</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="portfolio.html">Portfolio</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="about.html">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="contact.html">Contact</a>
+</nav>
+<a href="contact.html"><button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-md text-label-md hover:scale-105 hover:shadow-md transition-all duration-200 active:scale-95">Get Started</button></a>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[819px] flex items-center hero-gradient overflow-hidden px-margin-mobile md:px-margin-desktop">
+<div class="max-w-max-width mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+<div class="z-10">
+<span class="inline-block px-4 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm mb-6">WE ARE HIRING</span>
+<h1 class="font-headline-xl text-[48px] md:text-headline-xl text-on-surface mb-6 leading-tight">
+                        Join Our Mission to <span class="text-electric-blue">Transform Business</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-10 max-w-xl">
+                        At InviteYou.ca, we're building the future of digital engagement. We look for thinkers, creators, and doers who want to redefine how brands connect with their audiences.
+                    </p>
+<div class="flex flex-wrap gap-4">
+<a class="bg-electric-blue text-white px-8 py-4 rounded-xl font-label-md text-label-md hover:shadow-lg transition-all duration-300 hover:-translate-y-1" href="#openings">View Openings</a>
+<a class="border border-outline text-on-surface-variant px-8 py-4 rounded-xl font-label-md text-label-md hover:bg-surface-container-low transition-all" href="#culture">Our Culture</a>
+</div>
+</div>
+<div class="relative hidden lg:block">
+<div class="aspect-square rounded-3xl overflow-hidden shadow-2xl relative z-10 transform rotate-3 hover:rotate-0 transition-transform duration-700">
+<img class="w-full h-full object-cover" data-alt="A bright, modern office space with large windows and lush indoor plants. Diverse professionals are collaborating around a minimalist white table with sleek laptops and high-tech displays. The lighting is soft and airy, emphasizing a high-trust, collaborative B2B atmosphere with electric blue accents and a minimalist clean aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBx0lHh7cntG-3FuZLByFk4y4p5vn6K10HH-n_4qdOEdT1GrJskaJppaELn5iIO_qNHEpI9eTV0dCIyAENqafBq4ouc-ySgCKxoRxqteiAAHQ6gaIuruwowsxgDskHYQ4sfDk5_pNdRboZM0SaB9cRSJ7rWtgJnsst2Yur-13esxRSIYkG5d2K5Ww23RtlzZBh9G6f_lDxMwEkjaryXFp6pVo-vrQIVHVbiaP6TvatyoFeydtVNWY-tw_UwtJWDaDuzfRcEgAZIKjM">
+</div>
+<div class="absolute -top-12 -right-12 w-64 h-64 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-12 -left-12 w-48 h-48 bg-primary-container/20 rounded-full blur-3xl"></div>
+</div>
+</div>
+</section>
+<!-- Culture & Values -->
+<section class="py-32 bg-surface-container-lowest" id="culture">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="text-center mb-20">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-4">Values That Drive Us</h2>
+<p class="text-on-surface-variant max-w-2xl mx-auto font-body-md text-body-md">We believe that a great product is a reflection of a great team. Our core values aren't just posters—they're the way we work every day.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Value 1 -->
+<div class="p-10 rounded-2xl bg-surface-bright border border-outline-variant/30 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+<div class="w-14 h-14 rounded-xl bg-primary/10 text-primary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="rocket_launch">rocket_launch</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 text-on-surface">Radical Innovation</h3>
+<p class="text-on-surface-variant font-body-md">We don't settle for "best practice." We search for the next frontier in digital solutions and push boundaries together.</p>
+</div>
+<!-- Value 2 -->
+<div class="p-10 rounded-2xl bg-surface-bright border border-outline-variant/30 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+<div class="w-14 h-14 rounded-xl bg-soft-teal/10 text-secondary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="handshake">handshake</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 text-on-surface">Trusted Reliability</h3>
+<p class="text-on-surface-variant font-body-md">Trust is our currency. We build reliable systems and maintain transparent relationships with our team and clients.</p>
+</div>
+<!-- Value 3 -->
+<div class="p-10 rounded-2xl bg-surface-bright border border-outline-variant/30 hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
+<div class="w-14 h-14 rounded-xl bg-tertiary-container/10 text-tertiary flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-3xl" data-icon="diversity_3">diversity_3</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 text-on-surface">Diverse Perspectives</h3>
+<p class="text-on-surface-variant font-body-md">Unique backgrounds lead to unique solutions. We cultivate an environment where every voice is heard and valued.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Employee Benefits -->
+<section class="py-32 bg-surface">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="lg:w-1/2">
+<div class="w-full aspect-[4/3] rounded-3xl bg-cover bg-center shadow-lg relative overflow-hidden group" data-alt="A group of energetic young professionals laughing and discussing ideas in a vibrant breakout area with modular furniture. High-end coffee bar in the background, warm ambient lighting, and modern minimalist decor. The scene is bright and professional, projecting an aura of success and well-being in a modern tech company." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBYjGUJLsV-zhZPl3gToiXBnbPuer-7ToYwPIzQcRe486crQMT9vchoOMLVTbYK9udGLaJ2uPjtXrrbuENc84AZpy5pTdXoFVxytwGNMeM_4O5wP7V9srCj_irFTJHkgNUSYzKRHRf-36QRd4jAc94l6nD442cMQZzH57ttIFBFK8bEPMChKePineqls-EQbgt0aUqBdSfRF63NcVBGH-rETtA7auw6PCUTTet2e3GX4ae83zANr-mkhPlJSaun3EDNLIwGrJnYYMA')">
+<div class="absolute inset-0 bg-electric-blue/10 group-hover:bg-transparent transition-colors duration-500"></div>
+</div>
+</div>
+<div class="lg:w-1/2">
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-8">More Than Just a Paycheck</h2>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-electric-blue mt-1" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h4 class="font-bold text-on-surface">Remote-First Culture</h4>
+<p class="text-on-surface-variant">Work from where you feel most productive with our fully supported remote work setup.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-electric-blue mt-1" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h4 class="font-bold text-on-surface">Health &amp; Wellness</h4>
+<p class="text-on-surface-variant">Comprehensive health, dental, and vision insurance plus a monthly wellness stipend.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-electric-blue mt-1" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h4 class="font-bold text-on-surface">Learning Budget</h4>
+<p class="text-on-surface-variant">$2,000 annual budget for courses, conferences, and professional development.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-electric-blue mt-1" data-icon="check_circle" data-weight="fill" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<h4 class="font-bold text-on-surface">Unlimited PTO</h4>
+<p class="text-on-surface-variant">We trust you to manage your time. Take the rest you need to stay inspired.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Current Openings (Bento/Card Grid) -->
+<section class="py-32 bg-surface-container-low" id="openings">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-2">Current Openings</h2>
+<p class="text-on-surface-variant font-body-md">Find the role where you'll make the biggest impact.</p>
+</div>
+<div class="flex gap-4">
+<select class="rounded-full border-outline-variant bg-surface-container-lowest text-on-surface-variant font-label-sm px-6 py-2">
+<option>All Departments</option>
+<option>Design</option>
+<option>Engineering</option>
+<option>Sales</option>
+</select>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<!-- Job Card 1 -->
+<div class="glass-card group p-8 rounded-2xl flex flex-col md:flex-row justify-between items-center transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
+<div class="mb-6 md:mb-0">
+<div class="flex gap-2 mb-3">
+<span class="px-3 py-1 rounded-full bg-primary/10 text-primary font-label-sm text-[10px] uppercase">Design</span>
+<span class="px-3 py-1 rounded-full bg-on-surface-variant/10 text-on-surface-variant font-label-sm text-[10px] uppercase">Remote</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Senior UI/UX Designer</h3>
+<p class="text-on-surface-variant">Lead the visual evolution of our core digital experience platforms.</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-on-surface-variant font-label-md">$120k — $160k</span>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl font-label-md transition-all group-hover:bg-electric-blue">Apply Now</button>
+</div>
+</div>
+<!-- Job Card 2 -->
+<div class="glass-card group p-8 rounded-2xl flex flex-col md:flex-row justify-between items-center transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
+<div class="mb-6 md:mb-0">
+<div class="flex gap-2 mb-3">
+<span class="px-3 py-1 rounded-full bg-secondary/10 text-secondary font-label-sm text-[10px] uppercase">Solutions</span>
+<span class="px-3 py-1 rounded-full bg-on-surface-variant/10 text-on-surface-variant font-label-sm text-[10px] uppercase">Hybrid (Toronto)</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Solutions Consultant</h3>
+<p class="text-on-surface-variant">Bridge the gap between complex client needs and our innovative technology.</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-on-surface-variant font-label-md">$90k — $130k</span>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl font-label-md transition-all group-hover:bg-electric-blue">Apply Now</button>
+</div>
+</div>
+<!-- Job Card 3 -->
+<div class="glass-card group p-8 rounded-2xl flex flex-col md:flex-row justify-between items-center transition-all duration-300 hover:shadow-2xl hover:scale-[1.01]">
+<div class="mb-6 md:mb-0">
+<div class="flex gap-2 mb-3">
+<span class="px-3 py-1 rounded-full bg-tertiary/10 text-tertiary font-label-sm text-[10px] uppercase">Engineering</span>
+<span class="px-3 py-1 rounded-full bg-on-surface-variant/10 text-on-surface-variant font-label-sm text-[10px] uppercase">Remote</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">Full Stack Developer (Next.js)</h3>
+<p class="text-on-surface-variant">Build scalable, high-performance web applications for global B2B clients.</p>
+</div>
+<div class="flex items-center gap-6">
+<span class="text-on-surface-variant font-label-md">$110k — $150k</span>
+<button class="bg-primary text-on-primary px-8 py-3 rounded-xl font-label-md transition-all group-hover:bg-electric-blue">Apply Now</button>
+</div>
+</div>
+</div>
+<div class="mt-16 text-center">
+<p class="text-on-surface-variant mb-6 font-body-md">Don't see a role that fits? We're always looking for great talent.</p>
+<a class="text-electric-blue font-bold hover:underline underline-offset-4" href="mailto:careers@inviteyou.ca">Send us an open application →</a>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-32 relative overflow-hidden bg-inverse-surface">
+<div class="absolute inset-0 opacity-10">
+<div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(#fff_1px,transparent_1px)] [background-size:20px_20px]"></div>
+</div>
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center relative z-10">
+<h2 class="font-headline-lg text-headline-lg text-inverse-on-surface mb-6">Ready to make your mark?</h2>
+<p class="text-outline-variant max-w-xl mx-auto mb-10 text-body-lg font-body-lg">Join a team that values your growth as much as the company's. Let's build something extraordinary together.</p>
+<div class="flex justify-center gap-6">
+<button class="bg-white text-primary px-10 py-4 rounded-xl font-bold hover:scale-105 transition-transform">Explore All Roles</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-surface-variant">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="col-span-2 md:col-span-1">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary" style="cursor:pointer">InviteYou.ca</a>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4 max-w-xs">Architecting custom business solutions with high-tech innovation and institutional reliability.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Company</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="about.html">About</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="careers.html">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Expertise</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="services.html">Services</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="solutions.html">Solutions</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="process.html">Process</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="portfolio.html">Portfolio</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Support</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="faq.html">FAQ</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Contact</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Get Started</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-surface-variant">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 InviteYou.ca Business Solutions. All rights reserved.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Cookie Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Sitemap</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interactions and floating effects
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    </script>
+</body></html>

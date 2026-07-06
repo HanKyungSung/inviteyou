@@ -1,0 +1,383 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Our Capabilities | InviteYou.ca</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "on-primary-fixed": "#00174b",
+                "on-background": "#181c20",
+                "tertiary-container": "#b35052",
+                "on-secondary": "#ffffff",
+                "primary": "#004cca",
+                "surface-container-high": "#e5e8ee",
+                "on-tertiary-fixed": "#410007",
+                "inverse-on-surface": "#eef1f6",
+                "tertiary": "#94393b",
+                "electric-blue": "#0062FF",
+                "tertiary-fixed-dim": "#ffb3b1",
+                "on-tertiary-container": "#fff1ef",
+                "on-surface-variant": "#424656",
+                "ghost-white": "#F8F9FA",
+                "on-error": "#ffffff",
+                "background": "#f7f9ff",
+                "primary-fixed-dim": "#b4c5ff",
+                "surface-tint": "#0053da",
+                "on-secondary-fixed": "#002116",
+                "tertiary-fixed": "#ffdad8",
+                "inverse-primary": "#b4c5ff",
+                "surface-container-highest": "#e0e3e8",
+                "surface-container-low": "#f1f4f9",
+                "surface-container": "#ebeef3",
+                "inverse-surface": "#2d3135",
+                "on-tertiary": "#ffffff",
+                "surface": "#f7f9ff",
+                "secondary-fixed": "#67fcc6",
+                "secondary-container": "#67fcc6",
+                "on-secondary-container": "#007354",
+                "error-container": "#ffdad6",
+                "on-error-container": "#93000a",
+                "error": "#ba1a1a",
+                "outline-variant": "#c2c6d9",
+                "surface-variant": "#e0e3e8",
+                "on-primary-fixed-variant": "#003ea8",
+                "primary-container": "#0062ff",
+                "on-tertiary-fixed-variant": "#7f292c",
+                "primary-fixed": "#dbe1ff",
+                "surface-bright": "#f7f9ff",
+                "on-secondary-fixed-variant": "#00513a",
+                "on-primary": "#ffffff",
+                "secondary": "#006c4f",
+                "on-surface": "#181c20",
+                "surface-container-lowest": "#ffffff",
+                "surface-dim": "#d7dadf",
+                "secondary-fixed-dim": "#44dfab",
+                "on-primary-container": "#f3f3ff",
+                "soft-teal": "#20C997",
+                "surface-subtle": "#FBF2F2",
+                "outline": "#737687"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "spacing": {
+                "margin-mobile": "16px",
+                "unit": "4px",
+                "max-width": "1280px",
+                "margin-desktop": "64px",
+                "gutter": "24px"
+            },
+            "fontFamily": {
+                "headline-md": ["Hanken Grotesk"],
+                "label-md": ["JetBrains Mono"],
+                "body-md": ["Inter"],
+                "label-sm": ["JetBrains Mono"],
+                "headline-lg": ["Hanken Grotesk"],
+                "headline-xl": ["Hanken Grotesk"],
+                "headline-lg-mobile": ["Hanken Grotesk"],
+                "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                "headline-xl": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(233, 236, 239, 0.5);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-parent {
+            perspective: 1000px;
+        }
+        .motion-blur-bg {
+            filter: blur(80px);
+            opacity: 0.15;
+            background: radial-gradient(circle at 50% 50%, #0062FF, #20C997);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background selection:bg-electric-blue/20">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/70 backdrop-blur-xl shadow-sm">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-4">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary tracking-tight" style="cursor:pointer">InviteYou.ca</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold font-label-md text-label-md" href="services.html">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="solutions.html">Solutions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="process.html">Process</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="portfolio.html">Portfolio</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="about.html">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="contact.html">Contact</a>
+</nav>
+<a href="contact.html"><button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-md text-label-md hover:scale-105 hover:shadow-md transition-all duration-200 active:scale-95">Get Started</button></a>
+</div>
+</header>
+<main class="pt-20 overflow-hidden">
+<!-- Hero Section -->
+<section class="relative min-h-[716px] flex items-center justify-center py-24 md:py-32 px-margin-mobile md:px-margin-desktop">
+<!-- Subtle Motion-Blur Background -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
+<div class="motion-blur-bg absolute -top-1/4 -left-1/4 w-[150%] h-[150%] animate-[spin_40s_linear_infinite]"></div>
+</div>
+<div class="relative z-10 max-w-[800px] text-center">
+<span class="inline-block px-4 py-1.5 rounded-full bg-electric-blue/10 text-electric-blue font-label-sm text-label-sm uppercase mb-8 tracking-widest animate-pulse">
+                    Expertise &amp; Vision
+                </span>
+<h1 class="font-headline-xl text-headline-xl md:text-headline-xl text-on-background mb-6 tracking-tight leading-none">
+                    Our <span class="text-electric-blue">Capabilities</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+                    We architect future-proof digital systems that bridge the gap between complex engineering and human-centric design. Our multidisciplinary approach ensures your infrastructure scales as fast as your ambition.
+                </p>
+<div class="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+<button class="bg-electric-blue text-white px-8 py-4 rounded-lg font-label-md text-label-md hover:scale-105 transition-transform duration-300">
+                        Discuss Your Project
+                    </button>
+<button class="border border-electric-blue/30 text-electric-blue px-8 py-4 rounded-lg font-label-md text-label-md hover:bg-electric-blue/5 transition-all">View Portfolio</button>
+</div>
+</div>
+</section>
+<!-- Service Cards Section -->
+<section class="py-24 bg-white/40 border-y border-outline-variant/10">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Digital Strategy Card -->
+<div id="digital-strategy" class="reveal glass-card p-10 rounded-xl group active scroll-mt-28" style="transition-delay: 100ms;">
+<div class="w-16 h-16 bg-primary/10 text-electric-blue rounded-lg flex items-center justify-center mb-8 group-hover:bg-electric-blue group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-[32px]" data-icon="insights">insights</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Digital Strategy</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                            Mapping the technical roadmap for your organization's digital evolution. We align tech investment with business outcomes.
+                        </p>
+<a class="inline-flex items-center gap-2 text-electric-blue font-label-md text-label-md group-hover:gap-4 transition-all" href="contact.html">
+                            Learn More <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- Custom Tech Card -->
+<div id="custom-tech" class="reveal glass-card p-10 rounded-xl group border-2 border-electric-blue/10 active scroll-mt-28" style="transition-delay: 200ms;">
+<div class="w-16 h-16 bg-primary/10 text-electric-blue rounded-lg flex items-center justify-center mb-8 group-hover:bg-electric-blue group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-[32px]" data-icon="terminal">terminal</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">Custom Tech</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                            High-performance software development tailored to unique operational demands. From microservices to legacy migration.
+                        </p>
+<a class="inline-flex items-center gap-2 text-electric-blue font-label-md text-label-md group-hover:gap-4 transition-all" href="contact.html">
+                            Learn More <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<!-- UX/UI Design Card -->
+<div id="ux-ui-design" class="reveal glass-card p-10 rounded-xl group active scroll-mt-28" style="transition-delay: 300ms;">
+<div class="w-16 h-16 bg-primary/10 text-electric-blue rounded-lg flex items-center justify-center mb-8 group-hover:bg-electric-blue group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-[32px]" data-icon="draw">draw</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4">UX/UI Design</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 leading-relaxed">
+                            Intuitive interfaces designed with clinical precision. We prioritize clarity, performance, and user retention.
+                        </p>
+<a class="inline-flex items-center gap-2 text-electric-blue font-label-md text-label-md group-hover:gap-4 transition-all" href="contact.html">
+                            Learn More <span class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Tech Stack Section -->
+<section class="py-32 bg-surface">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop text-center">
+<h2 class="font-headline-md text-headline-md mb-4">Our Technology Stack</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-16">Powering solutions with world-class enterprise technologies.</p>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
+<!-- Cloud Logo Placeholder -->
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 flex items-center justify-center rounded-xl bg-white shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-electric-blue" data-icon="cloud">cloud</span>
+</div>
+<span class="font-label-sm text-label-sm">Cloud Infrastructure</span>
+</div>
+<!-- AI Logo Placeholder -->
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 flex items-center justify-center rounded-xl bg-white shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-soft-teal" data-icon="psychology">psychology</span>
+</div>
+<span class="font-label-sm text-label-sm">Applied AI</span>
+</div>
+<!-- Security Logo Placeholder -->
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 flex items-center justify-center rounded-xl bg-white shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-tertiary" data-icon="verified_user">verified_user</span>
+</div>
+<span class="font-label-sm text-label-sm">Cybersecurity</span>
+</div>
+<!-- Data Logo Placeholder -->
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 flex items-center justify-center rounded-xl bg-white shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-primary" data-icon="database">database</span>
+</div>
+<span class="font-label-sm text-label-sm">Data Architecture</span>
+</div>
+<!-- DevOps Logo Placeholder -->
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 flex items-center justify-center rounded-xl bg-white shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-on-surface-variant" data-icon="settings_suggest">settings_suggest</span>
+</div>
+<span class="font-label-sm text-label-sm">DevOps CI/CD</span>
+</div>
+<!-- Mobile Logo Placeholder -->
+<div class="flex flex-col items-center gap-3 group">
+<div class="w-16 h-16 flex items-center justify-center rounded-xl bg-white shadow-sm group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl text-electric-blue" data-icon="smartphone">smartphone</span>
+</div>
+<span class="font-label-sm text-label-sm">Mobile Native</span>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-margin-mobile">
+<div class="max-w-max-width mx-auto bg-inverse-surface rounded-[2rem] p-12 md:p-24 relative overflow-hidden text-center">
+<div class="absolute top-0 right-0 w-64 h-64 bg-electric-blue/20 blur-[100px] -mr-32 -mt-32"></div>
+<div class="absolute bottom-0 left-0 w-64 h-64 bg-soft-teal/10 blur-[100px] -ml-32 -mb-32"></div>
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-inverse-on-surface mb-6 relative z-10">Ready to build the future?</h2>
+<p class="font-body-lg text-body-lg text-surface-variant max-w-xl mx-auto mb-10 relative z-10 opacity-90">
+                    Connect with our solution architects to discuss how we can transform your digital infrastructure.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center relative z-10">
+<button class="bg-electric-blue text-white px-10 py-5 rounded-xl font-headline-md text-body-md hover:shadow-lg hover:shadow-electric-blue/30 transition-all">
+                        Request a Consultation
+                    </button>
+<button class="bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-5 rounded-xl font-headline-md text-body-md hover:bg-white/20 transition-all">
+                        Meet the Team
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-surface-variant">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="col-span-2 md:col-span-1">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary" style="cursor:pointer">InviteYou.ca</a>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4 max-w-xs">Architecting custom business solutions with high-tech innovation and institutional reliability.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Company</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="about.html">About</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="careers.html">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Expertise</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="services.html">Services</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="solutions.html">Solutions</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="process.html">Process</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="portfolio.html">Portfolio</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Support</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="faq.html">FAQ</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Contact</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Get Started</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-surface-variant">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 InviteYou.ca Business Solutions. All rights reserved.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Cookie Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Sitemap</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Scroll Entrance Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Interactive mouse movement effect on cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+                
+                // Add a very subtle tilt
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

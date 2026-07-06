@@ -1,0 +1,330 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Portfolio | InviteYou.ca - Featured Engagements</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed": "#00174b",
+                    "on-background": "#181c20",
+                    "tertiary-container": "#b35052",
+                    "on-secondary": "#ffffff",
+                    "primary": "#004cca",
+                    "surface-container-high": "#e5e8ee",
+                    "on-tertiary-fixed": "#410007",
+                    "inverse-on-surface": "#eef1f6",
+                    "tertiary": "#94393b",
+                    "electric-blue": "#0062FF",
+                    "tertiary-fixed-dim": "#ffb3b1",
+                    "on-tertiary-container": "#fff1ef",
+                    "on-surface-variant": "#424656",
+                    "ghost-white": "#F8F9FA",
+                    "on-error": "#ffffff",
+                    "background": "#f7f9ff",
+                    "primary-fixed-dim": "#b4c5ff",
+                    "surface-tint": "#0053da",
+                    "on-secondary-fixed": "#002116",
+                    "tertiary-fixed": "#ffdad8",
+                    "inverse-primary": "#b4c5ff",
+                    "surface-container-highest": "#e0e3e8",
+                    "surface-container-low": "#f1f4f9",
+                    "surface-container": "#ebeef3",
+                    "inverse-surface": "#2d3135",
+                    "on-tertiary": "#ffffff",
+                    "surface": "#f7f9ff",
+                    "secondary-fixed": "#67fcc6",
+                    "secondary-container": "#67fcc6",
+                    "on-secondary-container": "#007354",
+                    "error-container": "#ffdad6",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c2c6d9",
+                    "surface-variant": "#e0e3e8",
+                    "on-primary-fixed-variant": "#003ea8",
+                    "primary-container": "#0062ff",
+                    "on-tertiary-fixed-variant": "#7f292c",
+                    "primary-fixed": "#dbe1ff",
+                    "surface-bright": "#f7f9ff",
+                    "on-secondary-fixed-variant": "#00513a",
+                    "on-primary": "#ffffff",
+                    "secondary": "#006c4f",
+                    "on-surface": "#181c20",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#d7dadf",
+                    "secondary-fixed-dim": "#44dfab",
+                    "on-primary-container": "#f3f3ff",
+                    "soft-teal": "#20C997",
+                    "surface-subtle": "#FBF2F2",
+                    "outline": "#737687"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "unit": "4px",
+                    "max-width": "1280px",
+                    "margin-desktop": "64px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Hanken Grotesk"],
+                    "label-md": ["JetBrains Mono"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["JetBrains Mono"],
+                    "headline-lg": ["Hanken Grotesk"],
+                    "headline-xl": ["Hanken Grotesk"],
+                    "headline-lg-mobile": ["Hanken Grotesk"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "headline-xl": ["64px", {"lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "40px", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .perspective-1000 { perspective: 1000px; }
+        .tilt-card {
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-electric-blue selection:text-white">
+<!-- TopNavBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/70 backdrop-blur-xl shadow-sm">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-4">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary tracking-tight" style="cursor:pointer">InviteYou.ca</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="services.html">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="solutions.html">Solutions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="process.html">Process</a>
+<a class="text-primary border-b-2 border-primary pb-1 font-semibold font-label-md text-label-md" href="portfolio.html">Portfolio</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="about.html">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="contact.html">Contact</a>
+</nav>
+<a href="contact.html"><button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-md text-label-md hover:scale-105 hover:shadow-md transition-all duration-200 active:scale-95">Get Started</button></a>
+</div>
+</header>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative overflow-hidden py-24 md:py-32">
+
+<div class="relative z-10 px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto text-center">
+<span class="inline-block px-4 py-1.5 mb-6 bg-primary-fixed text-on-primary-fixed-variant font-label-md rounded-full tracking-wider">FEATURED ENGAGEMENTS</span>
+<h1 class="font-headline-xl text-headline-xl mb-6 tracking-tight">Transforming Enterprise <span class="text-electric-blue">Landscapes</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-10 leading-relaxed">
+                    We partner with global leaders to engineer digital products that redefine industries, from complex financial dashboards to seamless logistics ecosystems.
+                </p>
+<div class="flex flex-col sm:flex-row justify-center gap-4">
+<button class="px-8 py-4 bg-electric-blue text-white rounded-lg font-bold hover:shadow-xl hover:-translate-y-1 transition-all duration-300">Start Your Project</button>
+<button class="px-8 py-4 border-2 border-electric-blue text-electric-blue rounded-lg font-bold hover:bg-electric-blue/5 transition-all duration-300">View Methodology</button>
+</div>
+</div>
+</section>
+<!-- Portfolio Grid Section -->
+<section class="py-24 bg-surface-container-lowest">
+<div class="px-margin-mobile md:px-margin-desktop max-w-max-width mx-auto">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+<div>
+<h2 class="font-headline-lg text-headline-lg mb-4">Selected Portfolio</h2>
+<p class="text-on-surface-variant font-body-md max-w-xl">A curated deep-dive into high-impact solutions that deliver measurable ROI for our B2B partners.</p>
+</div>
+<div class="flex gap-4">
+<button class="p-2 border border-outline rounded-full hover:bg-surface-variant transition-colors"><span class="material-symbols-outlined">grid_view</span></button>
+<button class="p-2 border border-outline rounded-full hover:bg-surface-variant transition-colors"><span class="material-symbols-outlined">filter_list</span></button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 perspective-1000">
+<!-- Project Card 1: Nexus Analytics Platform -->
+<div class="tilt-card group cursor-pointer transition-all duration-700 ease-out opacity-100 translate-y-0">
+<div class="relative overflow-hidden rounded-xl bg-white shadow-sm border border-outline-variant/30 group-hover:shadow-xl transition-all duration-500">
+<div class="aspect-[16/9] w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A sophisticated financial technology dashboard displayed on a high-resolution professional monitor. The UI features complex data visualizations, dark-mode analytics graphs with electric blue highlights, and real-time market data tickers. The setting is a clean, minimalist corporate office with soft ambient lighting and a futuristic aesthetic, emphasizing precision and trust." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCp9WIWL-O5lAcmgDeXenlF8qFu9idSOEjqIXFUh7WTntGDaoBkVjQ8XgNklsTJ3ldvJ0el4nFmb2z7PcZGB79Ubdli5EfLaFiQEV8mOjBPqFNf8Q59it834p1w_sLEA1mEeHl3BF7-MfMsPqUixfMb-0wnbkOsTrwr7A2daJxkoyDexDIe3kWw0_UjWH2dU42gfH4Wxz0frMXJtQbDSn_onqTlyEF3KGJVK9DOwmTFxXfIovSQ3m-hwZdXVB4Hmslw4SmFAnmpIDg">
+</div>
+<div class="p-8">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 bg-primary/10 text-primary font-label-sm rounded-full">FINTECH</span>
+<span class="px-3 py-1 bg-primary/10 text-primary font-label-sm rounded-full">DASHBOARD</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 group-hover:text-electric-blue transition-colors">Nexus Analytics Platform</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">A real-time data engine for institutional investors, consolidating fragmented market feeds into a unified AI-driven intelligence layer.</p>
+<div class="flex items-center text-electric-blue font-bold gap-2">
+<span class="">Explore Project</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 2: RouteSync Mobile -->
+<div class="tilt-card group cursor-pointer transition-all duration-700 ease-out opacity-100 translate-y-0">
+<div class="relative overflow-hidden rounded-xl bg-white shadow-sm border border-outline-variant/30 group-hover:shadow-xl transition-all duration-500">
+<div class="aspect-[16/9] w-full overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A modern logistics and fleet management mobile application shown in a studio lighting setup. The screen displays a sleek map-based interface with dynamic route optimization paths in glowing electric blue. The aesthetic is ultra-modern and high-tech, with a focus on usability and clarity. Background is a soft-focus architectural space with cool neutral tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB09uF-jGV2_-O1oJ3w0UpkHfmCfWaAg2RNS0AU7aZ8q97sVMpqV-WzAX0R9q-PiXwvkmZeRI8oq62DzxfEycwbP1lwj1DWtG7F_j9f3jt8xdpyOBaoH5aKYc0Y8tNTwbGajhV2SFbexgMK9LupjtzXjxem9gxLimxSjtCPKfXsKExyQ9biz34F3R78RmQCzrs7PIWXhYII5Ytu2gxiTSE5hljO-DFO1NkeiJyGQ6RqiV2-B8lpNFrZ9E0_3pct7OesxFvnbH_1ups">
+</div>
+<div class="p-8">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 bg-secondary/10 text-secondary font-label-sm rounded-full">LOGISTICS</span>
+<span class="px-3 py-1 bg-secondary/10 text-secondary font-label-sm rounded-full">MOBILE APP</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-3 group-hover:text-electric-blue transition-colors">RouteSync Mobile</h3>
+<p class="text-on-surface-variant mb-6 leading-relaxed">Streamlining last-mile delivery through dynamic route optimization and real-time fleet synchronization for global logistics providers.</p>
+<div class="flex items-center text-electric-blue font-bold gap-2">
+<span class="">Explore Project</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Project Card 3: CloudSphere ERP -->
+<div class="tilt-card group cursor-pointer lg:col-span-2 transition-all duration-700 ease-out opacity-100 translate-y-0">
+<div class="flex flex-col lg:flex-row relative overflow-hidden rounded-xl bg-white shadow-sm border border-outline-variant/30 group-hover:shadow-xl transition-all duration-500">
+<div class="lg:w-3/5 aspect-[16/9] lg:aspect-auto overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="An expansive view of a cloud-based enterprise resource planning software interface on a widescreen display. The design uses a clean white background with subtle gray dividers and vibrant blue interactive elements. The scene conveys a sense of high-level organization and operational efficiency. The environment is a bright, high-key workspace with minimalist furniture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD1Rr-JDQJ8IYImY7K07m88McWW-eF-WUj0Lyzp7nG2CApEv2iPXGmfXVZR4ilOPfz4q-KzsK5s_0vJOI2grwRNmLNvihan7fzYRGapEaTiBiBNiwmcuc_Ycy3bumYXU61mL4yKXikqfULZXW1fdv--bkzDoBMzAvmEMXa9wltZ7s9MtwQBHgi-a2WMjLFCjrjlW4lm7oZn79Szibextjc0P-7W5NE63ASOrITw2bRN0Qrxkn_ed9Yovm-mCysK47V7ag67-zDAwGI">
+</div>
+<div class="lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center">
+<div class="flex gap-2 mb-4">
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary font-label-sm rounded-full">ENTERPRISE</span>
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary font-label-sm rounded-full">SAAS</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-electric-blue transition-colors">CloudSphere ERP</h3>
+<p class="text-on-surface-variant mb-8 leading-relaxed">Revolutionizing internal operations for manufacturing giants with a scalable, cloud-native resource management ecosystem.</p>
+<div class="flex items-center text-electric-blue font-bold gap-2">
+<span class="">Explore Project</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop bg-inverse-surface text-inverse-on-surface">
+<div class="max-w-max-width mx-auto rounded-3xl overflow-hidden relative">
+<div class="relative z-10 p-12 md:p-24 text-center">
+<h2 class="font-headline-lg text-headline-lg mb-8">Ready to build your next breakthrough?</h2>
+<p class="font-body-lg text-body-lg text-surface-variant max-w-xl mx-auto mb-12">Join the ranks of enterprises that have scaled their digital potential with InviteYou.ca.</p>
+<button class="px-10 py-5 bg-electric-blue text-white rounded-full font-bold text-lg hover:shadow-[0_0_30px_rgba(0,98,255,0.4)] hover:scale-105 transition-all duration-300">Schedule a Strategy Session</button>
+</div>
+<div class="absolute inset-0 opacity-10">
+
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full bg-surface-container-lowest border-t border-surface-variant">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="col-span-2 md:col-span-1">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary" style="cursor:pointer">InviteYou.ca</a>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4 max-w-xs">Architecting custom business solutions with high-tech innovation and institutional reliability.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Company</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="about.html">About</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="careers.html">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Expertise</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="services.html">Services</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="solutions.html">Solutions</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="process.html">Process</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="portfolio.html">Portfolio</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Support</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="faq.html">FAQ</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Contact</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Get Started</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-surface-variant">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 InviteYou.ca Business Solutions. All rights reserved.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Cookie Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Sitemap</a>
+</div>
+</div>
+</div>
+</footer>
+<script>
+        // Hover-Tilt Effect for Portfolio Cards
+        document.querySelectorAll('.tilt-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 25;
+                const rotateY = (centerX - x) / 25;
+                
+                card.querySelector('.relative').style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.querySelector('.relative').style.transform = 'rotateX(0deg) rotateY(0deg)';
+            });
+        });
+
+        // Intersection Observer for reveal animations
+        const revealCallback = (entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(revealCallback, { threshold: 0.1 });
+        document.querySelectorAll('.tilt-card').forEach(el => {
+            el.classList.add('opacity-0', 'translate-y-10', 'transition-all', 'duration-700', 'ease-out');
+            observer.observe(el);
+        });
+    </script>
+
+
+
+
+</body></html>

@@ -1,0 +1,584 @@
+<!DOCTYPE html><html class="scroll-smooth" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>InviteYou.ca - Custom Business Solutions</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;600;700&amp;family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#7f292c",
+                        "inverse-primary": "#b4c5ff",
+                        "surface-container-highest": "#e0e3e8",
+                        "surface-container-high": "#e5e8ee",
+                        "surface-container": "#ebeef3",
+                        "secondary-container": "#67fcc6",
+                        "background": "#f7f9ff",
+                        "outline": "#737687",
+                        "soft-teal": "#20C997",
+                        "surface-subtle": "#FBF2F2",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "secondary": "#006c4f",
+                        "on-error": "#ffffff",
+                        "on-error-container": "#93000a",
+                        "on-primary": "#ffffff",
+                        "on-secondary-container": "#007354",
+                        "ghost-white": "#F8F9FA",
+                        "surface-variant": "#e0e3e8",
+                        "inverse-on-surface": "#eef1f6",
+                        "on-secondary-fixed": "#002116",
+                        "on-secondary-fixed-variant": "#00513a",
+                        "tertiary": "#94393b",
+                        "secondary-fixed-dim": "#44dfab",
+                        "on-surface": "#181c20",
+                        "surface-tint": "#0053da",
+                        "error-container": "#ffdad6",
+                        "tertiary-fixed-dim": "#ffb3b1",
+                        "on-secondary": "#ffffff",
+                        "inverse-surface": "#2d3135",
+                        "on-tertiary-fixed": "#410007",
+                        "outline-variant": "#c2c6d9",
+                        "tertiary-fixed": "#ffdad8",
+                        "surface-container-low": "#f1f4f9",
+                        "on-surface-variant": "#424656",
+                        "on-tertiary": "#ffffff",
+                        "on-tertiary-container": "#fff1ef",
+                        "on-primary-container": "#f3f3ff",
+                        "on-background": "#181c20",
+                        "surface": "#f7f9ff",
+                        "primary": "#004cca",
+                        "primary-container": "#0062ff",
+                        "secondary-fixed": "#67fcc6",
+                        "surface-dim": "#d7dadf",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#f7f9ff",
+                        "tertiary-container": "#b35052",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "electric-blue": "#0062FF",
+                        "primary-fixed": "#dbe1ff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed": "#00174b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "max-width": "1280px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "64px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Inter"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-lg": ["Hanken Grotesk"],
+                        "headline-xl": ["Hanken Grotesk"],
+                        "headline-lg-mobile": ["Hanken Grotesk"],
+                        "headline-md": ["Hanken Grotesk"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "headline-xl": ["64px", { "lineHeight": "72px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }]
+                    },
+                    "boxShadow": {
+                        'ambient': '0 40px 80px -20px rgba(0, 0, 0, 0.04)',
+                        'hover': '0 50px 100px -20px rgba(0, 0, 0, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .hero-text {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .hero-text.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .timeline-marker {
+            transition: background-color 0.4s ease, transform 0.4s ease;
+        }
+        
+        .timeline-marker.active {
+            background-color: #0062FF; /* electric-blue */
+            transform: scale(1.2);
+            box-shadow: 0 0 15px rgba(0, 98, 255, 0.4);
+        }
+        
+        .timeline-line {
+            transition: height 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        
+        .card-tilt {
+            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+        }
+        
+        .card-tilt:hover {
+            transform: translateY(-8px) perspective(1000px) rotateX(2deg) rotateY(-2deg);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Material Icon Font styling setup */
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 0,
+          'wght' 400,
+          'GRAD' 0,
+          'opsz' 24
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top Navigation from Shared Components -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/70 backdrop-blur-xl shadow-sm">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-4">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary tracking-tight" style="cursor:pointer">InviteYou.ca</a>
+<nav class="hidden md:flex items-center space-x-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="services.html">Services</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="solutions.html">Solutions</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="process.html">Process</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="portfolio.html">Portfolio</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="about.html">About</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors duration-200 font-label-md text-label-md" href="contact.html">Contact</a>
+</nav>
+<a href="contact.html"><button class="bg-primary-container text-on-primary-container px-6 py-2.5 rounded-full font-label-md text-label-md hover:scale-105 hover:shadow-md transition-all duration-200 active:scale-95">Get Started</button></a>
+</div>
+</header>
+<!-- Mobile Header (simplified fallback for structural compliance) -->
+
+<!-- Main Content Canvas -->
+<main class="w-full">
+<!-- Hero Section -->
+<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<!-- Shader Background -->
+<div class="absolute inset-0 z-0 w-full h-full">
+<!-- STITCH_SHADER_START:ANIMATION_2 class="absolute inset-0 w-full h-full opacity-60" -->
+<div class="absolute inset-0 w-full h-full opacity-60" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_2" style="display:block;width:100%;height:100%" width="1280" height="3402"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_2');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+uniform float u_time;
+uniform vec2 u_resolution;
+uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+
+void main() {
+    vec2 uv = v_texCoord;
+    vec2 mouse = u_mouse / u_resolution;
+    
+    // Create a flowing, bright gradient background
+    float color1 = sin(uv.x * 10.0 + u_time * 0.5) * 0.5 + 0.5;
+    float color2 = cos(uv.y * 8.0 - u_time * 0.3) * 0.5 + 0.5;
+    
+    vec3 colorA = vec3(0.97, 0.98, 1.0); // surface-bright (approx)
+    vec3 colorB = vec3(0.0, 0.38, 1.0);  // custom primary blue
+    
+    vec3 finalColor = mix(colorA, colorB, (color1 * color2) * 0.1);
+    
+    // Subtle mouse interaction
+    float dist = distance(uv, mouse);
+    finalColor += (1.0 - smoothstep(0.0, 0.3, dist)) * 0.05;
+
+    gl_FragColor = vec4(finalColor, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_2 -->
+</div>
+<!-- Hero Content -->
+<div class="relative z-10 max-w-max-width mx-auto px-gutter text-center flex flex-col items-center">
+<div class="hero-text active inline-flex flex-col items-center">
+<span class="font-label-md text-label-md text-electric-blue uppercase tracking-widest mb-6 px-4 py-1.5 bg-electric-blue/10 rounded-full inline-block backdrop-blur-sm border border-electric-blue/20">Enterprise Grade Innovation</span>
+<h1 class="font-headline-xl text-headline-xl md:text-[80px] md:leading-[88px] font-bold text-on-surface mb-6 max-w-4xl tracking-tight">
+                        Architecting Custom <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-electric-blue to-soft-teal">Business Solutions</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-10 mx-auto">
+                        We blend high-tech innovation with institutional reliability to build digital platforms that drive operational excellence and scalable growth.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a class="px-8 py-4 bg-electric-blue text-on-primary font-label-md text-label-md rounded uppercase tracking-widest hover:scale-102 hover:shadow-hover transition-all duration-200" href="services.html">
+                            Explore Capabilities
+                        </a>
+<a class="px-8 py-4 bg-transparent border-2 border-electric-blue text-electric-blue font-label-md text-label-md rounded uppercase tracking-widest hover:bg-electric-blue/5 hover:scale-102 transition-all duration-200" href="#contact">
+                            Book Consultation
+                        </a>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce opacity-50">
+<span class="font-label-sm text-label-sm text-on-surface-variant mb-2 uppercase">Scroll</span>
+<span class="material-symbols-outlined text-on-surface-variant">arrow_downward</span>
+</div>
+</section>
+<!-- Why InviteYou (value props; no numeric claims) -->
+<section class="py-[128px] w-full bg-white relative" id="why-us">
+<div class="max-w-max-width mx-auto px-gutter">
+<div class="mb-[64px] reveal flex flex-col md:flex-row md:justify-between md:items-end gap-6">
+<div class="max-w-2xl">
+<span class="font-label-md text-label-md text-electric-blue uppercase tracking-widest mb-4 block">Why InviteYou</span>
+<h2 class="font-headline-lg text-headline-lg md:text-headline-lg font-bold text-on-surface mb-4">Built for Trust, Engineered for Scale</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">We pair high-tech innovation with institutional reliability, so every engagement is transparent, secure, and built to last.</p>
+</div>
+<a class="hidden md:flex font-label-md text-label-md text-electric-blue items-center uppercase hover:opacity-80 transition-opacity whitespace-nowrap" href="services.html">Explore Our Services <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="reveal border-t-2 border-electric-blue pt-6" style="transition-delay: 100ms;">
+<span class="material-symbols-outlined text-electric-blue text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">shield</span>
+<h3 class="font-headline-md text-[22px] leading-[28px] font-semibold text-on-surface mb-2">Enterprise-Grade Security</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Security and compliance are built into every layer of architecture from day one.</p>
+</div>
+<div class="reveal border-t-2 border-electric-blue pt-6" style="transition-delay: 200ms;">
+<span class="material-symbols-outlined text-electric-blue text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<h3 class="font-headline-md text-[22px] leading-[28px] font-semibold text-on-surface mb-2">Transparent Process</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">A rigorous, open methodology with regular reviews and no surprises at delivery.</p>
+</div>
+<div class="reveal border-t-2 border-electric-blue pt-6" style="transition-delay: 300ms;">
+<span class="material-symbols-outlined text-electric-blue text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">groups</span>
+<h3 class="font-headline-md text-[22px] leading-[28px] font-semibold text-on-surface mb-2">Dedicated Senior Teams</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">You work directly with experienced engineers and strategists, not layers of handoffs.</p>
+</div>
+<div class="reveal border-t-2 border-electric-blue pt-6" style="transition-delay: 400ms;">
+<span class="material-symbols-outlined text-electric-blue text-3xl mb-4" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<h3 class="font-headline-md text-[22px] leading-[28px] font-semibold text-on-surface mb-2">Scalable by Design</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Solutions architected to grow with your business, avoiding costly rebuilds later.</p>
+</div>
+</div>
+<div class="mt-12 text-center md:hidden reveal">
+<a class="inline-flex font-label-md text-label-md text-electric-blue items-center uppercase px-6 py-3 border border-electric-blue rounded" href="services.html">Explore Our Services <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+</div>
+</div>
+</section>
+<!-- Process Section (Vertical Timeline) -->
+<section class="py-[128px] w-full bg-surface-container-low border-y border-outline-variant/20" id="process">
+<div class="max-w-max-width mx-auto px-gutter">
+<div class="text-center mb-[96px] reveal active">
+<h2 class="font-headline-lg text-headline-lg md:text-headline-lg font-bold text-on-surface mb-4">The Engagement Process</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">A rigorous, transparent methodology ensuring predictable outcomes.</p>
+</div>
+<div class="relative max-w-4xl mx-auto">
+<!-- Central Line -->
+<div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-[2px] bg-outline-variant/30 transform md:-translate-x-1/2">
+<div class="absolute top-0 left-0 w-full bg-electric-blue h-0 timeline-line" id="timeline-progress" style="height: calc(100% + 0px);"></div>
+</div>
+<!-- Timeline Items -->
+<div class="space-y-24 relative">
+<!-- Phase 1 -->
+<div class="reveal flex flex-col md:flex-row items-center w-full timeline-row group active" data-phase="1">
+<div class="md:w-1/2 w-full pl-16 md:pl-0 md:pr-16 md:text-right">
+<span class="font-label-md text-label-md text-electric-blue uppercase tracking-widest mb-2 block">Phase 01</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Discovery &amp; Audit</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Deep-dive analysis of existing infrastructure, stakeholder interviews, and definition of technical requirements.</p>
+</div>
+<!-- Marker -->
+<div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border-4 border-surface-container-low bg-outline-variant timeline-marker z-10 active"></div>
+<div class="md:w-1/2 w-full hidden md:block"></div>
+</div>
+<!-- Phase 2 -->
+<div class="reveal flex flex-col md:flex-row items-center w-full timeline-row group active" data-phase="2">
+<div class="md:w-1/2 w-full hidden md:block"></div>
+<!-- Marker -->
+<div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border-4 border-surface-container-low bg-outline-variant timeline-marker z-10 active"></div>
+<div class="md:w-1/2 w-full pl-16 md:pl-16">
+<span class="font-label-md text-label-md text-electric-blue uppercase tracking-widest mb-2 block">Phase 02</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Architecture Design</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Structuring data models, system integrations, and crafting wireframes that prioritize user flows and security.</p>
+</div>
+</div>
+<!-- Phase 3 -->
+<div class="reveal flex flex-col md:flex-row items-center w-full timeline-row group active" data-phase="3">
+<div class="md:w-1/2 w-full pl-16 md:pl-0 md:pr-16 md:text-right">
+<span class="font-label-md text-label-md text-electric-blue uppercase tracking-widest mb-2 block">Phase 03</span>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4">Agile Implementation</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Iterative development sprints with continuous integration, automated testing, and regular stakeholder reviews.</p>
+</div>
+<!-- Marker -->
+<div class="absolute left-4 md:left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border-4 border-surface-container-low bg-outline-variant timeline-marker z-10 active"></div>
+<div class="md:w-1/2 w-full hidden md:block"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Portfolio Section (Asymmetric / Parallax Cards) -->
+<section class="py-[128px] w-full bg-white" id="portfolio">
+<div class="max-w-max-width mx-auto px-gutter">
+<div class="flex flex-col md:flex-row justify-between items-end mb-[64px] reveal active">
+<div class="max-w-xl">
+<h2 class="font-headline-lg text-headline-lg md:text-headline-lg font-bold text-on-surface mb-4">Featured Engagements</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Transformative digital solutions delivered for enterprise partners.</p>
+</div>
+<a class="hidden md:flex font-label-md text-label-md text-electric-blue items-center uppercase hover:opacity-80 transition-opacity" href="portfolio.html">View Portfolio <span class="material-symbols-outlined ml-2">arrow_forward</span></a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+<!-- Portfolio Item 1 (Large) -->
+<div class="md:col-span-8 reveal relative group cursor-pointer card-tilt active">
+<div class="aspect-[16/9] w-full rounded-xl overflow-hidden shadow-ambient bg-surface-variant relative">
+<!-- Image overlay -->
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+<div class="bg-cover bg-center w-full h-full absolute inset-0 transform group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A sleek, modern dashboard interface displayed on a high-resolution laptop screen, set in a brightly lit, minimalist corporate office environment. The UI features stark white backgrounds, precise geometric data visualizations in electric blue and soft teal, and crisp typography. The atmosphere is professional, cutting-edge, and highly organized." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAd-rgcA9cdb04AIM903HBFb2WpfMUdq6_Jnb1PFPExs3qKk33hq9rruZxFBy7YKTDy-H3UtlVBfzQPZAU91R8LX9EjLB7uku735KVc5h2ywDj_k7ybaOQ-JS4DlONtRIl1SQtDsoU8Um3reuzjP0EQ1ydAwWQheOquwE_B4sTAJtElOjbZoQHy5BQLE2FfQhN3ueZSWfBTgJFmPk8FU5aDBK5nud_aaKZghfFpXSNSX_Tm5q9vLEFVb8LdXpkKpyqSsV53V1CmjG0')"></div>
+<!-- Content overlay -->
+<div class="absolute bottom-0 left-0 w-full p-8 z-20 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+<div class="flex gap-2 mb-3">
+<span class="font-label-sm text-label-sm px-3 py-1 bg-white/20 backdrop-blur-md text-white rounded uppercase tracking-wider">FinTech</span>
+<span class="font-label-sm text-label-sm px-3 py-1 bg-white/20 backdrop-blur-md text-white rounded uppercase tracking-wider">Dashboard</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-white mb-2">Nexus Analytics Platform</h3>
+<p class="font-body-md text-body-md text-white/80 max-w-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">A comprehensive data visualization suite streamlining global transaction monitoring.</p>
+</div>
+</div>
+</div>
+<!-- Portfolio Item 2 (Small) -->
+<div class="md:col-span-4 reveal relative group cursor-pointer card-tilt active" style="transition-delay: 200ms;">
+<div class="aspect-[4/5] w-full rounded-xl overflow-hidden shadow-ambient bg-surface-variant relative">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10 opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+<div class="bg-cover bg-center w-full h-full absolute inset-0 transform group-hover:scale-105 transition-transform duration-700 ease-out" data-alt="A minimalist mobile application interface displayed on a smartphone held by a professional hand. The screen shows a clean, white-themed logistics tracking screen with subtle shadow depth and vibrant electric blue status indicators. The background is softly blurred out, emphasizing the crisp, modern UI design of the app." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAcxEpXyBjOP3geQpvCwyHbRBejtiy-V-DrkRXAuTq0CCpL-VDF3_yfFsxd4raCM5Hl-LhsYUGm6JFIa5pY6DrXp_7TyFmVY6AmbQWQP4nbhdpkKU-Ll9_DhZRSIGBPObEoLXgA82WDT8fmIJeINvdoeEq2r-4J4zBl1WqHoZ4DNNBQxmpcCNqqEy16wHRvj6v03tZyRirNQa1kzDsqTOauQeUAi7d42DMIdlRsBdq9fqw2Vxjobni8cjs46JGft_vWNbGAlVdapNw')"></div>
+<div class="absolute bottom-0 left-0 w-full p-6 z-20">
+<span class="font-label-sm text-label-sm px-3 py-1 bg-white/20 backdrop-blur-md text-white rounded uppercase tracking-wider mb-3 inline-block">Logistics</span>
+<h3 class="font-headline-md text-[24px] leading-[32px] font-semibold text-white">RouteSync Mobile</h3>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-8 text-center md:hidden reveal">
+<a class="inline-flex font-label-md text-label-md text-electric-blue items-center uppercase px-6 py-3 border border-electric-blue rounded" href="portfolio.html">View Portfolio</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer from Shared Components JSON -->
+<footer class="w-full bg-surface-container-lowest border-t border-surface-variant">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-16 grid grid-cols-2 md:grid-cols-4 gap-8">
+<div class="col-span-2 md:col-span-1">
+<a href="index.html" class="font-headline-md text-headline-md font-bold text-primary" style="cursor:pointer">InviteYou.ca</a>
+<p class="font-body-md text-body-md text-on-surface-variant mt-4 max-w-xs">Architecting custom business solutions with high-tech innovation and institutional reliability.</p>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Company</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="about.html">About</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="careers.html">Careers</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Expertise</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="services.html">Services</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="solutions.html">Solutions</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="process.html">Process</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="portfolio.html">Portfolio</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-md text-label-md uppercase tracking-widest text-on-surface mb-4">Support</h4>
+<ul class="space-y-3">
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="faq.html">FAQ</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Contact</a></li>
+<li><a class="text-on-surface-variant hover:text-primary transition-all text-body-md font-body-md" href="contact.html">Get Started</a></li>
+</ul>
+</div>
+</div>
+<div class="border-t border-surface-variant">
+<div class="max-w-max-width mx-auto px-margin-mobile md:px-margin-desktop py-6 flex flex-col md:flex-row justify-between items-center gap-4">
+<p class="font-label-sm text-label-sm text-on-surface-variant">© 2024 InviteYou.ca Business Solutions. All rights reserved.</p>
+<div class="flex flex-wrap justify-center gap-6">
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Terms of Service</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Cookie Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-all text-sm font-body-md" href="#">Sitemap</a>
+</div>
+</div>
+</div>
+</footer>
+<!-- Interaction Scripts -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Scroll Reveal Logic
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        // Optional: stop observing once revealed
+                        // revealObserver.unobserve(entry.target); 
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+            
+            revealElements.forEach(el => revealObserver.observe(el));
+
+            // Hero Text specific reveal (delayed slightly after load)
+            setTimeout(() => {
+                const heroText = document.querySelector('.hero-text');
+                if(heroText) heroText.classList.add('active');
+            }, 300);
+
+            // Timeline Scroll Logic
+            const timelineRows = document.querySelectorAll('.timeline-row');
+            const timelineProgress = document.getElementById('timeline-progress');
+            const timelineSection = document.getElementById('process');
+            
+            if (timelineRows.length > 0 && timelineProgress && timelineSection) {
+                
+                const updateTimeline = () => {
+                    const sectionRect = timelineSection.getBoundingClientRect();
+                    const windowHeight = window.innerHeight;
+                    
+                    // Only process if section is in view
+                    if (sectionRect.top < windowHeight && sectionRect.bottom > 0) {
+                        
+                        let maxPhase = 0;
+                        
+                        timelineRows.forEach((row, index) => {
+                            const rect = row.getBoundingClientRect();
+                            const marker = row.querySelector('.timeline-marker');
+                            
+                            // If middle of the row is past the middle of the screen
+                            if (rect.top + (rect.height / 2) < windowHeight * 0.75) {
+                                marker.classList.add('active');
+                                maxPhase = index + 1;
+                            } else {
+                                marker.classList.remove('active');
+                            }
+                        });
+
+                        // Set line height based on active phases
+                        if (maxPhase > 0) {
+                            const totalPhases = timelineRows.length;
+                            const percentage = (maxPhase / totalPhases) * 100;
+                            // Add a little extra to connect to the active marker visually
+                            timelineProgress.style.height = `calc(${percentage}% - ${(totalPhases - maxPhase) * 10}px)`;
+                        } else {
+                            timelineProgress.style.height = '0%';
+                        }
+                    }
+                };
+
+                window.addEventListener('scroll', updateTimeline);
+                // Initial check
+                updateTimeline();
+            }
+        });
+    </script>
+
+
+
+
+</body></html>
