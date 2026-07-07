@@ -161,8 +161,23 @@
 <!-- Featured Project: K one Golf (real client project) -->
 <div class="tilt-card group lg:col-span-2 transition-all duration-700 ease-out opacity-100 translate-y-0">
 <div class="flex flex-col lg:flex-row relative overflow-hidden rounded-xl bg-white shadow-sm border border-outline-variant/30 group-hover:shadow-lg transition-shadow duration-300">
-<div class="lg:w-3/5 aspect-[16/9] lg:aspect-auto overflow-hidden">
-<img class="w-full h-full object-cover" src="assets/konegolf-landing.jpg" alt="K one Golf — Luxury Screen Golf booking platform landing page">
+<div class="lg:w-3/5 aspect-[16/9] lg:aspect-auto relative overflow-hidden group/carousel" data-carousel>
+<div class="flex h-full transition-transform duration-500 ease-out" data-carousel-track>
+<img class="min-w-full h-full object-cover" src="assets/konegolf-landing.jpg" alt="K one Golf — Luxury Screen Golf landing page">
+<img class="min-w-full h-full object-cover" src="assets/konegolf-booking.jpg" alt="K one Golf — customer tee-time booking">
+<img class="min-w-full h-full object-cover" src="assets/konegolf-dashboard.jpg" alt="K one Golf — staff Mission Control POS dashboard">
+</div>
+<button type="button" data-carousel-prev aria-label="Previous image" class="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-black/60">
+<span class="material-symbols-outlined text-lg">chevron_left</span>
+</button>
+<button type="button" data-carousel-next aria-label="Next image" class="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-black/40 text-white flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-opacity hover:bg-black/60">
+<span class="material-symbols-outlined text-lg">chevron_right</span>
+</button>
+<div class="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-2" data-carousel-dots>
+<button type="button" aria-label="Go to image 1" class="w-2 h-2 rounded-full bg-white/90 transition-colors"></button>
+<button type="button" aria-label="Go to image 2" class="w-2 h-2 rounded-full bg-white/50 transition-colors"></button>
+<button type="button" aria-label="Go to image 3" class="w-2 h-2 rounded-full bg-white/50 transition-colors"></button>
+</div>
 </div>
 <div class="lg:w-2/5 p-8 lg:p-12 flex flex-col justify-center">
 <div class="flex gap-2 mb-4 flex-wrap">
@@ -242,6 +257,36 @@
 </div>
 </footer>
 <script>
+        // Image carousel(s)
+        document.querySelectorAll('[data-carousel]').forEach(root => {
+            const track = root.querySelector('[data-carousel-track]');
+            const slides = track.children;
+            const dots = Array.from(root.querySelectorAll('[data-carousel-dots] button'));
+            const count = slides.length;
+            let index = 0;
+            let timer;
+
+            const render = () => {
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('bg-white/90', i === index);
+                    dot.classList.toggle('bg-white/50', i !== index);
+                });
+            };
+            const go = (i) => { index = (i + count) % count; render(); };
+            const start = () => { timer = setInterval(() => go(index + 1), 4000); };
+            const restart = () => { clearInterval(timer); start(); };
+
+            root.querySelector('[data-carousel-prev]')?.addEventListener('click', () => { go(index - 1); restart(); });
+            root.querySelector('[data-carousel-next]')?.addEventListener('click', () => { go(index + 1); restart(); });
+            dots.forEach((dot, i) => dot.addEventListener('click', () => { go(i); restart(); }));
+            root.addEventListener('mouseenter', () => clearInterval(timer));
+            root.addEventListener('mouseleave', start);
+
+            render();
+            start();
+        });
+
         // Reveal cards on scroll
         const revealCallback = (entries) => {
             entries.forEach(entry => {
