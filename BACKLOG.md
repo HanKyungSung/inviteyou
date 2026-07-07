@@ -21,8 +21,17 @@ as they're completed.
   pinned, minified local `tailwind.css` to drop the production CDN warning.
 - [ ] **Add security headers to the apex Nginx block** — `X-Content-Type-Options`,
   `X-Frame-Options`, HSTS (to match the `k-golf` block).
-- [ ] **Real footer legal pages** — Privacy Policy / Terms / Cookie Policy /
-  Sitemap are currently `href="#"` placeholders.
+- [x] **Footer legal links** — removed the dead `href="#"` placeholders
+  (Privacy/Terms/Cookie/Sitemap). *(Optional)* add a real Privacy Policy page if
+  the contact form starts storing submissions (PIPEDA/CASL).
+
+### SEO follow-ups
+
+- [ ] **Submit `sitemap.xml` to Google Search Console** — verify the
+  `inviteyou.ca` property and submit `https://inviteyou.ca/sitemap.xml` so pages
+  get crawled/indexed. (robots.txt + sitemap.xml + per-page meta are now in place.)
+- [ ] **Add an `og:image`** — no social-share preview image exists yet; add a
+  branded 1200×630 image and reference it via `og:image` on each page.
 
 ## App / infrastructure
 
