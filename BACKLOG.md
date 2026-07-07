@@ -32,6 +32,9 @@ as they're completed.
   get crawled/indexed. (robots.txt + sitemap.xml + per-page meta are now in place.)
 - [ ] **Add an `og:image`** — no social-share preview image exists yet; add a
   branded 1200×630 image and reference it via `og:image` on each page.
+- [ ] **Re-enable footer/contact social links** — the "Follow our journey" block
+  on `contact.html` is commented out; add real LinkedIn/X/Instagram profile URLs
+  and uncomment it.
 
 ## App / infrastructure
 
