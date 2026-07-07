@@ -5,15 +5,19 @@ as they're completed.
 
 ## Marketing site
 
+### Next up
+
+- [ ] **Wire up the contact form email** — `marketing/contact.html` currently shows a
+  success message but discards submissions. Connect it so form entries actually
+  arrive in an inbox we can check (e.g. Formspree, a small Express/serverless
+  endpoint, or a `mailto:` fallback), and confirm delivery to `hello@inviteyou.ca`.
+
 - [ ] **Revisit the website for correct values and create a hero video** — review
   all copy/stats/claims across the marketing pages for accuracy, and produce a
   hero video for the homepage.
 
 ### From the code review (recommended follow-ups)
 
-- [ ] **Wire up the contact form** — `marketing/contact.html` currently shows a
-  success message but discards submissions. Connect it to a real endpoint
-  (Express API, Formspree, or a mailto fallback).
 - [ ] **Host images locally** — all imagery is hot-linked from ephemeral Stitch
   URLs (`lh3.googleusercontent.com/aida-public/...`) that will expire. Download
   into `marketing/assets/` and reference locally.
