@@ -7,10 +7,9 @@ as they're completed.
 
 ### Next up
 
-- [ ] **Wire up the contact form email** — `marketing/contact.html` currently shows a
-  success message but discards submissions. Connect it so form entries actually
-  arrive in an inbox we can check (e.g. Formspree, a small Express/serverless
-  endpoint, or a `mailto:` fallback), and confirm delivery to `hello@inviteyou.ca`.
+- [x] **Wire up the contact form email** — the form now submits through the
+  existing Express backend and the droplet's local Postfix service, delivering
+  inquiries to `general.inviteyou@gmail.com`.
 
 - [ ] **Revisit the website for correct values and create a hero video** — review
   all copy/stats/claims across the marketing pages for accuracy, and produce a
