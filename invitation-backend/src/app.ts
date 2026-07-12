@@ -6,12 +6,14 @@ import connectDB from './utils/connectDB';
 import userRoute from './routes/user.route';
 import rsvpRoute from './routes/rsvp.route';
 import authRoute from './routes/auth.route';
+import contactRoute from './routes/contact.route';
 import { updateIndexfile } from './utils/IndexFileUtil';
 
 dotenv.config();
 
 const app = express();
 const port = 8080; // default port to listen
+app.set('trust proxy', 1);
 
 app.use(cors());
 app.use(express.json());
@@ -66,6 +68,8 @@ app.use('/api/registration', userRoute);
 app.use('/api/login', authRoute)
 
 app.use('/api/rsvp', rsvpRoute);
+
+app.use('/api/contact', contactRoute);
 
 app.get('/api/calendar', (req, res) => {
   // const icsFilePath = path.join(__dirname, 'assets', 'myevent.ics');
