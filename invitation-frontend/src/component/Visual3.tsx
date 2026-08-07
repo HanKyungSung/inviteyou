@@ -11,7 +11,7 @@ import {
 } from '@mantine/core';
 import { useMediaQuery } from '@mantine/hooks';
 import { ImPhone } from 'react-icons/im';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 
 import { Visual3Styles } from '../style/Visual3Styles';
@@ -48,6 +48,10 @@ interface SubmitInfo {
 interface ModalInfo {
   opened: boolean;
   submitInfo: SubmitInfo;
+}
+
+interface Visual3RSVPFormProps {
+  subdomain: string;
 }
 
 const radioGroupStyle = {
@@ -158,25 +162,16 @@ const initModalInfo: ModalInfo = {
   }
 };
 
-const Visual3 = (props: Visual3Props) => {
+export const Visual3RSVPForm = (props: Visual3RSVPFormProps) => {
   const { subdomain } = props;
   const { classes } = useStyles();
-  const {
-    year,
-    monthNum,
-    day,
-    bride,
-    groom,
-    location,
-    specificLocation,
-    time
-  } = props;
 
   const [name, setName] = useState<string>('');
   const [rsvp, setRsvp] = useState<string>('');
   const [side, setSide] = useState<string>('');
   const [menu, setMenu] = useState<string>('');
   const [note, setNote] = useState<string>('');
+  const [modalInfo, setModalInfo] = useState<ModalInfo>(initModalInfo);
 
   const [isFirstOptionClicked, setIsFirstOptionClicked] =
     useState<boolean>(false);
@@ -192,30 +187,13 @@ const Visual3 = (props: Visual3Props) => {
   const [initNameInput, setInitNameInput] = useState<boolean>(true);
   const [initMenuInput, setInitMenuInput] = useState<boolean>(true);
 
-  const [modalInfo, setModalInfo] = useState<ModalInfo>(initModalInfo);
-  const [opened, setOpened] = useState<boolean>(false);
-  const [selectedImage, setSelectedImage] = useState<string>('');
-
-  const [hisPhoneNumberText, setHisPhoneNumberText] = useState(
-    'Check His Phone number'
-  );
-  const [herPhoneNumberText, setHerPhoneNumberText] = useState(
-    'Check Her Phone number'
-  );
-
-  const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
-  const responsiveContainer = {
-    size: RESPONSIVE_MOBILE ? 550 : 450
-  };
-
-  const responsiveTitleText = {
-    size: RESPONSIVE_MOBILE ? 20 : 25
-  };
-
   const menuFontSize = {
     size: 12
   };
 
+  useEffect(() => {
+    console.log(modalInfo);
+  }, [modalInfo]);
   const resetForm = () => {
     setInitForm(true);
     setInitNameInput(true);
@@ -263,7 +241,8 @@ const Visual3 = (props: Visual3Props) => {
       isSideValidated &&
       isMenuValidated
     ) {
-      handleSendApi();
+      console.log(name);
+      // handleSendApi();
       setModalInfo({
         opened: true,
         submitInfo: {
@@ -322,6 +301,207 @@ const Visual3 = (props: Visual3Props) => {
       setIsSecondOptionClicked(true);
       setIsFirstOptionClicked(false);
     }
+  };
+
+  return (
+    <form onSubmit={(e) => handleFormSubmit(e)}>
+      <Input.Wrapper
+        label="NAME"
+        styles={inputWrapperStyle}
+        required
+        error={
+          name === '' && (!initNameInput || !initForm) ? NAME_INPUT_ERROR : ''
+        }
+      >
+        <Input
+          id="name-input"
+          placeholder="Please enter your full name"
+          variant="unstyled"
+          name="name"
+          value={name}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            handleOnChangeNameInput(e)
+          }
+          styles={inputStyle}
+        />
+      </Input.Wrapper>
+      <Radio.Group
+        label="ATTENDANCE"
+        styles={radioGroupStyle}
+        required
+        value={rsvp}
+        onChange={(rsvp) => handleOnChangeRsvpInput(rsvp)}
+        error={rsvp === '' && !initForm ? RSVP_INPUT_ERROR : ''}
+      >
+        <Radio
+          name="ATTENDANCE"
+          label="Yes"
+          value="yes"
+          styles={radioButtonStyle}
+        />
+        <Radio
+          name="ATTENDANCE"
+          label="No"
+          value="no"
+          styles={radioButtonStyle}
+        />
+      </Radio.Group>
+      <Radio.Group
+        label="INVITED FROM"
+        styles={radioGroupStyle}
+        required
+        value={side}
+        onChange={(side) => handleOnchangeSideInput(side)}
+        error={side === '' && !initForm ? SIDE_INPUT_ERROR : ''}
+      >
+        <Radio
+          name="INVITED FROM"
+          label="Bride Side"
+          value="bride"
+          styles={radioButtonStyle}
+        />
+        <Radio
+          name="INVITED FROM"
+          label="Groom Side"
+          value="groom"
+          styles={radioButtonStyle}
+        />
+        <Radio
+          name="INVITED FROM"
+          label="Both Side"
+          value="both"
+          styles={radioButtonStyle}
+        />
+      </Radio.Group>
+      <div>
+        <div>
+          <Text size={16}>
+            MENU<span className={classes.asteriskColor}> *</span>
+          </Text>
+        </div>
+        <div className={classes.menuContainer}>
+          <div
+            className={`${classes.menu} ${
+              isFirstOptionClicked ? classes.clickedMenu : ''
+            }`}
+            onClick={() => handleOptionClick('firstOption')}
+          >
+            <Text {...menuFontSize} mb={10}>
+              OPTION 01
+            </Text>
+            <Text {...menuFontSize}>Tomato Pasta</Text>
+            <Text {...menuFontSize}>Turkey Salad</Text>
+            <Text {...menuFontSize}>Chicken Wings</Text>
+            <Text {...menuFontSize}>Fruit Plater</Text>
+            <Text {...menuFontSize} mb={10}>
+              Chocolate Cake
+            </Text>
+            <Text {...menuFontSize} mb={10}>
+              Free Drink
+            </Text>
+          </div>
+          <div
+            className={`${classes.menu} ${
+              isSecondOptionClicked ? classes.clickedMenu : ''
+            }`}
+            onClick={() => handleOptionClick('secondOption')}
+          >
+            <Text {...menuFontSize} mb={10}>
+              OPTION 02
+            </Text>
+            <Text {...menuFontSize}>Tomato Pasta</Text>
+            <Text {...menuFontSize}>Turkey Salad</Text>
+            <Text {...menuFontSize}>Chicken Wings</Text>
+            <Text {...menuFontSize}>Fruit Plater</Text>
+            <Text {...menuFontSize} mb={10}>
+              Chocolate Cake
+            </Text>
+            <Text {...menuFontSize} mb={10}>
+              Free Drink
+            </Text>
+          </div>
+        </div>
+        <div className={classes.menuContainer}>
+          <Button
+            onClick={() => handleOptionClick('firstOption')}
+            styles={(theme) => optionStyle(theme, isFirstOptionClicked)}
+            radius="xs"
+            uppercase
+          >
+            Select This Menu
+          </Button>
+          <Button
+            onClick={() => handleOptionClick('secondOption')}
+            styles={(theme) => optionStyle(theme, isSecondOptionClicked)}
+            radius="xs"
+            uppercase
+          >
+            Select This Menu
+          </Button>
+        </div>
+
+        {menu === '' && (!initMenuInput || !initForm) ? (
+          <Text size={12} mt={10} className={classes.error}>
+            {MENU_INPUT_ERROR}
+          </Text>
+        ) : (
+          ''
+        )}
+      </div>
+      {/* Menu End */}
+      <div className={classes.marginTopForty}>
+        <label htmlFor="note">Allegetic Note</label>
+        <textarea
+          name="note"
+          id="note"
+          cols={30}
+          rows={10}
+          value={note}
+          placeholder="Please provide us any food restriction you have "
+          className={classes.textarea}
+          onChange={(e) => setNote(e.currentTarget.value)}
+        ></textarea>
+      </div>
+      <button className={classes.customButton} type="submit">
+        SUBMIT
+      </button>
+    </form>
+  );
+};
+
+const Visual3 = (props: Visual3Props) => {
+  const { subdomain } = props;
+  const { classes } = useStyles();
+  const {
+    year,
+    monthNum,
+    day,
+    bride,
+    groom,
+    location,
+    specificLocation,
+    time
+  } = props;
+
+  const [modalInfo, setModalInfo] = useState<ModalInfo>(initModalInfo);
+  const [opened, setOpened] = useState<boolean>(false);
+  const [selectedImage, setSelectedImage] = useState<string>('');
+
+  const [hisPhoneNumberText, setHisPhoneNumberText] = useState(
+    'Check His Phone number'
+  );
+  const [herPhoneNumberText, setHerPhoneNumberText] = useState(
+    'Check Her Phone number'
+  );
+
+  const RESPONSIVE_MOBILE = useMediaQuery('(max-width: 767px)');
+
+  const responsiveContainer = {
+    size: RESPONSIVE_MOBILE ? 550 : 450
+  };
+
+  const responsiveTitleText = {
+    size: RESPONSIVE_MOBILE ? 20 : 25
   };
 
   const imgs: string[] = [
@@ -774,174 +954,7 @@ const Visual3 = (props: Visual3Props) => {
               </Text>
             </div>
             <div className={classes.marginTopForty}>
-              <form onSubmit={(e) => handleFormSubmit(e)}>
-                <Input.Wrapper
-                  label="NAME"
-                  styles={inputWrapperStyle}
-                  required
-                  error={
-                    name === '' && (!initNameInput || !initForm)
-                      ? NAME_INPUT_ERROR
-                      : ''
-                  }
-                >
-                  <Input
-                    id="name-input"
-                    placeholder="Please enter your full name"
-                    variant="unstyled"
-                    name="name"
-                    value={name}
-                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                      handleOnChangeNameInput(e)
-                    }
-                    styles={inputStyle}
-                  />
-                </Input.Wrapper>
-                <Radio.Group
-                  label="ATTENDANCE"
-                  styles={radioGroupStyle}
-                  required
-                  value={rsvp}
-                  onChange={(rsvp) => handleOnChangeRsvpInput(rsvp)}
-                  error={rsvp === '' && !initForm ? RSVP_INPUT_ERROR : ''}
-                >
-                  <Radio
-                    name="ATTENDANCE"
-                    label="Yes"
-                    value="yes"
-                    styles={radioButtonStyle}
-                  />
-                  <Radio
-                    name="ATTENDANCE"
-                    label="No"
-                    value="no"
-                    styles={radioButtonStyle}
-                  />
-                </Radio.Group>
-                <Radio.Group
-                  label="INVITED FROM"
-                  styles={radioGroupStyle}
-                  required
-                  value={side}
-                  onChange={(side) => handleOnchangeSideInput(side)}
-                  error={side === '' && !initForm ? SIDE_INPUT_ERROR : ''}
-                >
-                  <Radio
-                    name="INVITED FROM"
-                    label="Bride Side"
-                    value="bride"
-                    styles={radioButtonStyle}
-                  />
-                  <Radio
-                    name="INVITED FROM"
-                    label="Groom Side"
-                    value="groom"
-                    styles={radioButtonStyle}
-                  />
-                  <Radio
-                    name="INVITED FROM"
-                    label="Both Side"
-                    value="both"
-                    styles={radioButtonStyle}
-                  />
-                </Radio.Group>
-                <div>
-                  <div>
-                    <Text size={16}>
-                      MENU<span className={classes.asteriskColor}> *</span>
-                    </Text>
-                  </div>
-                  <div className={classes.menuContainer}>
-                    <div
-                      className={`${classes.menu} ${
-                        isFirstOptionClicked ? classes.clickedMenu : ''
-                      }`}
-                      onClick={() => handleOptionClick('firstOption')}
-                    >
-                      <Text {...menuFontSize} mb={10}>
-                        OPTION 01
-                      </Text>
-                      <Text {...menuFontSize}>Tomato Pasta</Text>
-                      <Text {...menuFontSize}>Turkey Salad</Text>
-                      <Text {...menuFontSize}>Chicken Wings</Text>
-                      <Text {...menuFontSize}>Fruit Plater</Text>
-                      <Text {...menuFontSize} mb={10}>
-                        Chocolate Cake
-                      </Text>
-                      <Text {...menuFontSize} mb={10}>
-                        Free Drink
-                      </Text>
-                    </div>
-                    <div
-                      className={`${classes.menu} ${
-                        isSecondOptionClicked ? classes.clickedMenu : ''
-                      }`}
-                      onClick={() => handleOptionClick('secondOption')}
-                    >
-                      <Text {...menuFontSize} mb={10}>
-                        OPTION 02
-                      </Text>
-                      <Text {...menuFontSize}>Tomato Pasta</Text>
-                      <Text {...menuFontSize}>Turkey Salad</Text>
-                      <Text {...menuFontSize}>Chicken Wings</Text>
-                      <Text {...menuFontSize}>Fruit Plater</Text>
-                      <Text {...menuFontSize} mb={10}>
-                        Chocolate Cake
-                      </Text>
-                      <Text {...menuFontSize} mb={10}>
-                        Free Drink
-                      </Text>
-                    </div>
-                  </div>
-                  <div className={classes.menuContainer}>
-                    <Button
-                      onClick={() => handleOptionClick('firstOption')}
-                      styles={(theme) =>
-                        optionStyle(theme, isFirstOptionClicked)
-                      }
-                      radius="xs"
-                      uppercase
-                    >
-                      Select This Menu
-                    </Button>
-                    <Button
-                      onClick={() => handleOptionClick('secondOption')}
-                      styles={(theme) =>
-                        optionStyle(theme, isSecondOptionClicked)
-                      }
-                      radius="xs"
-                      uppercase
-                    >
-                      Select This Menu
-                    </Button>
-                  </div>
-
-                  {menu === '' && (!initMenuInput || !initForm) ? (
-                    <Text size={12} mt={10} className={classes.error}>
-                      {MENU_INPUT_ERROR}
-                    </Text>
-                  ) : (
-                    ''
-                  )}
-                </div>
-                {/* Menu End */}
-                <div className={classes.marginTopForty}>
-                  <label htmlFor="note">Allegetic Note</label>
-                  <textarea
-                    name="note"
-                    id="note"
-                    cols={30}
-                    rows={10}
-                    value={note}
-                    placeholder="Please provide us any food restriction you have "
-                    className={classes.textarea}
-                    onChange={(e) => setNote(e.currentTarget.value)}
-                  ></textarea>
-                </div>
-                <button className={classes.customButton} type="submit">
-                  SUBMIT
-                </button>
-              </form>
+              <Visual3RSVPForm subdomain={subdomain} />
             </div>
           </Container>
           <Container {...responsiveContainer} py={70} mt={-20}>

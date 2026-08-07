@@ -6,7 +6,7 @@ export const getParticipants = async (req: Request, res: Response, next: NextFun
     const { subdomain } = req.query;
 
     // Remove fields: https://stackoverflow.com/questions/33799375/how-to-remove-mongo-specific-fields-from-result-nodejs-mongoose
-    const participants = await rsvpModel.find({ subdomain: subdomain }).select(["-_id", "-subdomain"]);
+    const participants = await rsvpModel.find({ subdomain: subdomain }).select(["-subdomain"]);
 
     console.log(participants);
     return res.status(200).send(JSON.stringify(participants));
@@ -165,6 +165,33 @@ export const deleteRsvpHandler = async (
 
     return res.sendStatus(202);
   } catch (error) {
+    return next(error);
+  }
+};
+
+export const postRsvpHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { body } = req;
+    const { _id } = body;
+    console.log(body, ' ', _id);
+
+    const record = await rsvpModel.findOne({ _id: _id });
+
+    if (!record) {
+      return res.status(404).send('Record not found');
+    }
+
+    // Update the record.
+    Object.assign(record, body);
+    await record.save();
+
+    return res.status(200).send('Record updated successfully');
+  } catch (error) {
+    console.error(error);
     return next(error);
   }
 };

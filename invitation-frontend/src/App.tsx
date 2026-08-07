@@ -12,6 +12,7 @@ import * as Constants from './utils/Constants';
 import LandingHeader from './common/LandingHeader';
 import ProtectedRoute from './component/ProtectedRoute';
 import Visual3 from './component/Visual3';
+import Visual3List from './component/Visual3List';
 
 function App() {
   const { NODE_ENV } = process.env;
@@ -53,6 +54,7 @@ function App() {
       <Routes>
         <Route path="/Login" element={<Login />} />
         <Route path="/" element={<Visual3 subdomain={subdomain} />} />
+        <Route path="/list" element={<Visual3List subdomain={subdomain} />} />
       </Routes>
     );
   } else if (!hostnames.includes(window.location.hostname)) {
